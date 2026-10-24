@@ -1,3 +1,5 @@
 dbt-duckdb>=1.8,<2
-streamlit>=1.39,<2
+duckdb>=1.1,<2
 pandas>=2.2,<4
+openpyxl>=3.1,<4
+statsmodels>=0.14,<1
