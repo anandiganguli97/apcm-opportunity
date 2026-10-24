@@ -40,5 +40,33 @@
     "bytes": 1842891,
     "sha256": "399be5816ab06ec89ddff8d6d02099b81eeb76c46c3f87460bfe8fc13d0739fc",
     "file": "synthetic_rif_user_guide.pdf"
+  },
+  {
+    "url": "https://www.cms.gov/files/zip/pfrev26d-posted-08-25-2026.zip",
+    "retrieved_utc": "2026-10-24T18:03:27Z",
+    "bytes": 288408,
+    "sha256": "4a6130bcceb35932cb5fb22966108c5b844fa5e87de8b1c5a9e7b3cb5cdfb85f",
+    "file": "pfrev26d-posted-08-25-2026.zip"
+  },
+  {
+    "url": "https://data.cms.gov/sites/default/files/2025-03/a218a91f-46b8-4734-9dcc-f9a8f406bb49/MUP_PHY_RY25_20250312_DD_Prvdr_2013_2016_508.pdf",
+    "retrieved_utc": "2026-10-24T18:03:28Z",
+    "bytes": 229236,
+    "sha256": "4c7394cb8bb39c8382aa976b31671e70dd2d17931d69b532e2684c7b546617aa",
+    "file": "mup_MUP_PHY_RY25_20250312_DD_Prvdr_2013_2016_508.pdf"
+  },
+  {
+    "url": "https://www2.ccwdata.org/web/guest/condition-categories-chronic",
+    "retrieved_utc": "2026-10-24T18:03:29Z",
+    "bytes": 7743,
+    "sha256": "9c0176e1b1bc89ca80e26f8b6ad000e2ae9524daa539a8b37912ea894251d197",
+    "file": "ccw_condition-categories-chronic.html"
+  },
+  {
+    "url": "https://www2.ccwdata.org/web/guest/condition-categories-other",
+    "retrieved_utc": "2026-10-24T18:03:29Z",
+    "bytes": 7743,
+    "sha256": "9c0176e1b1bc89ca80e26f8b6ad000e2ae9524daa539a8b37912ea894251d197",
+    "file": "ccw_condition-categories-other.html"
   }
 ]

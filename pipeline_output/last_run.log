@@ -1,6 +1,4 @@
 Running job: references
-2024-25382: 166 paragraphs kept
-2025-19787: 41 paragraphs kept
 payment file: 1 zips
-reference step failed: TypeError: unhashable type: 'dict'
-references done, 1 step(s) failed
+mup doc links: ['https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners/medicare-physician-other-practitioners-by-provider', 'https://data.cms.gov/resources/medicare-physician-other-practitioners-methodology', 'https://data.cms.gov/sites/default/files/2025-03/a218a91f-46b8-4734-9dcc-f9a8f406bb49/MUP_PHY_RY25_20250312_DD_Prvdr_2013_2016_508.pdf']
+references done, 0 step(s) failed
