@@ -227,40 +227,42 @@ def ingest_reference() -> None:
     manifest.append(meta)
     f.unlink()
 
+    # The three smaller files below use pandas: HRSA ships Windows-1252 text and the
+    # SVI and Census files start with a byte-order mark, which trip DuckDB's sniffer.
+    import pandas as pd
+
     # HRSA primary care HPSA
     f = RAW / "hpsa_pc.csv"
     meta = download("https://data.hrsa.gov/DataDownload/DD_Files/BCD_HPSA_FCT_DET_PC.csv", f)
-    out = PROC / "hpsa_pc.parquet"
-    db.execute(f"""COPY (SELECT "HPSA ID" AS hpsa_id, "Designation Type" AS designation_type,
-                   "HPSA Status" AS hpsa_status, "HPSA Component Type Description" AS component_type,
-                   "Common State County FIPS Code" AS county_fips, "HPSA Score" AS hpsa_score,
-                   "Rural Status" AS rural_status FROM {csv_src(f)}) TO '{out}' (FORMAT parquet)""")
-    meta.update(file="hrsa_hpsa_primary_care", rows_out=db.execute(f"SELECT count(*) FROM '{out}'").fetchone()[0])
+    cols = {"HPSA ID": "hpsa_id", "Designation Type": "designation_type", "HPSA Status": "hpsa_status",
+            "HPSA Component Type Description": "component_type",
+            "Common State County FIPS Code": "county_fips", "HPSA Score": "hpsa_score", "Rural Status": "rural_status"}
+    frame = pd.read_csv(f, dtype=str, encoding="cp1252", usecols=list(cols)).rename(columns=cols)
+    frame.to_parquet(PROC / "hpsa_pc.parquet", index=False)
+    meta.update(file="hrsa_hpsa_primary_care", rows_out=len(frame))
     manifest.append(meta)
 
     # CDC/ATSDR SVI 2022 county
     f = RAW / "svi_2022_county.csv"
     meta = download("https://svi.cdc.gov/Documents/Data/2022/csv/states_counties/SVI_2022_US_county.csv", f)
-    out = PROC / "svi_county.parquet"
-    db.execute(f"""COPY (SELECT FIPS AS county_fips, ST_ABBR AS state, COUNTY AS county,
-                   RPL_THEMES AS svi_overall FROM {csv_src(f)}) TO '{out}' (FORMAT parquet)""")
-    meta.update(file="svi_2022_county", rows_out=db.execute(f"SELECT count(*) FROM '{out}'").fetchone()[0])
+    frame = pd.read_csv(f, dtype=str, encoding="utf-8-sig", usecols=["FIPS", "ST_ABBR", "COUNTY", "RPL_THEMES"])
+    frame.columns = ["county_fips", "state", "county", "svi_overall"]
+    frame.to_parquet(PROC / "svi_county.parquet", index=False)
+    meta.update(file="svi_2022_county", rows_out=len(frame))
     manifest.append(meta)
 
     # Census 2020 ZCTA-county relationship; assign each ZCTA to the county with the most land area
     f = RAW / "zcta_county.txt"
     meta = download("https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt", f)
-    out = PROC / "zcta_county.parquet"
-    db.execute(f"""COPY (
-        SELECT zcta, county_fips, land_share FROM (
-          SELECT GEOID_ZCTA5_20 AS zcta, GEOID_COUNTY_20 AS county_fips,
-                 TRY_CAST(AREALAND_PART AS DOUBLE) / NULLIF(sum(TRY_CAST(AREALAND_PART AS DOUBLE))
-                   OVER (PARTITION BY GEOID_ZCTA5_20), 0) AS land_share,
-                 row_number() OVER (PARTITION BY GEOID_ZCTA5_20
-                                    ORDER BY TRY_CAST(AREALAND_PART AS DOUBLE) DESC) AS rk
-          FROM {csv_src(f, '|')} WHERE GEOID_ZCTA5_20 IS NOT NULL AND GEOID_ZCTA5_20 <> '')
-        WHERE rk = 1) TO '{out}' (FORMAT parquet)""")
-    meta.update(file="census_zcta_county_2020", rows_out=db.execute(f"SELECT count(*) FROM '{out}'").fetchone()[0])
+    frame = pd.read_csv(f, sep="|", dtype=str, encoding="utf-8-sig",
+                        usecols=["GEOID_ZCTA5_20", "GEOID_COUNTY_20", "AREALAND_PART"])
+    frame = frame.dropna(subset=["GEOID_ZCTA5_20"])
+    frame["area"] = pd.to_numeric(frame["AREALAND_PART"], errors="coerce").fillna(0)
+    frame["land_share"] = frame["area"] / frame.groupby("GEOID_ZCTA5_20")["area"].transform("sum").replace(0, 1)
+    frame = frame.sort_values(["GEOID_ZCTA5_20", "area"], ascending=[True, False]).drop_duplicates("GEOID_ZCTA5_20")
+    frame = frame.rename(columns={"GEOID_ZCTA5_20": "zcta", "GEOID_COUNTY_20": "county_fips"})[["zcta", "county_fips", "land_share"]]
+    frame.to_parquet(PROC / "zcta_county.parquet", index=False)
+    meta.update(file="census_zcta_county_2020", rows_out=len(frame))
     manifest.append(meta)
 
     write_manifest("reference", manifest)

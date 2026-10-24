@@ -35,10 +35,12 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
       - name: Restore staged data cache
-        uses: actions/cache@v4
+        id: restore-cache
+        uses: actions/cache/restore@v4
         with:
           path: data/processed
-          key: staged-${{ hashFiles('pipeline/ingest.py', 'pipeline/hcpcs_codes.json') }}
+          key: staged-${{ github.run_id }}
+          restore-keys: staged-
       - name: Free disk space
         run: |
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc || true
@@ -48,6 +50,12 @@ jobs:
           mkdir -p pipeline_output
           set -o pipefail
           bash pipeline/run.sh 2>&1 | tee pipeline_output/last_run.log
+      - name: Save staged data cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/processed
+          key: staged-${{ github.run_id }}
       - name: Commit outputs
         if: always()
         run: |

@@ -1,11 +1,15 @@
 name: apcm_opportunity
-version: '0.1.0'
+version: '1.0.0'
 config-version: 2
 profile: apcm_opportunity
 model-paths: [models]
 seed-paths: [seeds]
 test-paths: [tests]
 clean-targets: [target, dbt_packages]
+vars:
+  processed_dir: data/processed
+  analysis_year: 2024
+  fee_schedule_year: 2026
 models:
   apcm_opportunity:
     staging:
@@ -16,4 +20,45 @@ models:
       +materialized: table
 seeds:
   apcm_opportunity:
-    +quote_columns: true
+    +quote_columns: false
+    billing_rules:
+      +column_types:
+        rule_id: varchar
+        effective_start: varchar
+        topic: varchar
+        prototype_interpretation: varchar
+        federal_register_citation: varchar
+        source_url: varchar
+        verification_status: varchar
+    ccw_condition_catalog:
+      +column_types:
+        version: varchar
+        condition_id: varchar
+        condition_name: varchar
+        source: varchar
+        source_url: varchar
+        lookback_rule: varchar
+        icd10_value_set_file: varchar
+        verification_status: varchar
+    primary_care_service_codes:
+      +column_types:
+        code: varchar
+        effective_start: varchar
+        effective_end: varchar
+        service_family: varchar
+        assignment_source: varchar
+        verification_status: varchar
+    code_families:
+      +column_types:
+        code: varchar
+        family: varchar
+        effective_start: varchar
+        effective_end: varchar
+        apcm_duplicative_candidate: varchar
+        description: varchar
+        source_status: varchar
+    primary_care_specialties:
+      +column_types:
+        provider_type: varchar
+        role: varchar
+        inclusion_rule: varchar
