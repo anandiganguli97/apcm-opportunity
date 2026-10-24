@@ -17,9 +17,9 @@ These are provider billing records, not unique patients, APCM enrollments, or es
 The Streamlit dashboard includes two tools:
 
 - **Explore public data:** filter historical provider signals by state, provider type, and rural-urban code, then download the filtered table.
-- **Plan APCM next steps:** answer a short practice self-check and get a tailored list of workflows to confirm or strengthen.
+- **Plan APCM next steps:** create a practice-specific workplan with step-by-step tasks, suggested owners, suggested deliverables, and checks for deciding when each workflow is ready. The download is a Markdown file you can adapt with your practice team.
 
-The readiness planner does not assign a score, determine compliance, or calculate reimbursement. It asks for no patient details and does not save answers beyond the current session.
+The planner does not assign a score, determine compliance, decide patient eligibility, select billing codes, or calculate reimbursement. It asks for no patient details and does not save answers beyond the current session. Practice teams should confirm current CMS, Medicare Administrative Contractor, and payer requirements with qualified clinical and billing leads.
 
 **Open the live dashboard:** [APCM Opportunity Lab](https://anandiganguli97-apcm-opportunity-app-l8sdm0.streamlit.app/)
 
