@@ -147,12 +147,18 @@ def mup_docs() -> None:
     sets = [ds for ds in catalog() if ds.get("title", "").startswith("Medicare Physician & Other Practitioners - by Provider :")]
     ds = max(sets, key=lambda d: d.get("temporal", "") if isinstance(d.get("temporal"), str) else json.dumps(d.get("temporal")))
     links = set(urls(ds.get("describedBy"))) | set(urls(ds.get("references")))
-    page = "https://data.cms.gov/resources/medicare-physician-other-practitioners-methodology"
-    try:
-        links |= {u if u.startswith("http") else "https://data.cms.gov" + u
-                  for u in re.findall(r'href=["\']([^"\']+\.pdf)["\']', http_bytes(page).decode("utf-8", "replace"), re.I)}
-    except Exception as e:
-        print(f"methodology page: {e}", flush=True)
+    # The dictionary and methodology resource pages render with JavaScript, but the PDF
+    # path is embedded in the raw page (often JSON-escaped), so search the raw source.
+    for page in sorted({u for u in links if "/resources/" in u} |
+                       {"https://data.cms.gov/resources/medicare-physician-other-practitioners-by-provider-data-dictionary",
+                        "https://data.cms.gov/resources/medicare-physician-other-practitioners-methodology"}):
+        try:
+            raw = http_bytes(page).decode("utf-8", "replace").replace("\\/", "/")
+            found = set(re.findall(r'(?:https://data\.cms\.gov)?/sites/default/files/[^"\'\s<>]+?\.pdf', raw, re.I))
+            links |= {u if u.startswith("http") else "https://data.cms.gov" + u for u in found}
+            print(f"{page}: {len(found)} pdf links", flush=True)
+        except Exception as e:
+            print(f"{page}: {e}", flush=True)
     out = [f"Dataset: {ds.get('title')}"]
     for url in sorted(x for x in links if x.lower().split("?")[0].endswith(".pdf")):
         lines = pdf_text(fetch(url, "mup_" + Path(url).name.replace("%20", "_"))).splitlines()
@@ -168,12 +174,18 @@ def ccw_conditions() -> None:
     out = []
     for url in ["https://www2.ccwdata.org/web/guest/condition-categories-chronic",
                 "https://www2.ccwdata.org/web/guest/condition-categories-other"]:
-        try:
-            path = fetch(url, "ccw_" + url.rsplit("/", 1)[1] + ".html")
-            text = re.sub(r"\n\s*\n+", "\n", strip_tags(path.read_text(errors="replace")))
-            out.append(f"===== {url}\n{text}")
-        except Exception as e:  # keep going; record what failed
-            out.append(f"===== {url}\nFAILED: {e}")
+        # ccwdata.org goes down for maintenance; fall back to the Internet Archive's latest copy
+        for src in (url, "https://web.archive.org/web/2026id_/" + url):
+            try:
+                path = fetch(src, "ccw_" + ("archive_" if "archive.org" in src else "") + url.rsplit("/", 1)[1] + ".html")
+                text = re.sub(r"\n\s*\n+", "\n", strip_tags(path.read_text(errors="replace")))
+                if "Down for Maintenance" in text:
+                    out.append(f"===== {src}\nUNAVAILABLE: site in maintenance at retrieval")
+                    continue
+                out.append(f"===== {src}\n{text}")
+                break
+            except Exception as e:  # keep going; record what failed
+                out.append(f"===== {src}\nFAILED: {e}")
     (OUT / "ccw_conditions.txt").write_text("\n\n".join(out) + "\n")
 
 
