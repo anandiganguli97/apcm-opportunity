@@ -58,3 +58,15 @@ def test_calculator_matches_rates():
     # 1,000 non-QMB patients, all with 2+ conditions, all enrolled -> 1,000 x G0557 x 12
     per_year = [m.value for m in at.metric if m.label == "Allowed per year"][0]
     assert per_year == "$645,360", per_year
+
+
+def test_npi_search_finds_the_clinicians_practice():
+    import pandas as pd
+    root = Path(APP).parent / "pipeline_output/results"
+    lookup = pd.read_csv(root / "npi_practice_lookup.csv.gz", dtype={"npi": str, "practice_id": str}, nrows=50)
+    row = lookup[~lookup.practice_id.str.startswith("npi:")].iloc[0]
+    at = run("Practice finder")
+    at.text_input[0].set_value(row.npi).run()
+    assert not at.exception, at.exception
+    shown = at.dataframe[0].value
+    assert list(shown["Practice ID"]) == [row.practice_id]
