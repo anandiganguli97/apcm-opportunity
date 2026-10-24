@@ -20,7 +20,7 @@ Target audience: recruiters for healthcare analytics and consulting roles (for e
 
 The CMS, HRSA, CDC and Census sites are often blocked from Claude sandboxes, so the pipeline runs on **GitHub Actions** (`.github/workflows/pipeline.yml`), which has open internet access.
 
-1. Put the job name in `pipeline/JOB` (`probe`, `probe2`, `ingest`, or `analyze`).
+1. Put the job name in `pipeline/JOB` (`probe`, `probe2`, `ingest`, `analyze` or `references`).
 2. Push to `real-data-rebuild`. The workflow triggers on changes under `pipeline/`, `models/`, `seeds/`, `tests/`, `dbt_project.yml`.
 3. The workflow restores the staged-data cache, runs `pipeline/run.sh`, saves the cache (even on failure), and commits `pipeline_output/` back to the branch (log in `pipeline_output/last_run.log`, status in `pipeline_output/last_run_status.txt`).
 4. Pull the branch to read results. Add `[skip ci]` to a commit message to push without triggering a run.

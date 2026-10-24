@@ -31,5 +31,6 @@ case "${JOB}" in
   probe2)  python pipeline/probe2.py ;;
   ingest)  ingest ;;
   analyze) ingest; analyze ;;
+  references) python pipeline/references.py ;;
   *) echo "Unknown job ${JOB}" >&2; exit 1 ;;
 esac
