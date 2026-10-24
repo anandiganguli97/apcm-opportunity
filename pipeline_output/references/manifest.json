@@ -68,5 +68,54 @@
     "bytes": 7743,
     "sha256": "9c0176e1b1bc89ca80e26f8b6ad000e2ae9524daa539a8b37912ea894251d197",
     "file": "ccw_condition-categories-other.html"
+  },
+  {
+    "url": "https://www.cms.gov/files/zip/pfrev26a-updated-12-29-2025.zip",
+    "retrieved_utc": "2026-10-24T18:07:19Z",
+    "bytes": 20811509,
+    "sha256": "ce670f78702767644a7d1a5888b6fd3fd9ab8ea9947c2c8192841b0091cec867",
+    "file": "pfrev26a-updated-12-29-2025.zip"
+  },
+  {
+    "url": "https://www.cms.gov/files/zip/pfrev26b-updated-03-10-2026.zip",
+    "retrieved_utc": "2026-10-24T18:07:23Z",
+    "bytes": 338053,
+    "sha256": "5366677e02e7050d8520f4d3045e4f14682de1718b9fd4647a7d70098298b647",
+    "file": "pfrev26b-updated-03-10-2026.zip"
+  },
+  {
+    "url": "https://www.cms.gov/files/zip/pfrev26c-posted-06-30-2026.zip",
+    "retrieved_utc": "2026-10-24T18:07:24Z",
+    "bytes": 315623,
+    "sha256": "be1222dcf3967fcd22846cd2e043ec91f00c5b089bbc0f4ca9a693072b5fefbf",
+    "file": "pfrev26c-posted-06-30-2026.zip"
+  },
+  {
+    "url": "https://www.cms.gov/files/zip/pfrev26d-posted-08-25-2026.zip",
+    "retrieved_utc": "2026-10-24T18:07:25Z",
+    "bytes": 288408,
+    "sha256": "4a6130bcceb35932cb5fb22966108c5b844fa5e87de8b1c5a9e7b3cb5cdfb85f",
+    "file": "pfrev26d-posted-08-25-2026.zip"
+  },
+  {
+    "url": "https://www2.ccwdata.org/web/guest/condition-categories-chronic",
+    "retrieved_utc": "2026-10-24T18:07:26Z",
+    "bytes": 7743,
+    "sha256": "9c0176e1b1bc89ca80e26f8b6ad000e2ae9524daa539a8b37912ea894251d197",
+    "file": "ccw_condition-categories-chronic.html"
+  },
+  {
+    "url": "https://www2.ccwdata.org/web/guest/condition-categories-other",
+    "retrieved_utc": "2026-10-24T18:07:27Z",
+    "bytes": 7743,
+    "sha256": "9c0176e1b1bc89ca80e26f8b6ad000e2ae9524daa539a8b37912ea894251d197",
+    "file": "ccw_condition-categories-other.html"
+  },
+  {
+    "url": "https://data.cms.gov/sites/default/files/2023-05/d51e1218-68c3-4c7c-9598-0b81f22fe903/User%20Guide%20-%20CMS%20Synthetic%20RIF%20Files%20May%202023_AM508_v2.pdf",
+    "retrieved_utc": "2026-10-24T18:07:27Z",
+    "bytes": 1842891,
+    "sha256": "399be5816ab06ec89ddff8d6d02099b81eeb76c46c3f87460bfe8fc13d0739fc",
+    "file": "synthetic_rif_user_guide.pdf"
   }
 ]

@@ -1,7 +1,1 @@
-===== https://data.cms.gov/sites/default/files/2025-03/a218a91f-46b8-4734-9dcc-f9a8f406bb49/MUP_PHY_RY25_20250312_DD_Prvdr_2013_2016_508.pdf
-variable RTI_RACE_CD from the CMS CCW 
-RTI_RACE_CD from the CMS CCW enrollment 
-variable RTI_RACE_CD from the CMS CCW 
-variable RTI_RACE_CD from the CMS CCW 
-CMS CCW enrollment database. The 
-Bene_Avg_Risk_Scre Average HCC Risk Score of Beneficiaries Average Hierarchical Condition Category (HCC) risk score of beneficiaries. 
+Dataset: Medicare Physician & Other Practitioners - by Provider : 2024-12-01
