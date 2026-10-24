@@ -1,6 +1,8 @@
 # Data validity report — prototype status
 
-No CMS public-use or Synthetic RIF data were supplied in the workspace. Consequently, no suppression percentages, reconciliation totals, missing-population estimates, or national equity results have been calculated. The demo's fictional rows are not used to infer national characteristics.
+The project began with fictional demo data. On 2026-10-24, the CMS public 2024 Physician & Other Practitioners by Provider and Service API was accessed and filtered records were retrieved for care-management codes. This confirmed the endpoint, schema, and existence of 2024 predecessor-code data. A probe returned 1,263 rows for 99484 and 3,017 for 99487; the 99490 response filled the 5,000-row page, so it must be paginated before interpreting its total. These are provider-service rows, not national beneficiary counts. No full extract was staged; no suppression percentages, reconciliation totals, missing-population estimates, or national equity results have been calculated. The demo's fictional rows are not used to infer national characteristics.
+
+The source and limitation inventory is maintained in [`data_source_inventory.md`](data_source_inventory.md). The documented downloader writes raw extracts outside Git under `data/public_raw/`.
 
 ## Required checks when data arrive
 
@@ -16,3 +18,4 @@ No CMS public-use or Synthetic RIF data were supplied in the workspace. Conseque
 ## Suppression calculation template
 
 For each geography × code, define visible beneficiary count as the sum of published non-suppressed counts and authoritative total as the state/national published total. `invisible_share = 1 - visible / authoritative_total`. This is only valid when totals use matching populations, years, code definitions, and suppression rules. If not reconcilable, label unmeasured.
+

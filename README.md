@@ -12,6 +12,16 @@ A reproducible DuckDB + dbt project for estimating practice-level Advanced Prima
 
 The synthetic input is not a CMS Synthetic RIF extract. No national findings, forecasts, billable-claim conclusions, or practice identities are produced. Demo payment rates are editable illustrative placeholders, not a fee-schedule transcription. Replace them with year- and locality-specific CMS PFS data before any real analysis.
 
+## Public CMS provider data
+
+The source inventory is in [`docs/data_source_inventory.md`](docs/data_source_inventory.md). The public 2024 CMS Physician & Other Practitioners by Provider and Service file is available through the CMS Data API. Download predecessor care-management and preventive-service code rows with:
+
+```bash
+python scripts/download_public_provider_use.py --year 2024
+```
+
+The script writes a source manifest and a filtered CSV under `data/public_raw/`; raw data is git-ignored. Refresh the `--dataset-id` from CMS's Access API page when a new reporting-year release appears. The committed project does not include the raw extract. CMS provider service data can support NPI-level, suppression-aware readiness measures, but it is aggregated FFS Part B data and does not include beneficiary-level APCM claims, monthly QMB status, or actual patient-level overlap. Use CMS Synthetic RIF files to test beneficiary-level logic; do not generalize synthetic findings to real practices.
+
 ## Project layout
 
 - `seeds/`: editable APCM rate/scenario and code-family reference inputs.
@@ -21,7 +31,7 @@ The synthetic input is not a CMS Synthetic RIF extract. No national findings, fo
 - `models/marts/`: practice opportunity and readiness output.
 - `tests/`: dbt singular checks; `schema.yml` defines uniqueness and accepted values.
 - `docs/`: specification, assumptions, literature scan and validity report.
-- `scripts/`: demo data generation and forecast freeze utility.
+- `scripts/`: demo data generation, CMS public-data download, and forecast freeze utility.
 
 ## Data contract for real data
 
@@ -41,9 +51,13 @@ Readiness proxies use prior CCM, TCM and behavioral health billing intensity. Th
 - [Reddy et al. 2020, Annals of Family Medicine](https://doi.org/10.1370/afm.2573)
 - [Informing APCM: care coordination trends 2020–2023](https://doi.org/10.7812/TPP/25.040)
 - [Primary Care Clinician Uptake of Medicare APCM Billing Codes (online 2026-10-22)](https://doi.org/10.1007/s11606-026-10949-8)
+- [CMS Medicare Physician & Other Practitioners API](https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners/medicare-physician-other-practitioners-by-provider-and-service/api-docs)
+- [CMS data API documentation](https://data.cms.gov/api-docs)
+- [CMS synthetic claims collection](https://data.cms.gov/collection/synthetic-medicare-enrollment-fee-for-service-claims-and-prescription-drug-event)
 
 ## Forecast integrity
 
 The freeze utility writes an immutable CSV plus a SHA-256 manifest with a user-supplied freeze timestamp. It refuses to overwrite an existing freeze. Run only on a real, documented prediction file after its outcome definition, input cutoff and source snapshot are recorded. This demo intentionally ships without a real forecast.
 
 A two-page CEO brief template is in `docs/client_brief_template.md`. The intended Tableau Public view is represented here by a Streamlit prototype; the mart table can be exported as a Tableau input once a valid national/practice dataset has been loaded.
+
