@@ -5,11 +5,7 @@ set -euo pipefail
 JOB="$(tr -d '[:space:]' < pipeline/JOB)"
 echo "Running job: ${JOB}"
 case "${JOB}" in
-  probe)
-    python pipeline/probe.py
-    ;;
-  *)
-    echo "Unknown job ${JOB}" >&2
-    exit 1
-    ;;
+  probe)  python pipeline/probe.py ;;
+  probe2) python pipeline/probe2.py ;;
+  *) echo "Unknown job ${JOB}" >&2; exit 1 ;;
 esac
