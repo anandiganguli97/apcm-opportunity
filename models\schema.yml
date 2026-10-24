@@ -1,0 +1,32 @@
+version: 2
+models:
+  - name: stg_beneficiary_months
+    columns:
+      - name: beneficiary_id
+        tests: [not_null]
+      - name: service_month
+        tests: [not_null]
+      - name: practice_id
+        tests: [not_null]
+      - name: qmb_flag
+        tests:
+          - accepted_values:
+              values: [true, false]
+  - name: stg_practice_profiles
+    columns:
+      - name: practice_id
+        tests: [not_null, unique]
+  - name: int_beneficiary_month_tier
+    columns:
+      - name: apcm_code
+        tests:
+          - accepted_values:
+              values: ['G0556', 'G0557', 'G0558']
+  - name: mart_practice_opportunity
+    columns:
+      - name: practice_id
+        tests: [not_null]
+      - name: scenario
+        tests:
+          - accepted_values:
+              values: ['low', 'base', 'high']

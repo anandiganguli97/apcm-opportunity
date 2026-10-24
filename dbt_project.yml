@@ -1,0 +1,19 @@
+name: apcm_opportunity
+version: '0.1.0'
+config-version: 2
+profile: apcm_opportunity
+model-paths: [models]
+seed-paths: [seeds]
+test-paths: [tests]
+clean-targets: [target, dbt_packages]
+models:
+  apcm_opportunity:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table
+seeds:
+  apcm_opportunity:
+    +quote_columns: true

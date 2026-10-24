@@ -1,0 +1,7 @@
+apcm_opportunity:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: apcm_opportunity.duckdb
+      threads: 4

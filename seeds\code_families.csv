@@ -1,0 +1,18 @@
+code,family,effective_start,effective_end,displacement_candidate,source_status,source
+G0556,APCM,2025-01-01,,false,verified_overview,CMS APCM overview
+G0557,APCM,2025-01-01,,false,verified_overview,CMS APCM overview
+G0558,APCM,2025-01-01,,false,verified_overview,CMS APCM overview
+G0568,APCM_BHI_ADDON,2026-01-01,,false,verified_2026_summary,CY2026 PFS final rule summary
+G0569,APCM_BHI_ADDON,2026-01-01,,false,verified_2026_summary,CY2026 PFS final rule summary
+G0570,APCM_COCM_ADDON,2026-01-01,,false,verified_2026_summary,CY2026 PFS final rule summary
+99490,CCM,2015-01-01,,true,starter_only,Map complete effective-dated family before production
+99439,CCM,2020-01-01,,true,starter_only,Map complete effective-dated family before production
+99491,CCM,2015-01-01,,true,starter_only,Map complete effective-dated family before production
+99487,COMPLEX_CCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
+99489,COMPLEX_CCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
+99495,TCM,2013-01-01,,true,starter_only,Map complete effective-dated family before production
+99496,TCM,2013-01-01,,true,starter_only,Map complete effective-dated family before production
+99484,BHI,2018-01-01,,true,starter_only,Map complete effective-dated family before production
+99492,COCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
+99493,COCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
+99494,COCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
