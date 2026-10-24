@@ -6,7 +6,7 @@ on:
     branches: [real-data-rebuild, main]
     paths: [".github/workflows/site-check.yml"]
   workflow_run:
-    workflows: ["pages-build-deployment"]
+    workflows: ["pages build and deployment"]
     types: [completed]
   workflow_dispatch:
 
