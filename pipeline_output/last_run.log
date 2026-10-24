@@ -1,19 +1,14 @@
 Running job: analyze
+reference done
+pfs: 31431 RVU rows, 0 GPCI rows from https://www.cms.gov/files/zip/rvu26d-updated-08-26-2026.zip
 Traceback (most recent call last):
-  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 342, in <module>
-    ingest_reference()
-  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 251, in ingest_reference
-    frame.to_parquet(PROC / "hpsa_pc.parquet", index=False)
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/core/frame.py", line 3002, in to_parquet
-    return to_parquet(
-           ^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/io/parquet.py", line 551, in to_parquet
-    impl = get_engine(engine)
-           ^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/io/parquet.py", line 73, in get_engine
-    raise ImportError(
-ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
-A suitable version of pyarrow or fastparquet is required for parquet support.
-Trying to import the above resulted in these errors:
- - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.
- - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.
+  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/profile.py", line 40, in <module>
+    prof["svc_rows_by_year_code"] = q(f"""SELECT service_year, HCPCS_Cd, count(*) rows, sum(TRY_CAST(Tot_Srvcs AS DOUBLE)) srvcs,
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/profile.py", line 20, in q
+    cur = db.execute(sql)
+          ^^^^^^^^^^^^^^^
+_duckdb.ParserException: Parser Error: syntax error at or near "rows"
+
+LINE 1: SELECT service_year, HCPCS_Cd, count(*) rows, sum(TRY_CAST(Tot_Srvcs AS DOUBLE)) srvcs,
+                                                ^

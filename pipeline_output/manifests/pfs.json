@@ -1,0 +1,33 @@
+[
+  {
+    "url": "https://www.cms.gov/files/zip/rvu26d-updated-08-26-2026.zip",
+    "retrieved_utc": "2026-10-24T16:43:21Z",
+    "bytes": 6181360,
+    "sha256": "521ff0f4ecbf13b5d99dc1dc04d9f82e5361e55c6b4b6b3033043598bf8406e6",
+    "file": "pfs_rvu_release",
+    "release_page": "https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files/rvu26d",
+    "members": [
+      "GPCI2026.csv",
+      "GPCI2026.txt",
+      "GPCI2026.xlsx",
+      "OPPSCAP_Oct.csv",
+      "OPPSCAP_Oct.txt",
+      "OPPSCAP_Oct.xlsx",
+      "PPRRVU2026_Oct_nonQPP.csv",
+      "PPRRVU2026_Oct_nonQPP.txt",
+      "PPRRVU2026_Oct_nonQPP.xlsx",
+      "PPRRVU2026_Oct_QPP.csv",
+      "PPRRVU2026_Oct_QPP.txt",
+      "PPRRVU2026_Oct_QPP.xlsx",
+      "RVU26D.pdf",
+      "26LOCCO.csv",
+      "26LOCCO.txt",
+      "26LOCCO.xlsx",
+      "ANES2026.csv",
+      "ANES2026.txt",
+      "ANES2026.xlsx"
+    ],
+    "rvu_rows": 31431,
+    "gpci_rows": 0
+  }
+]
