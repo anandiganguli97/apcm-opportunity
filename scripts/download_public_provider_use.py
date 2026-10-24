@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import time
 import urllib.error
 import urllib.parse
@@ -53,6 +54,10 @@ def get_page(dataset_id: str, code: str, offset: int) -> list[dict]:
             retry_after = exc.headers.get("Retry-After")
             delay = float(retry_after) if retry_after and retry_after.isdigit() else min(60, 2**attempt)
             time.sleep(delay)
+        except urllib.error.URLError:
+            if attempt == 6:
+                raise
+            time.sleep(min(60, 2**attempt))
     return []
 
 
@@ -69,9 +74,11 @@ def main() -> None:
     outdir.mkdir(parents=True, exist_ok=True)
     outfile = outdir / f"cms_provider_service_{args.year}.csv"
     manifest = outdir / f"cms_provider_service_{args.year}_manifest.json"
+    partial = outfile.with_suffix(outfile.suffix + ".part")
+    partial_manifest = manifest.with_suffix(manifest.suffix + ".part")
     rows_written = 0
     code_counts: dict[str, int] = {}
-    with outfile.open("w", newline="", encoding="utf-8") as stream:
+    with partial.open("w", newline="", encoding="utf-8") as stream:
         writer = csv.DictWriter(stream, fieldnames=KEEP, extrasaction="ignore")
         writer.writeheader()
         for code in args.codes:
@@ -93,7 +100,7 @@ def main() -> None:
             code_counts[code] = count
             time.sleep(1.0)
 
-    manifest.write_text(json.dumps({
+    partial_manifest.write_text(json.dumps({
         "source": "CMS Medicare Physician & Other Practitioners by Provider and Service",
         "reporting_year": args.year,
         "dataset_uuid": args.dataset_id,
@@ -105,6 +112,8 @@ def main() -> None:
         "suppression_note": "Provider-service rows with 10 or fewer beneficiaries are suppressed by CMS.",
         "grain_note": "Provider NPI x HCPCS x place of service; not beneficiary-level and not an APCM claims file.",
     }, indent=2) + "\n", encoding="utf-8")
+    os.replace(partial, outfile)
+    os.replace(partial_manifest, manifest)
     print(f"Wrote {rows_written} rows to {outfile}")
 
 

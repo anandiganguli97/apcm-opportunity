@@ -5,14 +5,22 @@ G0558,APCM,2025-01-01,,false,verified_overview,CMS APCM overview
 G0568,APCM_BHI_ADDON,2026-01-01,,false,verified_2026_summary,CY2026 PFS final rule summary
 G0569,APCM_BHI_ADDON,2026-01-01,,false,verified_2026_summary,CY2026 PFS final rule summary
 G0570,APCM_COCM_ADDON,2026-01-01,,false,verified_2026_summary,CY2026 PFS final rule summary
-99490,CCM,2015-01-01,,true,starter_only,Map complete effective-dated family before production
-99439,CCM,2020-01-01,,true,starter_only,Map complete effective-dated family before production
-99491,CCM,2015-01-01,,true,starter_only,Map complete effective-dated family before production
-99487,COMPLEX_CCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
-99489,COMPLEX_CCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
-99495,TCM,2013-01-01,,true,starter_only,Map complete effective-dated family before production
-99496,TCM,2013-01-01,,true,starter_only,Map complete effective-dated family before production
-99484,BHI,2018-01-01,,true,starter_only,Map complete effective-dated family before production
-99492,COCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
-99493,COCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
-99494,COCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
+99490,CCM,2015-01-01,,true,verified_CMS_2023_MLNC,https://www.cms.gov/files/document/mln909188-chronic-care-management-services.pdf
+99439,CCM,2020-01-01,,true,verified_CMS_2023_MLNC,https://www.cms.gov/files/document/mln909188-chronic-care-management-services.pdf
+99491,CCM,2015-01-01,,true,verified_CMS_2023_MLNC,https://www.cms.gov/files/document/mln909188-chronic-care-management-services.pdf
+99487,COMPLEX_CCM,2017-01-01,,true,verified_CMS_2023_MLNC,https://www.cms.gov/files/document/mln909188-chronic-care-management-services.pdf
+99489,COMPLEX_CCM,2017-01-01,,true,verified_CMS_2023_MLNC,https://www.cms.gov/files/document/mln909188-chronic-care-management-services.pdf
+99495,TCM,2013-01-01,,true,verified_CMS,https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/transitional-care-management-services
+99496,TCM,2013-01-01,,true,verified_CMS,https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/transitional-care-management-services
+99484,BHI,2018-01-01,,true,verified_CMS_2023_MLNC,https://www.cms.gov/files/document/mln909432-behavioral-health-integration-services.pdf
+99492,COCM,2017-01-01,,true,verified_CMS_2023_MLNC,https://www.cms.gov/files/document/mln909432-behavioral-health-integration-services.pdf
+99493,COCM,2017-01-01,,true,verified_CMS_2023_MLNC,https://www.cms.gov/files/document/mln909432-behavioral-health-integration-services.pdf
+99494,COCM,2017-01-01,,true,verified_CMS_2023_MLNC,https://www.cms.gov/files/document/mln909432-behavioral-health-integration-services.pdf
+99437,COMPLEX_CCM,2022-01-01,,true,verified_CMS_2022_PFS,https://www.cms.gov/medicare/payment/fee-schedules/physician/physician-fee-schedule
+99424,PCM,2022-01-01,,true,verified_CMS_2022_PFS,https://www.cms.gov/medicare/payment/fee-schedules/physician/physician-fee-schedule
+99425,PCM,2022-01-01,,true,verified_CMS_2022_PFS,https://www.cms.gov/medicare/payment/fee-schedules/physician/physician-fee-schedule
+99426,PCM,2022-01-01,,true,verified_CMS_2022_PFS,https://www.cms.gov/medicare/payment/fee-schedules/physician/physician-fee-schedule
+99427,PCM,2022-01-01,,true,verified_CMS_2022_PFS,https://www.cms.gov/medicare/payment/fee-schedules/physician/physician-fee-schedule
+G0323,BHI,2023-01-01,,true,verified_CMS_2023_PFS,https://www.cms.gov/medicare/payment/fee-schedules/physician/physician-fee-schedule
+G2214,COCM,2021-01-01,,true,verified_CMS_2021_PFS,https://www.cms.gov/medicare/payment/fee-schedules/physician/physician-fee-schedule
+

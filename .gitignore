@@ -6,4 +6,5 @@ data/public_raw/
 data/public_processed/
 *.duckdb
 *.parquet
+*.part
 
