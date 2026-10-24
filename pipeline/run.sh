@@ -9,7 +9,9 @@ ingest() {
   # Staged Parquet is cached between runs; only missing pieces are rebuilt.
   [ -f data/processed/mup_prov_2024.parquet ] || python pipeline/ingest.py mup
   [ -f data/processed/svi_county.parquet ] || python pipeline/ingest.py reference
-  [ -f data/processed/pfs_rvu.parquet ] || python pipeline/ingest.py pfs
+  # Rebuild PFS if either file is missing or GPCI came out empty (run 40112642818)
+  python -c "import duckdb, sys; sys.exit(0 if duckdb.connect().execute(\"SELECT count(*) FROM 'data/processed/pfs_gpci.parquet'\").fetchone()[0] > 0 else 1)" 2>/dev/null \
+    && [ -f data/processed/pfs_rvu.parquet ] || python pipeline/ingest.py pfs
   python pipeline/profile.py
 }
 

@@ -315,14 +315,29 @@ def ingest_pfs(release_page: str) -> None:
     pdf = pd.DataFrame(rows)
     pdf.to_parquet(PROC / "pfs_rvu.parquet", index=False)
 
-    # GPCI by locality (header block is 3 lines)
+    # GPCI by locality. Columns are matched by header text: the January release has PW GPCI
+    # with and without the 1.0 floor, later releases only the floored one.
     gp = [n for n in names if re.match(r"GPCI\d{4}\.csv$", n, re.I)]
+    lines = list(__import__("csv").reader(zf.read(gp[0]).decode("latin-1").splitlines()))
+    hdr_i = next(i for i, r in enumerate(lines) if r and r[0].startswith("Medicare Administrative Contractor"))
+    hdr = [h.strip() for h in lines[hdr_i]]
+
+    def col(*must: str, absent: str = "") -> int | None:
+        hits = [i for i, h in enumerate(hdr) if all(m in h for m in must) and not (absent and absent in h)]
+        return hits[0] if hits else None
+
+    ix = {"pw_gpci_no_floor": col("PW GPCI", "without"), "pw_gpci_floor": col("PW GPCI", absent="without"),
+          "pe_gpci": col("PE GPCI"), "mp_gpci": col("MP GPCI")}
+    if None in (ix["pw_gpci_floor"], ix["pe_gpci"], ix["mp_gpci"]):
+        raise RuntimeError(f"Unexpected GPCI header in {gp[0]}: {hdr}")
     grows = []
-    for rec in __import__("csv").reader(zf.read(gp[0]).decode("latin-1").splitlines()[3:]):
-        if len(rec) >= 8 and rec[0].strip():
+    for rec in lines[hdr_i + 1:]:
+        if len(rec) >= len(hdr) and rec[0].strip():
             grows.append({"mac": rec[0].strip(), "state": rec[1].strip(), "locality": rec[2].strip(),
-                          "locality_name": rec[3].strip(), "pw_gpci_no_floor": rec[4],
-                          "pw_gpci_floor": rec[5], "pe_gpci": rec[6], "mp_gpci": rec[7]})
+                          "locality_name": rec[3].strip(),
+                          **{k: (rec[i] if i is not None else None) for k, i in ix.items()}})
+    if not grows:
+        raise RuntimeError(f"No GPCI rows parsed from {gp[0]}")
     pd.DataFrame(grows).to_parquet(PROC / "pfs_gpci.parquet", index=False)
     meta.update(rvu_rows=len(pdf), gpci_rows=len(grows))
     write_manifest("pfs", [meta])

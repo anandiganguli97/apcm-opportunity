@@ -37,7 +37,7 @@ prof["prov_dual_missing_2024"] = q(f"""SELECT count(*) n,
     count(*) FILTER (WHERE Bene_Avg_Risk_Scre IS NULL OR Bene_Avg_Risk_Scre='') risk_blank
     FROM {prov} WHERE service_year=2024""")
 prof["prov_ruca_values_2024"] = q(f"SELECT Rndrng_Prvdr_RUCA ruca, count(*) n FROM {prov} WHERE service_year=2024 GROUP BY 1 ORDER BY 1")
-prof["svc_rows_by_year_code"] = q(f"""SELECT service_year, HCPCS_Cd, count(*) rows, sum(TRY_CAST(Tot_Srvcs AS DOUBLE)) srvcs,
+prof["svc_rows_by_year_code"] = q(f"""SELECT service_year, HCPCS_Cd, count(*) AS n_rows, sum(TRY_CAST(Tot_Srvcs AS DOUBLE)) srvcs,
     sum(TRY_CAST(Tot_Benes AS BIGINT)) benes FROM {svc} GROUP BY 1,2 ORDER BY 2,1""")
 prof["svc_place_of_service"] = q(f"SELECT Place_Of_Srvc, count(*) n FROM {svc} GROUP BY 1")
 prof["geo_levels"] = q(f"SELECT Rndrng_Prvdr_Geo_Lvl lvl, count(*) n FROM {geo} GROUP BY 1")
@@ -46,7 +46,7 @@ prof["geo_national_by_code"] = q(f"""SELECT service_year, HCPCS_Cd, Place_Of_Srv
 
 if (P / "dac.parquet").exists():
     d = f"read_parquet('{P}/dac.parquet')"
-    prof["dac"] = q(f"""SELECT count(*) rows, count(DISTINCT npi) npis, count(DISTINCT org_pac_id) orgs,
+    prof["dac"] = q(f"""SELECT count(*) AS n_rows, count(DISTINCT npi) npis, count(DISTINCT org_pac_id) orgs,
         count(*) FILTER (WHERE org_pac_id IS NULL OR org_pac_id='') no_org FROM {d}""")
     prof["dac_orgs_per_npi"] = q(f"""SELECT n_orgs, count(*) npis FROM (SELECT npi, count(DISTINCT org_pac_id) n_orgs
         FROM {d} WHERE org_pac_id <> '' GROUP BY 1) GROUP BY 1 ORDER BY 1 LIMIT 15""")
