@@ -85,13 +85,19 @@ def payment_file(page: str) -> None:
     for z in zips:
         url = z if z.startswith("http") else "https://www.cms.gov" + z
         path = fetch(url, Path(url).name)
-        zf = zipfile.ZipFile(path)
-        for member in zf.namelist():
-            if not member.lower().endswith((".csv", ".txt")):
-                continue
-            lines = zf.read(member).decode("latin-1").splitlines()
-            hits = [ln for ln in lines if any(f'"{c}"' in ln or f",{c}," in ln or ln.startswith(c) for c in CODES)]
-            result["files"][f"{Path(url).name}/{member}"] = {"rows": len(lines), "head": lines[:12], "code_rows": hits[:4000]}
+
+        def walk(zf: zipfile.ZipFile, prefix: str) -> None:
+            # the release zip holds one zip per conversion factor (non-QP and QP)
+            for member in zf.namelist():
+                if member.lower().endswith(".zip"):
+                    walk(zipfile.ZipFile(io.BytesIO(zf.read(member))), f"{prefix}/{member}")
+                elif member.lower().endswith((".csv", ".txt")):
+                    lines = zf.read(member).decode("latin-1").splitlines()
+                    hits = [ln for ln in lines if any(c in ln for c in CODES)]
+                    result["files"][f"{prefix}/{member}"] = {"rows": len(lines), "head": lines[:12], "code_rows": hits[:6000]}
+                else:
+                    result["files"][f"{prefix}/{member}"] = {"skipped": True}
+        walk(zipfile.ZipFile(path), Path(url).name)
     (OUT / "pfs_payment_file.json").write_text(json.dumps(result, indent=1))
     print(f"payment file: {len(zips)} zips", flush=True)
 
@@ -102,8 +108,17 @@ def mup_docs() -> None:
     for ds in catalog():
         if not ds.get("title", "").startswith("Medicare Physician & Other Practitioners - by Provider :"):
             continue
-        links = {ds.get("describedBy")} | {r for r in ds.get("references", []) if isinstance(r, str)}
-        for url in sorted(x for x in links if x and x.lower().endswith(".pdf")):
+        def urls(v):  # catalog fields are a URL string, an object with a URL, or a list of either
+            if isinstance(v, str):
+                yield v
+            elif isinstance(v, dict):
+                yield from (x for x in v.values() if isinstance(x, str) and x.startswith("http"))
+            elif isinstance(v, list):
+                for x in v:
+                    yield from urls(x)
+        links = set(urls(ds.get("describedBy"))) | set(urls(ds.get("references"))) | set(urls(ds.get("landingPage")))
+        print("mup doc links:", sorted(links), flush=True)
+        for url in sorted(x for x in links if x.lower().split("?")[0].endswith(".pdf")):
             path = fetch(url, "mup_" + Path(url).name.replace("%20", "_"))
             text = pdf_text(path)
             keep = [ln for ln in text.splitlines() if re.search(r"chronic|CCW|Bene_CC|condition|lookback|reference period", ln, re.I)]
@@ -138,6 +153,7 @@ def synthetic_rif() -> None:
 
 
 if __name__ == "__main__":
+    only = set(sys.argv[1:])  # optional: run only the named steps
     steps = [
         lambda: federal_register("2024-25382", (97859, 97902)),   # CY2025 PFS final rule
         lambda: federal_register("2025-19787", (49464, 49471)),   # CY2026 PFS final rule
@@ -145,6 +161,12 @@ if __name__ == "__main__":
         mup_docs, ccw_conditions, synthetic_rif,
     ]
     failures = 0
+    names = ["fr2025", "fr2026", "payment", "mup_docs", "ccw", "synthetic"]
+    if only:
+        steps = [st for st, n in zip(steps, names) if n in only]
+        prev = OUT / "manifest.json"
+        if prev.exists():  # keep entries for steps not rerun
+            manifest.extend(json.loads(prev.read_text()))
     for step in steps:
         try:
             step()
