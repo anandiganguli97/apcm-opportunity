@@ -1,35 +1,23 @@
-Running job: ingest
+Running job: analyze
 MUP 2019 done
 MUP 2020 done
 MUP 2021 done
 MUP 2022 done
 MUP 2023 done
-MUP 2024 done
+curl: (22) The requested URL returned error: 429
+curl: (22) The requested URL returned error: 429
+curl: (22) The requested URL returned error: 429
+curl: (22) The requested URL returned error: 429
+curl: (22) The requested URL returned error: 429
+curl: (22) The requested URL returned error: 429
 Traceback (most recent call last):
   File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 330, in <module>
-    ingest_reference()
-  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 234, in ingest_reference
-    db.execute(f"""COPY (SELECT "HPSA ID" AS hpsa_id, "Designation Type" AS designation_type,
-_duckdb.InvalidInputException: Invalid Input Error: Error when sniffing file "/tmp/apcm_raw/hpsa_pc.csv".
-It was not possible to automatically detect the CSV parsing dialect
-The search space used was:
-Delimiter Candidates: ','
-Quote/Escape Candidates: ['"','(no escape)'],['"','"'],['"','''],['"','\']
-Comment Candidates: '\0', '#'
-Encoding: utf-8
-Possible fixes:
-* Disable the parser's strict mode (strict_mode=false) to allow reading rows that do not comply with the CSV standard.
-* Make sure you are using the correct file encoding. If not, set it (e.g., encoding = 'utf-16').
-* Delimiter is set to ','. Consider unsetting it.
-* Quote is set to '"'. Consider unsetting it.
-* Set escape (e.g., escape='"')
-* Set comment (e.g., comment='#')
-* Set skip (skip=${n}) to skip ${n} lines at the top of the file
-* Enable ignore errors (ignore_errors=true) to ignore potential errors
-* Enable null padding (null_padding=true) to pad missing columns with NULL values
-* Check you are using the correct file compression, otherwise set it (e.g., compression = 'zstd')
-* Be sure that the maximum line size is set to an appropriate value, otherwise set it (e.g., max_line_size=10000000)
-
-
-LINE 4:                    "Rural Status" AS rural_status FROM read_csv('/tmp/apcm_raw/hpsa_pc.csv', all_varchar=true,...
-                                                               ^
+    ingest_mup(a.years, a.keep_raw)
+  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 145, in ingest_mup
+    meta = download(prov[y], f)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 66, in download
+    subprocess.run(["curl", "-fsSL", "--retry", "5", "--retry-delay", "10", "-A", UA,
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['curl', '-fsSL', '--retry', '5', '--retry-delay', '10', '-A', 'apcm-opportunity/1.0 (+https://github.com/anandiganguli97/apcm-opportunity)', '-o', '/tmp/apcm_raw/mup_prov_2024.csv.part', 'https://data.cms.gov/sites/default/files/2026-05/7323ba02-52e7-4a86-b2ce-ad210c25d9aa/MUP_PHY_R26_P05_V10_D24_Prov.csv']' returned non-zero exit status 22.
