@@ -4,6 +4,7 @@ target/
 dbt_packages/
 *.duckdb
 *.parquet
+*.part
 
 logs/
 .user.yml
