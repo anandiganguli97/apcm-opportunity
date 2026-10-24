@@ -14,7 +14,12 @@ These are provider billing records, not unique patients, APCM enrollments, or es
 
 ## Explore the dashboard
 
-The Streamlit dashboard lets you explore provider signals by state, provider type, and rural-urban classification code, and download the filtered table. A separate teaching sandbox uses fictional data to show how assumptions can change a modeled APCM scenario. **The sandbox is illustrative; it is not an estimate of real practices.**
+The Streamlit dashboard includes two tools:
+
+- **Explore public data:** filter historical provider signals by state, provider type, and rural-urban code, then download the filtered table.
+- **Plan APCM next steps:** answer a short practice self-check and get a tailored list of workflows to confirm or strengthen.
+
+The readiness planner does not assign a score, determine compliance, or calculate reimbursement. It asks for no patient details and does not save answers beyond the current session.
 
 **Open the live dashboard:** [APCM Opportunity Lab](https://anandiganguli97-apcm-opportunity-app-l8sdm0.streamlit.app/)
 

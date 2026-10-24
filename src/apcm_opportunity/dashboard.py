@@ -126,16 +126,132 @@ def _public_dashboard(processed: Path, raw_manifest: Path) -> None:
             st.write({"source": metadata.get("source"), "reporting year": metadata.get("reporting_year"), "dataset UUID": metadata.get("dataset_uuid"), "API rows downloaded": metadata.get("row_count"), "retrieved UTC": metadata.get("retrieved_utc")})
 
 
+READINESS_QUESTIONS = [
+    {
+        "area": "A named primary-care lead",
+        "question": "Does the practice have a clinician who is responsible for coordinating each participating patient’s primary care and directing the care team?",
+        "action": "Identify the accountable clinician and a coverage plan so patients and staff know who coordinates care.",
+    },
+    {
+        "area": "Patient consent",
+        "question": "Can the practice explain APCM, get and document consent before services begin, and explain that patients may stop at any time and cost sharing may apply?",
+        "action": "Create a short consent conversation and a consistent place in the record to document it, including the one-practitioner-per-month rule and possible cost sharing.",
+    },
+    {
+        "area": "Initiating visits",
+        "question": "Does the team know when a patient needs an initiating visit before APCM starts, and how to check the applicable exceptions?",
+        "action": "Add a simple initiating-visit check to the enrollment workflow and confirm it against current CMS guidance.",
+    },
+    {
+        "area": "Access and continuity",
+        "question": "Can patients or caregivers reach the care team for urgent needs at all hours, and can the team access current patient information and arrange ongoing appointments?",
+        "action": "Document the after-hours route, record-access process, and continuity plan; test the route with staff.",
+    },
+    {
+        "area": "Assessment and care plans",
+        "question": "Can the practice assess medical and social needs, support medication management, and maintain a patient-centered care plan that the patient and care team can access?",
+        "action": "Agree on a care-plan template, who updates it, how the patient receives a copy, and how the team reviews needs and medications.",
+    },
+    {
+        "area": "Transitions and referrals",
+        "question": "Does the practice track referrals and transitions from emergency departments, hospitals, and other settings, with timely patient follow-up when clinically appropriate?",
+        "action": "Create a transition queue with an owner, a way to receive discharge information, and a process to contact patients within the CMS timeframe when indicated.",
+    },
+    {
+        "area": "Communication options",
+        "question": "Can patients communicate with the practice through secure options beyond the telephone, and can clinicians review patient-submitted information when needed?",
+        "action": "Choose a secure non-phone communication route and define who reviews incoming messages and how quickly they are routed.",
+    },
+    {
+        "area": "Finding care gaps",
+        "question": "Can the practice review its patient population to identify care gaps and patients who may need more support?",
+        "action": "Start with one reliable EHR or claims-based list, such as overdue preventive care, and assign someone to review and act on it.",
+    },
+    {
+        "area": "Quality reporting",
+        "question": "Has the practice confirmed its quality-reporting pathway and who owns reporting and follow-through?",
+        "action": "Ask the practice’s quality lead or billing partner to confirm which CMS reporting pathway applies and what must be tracked.",
+    },
+    {
+        "area": "Monthly billing review",
+        "question": "Is there a process to review APCM claims each month and coordinate with the care team so only the appropriate practitioner bills for a patient in a calendar month?",
+        "action": "Set up a monthly review with the billing lead to check eligibility documentation, consent, required services, and possible duplicate billing.",
+    },
+]
+
+
+def _readiness_planner() -> None:
+    _hero(
+        "Plan your next APCM steps",
+        "A practical self-check for primary-care teams preparing to deliver ongoing, coordinated care.",
+        "PRACTICE READINESS PLANNER",
+    )
+    st.markdown(
+        '<div class="note"><b>This is a planning aid, not a compliance review or billing recommendation.</b> '
+        'Do not enter patient names, IDs, diagnoses, or other private health information. '
+        'Your answers are used only to create this session’s action plan and are not saved by this project.</div>',
+        unsafe_allow_html=True,
+    )
+    st.write("For each area, choose the answer that best describes the practice today. The plan will point to practical follow-up steps; it will not calculate a readiness score.")
+
+    answer_choices = ["In place", "Partly in place", "Not in place", "Need help confirming"]
+    with st.form("apcm_readiness_check"):
+        answers: dict[str, str | None] = {}
+        for idx, item in enumerate(READINESS_QUESTIONS):
+            answers[item["area"]] = st.radio(
+                item["area"], answer_choices, index=None, horizontal=True,
+                key=f"readiness_{idx}", help=item["question"],
+            )
+        submitted = st.form_submit_button("Create my next-step plan", type="primary")
+
+    if submitted:
+        unanswered = [area for area, answer in answers.items() if answer is None]
+        if unanswered:
+            st.warning(f"Please choose an answer for all {len(READINESS_QUESTIONS)} areas so the plan reflects your full check.")
+            return
+        st.session_state["apcm_readiness_answers"] = answers
+
+    saved_answers = st.session_state.get("apcm_readiness_answers")
+    if not saved_answers:
+        st.info("Your answers remain in this browser session. Submit the check to see a tailored action plan.")
+        return
+
+    follow_up = [item for item in READINESS_QUESTIONS if saved_answers.get(item["area"]) != "In place"]
+    st.subheader("Your next steps")
+    if not follow_up:
+        st.success("You marked all areas as in place. Keep the workflows current and review them with your clinical and billing leads against current CMS guidance.")
+        plan_lines = ["APCM practice planning summary", "All areas marked in place; continue routine review against current CMS guidance."]
+    else:
+        st.write(f"You identified **{len(follow_up)} area(s)** to confirm or strengthen. Start with the steps below.")
+        plan_lines = ["APCM practice planning summary", "Areas to follow up:"]
+        for item in follow_up:
+            answer = saved_answers[item["area"]]
+            st.markdown(f"**{item['area']} · {answer}**\n\n{item['action']}")
+            plan_lines.append(f"- {item['area']} ({answer}): {item['action']}")
+    st.download_button(
+        "Download my action plan",
+        "\n".join(plan_lines).encode("utf-8"),
+        file_name="apcm_practice_next_steps.txt",
+        mime="text/plain",
+    )
+    st.markdown("For the full service requirements, review the [current CMS APCM guidance](https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services).")
+
+
 def main(root: Path) -> None:
     st.set_page_config(page_title="APCM Opportunity Lab", page_icon="◈", layout="wide", initial_sidebar_state="expanded")
     _style()
     with st.sidebar:
         st.markdown("### APCM Opportunity Lab")
         st.caption("Medicare · primary care · public evidence")
-        st.markdown("### Explore the data")
-        st.caption("Filter public Medicare billing signals by provider and location.")
+        view = st.radio("Choose a tool", ["Explore public data", "Plan APCM next steps"], index=0)
         st.markdown("---")
-        st.caption("Source: CMS public Medicare data, 2024. Results describe provider billing history, not patient eligibility.")
+        if view == "Explore public data":
+            st.caption("Source: CMS public Medicare data, 2024. Results describe provider billing history, not patient eligibility.")
+        else:
+            st.caption("Self-assessment only. Do not enter patient information.")
+    if view == "Plan APCM next steps":
+        _readiness_planner()
+        return
     processed = root / "data/public_processed/cms_provider_readiness_2024.csv"
     manifest = root / "data/public_raw/cms_provider_service_2024_manifest.json"
     if not processed.exists():
