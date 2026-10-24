@@ -1,6 +1,0 @@
-practice_id,practice_name,rurality,shortage_area,dual_share,ccm_months_per_100,tcm_months_per_100,bhi_months_per_100,cocm_months_per_100,attributed_beneficiaries,svi_percentile
-P001,Northeast Metro Family,urban,0,0.12,0.18,0.08,0.15,420,0.1
-P002,Pine County Health,rural,1,0.31,0.12,0.03,0.08,185,0.34
-P003,Riverbend Primary Care,suburban,0,0.24,0.23,0.11,0.12,310,0.24
-P004,Community Access Clinic,rural,1,0.38,0.08,0.01,0.02,140,0.41
-P005,Lakeside Internal Medicine,urban,0,0.17,0.3,0.16,0.2,265,0.13
