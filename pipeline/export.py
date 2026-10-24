@@ -38,8 +38,28 @@ save("apcm_opportunity_national", "select * from mart_apcm_opportunity_national 
 save("fee_schedule_2026", "select hcpcs, family, description, cf_type, nonfac_total_rvu, conversion_factor, national_nonfac_amount, national_fac_amount from stg_pfs_rates order by family, hcpcs, cf_type")
 save("readiness_tiers", """
     select readiness_tier, count(*) practices, sum(pcp_clinicians) clinicians, sum(patient_panel_proxy) patient_panel_proxy,
-           sum(dual_patients) dual_patients, sum(est_qmb_patients) est_qmb_patients
+           sum(dual_patients) dual_patients, sum(est_qmb_patients) est_qmb_patients,
+           sum(apcm_allowed_base_scenario) apcm_allowed_base_scenario
     from mart_practice group by 1 order by 1""")
+save("readiness_by_dual_quintile", """
+    with p as (select *, ntile(5) over (order by dual_share) dual_quintile from mart_practice where dual_share is not null)
+    select dual_quintile, readiness_tier, count(*) practices, sum(pcp_clinicians) clinicians,
+           sum(patient_panel_proxy) patient_panel_proxy, sum(est_qmb_patients) est_qmb_patients,
+           min(dual_share) min_dual_share, max(dual_share) max_dual_share
+    from p group by 1, 2 order by 1, 2""")
+save("state_summary", """
+    with c as (
+      select state, count(*) clinicians, avg(has_established_care_mgmt::int) share_ccm_or_pcm,
+             avg(has_tcm::int) share_tcm, avg(has_awv::int) share_awv,
+             sum(dual_cnt)::double / nullif(sum(tot_benes) filter (where dual_cnt is not null), 0) dual_share,
+             sum(est_qmb_patients) est_qmb_patients
+      from mart_clinician group by 1),
+    p as (
+      select state, count(*) practices, sum(apcm_allowed_base_scenario) apcm_allowed_base_scenario,
+             avg((readiness_tier >= '2')::int) practice_share_ccm_or_pcm
+      from mart_practice group by 1)
+    select c.*, p.practices, p.apcm_allowed_base_scenario, p.practice_share_ccm_or_pcm
+    from c left join p using (state) where c.state is not null order by c.state""")
 save("ccm_vs_apcm_summary", """
     select count(*) clinicians_billing_ccm,
            median(ccm_months_per_patient) median_ccm_months_per_patient,

@@ -85,6 +85,14 @@ def write_manifest(name: str, entries: list[dict]) -> None:
     (MANI / f"{name}.json").write_text(json.dumps(entries, indent=2) + "\n")
 
 
+def update_manifest_entry(name: str, entry: dict) -> None:
+    """Replace the entry for entry['file'] in an existing manifest, or append it."""
+    path = MANI / f"{name}.json"
+    entries = json.loads(path.read_text()) if path.exists() else []
+    entries = [e for e in entries if e.get("file") != entry["file"]] + [entry]
+    write_manifest(name, entries)
+
+
 def catalog() -> list[dict]:
     cache = RAW / "data.json"
     if not cache.exists():
@@ -252,14 +260,7 @@ def ingest_reference() -> None:
     meta.update(file="hrsa_hpsa_primary_care", rows_out=len(frame))
     manifest.append(meta)
 
-    # CDC/ATSDR SVI 2022 county
-    f = RAW / "svi_2022_county.csv"
-    meta = download("https://svi.cdc.gov/Documents/Data/2022/csv/states_counties/SVI_2022_US_county.csv", f)
-    frame = pd.read_csv(f, dtype=str, encoding="utf-8-sig", usecols=["FIPS", "ST_ABBR", "COUNTY", "RPL_THEMES"])
-    frame.columns = ["county_fips", "state", "county", "svi_overall"]
-    frame.to_parquet(PROC / "svi_county.parquet", index=False)
-    meta.update(file="svi_2022_county", rows_out=len(frame))
-    manifest.append(meta)
+    manifest.append(ingest_svi())
 
     # Census 2020 ZCTA-county relationship; assign each ZCTA to the county with the most land area
     f = RAW / "zcta_county.txt"
@@ -277,6 +278,21 @@ def ingest_reference() -> None:
 
     write_manifest("reference", manifest)
     print("reference done", flush=True)
+
+
+def ingest_svi() -> dict:
+    """CDC/ATSDR SVI 2022 county. Columns are renamed by name: pandas returns usecols
+    in file order, so positional renaming put state abbreviations in county_fips."""
+    import pandas as pd
+    f = RAW / "svi_2022_county.csv"
+    meta = download("https://svi.cdc.gov/Documents/Data/2022/csv/states_counties/SVI_2022_US_county.csv", f)
+    cols = {"FIPS": "county_fips", "ST_ABBR": "state", "COUNTY": "county", "RPL_THEMES": "svi_overall"}
+    frame = pd.read_csv(f, dtype=str, encoding="utf-8-sig", usecols=list(cols)).rename(columns=cols)[list(cols.values())]
+    if not frame["county_fips"].str.fullmatch(r"\d{4,5}").all():
+        raise RuntimeError("SVI county_fips is not numeric FIPS")
+    frame.to_parquet(PROC / "svi_county.parquet", index=False)
+    meta.update(file="svi_2022_county", rows_out=len(frame))
+    return meta
 
 
 # ---------------------------------------------------- fee schedule files
@@ -346,7 +362,7 @@ def ingest_pfs(release_page: str) -> None:
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=["mup", "reference", "pfs"])
+    ap.add_argument("step", choices=["mup", "reference", "svi", "pfs"])
     ap.add_argument("--years", nargs="*", type=int, default=YEARS)
     ap.add_argument("--keep-raw", action="store_true")
     ap.add_argument("--pfs-page", default="https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files/rvu26d")
@@ -355,5 +371,7 @@ if __name__ == "__main__":
         ingest_mup(a.years, a.keep_raw)
     elif a.step == "reference":
         ingest_reference()
+    elif a.step == "svi":
+        update_manifest_entry("reference", ingest_svi())
     else:
         ingest_pfs(a.pfs_page)
