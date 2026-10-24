@@ -49,6 +49,24 @@ G2214,COCM,Init/sub psych care m 1st 30,nonqpp,1.82,33.4009,60.79,33.73
 G2214,COCM,Init/sub psych care m 1st 30,qpp,1.82,33.5675,61.09,33.9
 G2211,COMPLEXITY_ADDON,Complex e/m visit add on,nonqpp,0.52,33.4009,17.37,14.36
 G2211,COMPLEXITY_ADDON,Complex e/m visit add on,qpp,0.52,33.5675,17.46,14.43
+99202,OFFICE_EM,Office o/p new sf 15 min,nonqpp,2.25,33.4009,75.15,41.08
+99202,OFFICE_EM,Office o/p new sf 15 min,qpp,2.25,33.5675,75.53,41.29
+99203,OFFICE_EM,Office o/p new low 30 min,nonqpp,3.52,33.4009,117.57,71.48
+99203,OFFICE_EM,Office o/p new low 30 min,qpp,3.52,33.5675,118.16,71.83
+99204,OFFICE_EM,Office o/p new mod 45 min,nonqpp,5.31,33.4009,177.36,116.9
+99204,OFFICE_EM,Office o/p new mod 45 min,qpp,5.31,33.5675,178.24,117.49
+99205,OFFICE_EM,Office o/p new hi 60 min,nonqpp,7.09,33.4009,236.81,160.32
+99205,OFFICE_EM,Office o/p new hi 60 min,qpp,7.09,33.5675,237.99,161.12
+99211,OFFICE_EM,Off/op est may x req phy/qhp,nonqpp,0.73,33.4009,24.38,7.68
+99211,OFFICE_EM,Off/op est may x req phy/qhp,qpp,0.73,33.5675,24.5,7.72
+99212,OFFICE_EM,Office o/p est sf 10 min,nonqpp,1.78,33.4009,59.45,31.06
+99212,OFFICE_EM,Office o/p est sf 10 min,qpp,1.78,33.5675,59.75,31.22
+99213,OFFICE_EM,Office o/p est low 20 min,nonqpp,2.85,33.4009,95.19,57.45
+99213,OFFICE_EM,Office o/p est low 20 min,qpp,2.85,33.5675,95.67,57.74
+99214,OFFICE_EM,Office o/p est mod 30 min,nonqpp,4.06,33.4009,135.61,84.5
+99214,OFFICE_EM,Office o/p est mod 30 min,qpp,4.06,33.5675,136.28,84.93
+99215,OFFICE_EM,Office o/p est hi 40 min,nonqpp,5.76,33.4009,192.39,125.59
+99215,OFFICE_EM,Office o/p est hi 40 min,qpp,5.76,33.5675,193.35,126.21
 99424,PCM,Prin care mgmt phys 1st 30,nonqpp,2.62,33.4009,87.51,64.8
 99424,PCM,Prin care mgmt phys 1st 30,qpp,2.62,33.5675,87.95,65.12
 99425,PCM,Prin care mgmt phys ea addl,nonqpp,1.84,33.4009,61.46,44.09
