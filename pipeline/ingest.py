@@ -63,8 +63,15 @@ def download(url: str, dest: Path) -> dict:
     """Download with curl (retries, resumable) and return file metadata."""
     if not dest.exists():
         tmp = dest.with_suffix(dest.suffix + ".part")
-        subprocess.run(["curl", "-fsSL", "--retry", "5", "--retry-delay", "10", "-A", UA,
-                        "-o", str(tmp), url], check=True)
+        for attempt in range(6):
+            result = subprocess.run(["curl", "-fsSL", "--retry", "5", "--retry-all-errors", "--retry-delay", "20",
+                                     "-A", UA, "-o", str(tmp), url])
+            if result.returncode == 0:
+                break
+            print(f"download failed (curl exit {result.returncode}), attempt {attempt + 1}: {url}", flush=True)
+            time.sleep(60 * (attempt + 1))
+        else:
+            raise RuntimeError(f"Could not download {url}")
         tmp.rename(dest)
     h = hashlib.sha256()
     with dest.open("rb") as f:
@@ -140,6 +147,9 @@ def ingest_mup(years: list[int], keep_raw: bool) -> None:
     manifest = []
     prov, svc, geo = mup_urls("by Provider"), mup_urls("by Provider and Service"), mup_urls("by Geography and Service")
     for y in years:
+        if all((PROC / f"mup_{k}_{y}.parquet").exists() for k in ("prov", "svc", "geo")):
+            print(f"MUP {y} already staged", flush=True)
+            continue
         # by Provider: clinician profile (all columns except names and street address)
         f = RAW / f"mup_prov_{y}.csv"
         meta = download(prov[y], f)
