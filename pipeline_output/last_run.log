@@ -1,0 +1,14 @@
+Running job: probe
+{
+  "data_cms_gov_datasets": 109,
+  "csv_headers": 74,
+  "dac_national": 3,
+  "pfs_rvu_links": 13,
+  "hrsa": 2,
+  "svi_links": 1,
+  "svi_candidates": 2,
+  "zcta_county": 2,
+  "ccw_links": 0,
+  "ccw_links_other": 0,
+  "synthetic_links": 0
+}
