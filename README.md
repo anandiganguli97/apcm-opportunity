@@ -1,63 +1,71 @@
-# APCM Opportunity — Prototype
+# APCM Readiness Atlas
 
-A reproducible DuckDB + dbt project for estimating practice-level Advanced Primary Care Management (APCM) opportunity from beneficiary-level analytic inputs. The included data are fictional and exist only to exercise the pipeline.
+**All findings in this repository come from real CMS, HRSA, CDC and Census public data. Nothing is simulated.**
 
-## Start here
+Medicare's Advanced Primary Care Management codes (G0556, G0557, G0558) started paying primary care practices a monthly per-patient fee in January 2025. The top tier, G0558, is for Qualified Medicare Beneficiaries (QMBs): low-income patients enrolled in both Medicare and Medicaid. This project sizes the APCM opportunity for U.S. primary care and asks whether the practices that see the most QMB patients are ready to bill it.
 
-1. Read [`docs/module_1_spec.md`](docs/module_1_spec.md) and [`docs/assumptions_log.md`](docs/assumptions_log.md). They were authored before implementation.
-2. Create a Python environment and install `requirements.txt`.
-3. Run `python scripts/make_demo_data.py` to regenerate the deterministic fictional inputs.
-4. Run `dbt build --project-dir . --profiles-dir .` from this directory.
-5. Run `streamlit run app.py` for an interactive practice opportunity view.
+**Dashboard:** [`dashboard/index.html`](dashboard/index.html), a single self-contained page rebuilt by the pipeline on every run. Download and open it, or serve the repository with GitHub Pages.
 
-The synthetic input is not a CMS Synthetic RIF extract. No national findings, forecasts, billable-claim conclusions, or practice identities are produced. Demo payment rates are editable illustrative placeholders, not a fee-schedule transcription. Replace them with year- and locality-specific CMS PFS data before any real analysis.
+## Findings
 
-## Public CMS provider data
+Service year 2024 unless noted; CY2026 payment rates. Each figure links to the file it comes from.
 
-The source inventory is in [`docs/data_source_inventory.md`](docs/data_source_inventory.md). The public 2024 CMS Physician & Other Practitioners by Provider and Service file is available through the CMS Data API. Download predecessor care-management and preventive-service code rows with:
+1. **Care management was rare before APCM.** 5.6% of 215,245 primary care clinicians had visible chronic or principal care management (CCM/PCM) billing in 2024, up from 4.6% in 2019. Remote monitoring grew fastest (0.1% to 1.9%). Half bill annual wellness visits. ([`national_trend.csv`](pipeline_output/results/national_trend.csv))
+2. **QMB patients sit with less-ready practices.** Where most patients are dual-eligible, 25% of estimated QMB patients are with a practice showing no visible care management at all, against 9% in the practices with the fewest duals. ([`readiness_by_dual_quintile.csv`](pipeline_output/results/readiness_by_dual_quintile.csv))
+3. **But readiness is U-shaped, not a straight gradient.** 9.2% of clinicians with the fewest dual-eligible patients bill CCM or PCM, 4.4% in the middle fifth, and 7.7% among clinicians whose panels are mostly dual-eligible. In primary care shortage counties, 11.0% of dual-eligible patients have a clinician who bills CCM or PCM, against 12.9% elsewhere. ([`equity.csv`](pipeline_output/results/equity.csv))
+4. **APCM pays less per month than CCM but can pay more per year.** G0557 is $53.78 a month against $66.13 for the base CCM code, with no monthly time minimum. The median 2024 CCM biller billed 4.5 months per patient ($383 a year at 2026 rates); G0557 billed all 12 months is $645, more than CCM for 84% of CCM billers. G0558 every month is $1,407 per QMB patient. ([`ccm_vs_apcm_summary.csv`](pipeline_output/results/ccm_vs_apcm_summary.csv), [`fee_schedule_2026.csv`](pipeline_output/results/fee_schedule_2026.csv))
+5. **National opportunity: $0.7B to $8.3B a year in allowed charges** for traditional Medicare (base case $3.1B), depending on capture, consent and the share of patients meeting the two-condition criterion. Full enrollment would be $14.0B to $18.4B. ([`apcm_opportunity_national.csv`](pipeline_output/results/apcm_opportunity_national.csv), assumptions in [`docs/assumptions_log.md`](docs/assumptions_log.md))
+6. **Draft readiness score.** A logistic model trained on how practices took up G2211, a primary care code launched in 2024, ranks every practice for likely APCM uptake (cross-validated AUROC 0.80). The least-ready tenth of practices holds 3.6 times the QMB patients its share of all patients would suggest, and averages a 57% dual-eligible panel. A check model trained on new CCM/PCM adoption (AUROC 0.74) ranks practices similarly (Spearman 0.73), but the two disagree on dual share: high-dual practices were slower to add G2211 and more likely to start care management. ([`pipeline_output/forecast/`](pipeline_output/forecast/))
+7. **The data has blind spots, and they are measured.** CMS hides clinician-code rows with fewer than 11 patients. That hides 3.9% of CCM services but 39% of transitional care management services, so TCM-based readiness is understated for small practices. ([`suppression_by_family.csv`](pipeline_output/results/suppression_by_family.csv), [`docs/data_validity_report.md`](docs/data_validity_report.md))
 
-```bash
-python scripts/download_public_provider_use.py --year 2024
+The closest prior work is a survey of 404 primary care clinicians in which 14.9% reported using APCM (Grumbach et al., *JGIM*, October 2026). This project is the national, claims-based complement. See [`docs/literature_scan.md`](docs/literature_scan.md).
+
+## The forecast is not frozen yet
+
+The readiness score is a pre-registered forecast of which practices will show APCM billing in the 2025 CMS file, which is not yet published. It stays a draft until it is frozen with [`scripts/freeze_forecast.py`](scripts/freeze_forecast.py), which writes a timestamped SHA-256 manifest and never overwrites. The target, features, training design and evaluation plan are in [`model_card_draft.json`](pipeline_output/forecast/model_card_draft.json).
+
+## How it works
+
+```
+CMS / HRSA / CDC / Census  ->  pipeline/ingest.py   download, hash, filter to Parquet (not committed)
+                           ->  pipeline/profile.py  aggregate profile of every staged file
+                           ->  dbt (DuckDB)         staging -> intermediate -> marts, 50 tests
+                           ->  pipeline/export.py   aggregate CSVs in pipeline_output/results
+                           ->  pipeline/forecast.py draft readiness score and model card
+                           ->  pipeline/build_dashboard.py  dashboard/index.html
 ```
 
-The script writes a source manifest and a filtered CSV under `data/public_raw/`; raw data is git-ignored. Refresh the `--dataset-id` from CMS's Access API page when a new reporting-year release appears. The committed project does not include the raw extract. CMS provider service data can support NPI-level, suppression-aware readiness measures, but it is aggregated FFS Part B data and does not include beneficiary-level APCM claims, monthly QMB status, or actual patient-level overlap. Use CMS Synthetic RIF files to test beneficiary-level logic; do not generalize synthetic findings to real practices.
+The source sites are often unreachable from sandboxed environments, so the pipeline runs on GitHub Actions (`.github/workflows/pipeline.yml`): put a job name in `pipeline/JOB` and push. The workflow restores cached Parquet, runs `pipeline/run.sh`, and commits the outputs and dashboard back to the branch. To run locally with network access:
 
-## Project layout
+```bash
+pip install -r requirements.txt
+python pipeline/ingest.py mup && python pipeline/ingest.py reference && python pipeline/ingest.py pfs
+python pipeline/profile.py
+dbt build --project-dir . --profiles-dir .
+python pipeline/export.py && python pipeline/forecast.py && python pipeline/build_dashboard.py
+```
 
-- `seeds/`: editable APCM rate/scenario and code-family reference inputs.
-- `data/`: deterministic, fictitious beneficiary-month and practice profile inputs.
-- `models/staging/`: typed source views.
-- `models/intermediate/`: tier assignment and scenario expansion.
-- `models/marts/`: practice opportunity and readiness output.
-- `tests/`: dbt singular checks; `schema.yml` defines uniqueness and accepted values.
-- `docs/`: specification, assumptions, literature scan and validity report.
-- `scripts/`: demo data generation, CMS public-data download, and forecast freeze utility.
+## Repository layout
 
-## Data contract for real data
+| Path | Contents |
+|---|---|
+| `pipeline/` | Ingestion, profiling, export, forecast and dashboard build scripts; `hcpcs_codes.json` code families |
+| `models/staging`, `intermediate`, `marts` | dbt models. Key marts: `mart_national_trend`, `mart_equity`, `mart_practice`, `mart_ccm_vs_apcm`, `mart_apcm_opportunity_national`, `mart_suppression` |
+| `seeds/` | Primary care definition, effective-dated code families, the only scenario assumptions (`apcm_scenarios.csv`), policy rule register |
+| `tests/` | dbt data tests |
+| `pipeline_output/` | Manifests with source URLs and SHA-256, profile, results, draft forecast, last run log |
+| `dashboard/` | `template.html` and the built `index.html` |
+| `docs/` | [Methods](docs/methods.md), [assumptions](docs/assumptions_log.md), [data validity](docs/data_validity_report.md), [sources](docs/data_source_inventory.md), [literature](docs/literature_scan.md), [policy evidence](docs/policy_evidence.md), client brief template |
 
-`beneficiary_months.csv` must contain one row per beneficiary-month with stable de-identified beneficiary and practice keys, month, qualifying chronic condition count, monthly QMB flag, practice attribution source, and observed overlapping care-management allowed amount if known. Public aggregate NPI files cannot supply that grain; do not infer beneficiary-level conflicts from aggregate totals. `practice_profiles.csv` contains denominator and readiness signal features. Keep direct identifiers out of this project.
+## Limits
 
-## Methods and caveats
+Traditional Medicare Part B professional claims only: no Medicare Advantage, and no FQHC or RHC care billed under their own payment systems. QMB counts are estimates (each clinician's dual-eligible count times the county QMB share). Practices come from the current CMS Doctors and Clinicians snapshot. Billing a code shows a workflow exists; it does not prove a practice meets APCM's requirements. Details in [`docs/methods.md`](docs/methods.md).
 
-Tier eligibility follows the documented prototype rules: G0558 for QMB beneficiaries with at least two qualifying conditions; otherwise G0557 for at least two conditions; otherwise G0556. This maps to the CMS APCM overview, while final-rule text must still be transcribed with Federal Register page citations before production. Gross opportunity applies capture and consent assumptions to illustrative rates. The displacement measure is only populated when beneficiary-month overlap data are supplied. Coinsurance is a modeled 20% exposure for non-QMB patients and zero for QMBs, not an adjudicated liability calculation.
+## Sources and references
 
-Readiness proxies use prior CCM, TCM and behavioral health billing intensity. They do not verify the operational requirements CMS lists (care plan, urgent access, continuity, consent, etc.). See the assumptions log for low/base/high inputs.
+- CMS: Medicare Physician & Other Practitioners (by Provider; by Provider and Service; by Geography and Service), 2019 to 2024; Doctors and Clinicians national file; Medicare Monthly Enrollment; Medicare Geographic Variation; PFS Relative Value Files RVU26D.
+- HRSA primary care HPSA detail; CDC/ATSDR SVI 2022; Census 2020 ZCTA to county relationship file.
+- [CMS APCM overview](https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services); [CY2025 PFS final rule](https://www.federalregister.gov/documents/2024/12/09/2024-25382/medicare-and-medicaid-programs-cy-2025-payment-policies-under-the-physician-fee-schedule-and-other); [CY2026 PFS final rule](https://www.cms.gov/medicare/payment/fee-schedules/physician/federal-regulation-notices/cms-1832-f).
+- Grumbach et al. [Primary Care Clinician Uptake of Medicare APCM Billing Codes](https://doi.org/10.1007/s11606-026-10949-8), *JGIM*, 2026. Reddy et al. [Use of Chronic Care Management Among Primary Care Clinicians](https://doi.org/10.1370/afm.2573), *Ann Fam Med*, 2020. [Informing APCM: care coordination trends 2020 to 2023](https://doi.org/10.7812/TPP/25.040), *Perm J*, 2025.
 
-## Citation starting points
-
-- [CMS APCM services overview](https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services)
-- [CY2025 PFS final rule, Federal Register 89 FR 97710 onward](https://www.federalregister.gov/documents/2024/12/09/2024-25382/medicare-and-medicaid-programs-cy-2025-payment-policies-under-the-physician-fee-schedule-and-other)
-- [CY2026 PFS final rule](https://www.cms.gov/medicare/payment/fee-schedules/physician/federal-regulation-notices/cms-1832-f)
-- [Reddy et al. 2020, Annals of Family Medicine](https://doi.org/10.1370/afm.2573)
-- [Informing APCM: care coordination trends 2020–2023](https://doi.org/10.7812/TPP/25.040)
-- [Primary Care Clinician Uptake of Medicare APCM Billing Codes (online 2026-10-22)](https://doi.org/10.1007/s11606-026-10949-8)
-- [CMS Medicare Physician & Other Practitioners API](https://data.cms.gov/provider-summary-by-type-of-service/medicare-physician-other-practitioners/medicare-physician-other-practitioners-by-provider-and-service/api-docs)
-- [CMS data API documentation](https://data.cms.gov/api-docs)
-- [CMS synthetic claims collection](https://data.cms.gov/collection/synthetic-medicare-enrollment-fee-for-service-claims-and-prescription-drug-event)
-
-## Forecast integrity
-
-The freeze utility writes an immutable CSV plus a SHA-256 manifest with a user-supplied freeze timestamp. It refuses to overwrite an existing freeze. Run only on a real, documented prediction file after its outcome definition, input cutoff and source snapshot are recorded. This demo intentionally ships without a real forecast.
-
-A two-page CEO brief template is in `docs/client_brief_template.md`. The intended Tableau Public view is represented here by a Streamlit prototype; the mart table can be exported as a Tableau input once a valid national/practice dataset has been loaded.
-
+CPT codes and descriptions are copyright American Medical Association.

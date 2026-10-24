@@ -35,27 +35,25 @@ If the sandbox can reach data.cms.gov (Anandi can allow domains in claude.ai Set
 - `seeds/primary_care_specialties.csv`: primary care definition (physicians in FM, IM, GP, geriatrics; NPs and PAs only with visible AWV billing).
 - `seeds/apcm_scenarios.csv`: the only modeled inputs (share of patients meeting the 2+ chronic condition criterion, capture, consent). Clearly labeled as scenario assumptions.
 - `pipeline/export.py`: writes `pipeline_output/results/*.csv`, `headline.json`, and a gzipped practice-level extract for Tableau.
-- `docs/`: spec, assumptions log, data source inventory, validity report, literature scan. These still describe the old prototype in places and need rewriting against real results.
+- `pipeline/forecast.py`: draft readiness score and 2025 forecast (not frozen). `pipeline/build_dashboard.py`: builds `dashboard/index.html`.
+- `docs/`: methods, assumptions log, data source inventory, validity report, literature scan, policy evidence, all written against real results. `client_brief_template.md` is Anandi's.
 
 ## Data sources (all public, real)
 
 CMS Medicare Physician & Other Practitioners (by Provider, by Provider and Service, by Geography and Service), service years 2019-2024; CMS Doctors and Clinicians national file (clinician to group practice, current snapshot); CMS Medicare Monthly Enrollment (county QMB and dual counts); CMS Geographic Variation PUF (traditional Medicare counts); CMS 2026 Physician Fee Schedule RVU release D (October 2026) with GPCIs; HRSA primary care HPSA; CDC/ATSDR SVI 2022 county; Census 2020 ZCTA-county relationship.
 
-## Status (as of 2026-10-24)
+## Status (as of 2026-10-24, end of day)
 
 Done:
-- Fictional demo data, demo app and demo models removed.
-- Probes confirmed URLs and schemas (`pipeline_output/probe/`). Column names are identical across 2019-2024.
-- Ingestion, dbt models, tests and export written. The dbt project passed a local dry run on tiny stand-in files (not committed).
-- Ingestion of 2019-2023 provider files succeeded and is cached. A 2024 download hit a transient CMS error; retries and per-year skipping were added and a rerun was started (run 40111939288).
+- Pipeline green end to end on real data (50 of 50 dbt tests). Results in `pipeline_output/results/`, draft forecast in `pipeline_output/forecast/`.
+- Sanity checks recorded in `docs/data_validity_report.md`. Bugs found and fixed on the way: SVI column mix-up, office E/M codes missing from `seeds/code_families.csv`, GPCI parse for release D, MUP manifest dropping cached years.
+- Dashboard: `dashboard/index.html`, built by `pipeline/build_dashboard.py` from `dashboard/template.html`, rebuilt and committed by CI after every analyze run. Anandi asked Claude to build it (earlier plan was Tableau; the gzipped practice extract still exists for that).
+- README and `docs/` rewritten around real findings; `docs/methods.md` replaces the prototype spec and implementation notes.
+- Readiness score and draft 2025 forecast computed (`pipeline/forecast.py`, G2211-launch analog). NOT frozen.
 
 Next:
-1. Check the latest run (`pipeline_output/last_run_status.txt`, `last_run.log`). Fix any dbt or export errors.
-2. Sanity-check results against sources: national service totals vs the geography file, rates vs the PFS look-up tool, HPSA designation-type labels in `profile.json` (the `stg_hpsa_county` filter assumes 'Geographic HPSA' and 'High Needs Geographic HPSA'), provider type labels for the primary care seed.
-3. Rewrite README around real findings: pre-APCM readiness trend, suppression (share of care management invisible at clinician level), equity (dual and QMB patients vs others; rurality; HPSA; SVI), CCM vs APCM revenue per patient, national opportunity range. One blunt line near the top: all findings use real CMS public data.
-4. Rewrite `docs/` to match (assumptions log, data validity report with real suppression numbers, methods). Cite Grumbach et al., JGIM, Oct 22 2026 (survey: 14.9% self-reported APCM use, n=404) as the closest prior work and position this as the national claims-based complement.
-5. Optional: patient-level ICD-10 module on CMS's synthetic RIF claims (download link is behind a JavaScript page; ask Anandi to download the ZIP or find the API link), clearly labeled as a logic test with no findings.
-6. Readiness score and 2025 forecast: compute, but ask before freezing.
-7. Open the pull request to `main`.
-
-Anandi plans to build the Tableau Public dashboard herself from `pipeline_output/results/practice_extract_tableau.csv.gz`, and to write the client brief herself.
+1. Anandi to review the pull request to `main`.
+2. Decide whether and when to freeze the forecast (`scripts/freeze_forecast.py`); must happen before CMS publishes the 2025 service-year file. Ask Anandi first.
+3. Optional: enable GitHub Pages on `main` so the dashboard has a public URL.
+4. Optional: synthetic RIF logic-test module (needs the ZIP; download link is behind a JavaScript page).
+5. Optional: locality-adjusted payment using the staged GPCIs.
