@@ -16,7 +16,7 @@ These are provider billing records, not unique patients, APCM enrollments, or es
 
 The Streamlit dashboard lets you explore provider signals by state, provider type, and rural-urban classification code, and download the filtered table. A separate teaching sandbox uses fictional data to show how assumptions can change a modeled APCM scenario. **The sandbox is illustrative; it is not an estimate of real practices.**
 
-**Open the live dashboard:** [Add the deployed Streamlit link here after deployment]
+The app is prepared for Streamlit Community Cloud; it still needs to be connected to an account before it has a public link.
 
 ## Data and limitations
 
@@ -51,6 +51,7 @@ Codex was used to speed up code generation and implementation. The project’s d
 - [CMS APCM services and requirements](https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services)
 - [CMS data API documentation](https://data.cms.gov/api-docs)
 - [CMS provider-service methodology](https://data.cms.gov/sites/default/files/2025-04/MUP_PHY_RY25_202350312_Methodology_508.pdf)
+
 
 
 
