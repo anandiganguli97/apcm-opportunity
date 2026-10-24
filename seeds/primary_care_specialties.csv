@@ -3,5 +3,5 @@ Family Practice,physician,all clinicians with this CMS provider type
 Internal Medicine,physician,all clinicians with this CMS provider type
 General Practice,physician,all clinicians with this CMS provider type
 Geriatric Medicine,physician,all clinicians with this CMS provider type
-Nurse Practitioner,app,only if the clinician has a visible annual wellness visit row (G0438 or G0439) that year
-Physician Assistant,app,only if the clinician has a visible annual wellness visit row (G0438 or G0439) that year
+Nurse Practitioner,app,"only if the clinician has a visible annual or initial wellness visit row (G0438, G0439 or G0402) that year"
+Physician Assistant,app,"only if the clinician has a visible annual or initial wellness visit row (G0438, G0439 or G0402) that year"

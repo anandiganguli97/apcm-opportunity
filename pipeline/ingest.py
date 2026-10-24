@@ -152,12 +152,16 @@ def quoted(cols: list[str]) -> str:
 def ingest_mup(years: list[int], keep_raw: bool) -> None:
     db = con()
     codes_sql = ", ".join(f"'{c}'" for c in ALL_CODES)
-    manifest = []
+    # Keep manifest entries for years that are already staged and skipped below;
+    # rewriting the manifest from scratch would drop their source hashes.
+    path = MANI / "mup.json"
+    manifest = json.loads(path.read_text()) if path.exists() else []
     prov, svc, geo = mup_urls("by Provider"), mup_urls("by Provider and Service"), mup_urls("by Geography and Service")
     for y in years:
         if all((PROC / f"mup_{k}_{y}.parquet").exists() for k in ("prov", "svc", "geo")):
             print(f"MUP {y} already staged", flush=True)
             continue
+        manifest = [e for e in manifest if e.get("service_year") != y]
         # by Provider: clinician profile (all columns except names and street address)
         f = RAW / f"mup_prov_{y}.csv"
         meta = download(prov[y], f)

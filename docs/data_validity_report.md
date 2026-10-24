@@ -1,21 +1,65 @@
-# Data validity report — prototype status
+# Data validity report
 
-The project began with fictional demo data. On 2026-10-24, the CMS public 2024 Physician & Other Practitioners by Provider and Service API was accessed and a 99484 extract was downloaded. It contains 1,263 provider-service rows across 1,218 NPIs and 45 state abbreviations. Probe requests returned 3,017 rows for 99487; 99490 filled the first 5,000-row API page and requires paging to establish the total. These are not unique practice organizations or patient counts; CMS suppresses rows with 10 or fewer beneficiaries. No full care-management code extract was staged, and no suppression percentages, reconciliation totals, missing-population estimates, or national equity results have been calculated. The demo's fictional rows are not used to infer national characteristics.
+**Data as of:** pipeline run on 2026-10-24 (service years 2019 to 2024). Source files, retrieval times and SHA-256 hashes are in `pipeline_output/manifests/`. Aggregate profiles of every staged file are in `pipeline_output/profile/profile.json`.
 
-The source and limitation inventory is maintained in [`data_source_inventory.md`](data_source_inventory.md). The documented downloader writes raw extracts outside Git under `data/public_raw/`.
+## Automated checks (dbt, 50 of 50 passing)
 
-## Required checks when data arrive
+- Unique keys on every staging and mart grain (`models/schema.yml`).
+- `assert_dual_not_above_total`: no clinician has more dual-eligible patients than total patients.
+- `assert_visible_not_above_national`: visible clinician-level services never exceed the national total for a code and year.
+- `assert_apcm_rates_loaded`: G0556, G0557 and G0558 each have a positive 2026 non-facility rate.
 
-- Reconcile practice/NPI sums with state and national totals; quantify suppressed rows by code and geography where totals permit. Never treat a suppressed cell as zero.
-- Compare institutional and professional claims coverage; separately identify FQHC/RHC payment pathways and quantify excluded populations. Confirm file-specific claim coverage rather than assuming a file has no institutional data.
-- State that Medicare Advantage is outside traditional FFS claims data unless a separate source is joined.
-- Audit incident-to and group billing; rendering clinician may differ from billing NPI.
-- Verify monthly dual/QMB enrollment and incomplete months.
-- Confirm beneficiaries with multiple practices and attribution tie rates.
-- Reconcile fee schedule-derived allowed amounts against official published PFS locality rates, not synthetic paid amounts.
-- Report missing diagnosis, identifier, locality, and social-risk join rates.
+## Reconciliations
 
-## Suppression calculation template
+| Check | Result |
+|---|---|
+| Traditional Medicare beneficiaries, 2024 (Geographic Variation, national row) | 27,732,177; total Medicare 71,035,683, Medicare Advantage 33,677,969 |
+| Dual and QMB enrollment, 2024 (Monthly Enrollment) | County rows sum to 12,160,400 duals against a national row of 12,167,130 (99.9%). QMBs (only plus plus) are 68.5% of duals nationally |
+| CMS 2026 conversion factor in the RVU file | $33.4009 (non-qualifying APM) and $33.5675 (qualifying APM) |
+| APCM amounts | RVU times conversion factor: G0556 0.49 RVU, $16.37; G0557 1.61, $53.78; G0558 3.51, $117.24 |
+| Clinician file rows | One row per NPI per year in all six years (1,155,870 in 2019 to 1,296,739 in 2024) |
+| HPSA designation labels | "Geographic HPSA" and "High Needs Geographic HPSA" present as `stg_hpsa_county` expects; only rows with status "Designated" are used |
+| Provider type labels | "Family Practice", "Internal Medicine", "General Practice", "Geriatric Medicine", "Nurse Practitioner", "Physician Assistant" match the seed exactly |
 
-For each geography × code, define visible beneficiary count as the sum of published non-suppressed counts and authoritative total as the state/national published total. `invisible_share = 1 - visible / authoritative_total`. This is only valid when totals use matching populations, years, code definitions, and suppression rules. If not reconcilable, label unmeasured.
+## Suppression: what the clinician-level file cannot see
 
+CMS removes clinician-code-setting rows with fewer than 11 beneficiaries. The share of national services missing from clinician-level rows (by-Geography-and-Service national totals minus visible rows):
+
+| Family | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 |
+|---|---:|---:|---:|---:|---:|---:|
+| Chronic care management | 3.6% | 3.9% | 4.3% | 4.4% | 4.0% | 3.9% |
+| Principal care management | | 9.8% | 5.8% | 6.2% | 7.6% | 7.1% |
+| Transitional care management | 30.9% | 38.1% | 37.7% | 38.8% | 38.4% | 38.7% |
+| Behavioral health integration | 9.8% | 6.1% | 5.4% | 4.6% | 5.0% | 3.9% |
+| Collaborative care | 21.9% | 54.4% | 55.9% | 51.3% | 44.4% | 35.7% |
+| Remote monitoring | 7.3% | 6.4% | 6.7% | 6.3% | 6.5% | 6.0% |
+| Wellness visits | 7.2% | 7.5% | 7.0% | 6.9% | 6.8% | 6.8% |
+| Advance care planning | 6.9% | 7.2% | 7.1% | 6.9% | 6.8% | 6.5% |
+| Visit complexity add-on (G2211) | | | | | | 1.4% |
+| Social needs and navigation | | | | | | 8.4% |
+
+What follows from this:
+
+- **CCM and PCM readiness are well measured.** Fewer than 1 in 25 CCM services are hidden. The 2024 code 99490 has 6.92M national services and 6.68M visible.
+- **TCM readiness is understated.** 99495 is 43% invisible: 100,735 clinician rows nationally, 18,207 visible. TCM is typically a handful of patients per clinician per year, so many TCM billers never appear. Tier 1 and tier 3 counts lean on TCM and are lower bounds.
+- **Collaborative care is mostly invisible** at the clinician level (36% to 56% of services), so the BHI/CoCM readiness signal is weak.
+- The initial Welcome to Medicare visit (G0402) is 60% invisible, which matters only for the NP/PA inclusion rule; the annual codes G0438 and G0439 carry it.
+
+## Coverage of the joined measures (2024)
+
+| Measure | Coverage |
+|---|---|
+| Dual-eligible count | Blank for 464,482 of 1,296,739 providers (all specialties). 150,899 of 215,245 primary care clinicians (70%) have a reported count; equity and QMB results use only these |
+| Practice assignment | 357,285 of 3,630,233 Doctors and Clinicians rows list no organization; those NPIs count as solo practices. 2024 primary care rolls up to 51,451 practices |
+| Rurality (RUCA) | 77 of 150,899 clinicians unknown |
+| County (ZIP to county) and SVI | 4,617 of 150,899 clinicians (3.1%) have no county SVI value, mostly ZIPs with no ZCTA (PO boxes, unique ZIPs) |
+| QMB ratio | County ratio when the county has 100+ duals, otherwise the state ratio |
+
+## Known limitations
+
+- **Traditional Medicare, Part B professional claims only.** Medicare Advantage patients are absent, and so are FQHC and RHC visits billed under their own payment systems. Practices serving many MA or FQHC patients look less ready than they are.
+- **Rendering clinician, not billing practice.** Incident-to services billed under a supervising physician show up under that physician.
+- **Practice membership is a 2026 snapshot** applied to every year from 2019.
+- **QMB counts are ecological estimates** (county ratio applied to a clinician's duals). They will be off where a practice's duals differ from the county mix.
+- **Patient counts summed across clinicians double count** patients who see several clinicians in the same practice (`patient_panel_proxy`).
+- **One bug found and fixed during validation:** the SVI file was first staged with columns renamed by position after pandas reordered them, which put state codes in the county FIPS column and left every clinician unmatched. Ingestion now renames by name and checks that FIPS are numeric.

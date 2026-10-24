@@ -43,3 +43,12 @@ G0558,APCM,2025-01-01,,false,"APCM level 3: QMB with two or more chronic conditi
 G0568,APCM_BH_ADDON,2026-01-01,,false,APCM collaborative care add-on (initial month),CY2026 PFS final rule 90 FR 49464-49471
 G0569,APCM_BH_ADDON,2026-01-01,,false,APCM collaborative care add-on (subsequent month),CY2026 PFS final rule 90 FR 49464-49471
 G0570,APCM_BH_ADDON,2026-01-01,,false,APCM general BHI add-on,CY2026 PFS final rule 90 FR 49464-49471
+99202,OFFICE_EM,1992-01-01,,false,"New patient office visit, straightforward",CPT office E/M; documentation rules revised 2021 (99201 deleted)
+99203,OFFICE_EM,1992-01-01,,false,"New patient office visit, low complexity",CPT office E/M; documentation rules revised 2021 (99201 deleted)
+99204,OFFICE_EM,1992-01-01,,false,"New patient office visit, moderate complexity",CPT office E/M; documentation rules revised 2021 (99201 deleted)
+99205,OFFICE_EM,1992-01-01,,false,"New patient office visit, high complexity",CPT office E/M; documentation rules revised 2021 (99201 deleted)
+99211,OFFICE_EM,1992-01-01,,false,"Established patient office visit, minimal",CPT office E/M; documentation rules revised 2021 (99201 deleted)
+99212,OFFICE_EM,1992-01-01,,false,"Established patient office visit, straightforward",CPT office E/M; documentation rules revised 2021 (99201 deleted)
+99213,OFFICE_EM,1992-01-01,,false,"Established patient office visit, low complexity",CPT office E/M; documentation rules revised 2021 (99201 deleted)
+99214,OFFICE_EM,1992-01-01,,false,"Established patient office visit, moderate complexity",CPT office E/M; documentation rules revised 2021 (99201 deleted)
+99215,OFFICE_EM,1992-01-01,,false,"Established patient office visit, high complexity",CPT office E/M; documentation rules revised 2021 (99201 deleted)

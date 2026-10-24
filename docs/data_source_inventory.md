@@ -1,22 +1,38 @@
-# Public data source inventory and access status
+# Data source inventory
 
-Checked 2026-10-24. Public sources are useful for a national readiness baseline, but none is an observed national APCM-claims file as of this check.
+All sources are public. `pipeline/ingest.py` resolves each one from its publisher at run time (data.cms.gov's `data.json` catalog for CMS files), downloads it, records the URL, retrieval time and SHA-256 in `pipeline_output/manifests/`, and keeps only the columns and codes the models use. Raw files and staged Parquet are never committed.
 
-| Source | What it can support | Grain / key limitation | Access and status |
-|---|---|---|---|
-| CMS Medicare Physician & Other Practitioners, by Provider and Service | 2024 baseline NPI-level service/code use (CCM, TCM, BHI, PCM, AWV and primary-care visit signals), service counts and payments; candidate readiness features | NPI × HCPCS × facility status; 2024 claims predate APCM. FFS Part B non-institutional claims only; records with 10 or fewer beneficiaries are suppressed. Individual NPIs are not practice organizations. | Accessed via CMS Data API on 2026-10-24. Current dataset UUID: `92396110-2aed-4d63-a6a2-5d6207d46a29`. A downloaded 99484 slice yielded 1,263 rows, 1,218 distinct NPIs and 45 state abbreviations. Probe queries also returned 3,017 rows for 99487 and more than the 5,000-row API page size for 99490. These are provider-service rows, not patient counts or national utilization totals. |
-| CMS Physician & Other Practitioners, by Provider | NPI-level demographic/health characteristics including Medicare/Medicaid entitlement and chronic condition/risk summaries, useful for ecological dual-share and chronicity proxies | Aggregated provider summaries, not a beneficiary-level join; suppressed small cells. Does not identify actual APCM-eligible patient-months. | Public CMS dataset family; use the current release/API UUID from its Access API page when refreshing. |
-| CMS Synthetic Medicare Enrollment, FFS Claims and PDE (Synthetic RIF) | Exercise eligibility, monthly enrollment/QMB, diagnosis lookbacks, patient-to-provider attribution, tier logic, and claim overlap logic end-to-end | Synthetic beneficiaries and claims, not representative or inferential; synthetic claim amounts are not realistic; diagnoses may be sparse. Provider identifiers do not represent real practices. | CMS provides a ZIP through the [Synthetic RIF collection](https://data.cms.gov/collection/synthetic-medicare-enrollment-fee-for-service-claims-and-prescription-drug-event). The [user guide](https://data.cms.gov/sites/default/files/2023-05/d51e1218-68c3-4c7c-9598-0b81f22fe903/User%20Guide%20-%20CMS%20Synthetic%20RIF%20Files%20May%202023_AM508_v2.pdf) documents the files and limitations. Collection page confirmed; the ZIP has not been added to Git or this project. |
-| CMS PFS RVU, locality and national payment files | Reproduce official allowed amount by HCPCS, year, locality, facility status, GPCI and conversion factor; estimate coinsurance/QMB exposure under explicit assumptions | Must use the correct effective date, locality, facility status and 2026 QP/non-QP conversion factor. Published national rates are not enough for every practice-specific amount. | Start from [PFS Relative Value Files](https://www.cms.gov/medicare/payment/fee-schedules/physician/pfs-relative-value-files) and [2026 national payment files](https://www.cms.gov/medicare/payment/fee-schedules/physician/national-payment-amount-file). Replace the illustrative seed rates with a versioned official extract before reporting revenue. |
-| CMS APCM policy and code documentation | Tier criteria, consent, once-per-month frequency, required service elements and 2026 behavioral-health add-ons | A policy source, not observed claims. Validate detailed mutual-exclusion/overlap rules against final-rule text and Medicare Claims Processing Manual. | [CMS APCM overview](https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services) and [CY2025 final rule](https://www.federalregister.gov/documents/2024/12/09/2024-25382/medicare-and-medicaid-programs-cy-2025-payment-policies-under-the-physician-fee-schedule-and-other). |
-| CMS CY2026 PFS final rule | 2026 policy changes and add-on codes G0568–G0570 | Does not substitute for extracting final payment amounts from the PFS files. | [CMS-1832-F](https://www.cms.gov/medicare/payment/fee-schedules/physician/federal-regulation-notices/cms-1832-f). |
-| CMS geography, HRSA HPSA, Census ACS and CDC/ATSDR SVI | Contextual equity and access measures (rurality is already supplied in CMS NPI files, where available) | Requires a documented geography crosswalk. County/ZIP values do not equal practice service areas; SVI is ecological and time-specific. | Public source families; add the vintage and geography crosswalk as explicit inputs before producing equity rankings. |
+| Source | Publisher | Years | Used for | Grain and limits |
+|---|---|---|---|---|
+| Medicare Physician & Other Practitioners, by Provider | CMS | 2019 to 2024 | Clinician type, location, RUCA, patient counts, dual counts, HCC risk, chronic condition prevalence | NPI and year. Traditional Medicare Part B. Dual fields blank for small panels. Names and street addresses dropped at ingestion |
+| Medicare Physician & Other Practitioners, by Provider and Service | CMS | 2019 to 2024 | Visible billing of care management, preventive, G2211, APCM and office visit codes | NPI, HCPCS and setting. Rows under 11 beneficiaries removed. Filtered to the codes in `pipeline/hcpcs_codes.json` (2.17M of 9.78M rows in 2024) |
+| Medicare Physician & Other Practitioners, by Geography and Service | CMS | 2019 to 2024 | National and state totals to measure suppression | Geography, HCPCS and setting |
+| Doctors and Clinicians national file | CMS | Current snapshot | Clinician to group practice (Org PAC ID) | 3.63M rows, 1.64M NPIs, 83,666 organizations |
+| Medicare Monthly Enrollment | CMS | Annual rows 2019 to 2025 | County and state counts of duals and QMBs | Includes Medicare Advantage enrollees |
+| Medicare Geographic Variation, by National, State and County | CMS | 2014 to 2024 | Traditional Medicare beneficiary count (opportunity denominator) | Traditional Medicare only |
+| PFS Relative Value Files, release RVU26D | CMS | CY2026 | RVUs, conversion factor and GPCIs for APCM and comparison codes | National amounts used; GPCIs staged for later locality work |
+| Primary care HPSA detail | HRSA | Current | Counties with a designated geographic primary care shortage area | Designations change continuously |
+| Social Vulnerability Index, county | CDC/ATSDR | 2022 | County SVI percentile | Ecological; one vintage |
+| ZCTA to county relationship file | Census | 2020 | Clinician ZIP to county | ZIPs without a ZCTA do not match |
 
-## What can be said now
+## Not used, and why
 
-The 2024 public claims release can support a retrospective, suppression-aware NPI readiness profile using predecessor services. It cannot tell us who billed APCM in 2025, calculate actual patient-level G0558 eligibility, or support a causal/equity conclusion about the patients reached. Those questions require later APCM claims or beneficiary-level data, and the synthetic RIF only validates logic. NPI-level results should be called provider-level until organization/group and service-area attribution have been validated.
+- **CMS Synthetic Medicare claims (synthetic RIF).** Useful for testing patient-level eligibility and conflict logic, but synthetic patients carry no findings. The download sits behind a JavaScript page; it remains an optional logic-test module.
+- **2025 Physician & Other Practitioners files.** Not yet published. They are the outcome for the frozen forecast.
+- **Medicare Advantage encounter data.** Not public.
 
-## Verified API behavior
+## Running the pipeline
 
-CMS documents `GET /data-api/v1/dataset/{uuid}/data`, JSON filters of the form `filter[field]=value`, and paging with a maximum page size of 5,000. The download script follows that paging contract and retries throttling. It drops provider street and personal-name fields at ingestion, retaining only fields needed for aggregate provider readiness. CMS's public-provider methodology states that the service file is FFS Part B non-institutional claims, aggregated by NPI, HCPCS and place of service, with records for 10 or fewer beneficiaries excluded. See [CMS API documentation](https://data.cms.gov/api-docs) and [dataset methodology](https://data.cms.gov/sites/default/files/2025-04/MUP_PHY_RY25_202350312_Methodology_508.pdf).
+The CMS, HRSA, CDC and Census sites are often unreachable from sandboxed environments, so the pipeline runs on GitHub Actions (`.github/workflows/pipeline.yml`). Set the job in `pipeline/JOB` and push; the workflow restores the staged-data cache, runs `pipeline/run.sh`, and commits `pipeline_output/` and `dashboard/index.html` back to the branch. Locally, with network access to those hosts:
 
+```bash
+pip install -r requirements.txt
+python pipeline/ingest.py mup
+python pipeline/ingest.py reference
+python pipeline/ingest.py pfs
+python pipeline/profile.py
+dbt build --project-dir . --profiles-dir .
+python pipeline/export.py
+python pipeline/forecast.py
+python pipeline/build_dashboard.py
+```
