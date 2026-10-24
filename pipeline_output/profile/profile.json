@@ -823,7 +823,7 @@
       "service_year": 2023,
       "HCPCS_Cd": "99213",
       "n_rows": 472140,
-      "srvcs": 70165438.89999999,
+      "srvcs": 70165438.9,
       "benes": 45940733
     },
     {
@@ -844,7 +844,7 @@
       "service_year": 2020,
       "HCPCS_Cd": "99214",
       "n_rows": 449781,
-      "srvcs": 87626386.6,
+      "srvcs": 87626386.60000001,
       "benes": 50739373
     },
     {
@@ -865,7 +865,7 @@
       "service_year": 2023,
       "HCPCS_Cd": "99214",
       "n_rows": 501919,
-      "srvcs": 99338804.1,
+      "srvcs": 99338804.10000001,
       "benes": 57835693
     },
     {
@@ -6235,15 +6235,15 @@
       "n": 23
     },
     {
-      "designation_type": "High Needs Geographic HPSA",
-      "hpsa_status": "Designated",
-      "component_type": "County Subdivision",
-      "n": 9
-    },
-    {
       "designation_type": "Other Facility",
       "hpsa_status": "Designated",
       "component_type": "Unknown",
+      "n": 9
+    },
+    {
+      "designation_type": "High Needs Geographic HPSA",
+      "hpsa_status": "Designated",
+      "component_type": "County Subdivision",
       "n": 9
     },
     {
