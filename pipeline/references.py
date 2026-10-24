@@ -78,52 +78,89 @@ def federal_register(doc: str, pages: tuple[int, int]) -> None:
 
 
 # ------------------------------------------------- CMS national payment amounts
-def payment_file(page: str) -> None:
-    body = http_bytes(page).decode("utf-8", "replace")
-    zips = sorted(set(re.findall(r'href=["\']([^"\']+\.zip)["\']', body, re.I)))
-    result = {"page": page, "zips": zips, "files": {}}
-    for z in zips:
-        url = z if z.startswith("http") else "https://www.cms.gov" + z
-        path = fetch(url, Path(url).name)
+def payment_file() -> None:
+    """Check the project's fee arithmetic against CMS's own published amounts.
 
-        def walk(zf: zipfile.ZipFile, prefix: str) -> None:
-            # the release zip holds one zip per conversion factor (non-QP and QP)
-            for member in zf.namelist():
-                if member.lower().endswith(".zip"):
-                    walk(zipfile.ZipFile(io.BytesIO(zf.read(member))), f"{prefix}/{member}")
-                elif member.lower().endswith((".csv", ".txt")):
-                    lines = zf.read(member).decode("latin-1").splitlines()
-                    hits = [ln for ln in lines if any(c in ln for c in CODES)]
-                    result["files"][f"{prefix}/{member}"] = {"rows": len(lines), "head": lines[:12], "code_rows": hits[:6000]}
-                else:
-                    result["files"][f"{prefix}/{member}"] = {"skipped": True}
-        walk(zipfile.ZipFile(path), Path(url).name)
-    (OUT / "pfs_payment_file.json").write_text(json.dumps(result, indent=1))
-    print(f"payment file: {len(zips)} zips", flush=True)
+    The National Payment Amount File lists the allowed amount for every code in every
+    Medicare locality. Release A (January) is the full file; B, C and D are revisions.
+    For each locality and code, the latest release wins; the expected amount is
+    (work RVU x PW GPCI + PE RVU x PE GPCI + MP RVU x MP GPCI) x conversion factor
+    from the staged RVU26D and GPCI files (non-QP)."""
+    import csv
+    import pandas as pd
+    latest: dict[tuple, dict] = {}
+    releases = []
+    for rel in "abcd":
+        page = f"https://www.cms.gov/medicare/payment/fee-schedules/physician/national-payment-amount-file/pfrev26{rel}"
+        body = http_bytes(page).decode("utf-8", "replace")
+        for z in sorted(set(re.findall(r'href=["\']([^"\']+\.zip)["\']', body, re.I))):
+            url = z if z.startswith("http") else "https://www.cms.gov" + z
+            outer = zipfile.ZipFile(fetch(url, Path(url).name))
+            for inner in outer.namelist():
+                if not inner.lower().endswith("nonqp.zip"):
+                    continue
+                izf = zipfile.ZipFile(io.BytesIO(outer.read(inner)))
+                for member in izf.namelist():
+                    if not member.lower().endswith(".txt"):
+                        continue
+                    rows = list(csv.reader(izf.read(member).decode("latin-1").splitlines()))
+                    releases.append({"release": rel, "file": f"{Path(url).name}/{inner}/{member}", "rows": len(rows)})
+                    for r in rows:
+                        if len(r) >= 7 and r[3] in CODES and not r[4].strip():
+                            latest[(r[1], r[2], r[3])] = {"mac": r[1], "locality": r[2], "hcpcs": r[3], "release": rel,
+                                                          "cms_nonfac": float(r[5]), "cms_fac": float(r[6])}
+    cms = pd.DataFrame(latest.values())
+    proc = ROOT / "data" / "processed"
+    rvu = pd.read_parquet(proc / "pfs_rvu.parquet")
+    rvu = rvu[(rvu.cf_type == "nonqpp") & (rvu.modifier == "") & rvu.hcpcs.isin(CODES)]
+    gp = pd.read_parquet(proc / "pfs_gpci.parquet")
+    num = lambda x: pd.to_numeric(x, errors="coerce")
+    m = cms.merge(gp, on=["mac", "locality"], how="left").merge(rvu, on="hcpcs", how="left")
+    pe_nf = num(m.nonfac_pe_rvu); pe_f = num(m.fac_pe_rvu)
+    base = num(m.work_rvu) * num(m.pw_gpci_floor) + num(m.mp_rvu) * num(m.mp_gpci)
+    m["calc_nonfac"] = ((base + pe_nf * num(m.pe_gpci)) * num(m.conversion_factor)).round(2)
+    m["calc_fac"] = ((base + pe_f * num(m.pe_gpci)) * num(m.conversion_factor)).round(2)
+    m["diff_nonfac"] = (m.calc_nonfac - m.cms_nonfac).round(2)
+    summary = m.groupby("hcpcs").agg(localities=("locality", "size"), unmatched_gpci=("pe_gpci", lambda x: int(x.isna().sum())),
+                                     cms_min=("cms_nonfac", "min"), cms_max=("cms_nonfac", "max"),
+                                     max_abs_diff=("diff_nonfac", lambda x: float(x.abs().max())),
+                                     within_1_cent=("diff_nonfac", lambda x: float((x.abs() <= 0.011).mean()))).reset_index()
+    summary.to_csv(OUT / "pfs_payment_check.csv", index=False)
+    m[["mac", "locality", "locality_name", "hcpcs", "release", "cms_nonfac", "calc_nonfac", "diff_nonfac", "cms_fac", "calc_fac"]] \
+        .sort_values(["hcpcs", "mac", "locality"]).to_csv(OUT / "pfs_payment_check_by_locality.csv", index=False)
+    (OUT / "pfs_payment_file.json").write_text(json.dumps({"releases": releases}, indent=1))
+    print(summary.to_string(), flush=True)
 
 
 # ------------------------------------------------- CMS file documentation
 def mup_docs() -> None:
-    out = []
-    for ds in catalog():
-        if not ds.get("title", "").startswith("Medicare Physician & Other Practitioners - by Provider :"):
-            continue
-        def urls(v):  # catalog fields are a URL string, an object with a URL, or a list of either
-            if isinstance(v, str):
-                yield v
-            elif isinstance(v, dict):
-                yield from (x for x in v.values() if isinstance(x, str) and x.startswith("http"))
-            elif isinstance(v, list):
-                for x in v:
-                    yield from urls(x)
-        links = set(urls(ds.get("describedBy"))) | set(urls(ds.get("references"))) | set(urls(ds.get("landingPage")))
-        print("mup doc links:", sorted(links), flush=True)
-        for url in sorted(x for x in links if x.lower().split("?")[0].endswith(".pdf")):
-            path = fetch(url, "mup_" + Path(url).name.replace("%20", "_"))
-            text = pdf_text(path)
-            keep = [ln for ln in text.splitlines() if re.search(r"chronic|CCW|Bene_CC|condition|lookback|reference period", ln, re.I)]
-            out.append(f"===== {url}\n" + "\n".join(keep))
-        break  # one release's documentation covers the shared column definitions
+    """Data dictionary and methodology of the latest by-Provider release: how CMS
+    defines the beneficiary chronic condition columns (Bene_CC_*)."""
+    def urls(v):  # catalog fields are a URL string, an object with a URL, or a list of either
+        if isinstance(v, str):
+            yield v
+        elif isinstance(v, dict):
+            yield from (x for x in v.values() if isinstance(x, str) and x.startswith("http"))
+        elif isinstance(v, list):
+            for x in v:
+                yield from urls(x)
+    sets = [ds for ds in catalog() if ds.get("title", "").startswith("Medicare Physician & Other Practitioners - by Provider :")]
+    ds = max(sets, key=lambda d: d.get("temporal", "") if isinstance(d.get("temporal"), str) else json.dumps(d.get("temporal")))
+    links = set(urls(ds.get("describedBy"))) | set(urls(ds.get("references")))
+    page = "https://data.cms.gov/resources/medicare-physician-other-practitioners-methodology"
+    try:
+        links |= {u if u.startswith("http") else "https://data.cms.gov" + u
+                  for u in re.findall(r'href=["\']([^"\']+\.pdf)["\']', http_bytes(page).decode("utf-8", "replace"), re.I)}
+    except Exception as e:
+        print(f"methodology page: {e}", flush=True)
+    out = [f"Dataset: {ds.get('title')}"]
+    for url in sorted(x for x in links if x.lower().split("?")[0].endswith(".pdf")):
+        lines = pdf_text(fetch(url, "mup_" + Path(url).name.replace("%20", "_"))).splitlines()
+        keep = set()
+        for i, ln in enumerate(lines):
+            if re.search(r"Bene_CC|chronic condition|CCW|Chronic Conditions (Data )?Warehouse|look-?back|reference period", ln, re.I):
+                keep.update(range(max(0, i - 2), min(len(lines), i + 4)))
+        out.append(f"===== {url}\n" + "\n".join(lines[i] for i in sorted(keep)))
     (OUT / "mup_docs.txt").write_text("\n\n".join(out) + "\n")
 
 
@@ -157,7 +194,7 @@ if __name__ == "__main__":
     steps = [
         lambda: federal_register("2024-25382", (97859, 97902)),   # CY2025 PFS final rule
         lambda: federal_register("2025-19787", (49464, 49471)),   # CY2026 PFS final rule
-        lambda: payment_file("https://www.cms.gov/medicare/payment/fee-schedules/physician/national-payment-amount-file/pfrev26d"),
+        payment_file,
         mup_docs, ccw_conditions, synthetic_rif,
     ]
     failures = 0
