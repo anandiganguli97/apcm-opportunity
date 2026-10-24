@@ -17,6 +17,9 @@
 | Dual and QMB enrollment, 2024 (Monthly Enrollment) | County rows sum to 12,160,400 duals against a national row of 12,167,130 (99.9%). QMBs (only plus plus) are 68.5% of duals nationally |
 | CMS 2026 conversion factor in the RVU file | $33.4009 (non-qualifying APM) and $33.5675 (qualifying APM) |
 | APCM amounts | RVU times conversion factor: G0556 0.49 RVU, $16.37; G0557 1.61, $53.78; G0558 3.51, $117.24 |
+| Fee arithmetic against CMS's published amounts | For all 14 project codes (APCM, its 2026 add-ons, CCM, PCM, G2211, 99213) in all 109 Medicare localities, (work RVU x PW GPCI + PE RVU x PE GPCI + MP RVU x MP GPCI) x conversion factor from the staged files equals the amount in CMS's 2026 National Payment Amount File (PFREV26A to D, latest release per locality) to the cent; largest difference $0.00. `pipeline_output/references/pfs_payment_check.csv` |
+| APCM work RVUs against the final rule | Staged RVU file: G0556 0.25, G0557 0.77, G0558 1.67, the values finalized at 89 FR 97900-97901 |
+| G2211 uptake against published research | 29.7% of primary care clinicians had visible G2211 billing in 2024. Ganguli et al. (JAMA 2026), using 100% claims, report 24.0% of all clinicians with an eligible visit, with primary care physicians billing at the highest rate |
 | Clinician file rows | One row per NPI per year in all six years (1,155,870 in 2019 to 1,296,739 in 2024) |
 | HPSA designation labels | "Geographic HPSA" and "High Needs Geographic HPSA" present as `stg_hpsa_county` expects; only rows with status "Designated" are used |
 | Provider type labels | "Family Practice", "Internal Medicine", "General Practice", "Geriatric Medicine", "Nurse Practitioner", "Physician Assistant" match the seed exactly |

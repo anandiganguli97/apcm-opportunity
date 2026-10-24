@@ -22,6 +22,8 @@ Service year 2024 unless noted; CY2026 payment rates. Each figure links to the f
 
 The closest prior work is a survey of 404 primary care clinicians in which 14.9% reported using APCM (Grumbach et al., *JGIM*, October 2026). This project is the national, claims-based complement. See [`docs/literature_scan.md`](docs/literature_scan.md).
 
+**Checked against the sources.** Every fee used here matches CMS's published 2026 payment amounts in all 109 Medicare localities to the cent, the APCM rules are transcribed from the Federal Register with page citations ([`docs/policy_evidence.md`](docs/policy_evidence.md)), and the G2211 uptake that trains the forecast is consistent with a 100% claims study (Ganguli et al., *JAMA* 2026). Full checks in [`docs/data_validity_report.md`](docs/data_validity_report.md).
+
 ## The forecast is not frozen yet
 
 The readiness score is a pre-registered forecast of which practices will show APCM billing in the 2025 CMS file, which is not yet published. It stays a draft until it is frozen with [`scripts/freeze_forecast.py`](scripts/freeze_forecast.py), which writes a timestamped SHA-256 manifest and never overwrites. The target, features, training design and evaluation plan are in [`model_card_draft.json`](pipeline_output/forecast/model_card_draft.json).
@@ -57,7 +59,7 @@ python pipeline/export.py && python pipeline/forecast.py && python pipeline/buil
 | `tests/` | dbt data tests |
 | `pipeline_output/` | Manifests with source URLs and SHA-256, profile, results, draft forecast, last run log |
 | `dashboard/` | `template.html` and the built `index.html` ([live](https://anandiganguli97.github.io/apcm-opportunity/)) |
-| `docs/` | [Methods](docs/methods.md), [assumptions](docs/assumptions_log.md), [data validity](docs/data_validity_report.md), [sources](docs/data_source_inventory.md), [literature](docs/literature_scan.md), [policy evidence](docs/policy_evidence.md), client brief template |
+| `docs/` | [Methods](docs/methods.md), [assumptions](docs/assumptions_log.md), [data validity](docs/data_validity_report.md), [sources](docs/data_source_inventory.md), [literature](docs/literature_scan.md), [policy evidence](docs/policy_evidence.md), [chronic conditions](docs/chronic_conditions.md), [literature log](docs/literature.csv), client brief template |
 
 ## Limits
 
@@ -68,6 +70,7 @@ Traditional Medicare Part B professional claims only: no Medicare Advantage, and
 - CMS: Medicare Physician & Other Practitioners (by Provider; by Provider and Service; by Geography and Service), 2019 to 2024; Doctors and Clinicians national file; Medicare Monthly Enrollment; Medicare Geographic Variation; PFS Relative Value Files RVU26D.
 - HRSA primary care HPSA detail; CDC/ATSDR SVI 2022; Census 2020 ZCTA to county relationship file.
 - [CMS APCM overview](https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services); [CY2025 PFS final rule](https://www.federalregister.gov/documents/2024/12/09/2024-25382/medicare-and-medicaid-programs-cy-2025-payment-policies-under-the-physician-fee-schedule-and-other); [CY2026 PFS final rule](https://www.cms.gov/medicare/payment/fee-schedules/physician/federal-regulation-notices/cms-1832-f).
+- Ganguli et al. [Billing of Medicare's G2211 Longitudinal Care Code Among Traditional Medicare Beneficiaries](https://jamanetwork.com/journals/jama/fullarticle/2845315), *JAMA*, 2026. Agarwal et al. Adoption of Medicare's Transitional Care Management and Chronic Care Management Codes in Primary Care, *JAMA*, 2018.
 - Grumbach et al. [Primary Care Clinician Uptake of Medicare APCM Billing Codes](https://doi.org/10.1007/s11606-026-10949-8), *JGIM*, 2026. Reddy et al. [Use of Chronic Care Management Among Primary Care Clinicians](https://doi.org/10.1370/afm.2573), *Ann Fam Med*, 2020. [Informing APCM: care coordination trends 2020 to 2023](https://doi.org/10.7812/TPP/25.040), *Perm J*, 2025.
 
 CPT codes and descriptions are copyright American Medical Association.

@@ -14,10 +14,13 @@ All sources are public. `pipeline/ingest.py` resolves each one from its publishe
 | Primary care HPSA detail | HRSA | Current | Counties with a designated geographic primary care shortage area | Designations change continuously |
 | Social Vulnerability Index, county | CDC/ATSDR | 2022 | County SVI percentile | Ecological; one vintage |
 | ZCTA to county relationship file | Census | 2020 | Clinician ZIP to county | ZIPs without a ZCTA do not match |
+| CY2025 and CY2026 PFS final rules | Federal Register via govinfo.gov | 2024, 2025 | APCM rule register with page cites (`seeds/billing_rules.csv`) | Table 26 is an image; its list is taken from the surrounding text |
+| National Payment Amount File, PFREV26A to D | CMS | 2026 | Check of fee arithmetic in all 109 localities | Release A is the full file; B to D are revisions |
+| CCW condition categories | Chronic Conditions Data Warehouse (Internet Archive copy) | Current | Definitions and look-back periods of the by-Provider chronic condition columns ([`chronic_conditions.md`](chronic_conditions.md)) | ccwdata.org was in maintenance on retrieval |
 
 ## Not used, and why
 
-- **CMS Synthetic Medicare claims (synthetic RIF).** Useful for testing patient-level eligibility and conflict logic, but synthetic patients carry no findings. The download sits behind a JavaScript page; it remains an optional logic-test module.
+- **CMS Synthetic Medicare Claims PUFs.** Generated with Synthea, not drawn from real patients. The May 2023 user guide describes annual beneficiary files (`beneficiary_YYYY.csv`) and claim files by service type (`carrier.csv`, `inpatient.csv`, `outpatient.csv`, `snf.csv`, `hha.csv`, `hospice.csv`, `dme.csv`, `pde.csv`). They can test patient-level logic (monthly QMB status, condition look-backs, same-month billing conflicts) but carry no findings. This project makes no patient-level claims, so none of its results depend on them. The download sits behind a JavaScript page, not the data.cms.gov catalog.
 - **2025 Physician & Other Practitioners files.** Not yet published. They are the outcome for the frozen forecast.
 - **Medicare Advantage encounter data.** Not public.
 

@@ -48,6 +48,10 @@ A clinician "bills" a family when the by-Provider-and-Service file has at least 
 
 `benes_min` for a family is the largest beneficiary count on any one code in the family: a floor on unique patients, because patients can appear under several codes. CCM patient-months are the services of first-unit monthly codes (99490, 99491, 99487 and the PCM equivalents).
 
+## Policy rules and condition definitions
+
+APCM rules are transcribed from the final rules with page cites in [`policy_evidence.md`](policy_evidence.md) and `seeds/billing_rules.csv`. The chronic condition columns in the by-Provider file and their CCW look-back periods are in [`chronic_conditions.md`](chronic_conditions.md).
+
 ## Dual-eligible and QMB estimates
 
 - Dual-eligible count per clinician is `Bene_Dual_Cnt` from the by-Provider file. CMS blanks both dual fields for small panels (464,482 of 1,296,739 providers in 2024), so equity tables cover the 150,899 of 215,245 primary care clinicians with a reported count.

@@ -50,6 +50,7 @@ Done:
 - Sanity checks recorded in `docs/data_validity_report.md`.
 - Dashboard: `dashboard/index.html`, built by `pipeline/build_dashboard.py` from `dashboard/template.html`, rebuilt and committed by CI after every analyze run, then force-published to the `gh-pages` branch (live at https://anandiganguli97.github.io/apcm-opportunity/). A gzipped practice-level extract is also exported for Tableau.
 - README and `docs/` describe the real findings and methods.
+- Reference checks (`pipeline/references.py`, job `references`, steps chosen in `pipeline/REFERENCE_STEPS`): APCM rules transcribed from the Federal Register into `seeds/billing_rules.csv`; fee arithmetic matches the CMS National Payment Amount File in all 109 localities; CCW condition definitions in `docs/chronic_conditions.md`; literature log in `docs/literature.csv`.
 - Readiness score and draft 2025 forecast computed (`pipeline/forecast.py`, G2211-launch analog). NOT frozen.
 
 Next:
