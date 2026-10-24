@@ -23,6 +23,7 @@ analyze() {
   dbt build --project-dir . --profiles-dir .
   python pipeline/export.py
   python pipeline/forecast.py
+  python pipeline/build_dashboard.py
 }
 
 case "${JOB}" in

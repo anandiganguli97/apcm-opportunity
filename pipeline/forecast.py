@@ -61,9 +61,13 @@ def prep(d: pd.DataFrame, feats: list[str], ref: dict | None = None):
             x[f"{c}_missing"] = x[c].isna().astype(float)
             x[c] = x[c].fillna(ref["median"][c])
     if not ref["mean"]:
-        sd = x.std()
-        ref["dropped_constant"] = sd.index[~(sd > 0)].tolist()  # constant columns make the fit singular
-        x = x.loc[:, sd > 0]
+        # constant columns make the fit singular; near-constant 0/1 flags (fewer than 50
+        # practices in the minority class) leave unidentifiable coefficients
+        binary = x.isin([0, 1]).all()
+        minority = x.sum().clip(upper=len(x) - x.sum())
+        keep = (x.std() > 0) & ~(binary & (minority < 50))
+        ref["dropped_constant"] = keep.index[~keep].tolist()
+        x = x.loc[:, keep]
         ref["mean"] = x.mean().to_dict()
         ref["sd"] = x.std().to_dict()
     x = x[list(ref["mean"])]
