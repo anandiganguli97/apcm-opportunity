@@ -117,5 +117,33 @@
     "bytes": 1842891,
     "sha256": "399be5816ab06ec89ddff8d6d02099b81eeb76c46c3f87460bfe8fc13d0739fc",
     "file": "synthetic_rif_user_guide.pdf"
+  },
+  {
+    "url": "https://www2.ccwdata.org/web/guest/condition-categories-chronic",
+    "retrieved_utc": "2026-10-24T18:11:31Z",
+    "bytes": 7743,
+    "sha256": "9c0176e1b1bc89ca80e26f8b6ad000e2ae9524daa539a8b37912ea894251d197",
+    "file": "ccw_condition-categories-chronic.html"
+  },
+  {
+    "url": "https://web.archive.org/web/2026id_/https://www2.ccwdata.org/web/guest/condition-categories-chronic",
+    "retrieved_utc": "2026-10-24T18:11:47Z",
+    "bytes": 139795,
+    "sha256": "c5229e1af353dfeb5c124ed32e68940d75d466f05f6e4e462607e5f4af5fa56c",
+    "file": "ccw_archive_condition-categories-chronic.html"
+  },
+  {
+    "url": "https://www2.ccwdata.org/web/guest/condition-categories-other",
+    "retrieved_utc": "2026-10-24T18:11:48Z",
+    "bytes": 7743,
+    "sha256": "9c0176e1b1bc89ca80e26f8b6ad000e2ae9524daa539a8b37912ea894251d197",
+    "file": "ccw_condition-categories-other.html"
+  },
+  {
+    "url": "https://web.archive.org/web/2026id_/https://www2.ccwdata.org/web/guest/condition-categories-other",
+    "retrieved_utc": "2026-10-24T18:11:58Z",
+    "bytes": 164044,
+    "sha256": "2a039693c57343ab4102bbab1098631d1ac06f705ff77fd6d3107c72d2b64466",
+    "file": "ccw_archive_condition-categories-other.html"
   }
 ]

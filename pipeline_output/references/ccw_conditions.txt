@@ -1,43 +1,556 @@
 ===== https://www2.ccwdata.org/web/guest/condition-categories-chronic
- 
-     Maintenance - Chronic Conditions Data Warehouse 
-              Chronic Conditions Data Warehouse 
-              Your source for national CMS Medicare and Medicaid research data
-               Skip to Content 
-                  Down for Maintenance 
-                  CCWdata.org is temporarily unavailable due to scheduled
-                  maintenance.
-                  This downtime will occur between
-                    ? ,
-                     ?  
-                  and
-                    ? ,
-                     ?  .
-                  We apologize for any inconvenience and appreciate your
-                  patience.
-              This website was developed under contract with the Centers for
-              Medicare & Medicaid Services (CMS).
-            © 2013- ?  CCW VRDC.
+UNAVAILABLE: site in maintenance at retrieval
+
+===== https://web.archive.org/web/2026id_/https://www2.ccwdata.org/web/guest/condition-categories-chronic
+
+	 Chronic  Conditions - Chronic Conditions Data Warehouse 
+		Skip to Main Content
+								 My CCW Login (Authorized Users Only) 
+							  FAQ  
+							  Help  
+									Chronic Conditions Data Warehouse
+						Your source for national CMS Medicare and Medicaid research data
+							  Home  
+							  Data Dictionaries  
+							  Condition Categories 							 
+					 Chronic  Conditions 
+					 Other Chronic and Disabling Conditions 
+							  Analytic Guidance 							 
+					 User Documentation 
+					 Technical Guidance Documentation 
+					 White Papers 
+					 Conference Presentations 
+							  Pricing 							 
+					 Estimate Study Size - Medicare 
+					 Estimate Study Size - Medicaid 
+					 Data Pricing 
+						 Chronic Conditions Data Warehouse 
+						 Condition Categories 
+					 Chronic  Conditions 
+			 Chronic  Conditions
+			 The CCW contains two versions of the Chronic Conditions:  30 CCW Chronic Conditions (2017 forward)  and  27 CCW Chronic Conditions (1999–2021) . CMS developed the 27 CCW Chronic Condition variables from algorithms validated from the research literature and criteria used by other federal sources. In 2020, CMS contracted an expert panel to refine and enhance these algorithms, resulting in the 30 CCW Chronic Condition algorithms.
+ The  Chronic Conditions File Enhancement White Paper  document provides more detail on the differences between the two versions and recommendations for researchers.
+			 30 CCW Chronic Conditions (2017 forward)  
+ There are  30  CCW Chronic Condition categories, available for file years 2017 forward. These reference only ICD-10 diagnosis codes and have modified look-back periods, qualifying claims, and codes.
+ All variables listed here are currently available in the  Master Beneficiary Summary File (MBSF)  in the  MBSF_CHRONIC_ YYYY   file.
+  30 CCW Chronic Conditions Algorithms and Change History 
+	  Acute Myocardial Infarction 
+	  Alzheimer's Disease 
+	  Anemia 
+	  Asthma 
+	  Atrial Fibrillation and Flutter 
+	  Benign Prostatic Hyperplasia 
+	  Cancer, Breast 
+	  Cancer, Colorectal 
+	  Cancer, Endometrial 
+	  Cancer, Lung 
+	  Cancer, Prostate 
+	  Cancer, Urologic (Kidney, Renal Pelvis, and Ureter)   NEW! 
+	  Cataract 
+	  Chronic Kidney Disease 
+	  Chronic Obstructive Pulmonary Disease 
+	  Depression, Bipolar, or Other Depressive Mood Disorders 
+	  Diabetes 
+	  Glaucoma 
+	  Heart Failure and Non-Ischemic Heart Disease 
+	  Hip/Pelvic Fracture 
+	  Hyperlipidemia 
+	  Hypertension 
+	  Hypothyroidism   *  
+	  Ischemic Heart Disease 
+	  Non-Alzheimer's Dementia   †  
+	  Osteoporosis With or Without Pathological Fracture 
+	  Parkinson's Disease and Secondary Parkinsonism   NEW! 
+	  Pneumonia, All-cause   NEW! 
+	  Rheumatoid Arthritis/Osteoarthritis 
+	  Stroke/Transient Ischemic Attack 
+   *   Within the 27 CCW Chronic Conditions, this condition is "Acquired Hypothyroidism."
+  †   Within the 27 CCW Chronic Conditions, this condition is "Alzheimer’s Disease, Related Disorders, or Senile Dementia."
+-->
+						 Algorithms 
+						 Reference Period 
+						 Valid ICD-10 Codes 1  
+						 Number/Type of Claims to Qualify 2  
+						 Acute Myocardial Infarction 
+						 1 year 
+						 I21.01, I21.02, I21.09, I21.11, I21.19, I21.21, I21.29, I21.3, I21.4, I21.9, I21.A1, I21.A9, I21.B, I22.0, I22.1, I22.2, I22.8, I22.9, I23.0, I23.1, I23.2, I23.3, I23.4, I23.5, I23.6, I23.7, I23.8 (any DX on the claim) 
+						 At least 1 inpatient claim with DX codes 
+						 Alzheimer's Disease 
+						 2 years 
+						 G30.0, G30.1, G30.8, G30.9 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Anemia 
+						 2 years 
+						 C94.6, D46.0, D46.1, D46.20, D46.21, D46.22, D46.4, D46.9, D46.A, D46.B, D46.C, D46.Z, D47.4, D50.0, D50.1, D50.8, D50.9, D51.0, D51.1, D51.2, D51.3, D51.8, D51.9, D52.0, D52.1, D52.8, D52.9, D53.0, D53.1, D53.2, D53.8, D53.9, D55.0, D55.1, D55.2, D55.21, D55.29, D55.3, D55.8, D55.9, D56.0, D56.1, D56.2, D56.3, D56.4, D56.5, D56.8, D56.9, D57.00, D57.01, D57.02, D57.03, D57.04, D57.09, D57.1, D57.20, D57.211, D57.212, D57.213, D57.214, D57.218, D57.219, D57.3, D57.40, D57.411, D57.412, D57.413, D57.414, D57.418, D57.419, D57.42, D57.431, D57.432, D57.433, D57.434, D57.438, D57.439, D57.44, D57.451, D57.452, D57.453, D57.454, D57.458, D57.459, D57.80, D57.811, D57.812, D57.813, D57.814, D57.818, D57.819, D58.0, D58.1, D58.2, D58.8, D58.9, D59.0, D59.1, D59.10, D59.11, D59.12, D59.13, D59.19, D59.2, D59.3, D59.30, D59.31, D59.32, D59.39, D59.4, D59.5, D59.6, D59.8, D59.9, D60.0, D60.1, D60.8, D60.9, D61.01, D61.02, D61.03, D61.09, D61.1, D61.2, D61.3, D61.810, D61.811, D61.818, D61.82, D61.89, D61.9, D63.0, D63.1, D63.8, D64.0, D64.1, D64.2, D64.3, D64.4, D64.81, D64.89, D64.9, D75.81 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Asthma 
+						 2 years 
+						 J45.20, J45.21, J45.22, J45.30, J45.31, J45.32, J45.40, J45.41, J45.42, J45.50, J45.51, J45.52, J45.901, J45.902, J45.909, J45.990, J45.991, J45.998 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Atrial Fibrillation and Flutter 
+						 2 years 
+						 I48.0, I48.1, I48.11, I48.19, I48.2, I48.20, I48.21, I48.3, I48.4, I48.91 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Benign Prostatic Hyperplasia 
+						 2 years 
+						 N40.0, N40.1, N40.2, N40.3 (any DX on the claim)
+EXCLUSION: If any of the qualifying claims also have an ICD-10 diagnosis of D29.1, then EXCLUDE 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Cancer, Breast 
+						 2 years 
+						 C50.011, C50.012, C50.019, C50.021, C50.022, C50.029, C50.111, C50.112, C50.119, C50.121, C50.122, C50.129, C50.211, C50.212, C50.219, C50.221, C50.222, C50.229, C50.311, C50.312, C50.319, C50.321, C50.322, C50.329, C50.411, C50.412, C50.419, C50.421, C50.422, C50.429, C50.511, C50.512, C50.519, C50.521, C50.522, C50.529, C50.611, C50.612, C50.619, C50.621, C50.622, C50.629, C50.811, C50.812, C50.819, C50.821, C50.822, C50.829, C50.911, C50.912, C50.919, C50.921, C50.922, C50.929, D05.00, D05.01, D05.02, D05.10, D05.11, D05.12, D05.80, D05.81, D05.82, D05.90, D05.91, D05.92, Z17.0, Z17.1, Z17.21, Z17.22, Z17.31, Z17.32, Z17.410, Z17.411, Z17.420, Z17.421, Z19.1, Z19.2, Z85.3, Z86.000 (any DX on the claim) 
+						 At least 1 inpatient/SNF claim OR 2 HOP/carrier claims with DX codes 
+						 Cancer, Colorectal 
+						 2 years 
+						 C18.0, C18.1, C18.2, C18.3, C18.4, C18.5, C18.6, C18.7, C18.8, C18.9, C19, C20, C49.A4, C49.A5, D01.0, D01.1, D01.2, Z85.030, Z85.038, Z85.040, Z85.048 (any DX on the claim) 
+						 At least 1 inpatient/SNF claim OR 2 HOP/carrier claims with DX codes 
+						 Cancer, Endometrial 
+						 2 years 
+						 C54.0, C54.1, C54.2, C54.3, C54.8, C54.9, D07.0, Z85.42 (any DX on the claim) 
+						 At least 1 inpatient/SNF claim OR 2 HOP/carrier claims with DX codes 
+						 Cancer, Lung 
+						 2 years 
+						 C34.00, C34.01, C34.02, C34.10, C34.11, C34.12, C34.2, C34.30, C34.31, C34.32, C34.80, C34.81, C34.82, C34.90, C34.91, C34.92, D02.20, D02.21, D02.22, Z85.110, Z85.118 (any DX on the claim) 
+						 At least 1 inpatient/SNF claim OR 2 HOP/carrier claims with DX codes 
+						 Cancer, Prostate 
+						 2 years 
+						 C61, D07.5, Z85.46 (any DX on the claim) 
+						 At least 1 inpatient/SNF claim OR 2 HOP/carrier claims with DX codes 
+						 Cancer, Urologic (Kidney, Renal Pelvis, and Ureter) 
+						 2 years 
+						 C64.1, C64.2, C64.9, C65.1, C65.2, C65.9, C66.1, C66.2, C66.9, C68.8, C68.9, D09.10, D09.19, Z85.520, Z85.528, Z85.53, Z85.54, Z85.59 (any DX on the claim) 
+						 At least 1 inpatient/SNF claim OR 2 HOP/carrier claims with DX codes 
+						 Cataract 
+						 1 year 
+						 E08.36, E09.36, E10.36, E11.36, E13.36, H25.011, H25.012, H25.013, H25.019, H25.031, H25.032, H25.033, H25.039, H25.041, H25.042, H25.043, H25.049, H25.091, H25.092, H25.093, H25.099, H25.10, H25.11, H25.12, H25.13, H25.20, H25.21, H25.22, H25.23, H25.811, H25.812, H25.813, H25.819, H25.89, H25.9, H26.001, H26.002, H26.003, H26.009, H26.011, H26.012, H26.013, H26.019, H26.031, H26.032, H26.033, H26.039, H26.041, H26.042, H26.043, H26.049, H26.051, H26.052, H26.053, H26.059, H26.061, H26.062, H26.063, H26.069, H26.09, H26.101, H26.102, H26.103, H26.109, H26.111, H26.112, H26.113, H26.119, H26.121, H26.122, H26.123, H26.129, H26.131, H26.132, H26.133, H26.139, H26.20, H26.211, H26.212, H26.213, H26.219, H26.221, H26.222, H26.223, H26.229, H26.30, H26.31, H26.32, H26.33, H26.40, H26.411, H26.412, H26.413, H26.419, H26.491, H26.492, H26.493, H26.499, H26.8, H26.9, Q12.0 (any DX on the claim) 
+						 At least 1 HOP or carrier claim with DX codes 
+						 Chronic Kidney Disease 
+						 2 years 
+						 A18.11, A52.75, B52.0, E08.21, E08.22, E08.29, E09.21, E09.22, E09.29, E10.21, E10.22, E10.29, E11.21, E11.22, E11.29, E13.21, E13.22, E13.29, I12.0, I12.9, I13.0, I13.10, I13.11, I13.2, K76.7, M10.30, M10.311, M10.312, M10.319, M10.321, M10.322, M10.329, M10.331, M10.332, M10.339, M10.341, M10.342, M10.349, M10.351, M10.352, M10.359, M10.361, M10.362, M10.369, M10.371, M10.372, M10.379, M10.38, M10.39, M32.14, M32.15, M35.04, M35.0A, N01.0, N01.1, N01.2, N01.3, N01.4, N01.5, N01.6, N01.7, N01.8, N01.9, N01.A, N02.0, N02.1, N02.2, N02.3, N02.4, N02.5, N02.6, N02.7, N02.8, N02.9, N02.A, N02.B1, N02.B2, N02.B3, N02.B4, N02.B5, N02.B6, N02.B9, N03.0, N03.1, N03.2, N03.3, N03.4, N03.5, N03.6, N03.7, N03.8, N03.9, N03.A, N04.0, N04.1, N04.2, N04.20, N04.21, N04.22, N04.29, N04.3, N04.4, N04.5, N04.6, N04.7, N04.8, N04.9, N04.A, N05.0, N05.1, N05.2, N05.3, N05.4, N05.5, N05.6, N05.7, N05.8, N05.9, N05.A, N06.0, N06.1, N06.2, N06.20, N06.21, N06.22, N06.29, N06.3, N06.4, N06.5, N06.6, N06.7, N06.8, N06.9, N06.A, N07.0, N07.1, N07.2, N07.3, N07.4, N07.5, N07.6, N07.7, N07.8, N07.9, N07.A, N08, N14.0, N14.1, N14.11, N14.19, N14.2, N14.3, N14.4, N15.0, N15.8, N15.9, N16, N18.1, N18.2, N18.3, N18.30, N18.31, N18.32, N18.4, N18.5, N18.6, N18.9, N25.1, N25.89, N25.9, N26.1, N26.9, N99.0, Q61.02, Q61.11, Q61.19, Q61.2, Q61.3, Q61.4, Q61.5, Q61.8 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Chronic Obstructive Pulmonary Disease 
+						 2 years 
+						 J40, J41.0, J41.1, J41.8, J42, J43.0, J43.1, J43.2, J43.9, J44.0, J44.1, J44.81, J44.89, J44.9, J47.0, J47.1, J47.9, J98.2, J98.3 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Depression, Bipolar, or Other Depressive Mood Disorders 
+						 2 years 
+						 F06.31, F06.32, F31.0, F31.10, F31.11, F31.12, F31.13, F31.2, F31.30, F31.31, F31.32, F31.4, F31.5, F31.60, F31.61, F31.62, F31.63, F31.64, F31.71, F31.73, F31.75, F31.76, F31.77, F31.78, F31.81, F31.89, F31.9, F32.0, F32.1, F32.2, F32.3, F32.4, F32.5, F32.8, F32.89, F32.9, F32.A, F33.0, F33.1, F33.2, F33.3, F33.40, F33.41, F33.42, F33.8, F33.9, F34.0, F34.1, F43.21, F43.23 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Diabetes 
+						 2 years 
+						 E08.00, E08.01, E08.10, E08.11, E08.21, E08.22, E08.29, E08.311, E08.319, E08.321, E08.3211, E08.3212, E08.3213, E08.3219, E08.329, E08.3291, E08.3292, E08.3293, E08.3299, E08.331, E08.3311, E08.3312, E08.3313, E08.3319, E08.339, E08.3391, E08.3392, E08.3393, E08.3399, E08.341, E08.3411, E08.3412, E08.3413, E08.3419, E08.349, E08.3491, E08.3492, E08.3493, E08.3499, E08.351, E08.3511, E08.3512, E08.3513, E08.3519, E08.3521, E08.3522, E08.3523, E08.3529, E08.3531, E08.3532, E08.3533, E08.3539, E08.3541, E08.3542, E08.3543, E08.3549, E08.3551, E08.3552, E08.3553, E08.3559, E08.359, E08.3591, E08.3592, E08.3593, E08.3599, E08.36, E08.37X1, E08.37X2, E08.37X3, E08.37X9, E08.39, E08.40, E08.41, E08.42, E08.43, E08.44, E08.49, E08.51, E08.52, E08.59, E08.610, E08.618, E08.620, E08.621, E08.622, E08.628, E08.630, E08.638, E08.641, E08.649, E08.65, E08.69, E08.8, E08.9, E09.00, E09.01, E09.10, E09.11, E09.21, E09.22, E09.29, E09.311, E09.319, E09.321, E09.3211, E09.3212, E09.3213, E09.3219, E09.329, E09.3291, E09.3292, E09.3293, E09.3299, E09.331, E09.3311, E09.3312, E09.3313, E09.3319, E09.339, E09.3391, E09.3392, E09.3393, E09.3399, E09.341, E09.3411, E09.3412, E09.3413, E09.3419, E09.349, E09.3491, E09.3492, E09.3493, E09.3499, E09.351, E09.3511, E09.3512, E09.3513, E09.3519, E09.3521, E09.3522, E09.3523, E09.3529, E09.3531, E09.3532, E09.3533, E09.3539, E09.3541, E09.3542, E09.3543, E09.3549, E09.3551, E09.3552, E09.3553, E09.3559, E09.359, E09.3591, E09.3592, E09.3593, E09.3599, E09.36, E09.37X1, E09.37X2, E09.37X3, E09.37X9, E09.39, E09.40, E09.41, E09.42, E09.43, E09.44, E09.49, E09.51, E09.52, E09.59, E09.610, E09.618, E09.620, E09.621, E09.622, E09.628, E09.630, E09.638, E09.641, E09.649, E09.65, E09.69, E09.8, E09.9, E10.10, E10.11, E10.21, E10.22, E10.29, E10.311, E10.319, E10.321, E10.3211, E10.3212, E10.3213, E10.3219, E10.329, E10.3291, E10.3292, E10.3293, E10.3299, E10.331, E10.3311, E10.3312, E10.3313, E10.3319, E10.339, E10.3391, E10.3392, E10.3393, E10.3399, E10.341, E10.3411, E10.3412, E10.3413, E10.3419, E10.349, E10.3491, E10.3492, E10.3493, E10.3499, E10.351, E10.3511, E10.3512, E10.3513, E10.3519, E10.3521, E10.3522, E10.3523, E10.3529, E10.3531, E10.3532, E10.3533, E10.3539, E10.3541, E10.3542, E10.3543, E10.3549, E10.3551, E10.3552, E10.3553, E10.3559, E10.359, E10.3591, E10.3592, E10.3593, E10.3599, E10.36, E10.37X1, E10.37X2, E10.37X3, E10.37X9, E10.39, E10.40, E10.41, E10.42, E10.43, E10.44, E10.49, E10.51, E10.52, E10.59, E10.610, E10.618, E10.620, E10.621, E10.622, E10.628, E10.630, E10.638, E10.641, E10.649, E10.65, E10.69, E10.8, E10.9, E10.A0, E10.A1, E10.A2, E11.00, E11.01, E11.10, E11.11, E11.21, E11.22, E11.29, E11.311, E11.319, E11.321, E11.3211, E11.3212, E11.3213, E11.3219, E11.329, E11.3291, E11.3292, E11.3293, E11.3299, E11.331, E11.3311, E11.3312, E11.3313, E11.3319, E11.339, E11.3391, E11.3392, E11.3393, E11.3399, E11.341, E11.3411, E11.3412, E11.3413, E11.3419, E11.349, E11.3491, E11.3492, E11.3493, E11.3499, E11.351, E11.3511, E11.3512, E11.3513, E11.3519, E11.3521, E11.3522, E11.3523, E11.3529, E11.3531, E11.3532, E11.3533, E11.3539, E11.3541, E11.3542, E11.3543, E11.3549, E11.3551, E11.3552, E11.3553, E11.3559, E11.359, E11.3591, E11.3592, E11.3593, E11.3599, E11.36, E11.37X1, E11.37X2, E11.37X3, E11.37X9, E11.39, E11.40, E11.41, E11.42, E11.43, E11.44, E11.49, E11.51, E11.52, E11.59, E11.610, E11.618, E11.620, E11.621, E11.622, E11.628, E11.630, E11.638, E11.641, E11.649, E11.65, E11.69, E11.8, E11.9, E13.00, E13.01, E13.10, E13.11, E13.21, E13.22, E13.29, E13.311, E13.319, E13.321, E13.3211, E13.3212, E13.3213, E13.3219, E13.329, E13.3291, E13.3292, E13.3293, E13.3299, E13.331, E13.3311, E13.3312, E13.3313, E13.3319, E13.339, E13.3391, E13.3392, E13.3393, E13.3399, E13.341, E13.3411, E13.3412, E13.3413, E13.3419, E13.349, E13.3491, E13.3492, E13.3493, E13.3499, E13.351, E13.3511, E13.3512, E13.3513, E13.3519, E13.3521, E13.3522, E13.3523, E13.3529, E13.3531, E13.3532, E13.3533, E13.3539, E13.3541, E13.3542, E13.3543, E13.3549, E13.3551, E13.3552, E13.3553, E13.3559, E13.359, E13.3591, E13.3592, E13.3593, E13.3599, E13.36, E13.39, E13.40, E13.41, E13.42, E13.43, E13.44, E13.49, E13.51, E13.52, E13.59, E13.610, E13.618, E13.620, E13.621, E13.622, E13.628, E13.630, E13.638, E13.641, E13.649, E13.65, E13.69, E13.8, E13.9 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Glaucoma 
+						 2 years 
+						 H40.011, H40.012, H40.013, H40.019, H40.021, H40.022, H40.023, H40.029, H40.041, H40.042, H40.043, H40.049, H40.051, H40.052, H40.053, H40.059, H40.10X0, H40.10X1, H40.10X2, H40.10X3, H40.10X4, H40.1110, H40.1111, H40.1112, H40.1113, H40.1114, H40.1120, H40.1121, H40.1122, H40.1123, H40.1124, H40.1130, H40.1131, H40.1132, H40.1133, H40.1134, H40.1190, H40.1191, H40.1192, H40.1193, H40.1194, H40.11X0, H40.11X1, H40.11X2, H40.11X3, H40.11X4, H40.1210, H40.1211, H40.1212, H40.1213, H40.1214, H40.1220, H40.1221, H40.1222, H40.1223, H40.1224, H40.1230, H40.1231, H40.1232, H40.1233, H40.1234, H40.1290, H40.1291, H40.1292, H40.1293, H40.1294, H40.1310, H40.1311, H40.1312, H40.1313, H40.1314, H40.1320, H40.1321, H40.1322, H40.1323, H40.1324, H40.1330, H40.1331, H40.1332, H40.1333, H40.1334, H40.1390, H40.1391, H40.1392, H40.1393, H40.1394, H40.1410, H40.1411, H40.1412, H40.1413, H40.1414, H40.1420, H40.1421, H40.1422, H40.1423, H40.1424, H40.1430, H40.1431, H40.1432, H40.1433, H40.1434, H40.1490, H40.1491, H40.1492, H40.1493, H40.1494, H40.151, H40.152, H40.153, H40.159, H40.20X0, H40.20X1, H40.20X2, H40.20X3, H40.20X4, H40.211, H40.212, H40.213, H40.219, H40.2210, H40.2211, H40.2212, H40.2213, H40.2214, H40.2220, H40.2221, H40.2222, H40.2223, H40.2224, H40.2230, H40.2231, H40.2232, H40.2233, H40.2234, H40.2290, H40.2291, H40.2292, H40.2293, H40.2294, H40.231, H40.232, H40.233, H40.239, H40.241, H40.242, H40.243, H40.249, H40.30X0, H40.30X1, H40.30X2, H40.30X3, H40.30X4, H40.31X0, H40.31X1, H40.31X2, H40.31X3, H40.31X4, H40.32X0, H40.32X1, H40.32X2, H40.32X3, H40.32X4, H40.33X0, H40.33X1, H40.33X2, H40.33X3, H40.33X4, H40.40X0, H40.40X1, H40.40X2, H40.40X3, H40.40X4, H40.41X0, H40.41X1, H40.41X2, H40.41X3, H40.41X4, H40.42X0, H40.42X1, H40.42X2, H40.42X3, H40.42X4, H40.43X0, H40.43X1, H40.43X2, H40.43X3, H40.43X4, H40.50X0, H40.50X1, H40.50X2, H40.50X3, H40.50X4, H40.51X0, H40.51X1, H40.51X2, H40.51X3, H40.51X4, H40.52X0, H40.52X1, H40.52X2, H40.52X3, H40.52X4, H40.53X0, H40.53X1, H40.53X2, H40.53X3, H40.53X4, H40.60X0, H40.60X1, H40.60X2, H40.60X3, H40.60X4, H40.61X0, H40.61X1, H40.61X2, H40.61X3, H40.61X4, H40.62X0, H40.62X1, H40.62X2, H40.62X3, H40.62X4, H40.63X0, H40.63X1, H40.63X2, H40.63X3, H40.63X4, H40.811, H40.812, H40.813, H40.819, H40.821, H40.822, H40.823, H40.829, H40.831, H40.832, H40.833, H40.839, H40.89, H40.9, H42, H44.511, H44.512, H44.513, H44.519, H47.231, H47.232, H47.233, H47.239, Q15.0 (any DX on the claim) 
+						 At least 1 HOP or carrier claim with DX codes 
+						 Heart Failure and Non-Ischemic Heart Disease 
+						 2 years 
+						 I09.81, I11.0, I13.0, I13.2, I42.0, I42.5, I42.6, I42.7, I42.8, I43, I50.1, I50.20, I50.21, I50.22, I50.23, I50.30, I50.31, I50.32, I50.33, I50.40, I50.41, I50.42, I50.43, I50.810, I50.811, I50.812, I50.813, I50.814, I50.82, I50.83, I50.84, I50.89, I50.9, P29.0 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Hip/Pelvic Fracture 
+						 1 year 
+						 M80.051A, M80.052A, M80.059A, M80.0B1A, M80.0B2A, M80.0B9A, M80.851A, M80.852A, M80.859A, M80.8B1A, M80.8B2A, M80.8B9A, M84.350A, M84.351A, M84.352A, M84.353A, M84.359A, M84.451A, M84.452A, M84.453A, M84.459A, M84.550A, M84.551A, M84.552A, M84.553A, M84.559A, M84.650A, M84.651A, M84.652A, M84.653A, M84.659A, M97.01XA, M97.02XA, S32.301A, S32.301B, S32.302A, S32.302B, S32.309A, S32.309B, S32.311A, S32.311B, S32.312A, S32.312B, S32.313A, S32.313B, S32.314A, S32.314B, S32.315A, S32.315B, S32.316A, S32.316B, S32.391A, S32.391B, S32.392A, S32.392B, S32.399A, S32.399B, S32.401A, S32.401B, S32.402A, S32.402B, S32.409A, S32.409B, S32.411A, S32.411B, S32.412A, S32.412B, S32.413A, S32.413B, S32.414A, S32.414B, S32.415A, S32.415B, S32.416A, S32.416B, S32.421A, S32.421B, S32.422A, S32.422B, S32.423A, S32.423B, S32.424A, S32.424B, S32.425A, S32.425B, S32.426A, S32.426B, S32.431A, S32.431B, S32.432A, S32.432B, S32.433A, S32.433B, S32.434A, S32.434B, S32.435A, S32.435B, S32.436A, S32.436B, S32.441A, S32.441B, S32.442A, S32.442B, S32.443A, S32.443B, S32.444A, S32.444B, S32.445A, S32.445B, S32.446A, S32.446B, S32.451A, S32.451B, S32.452A, S32.452B, S32.453A, S32.453B, S32.454A, S32.454B, S32.455A, S32.455B, S32.456A, S32.456B, S32.461A, S32.461B, S32.462A, S32.462B, S32.463A, S32.463B, S32.464A, S32.464B, S32.465A, S32.465B, S32.466A, S32.466B, S32.471A, S32.471B, S32.472A, S32.472B, S32.473A, S32.473B, S32.474A, S32.474B, S32.475A, S32.475B, S32.476A, S32.476B, S32.481A, S32.481B, S32.482A, S32.482B, S32.483A, S32.483B, S32.484A, S32.484B, S32.485A, S32.485B, S32.486A, S32.486B, S32.491A, S32.491B, S32.492A, S32.492B, S32.499A, S32.499B, S32.501A, S32.501B, S32.502A, S32.502B, S32.509A, S32.509B, S32.511A, S32.511B, S32.512A, S32.512B, S32.519A, S32.519B, S32.591A, S32.591B, S32.592A, S32.592B, S32.599A, S32.599B, S32.601A, S32.601B, S32.602A, S32.602B, S32.609A, S32.609B, S32.611A, S32.611B, S32.612A, S32.612B, S32.613A, S32.613B, S32.614A, S32.614B, S32.615A, S32.615B, S32.616A, S32.616B, S32.691A, S32.691B, S32.692A, S32.692B, S32.699A, S32.699B, S32.810A, S32.810B, S32.811A, S32.811B, S32.82XA, S32.82XB, S32.89XA, S32.89XB, S32.9XXA, S32.9XXB, S72.001A, S72.001B, S72.001C, S72.002A, S72.002B, S72.002C, S72.009A, S72.009B, S72.009C, S72.011A, S72.011B, S72.011C, S72.012A, S72.012B, S72.012C, S72.019A, S72.019B, S72.019C, S72.021A, S72.021B, S72.021C, S72.022A, S72.022B, S72.022C, S72.023A, S72.023B, S72.023C, S72.024A, S72.024B, S72.024C, S72.025A, S72.025B, S72.025C, S72.026A, S72.026B, S72.026C, S72.031A, S72.031B, S72.031C, S72.032A, S72.032B, S72.032C, S72.033A, S72.033B, S72.033C, S72.034A, S72.034B, S72.034C, S72.035A, S72.035B, S72.035C, S72.036A, S72.036B, S72.036C, S72.041A, S72.041B, S72.041C, S72.042A, S72.042B, S72.042C, S72.043A, S72.043B, S72.043C, S72.044A, S72.044B, S72.044C, S72.045A, S72.045B, S72.045C, S72.046A, S72.046B, S72.046C, S72.051A, S72.051B, S72.051C, S72.052A, S72.052B, S72.052C, S72.059A, S72.059B, S72.059C, S72.061A, S72.061B, S72.061C, S72.062A, S72.062B, S72.062C, S72.063A, S72.063B, S72.063C, S72.064A, S72.064B, S72.064C, S72.065A, S72.065B, S72.065C, S72.066A, S72.066B, S72.066C, S72.091A, S72.091B, S72.091C, S72.092A, S72.092B, S72.092C, S72.099A, S72.099B, S72.099C, S72.101A, S72.101B, S72.101C, S72.102A, S72.102B, S72.102C, S72.109A, S72.109B, S72.109C, S72.111A, S72.111B, S72.111C, S72.112A, S72.112B, S72.112C, S72.113A, S72.113B, S72.113C, S72.114A, S72.114B, S72.114C, S72.115A, S72.115B, S72.115C, S72.116A, S72.116B, S72.116C, S72.121A, S72.121B, S72.121C, S72.122A, S72.122B, S72.122C, S72.123A, S72.123B, S72.123C, S72.124A, S72.124B, S72.124C, S72.125A, S72.125B, S72.125C, S72.126A, S72.126B, S72.126C, S72.131A, S72.131B, S72.131C, S72.132A, S72.132B, S72.132C, S72.133A, S72.133B, S72.133C, S72.134A, S72.134B, S72.134C, S72.135A, S72.135B, S72.135C, S72.136A, S72.136B, S72.136C, S72.141A, S72.141B, S72.141C, S72.142A, S72.142B, S72.142C, S72.143A, S72.143B, S72.143C, S72.144A, S72.144B, S72.144C, S72.145A, S72.145B, S72.145C, S72.146A, S72.146B, S72.146C, S72.21XA, S72.21XB, S72.21XC, S72.22XA, S72.22XB, S72.22XC, S72.23XA, S72.23XB, S72.23XC, S72.24XA, S72.24XB, S72.24XC, S72.25XA, S72.25XB, S72.25XC, S72.26XA, S72.26XB, S72.26XC, S79.001A, S79.002A, S79.009A, S79.011A, S79.012A, S79.019A, S79.091A, S79.092A, S79.099A (any DX on the claim) 
+						 At least 1 inpatient, SNF, HOP or carrier claim with DX codes 
+						 Hyperlipidemia 
+						 2 years 
+						 E78.0, E78.00, E78.01, E78.1, E78.2, E78.3, E78.4, E78.41, E78.49, E78.5 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Hypertension 
+						 2 years 
+						 H35.031, H35.032, H35.033, H35.039, I10, I11.0, I11.9, I12.0, I12.9, I13.0, I13.10, I13.11, I13.2, I15.0, I15.1, I15.2, I15.8, I15.9, I1A.0, I67.4, N26.2 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Hypothyroidism 
+						 2 years 
+						 E00.0, E00.1, E00.2, E00.9, E01.8, E02, E03.0, E03.1, E03.2, E03.3, E03.4, E03.8, E03.9, E89.0 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Ischemic Heart Disease 
+						 2 years 
+						 I20.0, I20.1, I20.2, I20.8, I20.81, I20.89, I24.0, I24.1, I24.8, I24.81, I24.89, I25.10, I25.110, I25.111, I25.112, I25.118, I25.119, I25.3, I25.41, I25.42, I25.5, I25.6, I25.700, I25.701, I25.702, I25.708, I25.710, I25.711, I25.712, I25.718, I25.719, I25.720, I25.721, I25.722, I25.728, I25.729, I25.730, I25.731, I25.732, I25.738, I25.739, I25.750, I25.751, I25.752, I25.758, I25.759, I25.760, I25.761, I25.762, I25.768, I25.769, I25.790, I25.791, I25.792, I25.798, I25.799, I25.810, I25.811, I25.812, I25.82, I25.83, I25.84, I25.85, I25.89, I25.9 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Non-Alzheimer's Dementia 
+						 2 years 
+						 F01.50, F01.51, F01.511, F01.518, F01.52, F01.53, F01.54, F01.A0, F01.A11, F01.A18, F01.A2, F01.A3, F01.A4, F01.B0, F01.B11, F01.B18, F01.B2, F01.B3, F01.B4, F01.C0, F01.C11, F01.C18, F01.C2, F01.C3, F01.C4, F02.80, F02.81, F02.811, F02.818, F02.82, F02.83, F02.84, F02.A0, F02.A11, F02.A18, F02.A2, F02.A3, F02.A4, F02.B0, F02.B11, F02.B18, F02.B2, F02.B3, F02.B4, F02.C0, F02.C11, F02.C18, F02.C2, F02.C3, F02.C4, F03.90, F03.91, F03.911, F03.918, F03.92, F03.93, F03.94, F03.A0, F03.A11, F03.A18, F03.A2, F03.A3, F03.A4, F03.B0, F03.B11, F03.B18, F03.B2, F03.B3, F03.B4, F03.C0, F03.C11, F03.C18, F03.C2, F03.C3, F03.C4, F05, G13.8, G31.01, G31.09, G31.1, G31.2, G31.83, G94, R41.81 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Osteoporosis With or Without Pathological Fracture 
+						 2 years 
+						 M80.00XA, M80.011A, M80.012A, M80.019A, M80.021A, M80.022A, M80.029A, M80.031A, M80.032A, M80.039A, M80.041A, M80.042A, M80.049A, M80.051A, M80.052A, M80.059A, M80.061A, M80.062A, M80.069A, M80.071A, M80.072A, M80.079A, M80.08XA, M80.0AXA, M80.0B1A, M80.0B2A, M80.0B9A, M80.80XA, M80.811A, M80.812A, M80.819A, M80.821A, M80.822A, M80.829A, M80.831A, M80.832A, M80.839A, M80.841A, M80.842A, M80.849A, M80.851A, M80.852A, M80.859A, M80.861A, M80.862A, M80.869A, M80.871A, M80.872A, M80.879A, M80.88XA, M80.8AXA, M80.8B1A, M80.8B2A, M80.8B9A, M81.0, M81.6, M81.8 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Parkinson's Disease and Secondary Parkinsonism 
+						 2 years 
+						 G20, G20.A1, G20.A2, G20.B1, G20.B2, G20.C, G21.11, G21.19, G21.3, G21.4, G21.8, G21.9, G31.83 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/Carrier claims with DX codes 
+						 Pneumonia, All-cause  
+						 1 year 
+						 A01.03, A02.22, A06.5, A20.2, A21.2, A22.1, A31.0, A37.01, A37.11, A37.81, A37.91, A40.3, A42.0, A43.0, A48.1, A50.04, A54.84, B01.2, B05.2, B06.81, B37.1, B38.0, B38.2, B39.0, B39.2, B40.0, B40.2, B41.0, B58.3, B59, B66.4, B67.1, B77.81, B95.3, B96.0, B96.1, J09.X1, J10.00, J10.01, J10.08, J11.00, J11.08, J12.0, J12.1, J12.2, J12.3, J12.81, J12.82, J12.89, J12.9, J13, J14, J15.0, J15.1, J15.20, J15.211, J15.212, J15.29, J15.3, J15.4, J15.5, J15.6, J15.61, J15.69, J15.7, J15.8, J15.9, J16.0, J16.8, J17, J18.0, J18.1, J18.2, J18.8, J18.9, J20.0, J84.111, J84.116, J84.117, J84.178, J84.2, J85.1, J95.851, P23.0, P23.1, P23.2, P23.3, P23.4, P23.5, P23.6, P23.8, P23.9, Z87.01 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Rheumatoid Arthritis/Osteoarthritis 
+						 2 years 
+						 L40.50, L40.51, L40.54, L40.59, M05.00, M05.011, M05.012, M05.019, M05.021, M05.022, M05.029, M05.031, M05.032, M05.039, M05.041, M05.042, M05.049, M05.051, M05.052, M05.059, M05.061, M05.062, M05.069, M05.071, M05.072, M05.079, M05.09, M05.10, M05.111, M05.112, M05.119, M05.121, M05.122, M05.129, M05.131, M05.132, M05.139, M05.141, M05.142, M05.149, M05.151, M05.152, M05.159, M05.161, M05.162, M05.169, M05.171, M05.172, M05.179, M05.19, M05.20, M05.211, M05.212, M05.219, M05.221, M05.222, M05.229, M05.231, M05.232, M05.239, M05.241, M05.242, M05.249, M05.251, M05.252, M05.259, M05.261, M05.262, M05.269, M05.271, M05.272, M05.279, M05.29, M05.30, M05.311, M05.312, M05.319, M05.321, M05.322, M05.329, M05.331, M05.332, M05.339, M05.341, M05.342, M05.349, M05.351, M05.352, M05.359, M05.361, M05.362, M05.369, M05.371, M05.372, M05.379, M05.39, M05.40, M05.411, M05.412, M05.419, M05.421, M05.422, M05.429, M05.431, M05.432, M05.439, M05.441, M05.442, M05.449, M05.451, M05.452, M05.459, M05.461, M05.462, M05.469, M05.471, M05.472, M05.479, M05.49, M05.50, M05.511, M05.512, M05.519, M05.521, M05.522, M05.529, M05.531, M05.532, M05.539, M05.541, M05.542, M05.549, M05.551, M05.552, M05.559, M05.561, M05.562, M05.569, M05.571, M05.572, M05.579, M05.59, M05.60, M05.611, M05.612, M05.619, M05.621, M05.622, M05.629, M05.631, M05.632, M05.639, M05.641, M05.642, M05.649, M05.651, M05.652, M05.659, M05.661, M05.662, M05.669, M05.671, M05.672, M05.679, M05.69, M05.70, M05.711, M05.712, M05.719, M05.721, M05.722, M05.729, M05.731, M05.732, M05.739, M05.741, M05.742, M05.749, M05.751, M05.752, M05.759, M05.761, M05.762, M05.769, M05.771, M05.772, M05.779, M05.79, M05.7A, M05.80, M05.811, M05.812, M05.819, M05.821, M05.822, M05.829, M05.831, M05.832, M05.839, M05.841, M05.842, M05.849, M05.851, M05.852, M05.859, M05.861, M05.862, M05.869, M05.871, M05.872, M05.879, M05.89, M05.8A, M05.9, M06.00, M06.011, M06.012, M06.019, M06.021, M06.022, M06.029, M06.031, M06.032, M06.039, M06.041, M06.042, M06.049, M06.051, M06.052, M06.059, M06.061, M06.062, M06.069, M06.071, M06.072, M06.079, M06.08, M06.09, M06.0A, M06.1, M06.20, M06.211, M06.212, M06.219, M06.221, M06.222, M06.229, M06.231, M06.232, M06.239, M06.241, M06.242, M06.249, M06.251, M06.252, M06.259, M06.261, M06.262, M06.269, M06.271, M06.272, M06.279, M06.28, M06.29, M06.30, M06.311, M06.312, M06.319, M06.321, M06.322, M06.329, M06.331, M06.332, M06.339, M06.341, M06.342, M06.349, M06.351, M06.352, M06.359, M06.361, M06.362, M06.369, M06.371, M06.372, M06.379, M06.38, M06.39, M06.80, M06.811, M06.812, M06.819, M06.821, M06.822, M06.829, M06.831, M06.832, M06.839, M06.841, M06.842, M06.849, M06.851, M06.852, M06.859, M06.861, M06.862, M06.869, M06.871, M06.872, M06.879, M06.88, M06.89, M06.8A, M06.9, M08.00, M08.011, M08.012, M08.019, M08.021, M08.022, M08.029, M08.031, M08.032, M08.039, M08.041, M08.042, M08.049, M08.051, M08.052, M08.059, M08.061, M08.062, M08.069, M08.071, M08.072, M08.079, M08.08, M08.09, M08.0A, M08.1, M08.20, M08.211, M08.212, M08.219, M08.221, M08.222, M08.229, M08.231, M08.232, M08.239, M08.241, M08.242, M08.249, M08.251, M08.252, M08.259, M08.261, M08.262, M08.269, M08.271, M08.272, M08.279, M08.28, M08.29, M08.2A, M08.3, M08.40, M08.411, M08.412, M08.419, M08.421, M08.422, M08.429, M08.431, M08.432, M08.439, M08.441, M08.442, M08.449, M08.451, M08.452, M08.459, M08.461, M08.462, M08.469, M08.471, M08.472, M08.479, M08.48, M08.4A, M08.80, M08.811, M08.812, M08.819, M08.821, M08.822, M08.829, M08.831, M08.832, M08.839, M08.841, M08.842, M08.849, M08.851, M08.852, M08.859, M08.861, M08.862, M08.869, M08.871, M08.872, M08.879, M08.88, M08.89, M08.90, M08.911, M08.912, M08.919, M08.921, M08.922, M08.929, M08.931, M08.932, M08.939, M08.941, M08.942, M08.949, M08.951, M08.952, M08.959, M08.961, M08.962, M08.969, M08.971, M08.972, M08.979, M08.98, M08.99, M08.9A, M15.0, M15.1, M15.2, M15.3, M15.4, M15.8, M15.9, M16.0, M16.10, M16.11, M16.12, M16.2, M16.30, M16.31, M16.32, M16.4, M16.50, M16.51, M16.52, M16.6, M16.7, M16.9, M17.0, M17.10, M17.11, M17.12, M17.2, M17.30, M17.31, M17.32, M17.4, M17.5, M17.9, M18.0, M18.10, M18.11, M18.12, M18.2, M18.30, M18.31, M18.32, M18.4, M18.50, M18.51, M18.52, M18.9, M19.011, M19.012, M19.019, M19.021, M19.022, M19.029, M19.031, M19.032, M19.039, M19.041, M19.042, M19.049, M19.071, M19.072, M19.079, M19.09, M19.111, M19.112, M19.119, M19.121, M19.122, M19.129, M19.131, M19.132, M19.139, M19.141, M19.142, M19.149, M19.171, M19.172, M19.179, M19.19, M19.211, M19.212, M19.219, M19.221, M19.222, M19.229, M19.231, M19.232, M19.239, M19.241, M19.242, M19.249, M19.271, M19.272, M19.279, M19.29, M19.90, M19.91, M19.92, M19.93, M45.0, M45.1, M45.2, M45.3, M45.4, M45.5, M45.6, M45.7, M45.8, M45.9, M45.A0, M45.A1, M45.A2, M45.A3, M45.A4, M45.A5, M45.A6, M45.A7, M45.A8, M45.AB, M46.80, M46.81, M46.82, M46.83, M46.84, M46.85, M46.86, M46.87, M46.88, M46.89, M46.90, M46.91, M46.92, M46.93, M46.94, M46.95, M46.96, M46.97, M46.98, M46.99, M47.011, M47.012, M47.013, M47.014, M47.015, M47.016, M47.019, M47.021, M47.022, M47.029, M47.10, M47.11, M47.12, M47.13, M47.14, M47.15, M47.16, M47.20, M47.21, M47.22, M47.23, M47.24, M47.25, M47.26, M47.27, M47.28, M47.811, M47.812, M47.813, M47.814, M47.815, M47.816, M47.817, M47.818, M47.819, M47.891, M47.892, M47.893, M47.894, M47.895, M47.896, M47.897, M47.898, M47.899, M47.9, M48.8X1, M48.8X2, M48.8X3, M48.8X4, M48.8X5, M48.8X6, M48.8X7, M48.8X8, M48.8X9 (any DX on the claim) 
+						 At least 1 inpatient/SNF/HHA claim OR 2 HOP/carrier claims with DX codes 
+						 Stroke/Transient Ischemic Attack 
+						 1 year 
+						 G45.0, G45.1, G45.2, G45.3, G45.8, G45.9, G46.0, G46.1, G46.2, G46.3, G46.4, G46.5, G46.6, G46.7, G46.8, G97.31, G97.32, I60.00, I60.01, I60.02, I60.10, I60.11, I60.12, I60.2, I60.20, I60.21, I60.22, I60.30, I60.31, I60.32, I60.4, I60.50, I60.51, I60.52, I60.6, I60.7, I60.8, I60.9, I61.0, I61.1, I61.2, I61.3, I61.4, I61.5, I61.6, I61.8, I61.9, I62.00, I62.01, I62.02, I62.9, I63.00, I63.011, I63.012, I63.013, I63.019, I63.02, I63.031, I63.032, I63.033, I63.039, I63.09, I63.10, I63.111, I63.112, I63.113, I63.119, I63.12, I63.131, I63.132, I63.133, I63.139, I63.19, I63.20, I63.211, I63.212, I63.213, I63.219, I63.22, I63.231, I63.232, I63.233, I63.239, I63.29, I63.30, I63.311, I63.312, I63.313, I63.319, I63.321, I63.322, I63.323, I63.329, I63.331, I63.332, I63.333, I63.339, I63.341, I63.342, I63.343, I63.349, I63.39, I63.40, I63.411, I63.412, I63.413, I63.419, I63.421, I63.422, I63.423, I63.429, I63.431, I63.432, I63.433, I63.439, I63.441, I63.442, I63.443, I63.449, I63.49, I63.50, I63.511, I63.512, I63.513, I63.519, I63.521, I63.522, I63.523, I63.529, I63.531, I63.532, I63.533, I63.539, I63.541, I63.542, I63.543, I63.549, I63.59, I63.6, I63.8, I63.81, I63.89, I63.9, I67.841, I67.848, I67.89, I97.810, I97.811, I97.820, I97.821 (any DX on the claim)
+EXCLUSION: If any of the qualifying claims have any of the following codes in any DX position then EXCLUDE: S06.340A, S06.341A, S06.342A, S06.343A, S06.344A, S06.345A, S06.346A, S06.347A, S06.348A, S06.34AA, S06.349A, S06.350A, S06.351A, S06.352A, S06.353A, S06.354A, S06.355A, S06.356A, S06.357A, S06.358A, S06.35AA, S06.359A, S06.360A, S06.361A, S06.362A, S06.363A, S06.364A, S06.365A, S06.366A, S06.367A, S06.368A, S06.36AA, S06.369A, S06.370A, S06.371A, S06.372A, S06.373A, S06.374A, S06.375A, S06.376A, S06.377A, S06.378A, S06.37AA, S06.379A, S06.380A, S06.381A, S06.382A, S06.383A, S06.384A, S06.385A, S06.386A, S06.387A, S06.388A, S06.38AA, S06.389A, S06.5X0A, S06.5X1A, S06.5X2A, S06.5X3A, S06.5X4A, S06.5X5A, S06.5X6A, S06.5X7A, S06.5X8A, S06.5XAA, S06.5X9A, S06.6X0A, S06.6X1A, S06.6X2A, S06.6X3A, S06.6X4A, S06.6X5A, S06.6X6A, S06.6X7A, S06.6X8A, S06.6XAA, S06.6X9A, S06.810A, S06.811A, S06.812A, S06.813A, S06.814A, S06.815A, S06.816A, S06.817A, S06.818A, S06.81AA, S06.819A, S06.820A, S06.821A, S06.822A, S06.823A, S06.824A, S06.825A, S06.826A, S06.827A, S06.828A, S06.82AA, S06.829A, S06.890A, S06.891A, S06.892A, S06.893A, S06.894A, S06.895A, S06.896A, S06.897A, S06.898A, S06.89AA, S06.899A, S06.9X0A, S06.9X1A, S06.9X2A, S06.9X3A, S06.9X4A, S06.9X5A, S06.9X6A, S06.9X7A, S06.9X8A, S06.9XAA, S06.9X9A, S06.A0XA, S06.A1XA 
+						 At least 1 inpatient, HOP or carrier claim with DX codes 
+			 ICD-10 codes are effective 10/2015. Researchers may be interested in confirming the code(s) of interest in the accompanying claims data files. 
+			 SNF refers to skilled nursing facility; HHA refers to home health agency; HOP refers to hospital outpatient. Carrier claims refer to claim types 71 and 72 (not durable medical equipment [DME] claim types 81 or 82), and excludes any claims where all service lines contain a Berenson-Eggers Type of Service (BETOS) code equal to D1A, D1B, D1C, D1D, D1E, D1F, D1G (which is DME), or O1A (which is ambulance services). The intent of the algorithm is to exclude claims where the services do not require a licensed health care professional. When two claims are required, they must occur at least one day apart (i.e., different claim through dates [CLM_THRU_DT]). 
+			 27 CCW Chronic Conditions (1999–2021)  
+ There are  27  CCW Chronic Condition categories, available for file years 1999–2021. These reference both ICD-9 and ICD-10 diagnosis codes.
+ All variables listed here are currently available in the  Master Beneficiary Summary File (MBSF)  in the  MBSF_CC_ YYYY   file. The last data year for this file is 2021.
+ They are also available in  Medicare-Medicaid Linked Enrollee Analytic Data Source (MMLEADS) (2006–2012)  and  Medicaid Enrollee Supplemental File (MESF) (1999–2013) .
+ The  Applying Chronic Conditions to Medicaid Data (MAX)  document provides guidance when applying Chronic Conditions or Other Chronic Health, Mental Health, and Potentially Disabling Conditions algorithms to Medicaid data.
+  27 CCW Chronic Conditions Algorithms and Change History 
+ 27 CCW Chronic Conditions Algorithms Reference List 
+    Hidden  
+			 This website was developed under contract with the Centers for Medicare & Medicaid Services (CMS).
+			 © 2013-2026 CCW VRDC.
+							  Home  
+							  Privacy Policy  
+							  Vulnerability Disclosure Policy  
+							  Accessibility  
+							  Copyrights & Disclaimers  
 
 
 ===== https://www2.ccwdata.org/web/guest/condition-categories-other
- 
-     Maintenance - Chronic Conditions Data Warehouse 
-              Chronic Conditions Data Warehouse 
-              Your source for national CMS Medicare and Medicaid research data
-               Skip to Content 
-                  Down for Maintenance 
-                  CCWdata.org is temporarily unavailable due to scheduled
-                  maintenance.
-                  This downtime will occur between
-                    ? ,
-                     ?  
-                  and
-                    ? ,
-                     ?  .
-                  We apologize for any inconvenience and appreciate your
-                  patience.
-              This website was developed under contract with the Centers for
-              Medicare & Medicaid Services (CMS).
-            © 2013- ?  CCW VRDC.
+UNAVAILABLE: site in maintenance at retrieval
+
+===== https://web.archive.org/web/2026id_/https://www2.ccwdata.org/web/guest/condition-categories-other
+
+	 Other Chronic Health, Mental Health, and Potentially Disabling Conditions - Chronic Conditions Data Warehouse 
+		Skip to Main Content
+								 My CCW Login (Authorized Users Only) 
+							  FAQ  
+							  Help  
+									Chronic Conditions Data Warehouse
+						Your source for national CMS Medicare and Medicaid research data
+							  Home  
+							  Medicare Data 							 
+					 Medicare Tables & Reports 
+					 Medicare Charts 
+					 Medicare Enrollment Charts 
+					 Medicare Chronic Condition Charts 
+					 Medicare Part D Charts 
+					 Medicare Other Chronic and Disabling Conditions 
+							  Medicaid Data 							 
+					 Medicaid Tables & Reports 
+					 Medicaid Charts 
+							  Data Dictionaries  
+							  Condition Categories 							 
+					 Chronic  Conditions 
+					 Other Chronic and Disabling Conditions 
+							  Analytic Guidance 							 
+					 User Documentation 
+					 Technical Guidance Documentation 
+					 White Papers 
+					 Conference Presentations 
+							  Pricing 							 
+					 Estimate Study Size - Medicare 
+					 Estimate Study Size - Medicaid 
+					 Data Pricing 
+						 Chronic Conditions Data Warehouse 
+						 Condition Categories 
+					 Other Chronic Health, Mental Health, and Potentially Disabling Conditions 
+			 Other Chronic Health, Mental Health, and Potentially Disabling Conditions
+			 There are  41  other chronic health, mental health, substance abuse, and potentially disabling condition categories available for file years 2000 forward (except where noted). These conditions enhance research of the Medicare-Medicaid dual enrolled population; however, they are available for all non-dually enrolled Medicare and Medicaid beneficiaries as well.
+ All variables listed on this page are currently available in the  Master Beneficiary Summary File (MBSF)  in the  MBSF_OTCC_ YYYY   file.
+ They are also available in  Medicare-Medicaid Linked Enrollee Analytic Data Source (MMLEADS) (2006–2012)  and  Medicaid Enrollee Supplemental File (MESF) (1999–2013) (except where noted) .
+ The  Applying Chronic Conditions to Medicaid Data (MAX)  document provides guidance when applying Chronic Conditions or Other Chronic Health, Mental Health, and Potentially Disabling Conditions algorithms to Medicaid data.
+ The  Comparing the Chronic Pain Algorithm and the Fibromyalgia, Chronic Pain, and Fatigue Algorithm  document introduces the Chronic Pain algorithm developed in 2024, and explains the difference between the  Chronic Pain Algorithm  and the existing  Fibromyalgia, Chronic Pain, and Fatigue Algorithm  It also provides users with recommendations for the use of each algorithm.
+  CCW Other Chronic Conditions Algorithms and Change History 
+ CCW Other Chronic Conditions Algorithms Reference List 
+				 Algorithms 
+				 Reference Period 1  
+				 Valid ICD-9/MS DRG/HCPCS Codes 2  
+				 Valid ICD-10/CPT4/HCPCS Codes 2  
+				 Number/Type of Claims to Qualify 3  
+				 ADHD, Conduct Disorders, and Hyperkinetic Syndrome 
+				 2 Years 
+				 DX 312.00, 312.01, 312.02, 312.03, 312.10, 312.11, 312.12, 312.13, 312.20, 312.21, 312.22, 312.23, 312.30, 312.31, 312.32, 312.33, 312.34, 312.35, 312.39, 312.4, 312.81, 312.82, 312.89, 312.9, 314.00, 314.01, 314.1, 314.2, 314.8, 314.9 (any DX on the claim) 
+				 DX F63.0, F63.1, F63.2, F63.3, F63.81, F63.89, F63.9, F90.0, F90.1, F90.2, F90.8, F90.9, F91.0, F91.1, F91.2, F91.3, F91.8, F91.9 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Alcohol Use Disorders 
+				 2 Years 
+				 DX 291.0, 291.1, 291.2, 291.3, 291.4, 291.5, 291.8, 291.81, 291.82, 291.89, 291.9, 303.00, 303.01, 303.02, 303.90, 303.91, 303.92, 305.00, 305.01, 305.02, 357.5, 425.5, 535.30, 535.31, 571.0, 571.1, 571.2, 571.3, 760.71, 980.0, V65.42, V79.1, E860.0
+ICD-9 Procedure Codes: 94.6, 94.61, 94.62, 94.63, 94.67, 94.68, 94.69 (any DX or procedure on the claim) 
+				 DX F10.10, F10.120, F10.121, F10.129, F10.130, F10.131, F10.132, F10.139, F10.14, F10.150, F10.151, F10.159, F10.180, F10.181, F10.182, F10.188, F10.19, F10.20, F10.220, F10.221, F10.229, F10.230, F10.231, F10.232, F10.239, F10.24, F10.250, F10.251, F10.259, F10.26, F10.27, F10.280, F10.281, F10.282, F10.288, F10.29, F10.920, F10.921, F10.929, F10.930, F10.931, F10.932, F10.939, F10.94, F10.950, F10.951, F10.959, F10.96, F10.97, F10.980, F10.981, F10.982, F10.988, F10.99, G62.1, I42.6, K29.20, K29.21, K70.0, K70.10, K70.11, K70.2, K70.30, K70.31, K70.40, K70.41, K70.9, P04.3, Q86.0, T51.0X1A, T51.0X2A, T51.0X3A, T51.0X4A, Z71.41, Z71.42
+ICD-10 Procedure Codes: HZ2ZZZZ, HZ30ZZZ, HZ31ZZZ, HZ32ZZZ, HZ33ZZZ, HZ34ZZZ, HZ35ZZZ, HZ36ZZZ, HZ37ZZZ, HZ38ZZZ, HZ39ZZZ, HZ3BZZZ, HZ40ZZZ, HZ93ZZZ, HZ96ZZZ (any DX or procedure on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type
+Procedure codes require only one claim to qualify 
+				 Anxiety Disorders 
+				 2 Years 
+				 DX 293.84, 300.00, 300.01, 300.02, 300.09, 300.10, 300.20, 300.21, 300.22, 300.23, 300.29, 300.3, 300.5, 300.89, 300.9, 308.0, 308.1, 308.2, 308.3, 308.4, 308.9, 309.81, 313.0, 313.1, 313.21, 313.22, 313.3, 313.82, 313.83 (any DX on the claim) 
+				 DX F06.4, F40.00, F40.01, F40.02, F40.10, F40.11, F40.210, F40.218, F40.220, F40.228, F40.230, F40.231, F40.232, F40.233, F40.240, F40.241, F40.242, F40.243, F40.248, F40.290, F40.291, F40.298, F40.8, F40.9, F41.0, F41.1, F41.3, F41.8, F41.9, F42, F42.2, F42.3, F42.4, F42.8, F42.9, F43.0, F43.10, F43.11, F43.12, F44.9, F45.8, F48.8, F48.9, F93.8, F99, R45.2, R45.5, R45.6, R45.7 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Autism Spectrum Disorders 
+				 2 Years 
+				 DX 299.0, 299.00, 299.01, 299.1, 299.11, 299.8, 299.80, 299.81, 299.9, 299.90, 299.91 (any DX on the claim) 
+				 DX F84.0, F84.3, F84.5, F84.8, F84.9 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Bipolar Disorder 
+				 2 Years 
+				 DX 296.00, 296.01, 296.02, 296.03, 296.04, 296.05, 296.06, 296.10, 296.11, 296.12, 296.13, 296.14, 296.15, 296.16, 296.40, 296.41, 296.42, 296.43, 296.44, 296.45, 296.46, 296.50, 296.51, 296.52, 296.53, 296.54, 296.55, 296.56, 296.60, 296.61, 296.62, 296.63, 296.64, 296.65, 296.66, 296.7, 296.80, 296.81, 296.82, 296.89, 296.90, 296.99 (any DX on the claim) 
+				 DX F30.10, F30.11, F30.12, F30.13, F30.2, F30.3, F30.4, F30.8, F30.9, F31.0, F31.10, F31.11, F31.12, F31.13, F31.2, F31.30, F31.31, F31.32, F31.4, F31.5, F31.60, F31.61, F31.62, F31.63, F31.64, F31.70, F31.71, F31.72, F31.73, F31.74, F31.75, F31.76, F31.77, F31.78, F31.81, F31.89, F31.9, F33.8, F34.81, F34.89, F34.9, F39 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Cerebral Palsy 
+				 2 Years 
+				 DX 333.71, 343, 343.0, 343.1, 343.2, 343.3, 343.4, 343.8, 343.9 (any DX on the claim) 
+				 DX G80.0, G80.1, G80.2, G80.3, G80.4, G80.8, G80.9 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Chronic Pain 4  
+				 3 Years 
+				 N/A 
+				 DX B02.22, B02.23, C34.10, C34.11, C34.12, C34.90, C34.91, C34.92, C44.01, C44.319, C44.41, C44.42, C82.00, C90.00, D04.39, D57.00, D57.03, D57.09, D57.211, D57.213, D57.218, D57.219, D57.413, D57.418, D57.419, D57.431, D57.432, D57.433, D57.438, D57.439, D57.451, D57.452, D57.453, D57.458, D57.459, D57.813, D57.818, D57.819, E10.610, E11.42, E11.44, E11.49, E11.610, E11.618, G43.011, G43.019, G43.109, G43.111, G43.119, G43.419, G43.709, G43.711, G43.719, G43.811, G43.819, G43.909, G43.911, G43.919, G43.B1, G43.E11, G43.E19, G44.001, G44.021, G44.201, G44.221, G44.301, G44.321, G44.51, G44.52, G50.0, G50.1, G56.01, G56.02, G56.03, G56.41, G56.42, G57.71, G57.72, G62.9, G89.18, G89.21, G89.28, G89.29, G89.4, G90.09, G90.50, G90.511, G90.512, G90.513, G90.519, G90.521, G90.522, G90.529, I20.0, I25.10, I25.110, I25.118, I25.119, I25.5, I25.84, I42.9, I70.213, I70.221, I70.222, I70.223, I70.228, I70.229, I70.321, I70.322, I70.521, I70.522, I70.523, I73.00, I73.9, K74.60, K76.0, K76.89, M05.79, M06.00, M06.0A, M06.9, M10.071, M10.072, M10.079, M10.9, M13.851, M13.852, M13.859, M13.871, M13.872, M13.879, M15.0, M15.9, M16.0, M16.10, M16.11, M16.12, M17.0, M17.10, M17.11, M17.12, M17.30, M17.31, M17.32, M17.9, M18.10, M18.11, M18.12, M19.011, M19.012, M19.019, M19.031, M19.032, M19.039, M19.041, M19.042, M19.049, M19.071, M19.072, M19.079, M19.90, M23.321, M23.322, M23.329, M25.361, M25.362, M25.369, M25.421, M25.422, M25.429, M25.461, M25.462, M25.469, M25.471, M25.472, M25.473, M25.50, M25.511, M25.512, M25.519, M25.521, M25.522, M25.529, M25.531, M25.532, M25.539, M25.541, M25.542, M25.549, M25.551, M25.552, M25.559, M25.561, M25.562, M25.569, M25.571, M25.572, M25.579, M25.59, M25.60, M25.611, M25.612, M25.619, M25.661, M25.662, M25.669, M25.69, M25.78, M32.9, M41.9, M43.16, M43.6, M45.0, M45.AB, M46.1, M47.26, M47.812, M47.814, M47.816, M47.817, M47.896, M48.00, M48.02, M48.06, M48.061, M48.062, M48.07, M48.56XA, M48.56XD, M48.56XG, M48.56XS, M50.32, M50.321, M50.322, M50.323, M51.16, M51.26, M51.36, M51.37, M53.2X7, M53.81, M54.12, M54.16, M54.17, M54.2, M54.30, M54.31, M54.32, M54.40, M54.41, M54.42, M54.5, M54.50, M54.51, M54.59, M54.6, M54.9, M62.49, M70.60, M70.61, M70.62, M71.20, M71.21, M71.22, M71.9, M75.100, M75.101, M75.102, M75.120, M75.121, M75.122, M75.50, M75.51, M75.52, M79.1, M79.10, M79.11, M79.12, M79.18, M79.601, M79.602, M79.604, M79.605, M79.609, M79.621, M79.622, M79.641, M79.642, M79.643, M79.644, M79.645, M79.646, M79.661, M79.662, M79.671, M79.672, M79.673, M79.674, M79.675, M79.676, M79.7, M79.89, M80.00XA, M80.00XD, M80.00XG, M80.00XK, M80.00XP, M80.00XS, M80.08XA, M80.08XD, M80.08XG, M80.08XK, M80.08XP, M80.08XS, M80.0AXA, M80.0AXD, M80.0AXG, M80.0AXK, M80.0AXP, M80.0AXS, M87.9, M96.1, M99.04, M99.05, N18.3, N18.30, N18.31, N18.32, N18.9, N23, N41.0, N41.1, R07.0, R07.2, R07.81, R07.89, R07.9, R10.11, R10.12, R10.13, R10.2, R10.30, R10.31, R10.32, R10.84, R10.9, R30.0, R30.9, R39.82, R51, R51.0, R51.9, R52, S22.41XA, S22.41XB, S22.41XD, S22.41XG, S22.41XK, S22.41XS, S22.42XA, S22.42XB, S22.42XD, S22.42XG, S22.42XK, S22.42XS, S22.49XA, S22.49XB, S22.49XD, S22.49XG, S22.49XK, S22.49XS, S32.010A, S32.010B, S32.010D, S32.010G, S32.010K, S32.010S, S32.020A, S32.020B, S32.020D, S32.020G, S32.020K, S32.020S, S32.030A, S32.030B, S32.030D, S32.030G, S32.030K, S32.030S, S32.040A, S32.040B, S32.040D, S32.040G, S32.040K, S32.040S, S32.050A, S32.050B, S32.050D, S32.050G, S32.050K, S32.050S, S32.10XA, S32.10XB, S32.10XD, S32.10XG, S32.10XK, S32.10XS, S32.591A, S32.591B, S32.591D, S32.591G, S32.591K, S32.591S, S32.592A, S32.592B, S32.592D, S32.592G, S32.592K, S32.592S, S32.599A, S32.599B, S32.599D, S32.599G, S32.599K, S32.599S, S32.810A, S32.810B, S32.810D, S32.810G, S32.810K, S32.810S, S32.82XA, S32.82XB, S32.82XD, S32.82XG, S32.82XK, S32.82XS, S32.89XA, S32.89XB, S32.89XD, S32.89XG, S32.89XK, S32.89XS (any DX on the claim) 
+				 At least 1 claim of any service type 
+				 Cystic Fibrosis and Other Metabolic Developmental Disorders 
+				 2 Years 
+				 DX 243, 255.2, 269.2, 270.1, 270.2, 270.3, 270.4, 270.6, 270.7, 271.1, 277.0, 277.00, 277.01, 277.02, 277.03, 277.09, 277.6, 277.81, 277.85 (any DX on the claim) 
+				 DX D81.810, D84.1, E00.0, E00.1, E00.2, E00.9, E03.0, E03.1, E25.0, E25.8, E25.9, E56.9, E70.0, E70.1, E70.20, E70.21, E70.29, E70.30, E70.310, E70.311, E70.318, E70.319, E70.320, E70.321, E70.328, E70.329, E70.330, E70.331, E70.338, E70.339, E70.39, E70.5, E70.8, E70.81, E70.89, E70.9, E71.0, E71.110, E71.111, E71.118, E71.19, E71.2, E71.310, E71.311, E71.312, E71.313, E71.314, E71.318, E71.32, E71.41, E72.10, E72.11, E72.12, E72.19, E72.20, E72.21, E72.22, E72.23, E72.29, E72.3, E72.4, E72.50, E72.51, E72.59, E72.8, E74.20, E74.21, E74.29, E74.810, E74.818, E74.819, E74.820, E74.829, E74.89, E84.0, E84.11, E84.19, E84.8, E84.9, E88.82 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Depressive Disorders 
+				 2 Years 
+				 DX 296.20, 296.21, 296.22, 296.23, 296.24, 296.25, 296.26, 296.30, 296.31, 296.32, 296.33, 296.34, 296.35, 296.36, 300.4, 311 (any DX on the claim) 
+				 DX F32.0, F32.1, F32.2, F32.3, F32.4, F32.5, F32.89, F32.9, F32.A, F33.0, F33.1, F33.2, F33.3, F33.40, F33.41, F33.42, F33.8, F33.9, F34.1 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Drug Use Disorders 
+				 2 Years 
+				 DX 292.0, 292.11, 292.12, 292.2, 292.81, 292.82, 292.83, 292.84, 292.85, 292.89, 292.9, 304.00, 304.01, 304.02, 304.10, 304.11, 304.12, 304.2, 304.20, 304.21, 304.22, 304.3, 304.30, 304.31, 304.32, 304.4, 304.40, 304.41, 304.42, 304.5, 304.50, 304.51, 304.52, 304.6, 304.60, 304.61, 304.62, 304.7, 304.70, 304.71, 304.72, 304.8, 304.80, 304.81, 304.82, 304.9, 304.90, 304.91, 304.92, 305.2, 305.20, 305.21, 305.22, 305.3, 305.30, 305.31, 305.32, 305.4, 305.40, 305.41, 305.42, 305.5, 305.50, 305.51, 305.52, 305.6, 305.60, 305.61, 305.62, 305.7, 305.70, 305.71, 305.72, 305.8, 305.80, 305.81, 305.82, 305.9, 305.90, 305.91, 305.92, 648.3, 648.30, 648.31, 648.32, 648.33, 648.34, 655.5, 655.50, 655.51, 655.53, 760.72, 760.73, 760.75, 779.5, 965.0, 965.00, 965.01, 965.02, 965.09, V65.42, E850.0, E850.1, E850.2, E854.1, E935.0, E935.1
+ICD-9 Procedure Codes: 94.6, 94.64, 94.65, 94.66, 94.67, 94.68, 94.69 (any DX on the claim) 
+				 DX F11.10, F11.120, F11.121, F11.122, F11.129, F11.13, F11.14, F11.150, F11.151, F11.159, F11.181, F11.182, F11.188, F11.19, F11.20, F11.220, F11.221, F11.222, F11.229, F11.23, F11.24, F11.250, F11.251, F11.259, F11.281, F11.282, F11.288, F11.29, F11.90, F11.920, F11.921, F11.922, F11.929, F11.93, F11.94, F11.950, F11.951, F11.959, F11.981, F11.982, F11.988, F11.99, F12.10, F12.120, F12.121, F12.122, F12.129, F12.13, F12.150, F12.151, F12.159, F12.180, F12.188, F12.19, F12.20, F12.220, F12.221, F12.222, F12.229, F12.250, F12.251, F12.259, F12.280, F12.288, F12.29, F12.90, F12.920, F12.921, F12.922, F12.929, F12.950, F12.951, F12.959, F12.980, F12.988, F12.99, F13.10, F13.120, F13.121, F13.129, F13.130, F13.131, F13.132, F13.139, F13.14, F13.150, F13.151, F13.159, F13.180, F13.181, F13.182, F13.188, F13.19, F13.20, F13.220, F13.221, F13.229, F13.230, F13.231, F13.232, F13.239, F13.24, F13.250, F13.251, F13.259, F13.26, F13.27, F13.280, F13.281, F13.282, F13.288, F13.29, F13.90, F13.920, F13.921, F13.929, F13.930, F13.931, F13.932, F13.939, F13.94, F13.950, F13.951, F13.959, F13.96, F13.97, F13.980, F13.981, F13.982, F13.988, F13.99, F14.10, F14.120, F14.121, F14.122, F14.129, F14.13, F14.14, F14.150, F14.151, F14.159, F14.180, F14.181, F14.182, F14.188, F14.19, F14.20, F14.220, F14.221, F14.222, F14.229, F14.23, F14.24, F14.250, F14.251, F14.259, F14.280, F14.281, F14.282, F14.288, F14.29, F14.90, F14.920, F14.921, F14.922, F14.929, F14.93, F14.94, F14.950, F14.951, F14.959, F14.980, F14.981, F14.982, F14.988, F14.99, F15.10, F15.120, F15.121, F15.122, F15.129, F15.13, F15.14, F15.150, F15.151, F15.159, F15.180, F15.181, F15.182, F15.188, F15.19, F15.20, F15.220, F15.221, F15.222, F15.229, F15.23, F15.24, F15.250, F15.251, F15.259, F15.280, F15.281, F15.282, F15.288, F15.29, F15.90, F15.920, F15.921, F15.922, F15.929, F15.93, F15.94, F15.950, F15.951, F15.959, F15.980, F15.981, F15.982, F15.988, F15.99, F16.10, F16.120, F16.121, F16.122, F16.129, F16.14, F16.150, F16.151, F16.159, F16.180, F16.183, F16.188, F16.19, F16.20, F16.220, F16.221, F16.229, F16.24, F16.250, F16.251, F16.259, F16.280, F16.283, F16.288, F16.29, F16.90, F16.920, F16.921, F16.929, F16.94, F16.950, F16.951, F16.959, F16.980, F16.983, F16.988, F16.99, F17.203, F17.208, F17.209, F17.213, F17.218, F17.219, F17.223, F17.228, F17.229, F17.293, F17.298, F17.299, F18.10, F18.120, F18.121, F18.129, F18.14, F18.150, F18.151, F18.159, F18.17, F18.180, F18.188, F18.19, F18.20, F18.220, F18.221, F18.229, F18.24, F18.250, F18.251, F18.259, F18.27, F18.280, F18.288, F18.29, F18.90, F18.920, F18.921, F18.929, F18.94, F18.950, F18.951, F18.959, F18.97, F18.980, F18.988, F18.99, F19.10, F19.120, F19.121, F19.122, F19.129, F19.130, F19.131, F19.132, F19.139, F19.14, F19.150, F19.151, F19.159, F19.16, F19.17, F19.180, F19.181, F19.182, F19.188, F19.19, F19.20, F19.220, F19.221, F19.222, F19.229, F19.230, F19.231, F19.232, F19.239, F19.24, F19.250, F19.251, F19.259, F19.26, F19.27, F19.280, F19.281, F19.282, F19.288, F19.29, F19.90, F19.920, F19.921, F19.922, F19.929, F19.930, F19.931, F19.932, F19.939, F19.94, F19.950, F19.951, F19.959, F19.96, F19.97, F19.980, F19.981, F19.982, F19.988, F19.99, F55.0, F55.1, F55.2, F55.3, F55.4, F55.8, O35.5XX0, O35.5XX1, O35.5XX2, O35.5XX3, O35.5XX4, O35.5XX5, O35.5XX9, O99.320, O99.321, O99.322, O99.323, O99.324, O99.325, P04.41, P04.49, P96.1, P96.2, T40.0X1A, T40.0X2A, T40.0X3A, T40.0X4A, T40.0X5A, T40.0X5S, T40.1X1A, T40.1X2A, T40.1X3A, T40.1X4A, T40.2X1A, T40.2X2A, T40.2X3A, T40.2X4A, T40.3X1A, T40.3X2A, T40.3X3A, T40.3X4A, T40.3X5A, T40.3X5S, T40.411A, T40.412A, T40.413A, T40.414A, T40.415A, T40.421A, T40.422A, T40.423A, T40.424A, T40.425A, T40.491A, T40.492A, T40.493A, T40.494A, T40.495A, T40.4X1A, T40.4X2A, T40.4X3A, T40.4X4A, T40.601A, T40.602A, T40.603A, T40.604A, T40.691A, T40.692A, T40.693A, T40.694A, T40.711A, T40.721A, T40.7X1A, T40.8X1A, T40.901A, T40.991A, Z71.41, Z71.42, Z71.51, Z71.52, Z71.6 
+ICD-10 Procedure Codes: HZ2ZZZZ, HZ30ZZZ, HZ31ZZZ, HZ32ZZZ, HZ33ZZZ, HZ34ZZZ, HZ35ZZZ, HZ36ZZZ, HZ37ZZZ, HZ38ZZZ, HZ39ZZZ, HZ3BZZZ, HZ40ZZZ, HZ93ZZZ, HZ96ZZZ (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type
+Procedure codes require only one claim to qualify 
+				 Epilepsy 
+				 2 Years 
+				 DX 345, 345.0, 345.00, 345.01, 345.1, 345.10, 345.11, 345.2, 345.3, 345.4, 345.40, 345.41, 345.5, 345.50, 345.51, 345.6, 345.60, 345.61, 345.7, 345.70, 345.71, 345.8, 345.80, 345.81, 345.9, 345.90, 345.91 (any DX on the claim) 
+				 DX G40.001, G40.009, G40.011, G40.019, G40.101, G40.109, G40.111, G40.119, G40.201, G40.209, G40.211, G40.219, G40.301, G40.309, G40.311, G40.319, G40.401, G40.409, G40.411, G40.419, G40.42, G40.501, G40.509, G40.801, G40.802, G40.803, G40.804, G40.811, G40.812, G40.813, G40.814, G40.821, G40.822, G40.823, G40.824, G40.833, G40.834, G40.841, G40.842, G40.843, G40.844, G40.89, G40.901, G40.909, G40.911, G40.919, G40.A01, G40.A09, G40.A11, G40.A19, G40.B01, G40.B09, G40.B11, G40.B19, G40.C01, G40.C09, G40.C11, G40.C19, G93.45 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Fibromyalgia, Chronic Pain and Fatigue 
+				 2 Years 
+				 DX 338.2, 338.21, 338.22, 338.28, 338.29, 338.3, 338.4, 780.7, 780.71, 729.1, 729.2 (any DX on the claim) 
+				 DX G89.21, G89.22, G89.28, G89.29, G89.3, G89.4, M54.10, M54.11, M54.12, M54.13, M54.14, M54.15, M54.16, M54.17, M54.18, M60.80, M60.811, M60.812, M60.819, M60.821, M60.822, M60.829, M60.831, M60.832, M60.839, M60.841, M60.842, M60.849, M60.851, M60.852, M60.859, M60.861, M60.862, M60.869, M60.871, M60.872, M60.879, M60.88, M60.89, M60.9, M79.1, M79.10, M79.11, M79.12, M79.18, M79.2, M79.7, R53.82 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Human Immunodeficiency Virus and/or Acquired Immunodeficiency Syndrome (HIV/AIDS) 5  
+				 2 Years 
+				 DX 042, 042.0, 042.1, 042.2, 042.9, 043, 043.1, 043.2, 043.3, 043.9, 044, 044.0, 044.9, 079.53, 795.71, V08 (any DX on the claim)
+EXCEPTION: 795.71 requires a second qualifying claim that is not 795.71 (a screening code)
+Medicare DRG Codes (old codes used through 09/2007): 488, 489, 490
+MS DRG Codes: 969, 970, 974, 975, 976, 977
+HCC Code*: 1 (HIV/AIDS)
+*CMS Hierarchical Condition Category (HCC) data are obtained from the CMS Integrated Data Repository (IDR). Beneficiaries identified as having this condition due to HCC code will not have an associated "Ever" date. 
+				 DX B20, B97.35, R75, Z21 (any DX on the claim)
+EXCEPTION: R75 requires a second qualifying claim that is not R75 (a screening code)
+MS DRG Codes: 969, 970, 974, 975, 976, 977
+HCC Code*: 1 (HIV/AIDS)
+*CMS Hierarchical Condition Category (HCC) data is obtained from the CMS Integrated Data Repository (IDR). Beneficiaries identified as having this condition due to HCC code will not have an associated "Ever" date. 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Intellectual Disabilities and Related Conditions 
+				 2 Years 
+				 DX 317, 318, 318.0, 318.1, 318.2, 319, 758, 758.0, 758.1, 758.2, 758.3, 758.31, 758.32, 758.33, 758.39, 758.5, 759.7, 759.81, 759.83, 759.89, 760.71 (any DX on the claim) 
+				 DX E78.71, E78.72, F70, F71, F72, F73, F78, F78.A1, F78.A9, F79, P04.3, Q86.0, Q87.1, Q87.11, Q87.19, Q87.2, Q87.3, Q87.5, Q87.81, Q87.83, Q87.84, Q87.85, Q87.86, Q87.89, Q89.7, Q89.8, Q90.0, Q90.1, Q90.2, Q90.9, Q91.0, Q91.1, Q91.2, Q91.3, Q91.4, Q91.5, Q91.6, Q91.7, Q92.0, Q92.1, Q92.2, Q92.5, Q92.61, Q92.62, Q92.7, Q92.8, Q92.9, Q93.0, Q93.1, Q93.2, Q93.3, Q93.4, Q93.5, Q93.51, Q93.52, Q93.59, Q93.7, Q93.81, Q93.88, Q93.89, Q93.9, Q95.2, Q95.3, Q99.2 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Learning Disabilities 
+				 2 Years 
+				 DX 315, 315.00, 315.01, 315.02, 315.09, 315.1, 315.2, 315.31, 315.32, 315.34, 315.35, 315.39, 315.4 (any DX on the claim) 
+				 DX F80.0, F80.1, F80.2, F80.4, F80.81, F80.82, F80.89, F80.9, F81.0, F81.2, F81.81, F81.89, F81.9, F82, H93.25, R48.0 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Leukemias and Lymphomas 
+				 2 Years 
+				 DX 200.0, 200.00, 200.01, 200.02, 200.03, 200.04, 200.05, 200.06, 200.07, 200.08, 200.1, 200.10, 200.11, 200.12, 200.13, 200.14, 200.15, 200.16, 200.17, 200.18, 200.2, 200.20, 200.21, 200.22, 200.23, 200.24, 200.25, 200.26, 200.27, 200.28, 200.3, 200.30, 200.31, 200.32, 200.33, 200.34, 200.35, 200.36, 200.37, 200.38, 200.4, 200.40, 200.41, 200.42, 200.43, 200.44, 200.45, 200.46, 200.47, 200.48, 200.5, 200.50, 200.51, 200.52, 200.53, 200.54, 200.55, 200.56, 200.57, 200.58, 200.6, 200.60, 200.61, 200.62, 200.63, 200.64, 200.65, 200.66, 200.67, 200.68, 200.7, 200.70, 200.71, 200.72, 200.73, 200.74, 200.75, 200.76, 200.77, 200.78, 200.8, 200.80, 200.81, 200.82, 200.83, 200.84, 200.85, 200.86, 200.87, 200.88, 201.0, 201.00, 201.01, 201.02, 201.03, 201.04, 201.05, 201.06, 201.07, 201.08, 201.1, 201.10, 201.11, 201.12, 201.13, 201.14, 201.15, 201.16, 201.17, 201.18, 201.2, 201.20, 201.21, 201.22, 201.23, 201.24, 201.25, 201.26, 201.27, 201.28, 201.4, 201.40, 201.41, 201.42, 201.43, 201.44, 201.45, 201.46, 201.47, 201.48, 201.5, 201.50, 201.51, 201.52, 201.53, 201.54, 201.55, 201.56, 201.57, 201.58, 201.6, 201.60, 201.61, 201.62, 201.63, 201.64, 201.65, 201.66, 201.67, 201.68, 201.7, 201.70, 201.71, 201.72, 201.73, 201.74, 201.75, 201.76, 201.77, 201.78, 201.9, 201.90, 201.91, 201.92, 201.93, 201.94, 201.95, 201.96, 201.97, 201.98, 202.0, 202.00, 202.01, 202.02, 202.03, 202.04, 202.05, 202.06, 202.07, 202.08, 202.1, 202.10, 202.11, 202.12, 202.13, 202.14, 202.15, 202.16, 202.17, 202.18, 202.2, 202.20, 202.21, 202.22, 202.23, 202.24, 202.25, 202.26, 202.27, 202.28, 202.4, 202.40, 202.41, 202.42, 202.43, 202.44, 202.45, 202.46, 202.47, 202.48, 202.7, 202.70, 202.71, 202.72, 202.73, 202.74, 202.75, 202.76, 202.77, 202.78, 202.8, 202.80, 202.81, 202.82, 202.83, 202.84, 202.85, 202.86, 202.87, 202.88, 202.9, 202.90, 202.91, 202.92, 202.93, 202.94, 202.95, 202.96, 202.97, 202.98, 203.1, 203.10, 203.11, 203.12, 204.0, 204.00, 204.01, 204.02, 204.1, 204.10, 204.11, 204.12, 204.2, 204.20, 204.21, 204.22, 204.8, 204.80, 204.81, 204.82, 204.9, 204.90, 204.91, 204.92, 205.0, 205.00, 205.01, 205.02, 205.1, 205.10, 205.11, 205.12, 205.2, 205.20, 205.21, 205.22, 205.3, 205.30, 205.31, 205.32, 205.8, 205.80, 205.81, 205.82, 205.9, 205.90, 205.91, 205.92, 206.0, 206.00, 206.01, 206.02, 206.1, 206.10, 206.11, 206.12, 206.2, 206.20, 206.21, 206.22, 206.2, 206.20, 206.21, 206.22, 206.8, 206.80, 206.81, 206.82, 206.9, 206.90, 206.91, 206.92, 207.0, 207.00, 207.01, 207.02, 207.1, 207.10, 207.11, 207.12, 207.2, 207.20, 207.21, 207.22, 207.8, 207.80, 207.81, 207.82, 208.0, 208.00, 208.01, 208.02, 208.1, 208.10, 208.11, 208.12, 208.2, 208.20, 208.21, 208.22, 208.8, 208.80, 208.81, 208.82, 208.9, 208.90, 208.91, 208.92, V10.6, V10.60, V10.61, V10.62, V10.63, V10.69, V10.7, V10.71, V10.72, V10.79 (any DX on the claim) 
+				 DX C81.00, C81.01, C81.02, C81.03, C81.04, C81.05, C81.06, C81.07, C81.08, C81.09, C81.0A, C81.10, C81.11, C81.12, C81.13, C81.14, C81.15, C81.16, C81.17, C81.18, C81.19, C81.1A, C81.20, C81.21, C81.22, C81.23, C81.24, C81.25, C81.26, C81.27, C81.28, C81.29, C81.2A, C81.30, C81.31, C81.32, C81.33, C81.34, C81.35, C81.36, C81.37, C81.38, C81.39, C81.3A, C81.40, C81.41, C81.42, C81.43, C81.44, C81.45, C81.46, C81.47, C81.48, C81.49, C81.4A, C81.70, C81.71, C81.72, C81.73, C81.74, C81.75, C81.76, C81.77, C81.78, C81.79, C81.7A, C81.90, C81.91, C81.92, C81.93, C81.94, C81.95, C81.96, C81.97, C81.98, C81.99, C81.9A, C82.00, C82.01, C82.02, C82.03, C82.04, C82.05, C82.06, C82.07, C82.08, C82.09, C82.0A, C82.10, C82.11, C82.12, C82.13, C82.14, C82.15, C82.16, C82.17, C82.18, C82.19, C82.1A, C82.20, C82.21, C82.22, C82.23, C82.24, C82.25, C82.26, C82.27, C82.28, C82.29, C82.2A, C82.30, C82.31, C82.32, C82.33, C82.34, C82.35, C82.36, C82.37, C82.38, C82.39, C82.3A, C82.40, C82.41, C82.42, C82.43, C82.44, C82.45, C82.46, C82.47, C82.48, C82.49, C82.4A, C82.50, C82.51, C82.52, C82.53, C82.54, C82.55, C82.56, C82.57, C82.58, C82.59, C82.5A, C82.60, C82.61, C82.62, C82.63, C82.64, C82.65, C82.66, C82.67, C82.68, C82.69, C82.6A, C82.80, C82.81, C82.82, C82.83, C82.84, C82.85, C82.86, C82.87, C82.88, C82.89, C82.8A, C82.90, C82.91, C82.92, C82.93, C82.94, C82.95, C82.96, C82.97, C82.98, C82.99, C82.9A, C83.00, C83.01, C83.02, C83.03, C83.04, C83.05, C83.06, C83.07, C83.08, C83.09, C83.0A, C83.10, C83.11, C83.12, C83.13, C83.14, C83.15, C83.16, C83.17, C83.18, C83.19, C83.1A, C83.30, C83.31, C83.32, C83.33, C83.34, C83.35, C83.36, C83.37, C83.38, C83.39, C83.390, C83.398, C83.3A, C83.50, C83.51, C83.52, C83.53, C83.54, C83.55, C83.56, C83.57, C83.58, C83.59, C83.5A, C83.70, C83.71, C83.72, C83.73, C83.74, C83.75, C83.76, C83.77, C83.78, C83.79, C83.7A, C83.80, C83.81, C83.82, C83.83, C83.84, C83.85, C83.86, C83.87, C83.88, C83.89, C83.8A, C83.90, C83.91, C83.92, C83.93, C83.94, C83.95, C83.96, C83.97, C83.98, C83.99, C83.9A, C84.00, C84.01, C84.02, C84.03, C84.04, C84.05, C84.06, C84.07, C84.08, C84.09, C84.0A, C84.10, C84.11, C84.12, C84.13, C84.14, C84.15, C84.16, C84.17, C84.18, C84.19, C84.1A, C84.40, C84.41, C84.42, C84.43, C84.44, C84.45, C84.46, C84.47, C84.48, C84.49, C84.4A, C84.60, C84.61, C84.62, C84.63, C84.64, C84.65, C84.66, C84.67, C84.68, C84.69, C84.6A, C84.70, C84.71, C84.72, C84.73, C84.74, C84.75, C84.76, C84.77, C84.78, C84.79, C84.7A, C84.7B, C84.90, C84.91, C84.92, C84.93, C84.94, C84.95, C84.96, C84.97, C84.98, C84.99, C84.9A, C84.A0, C84.A1, C84.A2, C84.A3, C84.A4, C84.A5, C84.A6, C84.A7, C84.A8, C84.A9, C84.AA, C84.Z0, C84.Z1, C84.Z2, C84.Z3, C84.Z4, C84.Z5, C84.Z6, C84.Z7, C84.Z8, C84.Z9, C84.ZA, C85.10, C85.11, C85.12, C85.13, C85.14, C85.15, C85.16, C85.17, C85.18, C85.19, C85.1A, C85.20, C85.21, C85.22, C85.23, C85.24, C85.25, C85.26, C85.27, C85.28, C85.29, C85.2A, C85.80, C85.81, C85.82, C85.83, C85.84, C85.85, C85.86, C85.87, C85.88, C85.89, C85.8A, C85.90, C85.91, C85.92, C85.93, C85.94, C85.95, C85.96, C85.97, C85.98, C85.99, C85.9A, C86.0, C86.00, C86.01, C86.1, C86.10, C86.11, C86.2, C86.20, C86.21, C86.3, C86.30, C86.31, C86.4, C86.40, C86.41, C86.5, C86.50, C86.51, C86.6, C86.60, C86.61, C88.4, C88.40, C88.41, C90.10, C90.11, C90.12, C91.00, C91.01, C91.02, C91.10, C91.11, C91.12, C91.30, C91.31, C91.32, C91.40, C91.41, C91.42, C91.50, C91.51, C91.52, C91.60, C91.61, C91.62, C91.A0, C91.A1, C91.A2, C91.Z0, C91.Z1, C91.Z2, C91.90, C91.91, C91.92, C92.00, C92.01, C92.02, C92.10, C92.11, C92.12, C92.20, C92.21, C92.22, C92.30, C92.31, C92.32, C92.40, C92.41, C92.42, C92.50, C92.51, C92.52, C92.60, C92.61, C92.62, C92.90, C92.91, C92.92, C92.A0, C92.A1, C92.A2, C92.Z0, C92.Z1, C92.Z2, C93.00, C93.01, C93.02, C93.10, C93.11, C93.12, C93.30, C93.31, C93.32, C93.Z0, C93.Z1, C93.Z2, C93.90, C93.91, C93.92, C94.00, C94.01, C94.02, C94.20, C94.21, C94.22, C94.30, C94.31, C94.32, C94.80, C94.81, C94.82, C95.00, C95.01, C95.02, C95.10, C95.11, C95.12, C95.90, C95.91, C95.92, C96.4, C96.9, C96.Z, D45, Z85.6, Z85.71, Z85.72, Z85.79 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Liver Disease, Cirrhosis and Other Liver Conditions (except Viral Hepatitis) 
+				 2 Years 
+				 DX 570, 571, 571.0, 571.1, 571.2, 571.3, 571.5, 571.6, 571.8, 571.9, 572, 572.0, 572.1, 572.2, 572.3, 572.4, 572.8, 573, 573.0, 573.4, 573.5, 573.8, 573.9, 576.1, 789.1, V42.7 (any DX on the claim)
+ICD-9-CM Procedure Codes: 42.91, 44.91, 54.91, 96.06 
+				 DX K70.0, K70.10, K70.11, K70.2, K70.30, K70.31, K70.40, K70.41, K70.9, K71.0, K71.11, K71.7, K71.8, K71.9, K72.00, K72.01, K72.10, K72.11, K72.90, K72.91, K74.0, K74.00, K74.01, K74.02, K74.1, K74.2, K74.3, K74.4, K74.5, K74.60, K74.69, K75.0, K75.1, K75.81, K75.89, K75.9, K76.0, K76.1, K76.2, K76.3, K76.5, K76.6, K76.7, K76.81, K76.82, K76.89, K76.9, K77, K80.30, K80.31, K80.32, K80.33, K80.34, K80.35, K80.36, K80.37, K83.0, R16.0, R16.2, Z48.23, Z94.4 (any DX on the claim)
+ICD-10 Procedure Codes: 06L20ZZ, 06L23ZZ, 06L24ZZ, 06L30ZZ, 06L33ZZ, 06L34ZZ, 0DL57DZ, 0DL58DZ, 0D9S30Z, 0D9S3ZZ, 0D9S40Z, 0D9S4ZZ, 0D9T30Z, 0D9T3ZZ, 0D9T40Z, 0D9T4ZZ, 0D9V30Z, 0D9V3ZZ, 0D9V40Z, 0D9V4ZZ, 0D9W30Z, 0D9W3ZZ, 0D9W40Z, 0D9W4ZZ, 0W9F30Z, 0W9F3ZZ, 0W9F40Z, 0W9F4ZZ, 0W9G30Z, 0W9G3ZZ, 0W9G40Z, 0W9G4ZZ, 0W9J30Z, 0W9J3ZZ 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type
+Procedures must have at least one associated liver disease diagnosis on claim 
+				 Migraine and Other Chronic Headache 
+				 2 Years 
+				 DX 339, 339.0, 339.00, 339.01, 339.02, 339.03, 339.04, 339.05, 339.09, 339.1, 339.10, 339.11, 339.12, 339.2, 339.20, 339.21, 339.22, 339.3, 339.4, 339.41, 339.42, 339.43, 339.44, 339.8, 339.81, 339.82, 339.83, 339.84, 339.85, 339.89, 346, 346.0, 346.00, 346.01, 346.02, 346.03, 346.1, 346.10, 346.11, 346.12, 346.13, 346.2, 346.20, 346.21, 346.22, 346.23, 346.3, 346.30, 346.31, 346.32, 346.33, 346.4, 346.40, 346.41, 346.42, 346.43, 346.5, 346.50, 346.51, 346.52, 346.53, 346.6, 346.60, 346.61, 346.62, 346.63, 346.7, 346.70, 346.71, 346.72, 346.73, 346.8, 346.80, 346.81, 346.82, 346.83, 346.9, 346.90, 346.91, 346.92, 346.93 (any DX on the claim) 
+				 DX G43.001, G43.009, G43.011, G43.019, G43.101, G43.109, G43.111, G43.119, G43.401, G43.409, G43.411, G43.419, G43.501, G43.509, G43.511, G43.519, G43.601, G43.609, G43.611, G43.619, G43.701, G43.709, G43.711, G43.719, G43.801, G43.809, G43.811, G43.819, G43.821, G43.829, G43.831, G43.839, G43.901, G43.909, G43.911, G43.919, G43.A0, G43.A1, G43.B0, G43.B1, G43.C0, G43.C1, G43.D0, G43.D1, G43.E01, G43.E09, G43.E11, G43.E19, G44.001, G44.009, G44.011, G44.019, G44.021, G44.029, G44.031, G44.039, G44.041, G44.049, G44.051, G44.059, G44.091, G44.099, G44.1, G44.201, G44.209, G44.211, G44.219, G44.221, G44.229, G44.301, G44.309, G44.311, G44.319, G44.321, G44.329, G44.40, G44.41, G44.51, G44.52, G44.53, G44.59, G44.81, G44.82, G44.83, G44.84, G44.85, G44.86, G44.89 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Mobility Impairments 
+				 2 Years 
+				 DX 334.1, 342.00, 342.01, 342.02, 342.10, 342.11, 342.12, 342.80, 342.81, 342.82, 342.90, 342.91, 342.92, 344, 344.0, 344.00, 344.01, 344.02, 344.03, 344.04, 344.09, 344.1, 344.2, 344.3, 344.30, 344.31, 344.32, 344.4, 344.40, 344.41, 344.42, 344.5, 344.6, 344.60, 344.61, 344.8, 344.81, 344.89, 344.9, 438.20, 438.21, 438.22, 438.30, 438.31, 438.32, 438.40, 438.41, 438.42, 438.50, 438.51, 438.52, 438.53 (any DX on the claim) 
+				 DX G04.1, G11.4, G81.00, G81.01, G81.02, G81.03, G81.04, G81.10, G81.11, G81.12, G81.13, G81.14, G81.90, G81.91, G81.92, G81.93, G81.94, G82.20, G82.21, G82.22, G82.50, G82.51, G82.52, G82.53, G82.54, G83.0, G83.10, G83.11, G83.12, G83.13, G83.14, G83.20, G83.21, G83.22, G83.23, G83.24, G83.30, G83.31, G83.32, G83.33, G83.34, G83.4, G83.5, G83.81, G83.82, G83.83, G83.84, G83.89, G83.9, I69.031, I69.032, I69.033, I69.034, I69.039, I69.041, I69.042, I69.043, I69.044, I69.049, I69.051, I69.052, I69.053, I69.054, I69.059, I69.061, I69.062, I69.063, I69.064, I69.065, I69.069, I69.131, I69.132, I69.133, I69.134, I69.139, I69.141, I69.142, I69.143, I69.144, I69.149, I69.151, I69.152, I69.153, I69.154, I69.159, I69.161, I69.162, I69.163, I69.164, I69.165, I69.169, I69.231, I69.232, I69.233, I69.234, I69.239, I69.241, I69.242, I69.243, I69.244, I69.249, I69.251, I69.252, I69.253, I69.254, I69.259, I69.261, I69.262, I69.263, I69.264, I69.265, I69.269, I69.331, I69.332, I69.333, I69.334, I69.339, I69.341, I69.342, I69.343, I69.344, I69.349, I69.351, I69.352, I69.353, I69.354, I69.359, I69.361, I69.362, I69.363, I69.364, I69.365, I69.369, I69.831, I69.832, I69.833, I69.834, I69.839, I69.841, I69.842, I69.843, I69.844, I69.849, I69.851, I69.852, I69.853, I69.854, I69.859, I69.861, I69.862, I69.863, I69.864, I69.865, I69.869, I69.931, I69.932, I69.933, I69.934, I69.939, I69.941, I69.942, I69.943, I69.944, I69.949, I69.951, I69.952, I69.953, I69.954, I69.959, I69.961, I69.962, I69.963, I69.964, I69.965, I69.969 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Multiple Sclerosis and Transverse Myelitis 
+				 2 Years 
+				 DX 340, 341, 341.0, 341.2, 341.20, 341.21, 341.22, 341.8, 341.9 (any DX on the claim) 
+				 DX G35, G36.0, G36.1, G36.8, G36.9, G37.1, G37.2, G37.3, G37.4, G37.8, G37.81, G37.89, G37.9 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Muscular Dystrophy 
+				 2 Years 
+				 DX 359, 359.0, 359.1 (any DX on the claim) 
+				 DX G71.0, G71.00, G71.01, G71.02, G71.031, G71.032, G71.033, G71.0340, G71.0341, G71.0342, G71.0349, G71.035, G71.038, G71.039, G71.09, G71.11, G71.2, G71.20, G71.21, G71.220, G71.228, G71.29 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Obesity 
+				 2 Years 
+				 DX 278.0, 278.00, 278.01, 278.03, V85.3, V85.30, V85.31, V85.32, V85.33, V85.34, V85.35, V85.36, V85.37, V85.38, V85.39, V85.4, V85.41, V85.42, V85.43, V85.44, V85.45 (any DX on the claim) 
+				 DX E66.01, E66.09, E66.1, E66.2, E66.8, E66.811, E66.812, E66.813, E66.89, E66.9, E88.82, Z68.30, Z68.31, Z68.32, Z68.33, Z68.34, Z68.35, Z68.36, Z68.37, Z68.38, Z68.39, Z68.41, Z68.42, Z68.43, Z68.44, Z68.45, Z68.55, Z68.56 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Opioid Use Disorder (OUD) #1: Overarching Opioid Use Disorder 6  
+				 2 Years 
+				 Any positive result from indicators OUD#2, OUD#3, or OUD#4, below. 
+				 Any positive result from indicators OUD#2, OUD#3, or OUD#4, below. 
+				 OUD #2: Diagnosis- and Procedure-code basis for OUD 6  
+				 2 Years 
+				 DX 304.0, 304.00, 304.01, 304.02, 304.7, 304.70, 304.71, 304.72, 305.5, 305.50, 305.51, 305.52, 760.72, 965.0, 965.00, 965.01, 965.02, 965.09, E85.00, E85.01, E85.02, E93.50, E93.51 (any DX on the claim) 
+				 DX F11.10, F11.120, F11.121, F11.122, F11.129, F11.13, F11.14, F11.150, F11.151, F11.159, F11.181, F11.182, F11.188, F11.19, F11.20, F11.220, F11.221, F11.222, F11.229, F11.23, F11.24, F11.250, F11.251, F11.259, F11.281, F11.282, F11.288, F11.29, F11.90, F11.920, F11.921, F11.922, F11.929, F11.93, F11.94, F11.950, F11.951, F11.959, F11.981, F11.982, F11.988, F11.99, T40.0X1A, T40.0X2A, T40.0X3A, T40.0X4A, T40.1X1A, T40.1X2A, T40.1X3A, T40.1X4A, T40.2X1A, T40.2X2A, T40.2X3A, T40.2X4A, T40.3X1A, T40.3X2A, T40.3X3A, T40.3X4A, T40.3X5A, T40.4X1A, T40.4X2A, T40.4X3A, T40.4X4A, T40.411A, T40.412A, T40.413A, T40.414A, T40.415A, T40.421A, T40.422A, T40.423A, T40.424A, T40.425A, T40.491A, T40.492A, T40.493A, T40.494A, T40.495A, T40.601A, T40.602A, T40.603A, T40.604A, T40.691A, T40.692A, T40.693A, T40.694A 
+ICD-10 Procedure Codes: HZ81ZZZ, HZ84ZZZ, HZ85ZZZ, HZ86ZZZ, HZ91ZZZ, HZ94ZZZ, HZ95ZZZ, HZ96ZZZ (any position on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type with DX (or ICD-10-PCS procedure) codes 
+				 OUD #3: Opioid-related Hospitalizations/ED Visits 6  
+				 2 Years 
+				 DX 304.00, 304.01, 304.02, 304.70, 304.71, 304.72, 305.50, 305.51, 305.52, 965.00, 965.01, 965.02, 965.09, 970.1, E85.00, E85.01, E85.02, E93.50, E93.51, E93.52, E94.01 (any DX on the claim) 
+				 DX F11.10, F11.120, F11.121, F11.122, F11.129, F11.13, F11.14, F11.150, F11.151, F11.159, F11.181, F11.182, F11.188, F11.19, F11.20, F11.220, F11.221, F11.222, F11.229, F11.23, F11.24, F11.250, F11.251, F11.259, F11.281, F11.282, F11.288, F11.29, F11.90, F11.920, F11.921, F11.922, F11.929, F11.93, F11.94, F11.950, F11.951, F11.959, F11.981, F11.982, F11.988, F11.99, T40.0X1A, T40.0X1D, T40.0X1S, T40.0X2A, T40.0X2D, T40.0X2S, T40.0X3A, T40.0X3D, T40.0X3S, T40.0X4A, T40.0X4D, T40.0X4S, T40.0X5A, T40.0X5D, T40.0X5S, T40.1X1A, T40.1X1D, T40.1X1S, T40.1X2A, T40.1X2D, T40.1X2S, T40.1X3A, T40.1X3D, T40.1X3S, T40.1X4A, T40.1X4D, T40.1X4S, T40.2X1A, T40.2X1D, T40.2X1S, T40.2X2A, T40.2X2D, T40.2X2S, T40.2X3A, T40.2X3D, T40.2X3S, T40.2X4A, T40.2X4D, T40.2X4S, T40.2X5A, T40.2X5D, T40.2X5S, T40.3X1A, T40.3X1D, T40.3X1S, T40.3X2A, T40.3X2D, T40.3X2S, T40.3X3A, T40.3X3D, T40.3X3S, T40.3X4A, T40.3X4D, T40.3X4S, T40.3X5A, T40.3X5D, T40.3X5S, T40.4X1A, T40.4X1D, T40.4X1S, T40.4X2A, T40.4X2D, T40.4X2S, T40.4X3A, T40.4X3D, T40.4X3S, T40.4X4A, T40.4X4D, T40.4X4S, T40.4X5A, T40.4X5D, T40.4X5S, T40.411A, T40.411D, T40.411S, T40.412A, T40.412D, T40.412S, T40.413A, T40.413D, T40.413S, T40.414A, T40.414D, T40.414S, T40.415A, T40.415D, T40.415S, T40.421A, T40.421D, T40.421S, T40.422A, T40.422D, T40.422S, T40.423A, T40.423D, T40.423S, T40.424A, T40.424D, T40.424S, T40.425A, T40.425D, T40.425S, T40.491A, T40.491D, T40.491S, T40.492A, T40.492D, T40.492S, T40.493A, T40.493D, T40.493S, T40.494A, T40.494D, T40.494S, T40.495A, T40.495D, T40.495S, T40.601A, T40.601D, T40.601S, T40.602A, T40.602D, T40.602S, T40.603A, T40.603D, T40.603S, T40.604A, T40.604D, T40.604S, T40.605A, T40.605D, T40.605S, T40.691A, T40.691D, T40.691S, T40.692A, T40.692D, T40.692S, T40.693A, T40.693D, T40.693S, T40.694A, T40.694D, T40.694S, T40.695A, T40.695D, T40.695S (any position on the claim) 
+				 One inpatient claim OR one emergency department (ED) claim 
+				 OUD #4: Utilization of Medication-Assisted Therapy (MAT) 6  
+				 2 Years 
+				 Same as ICD-10 
+				 HCPCS codes for MAT:
+G0533, G2067, G2068, G2069, G2070, G2071, G2072, G2073, G2078, G2079, H0020, J0571, J0572, J0573, J0574, J0575, J0577, J0578, J0592, J1230, J2315, Q9991, Q9992, S0109
+NDCs for Buprenorphine:
+00054017613, 00054017713, 00054018813, 00054018913, 00093537856, 00093537956, 00093572056, 00093572156, 00121101830, 00121101930, 00121203630, 00121203830, 00228315303, 00228315403, 00228315473, 00228315503, 00228315567, 00228315573, 00228315603, 00378092393, 00378092493, 00378876516, 00378876593, 00378876616, 00378876693, 00378876716, 00378876793, 00378876816, 00378876893, 00406192303, 00406192403, 00406800503, 00406802003, 00490005100, 00490005130, 00490005160, 00490005190, 00781721606, 00781721664, 00781722706, 00781722764, 00781723806, 00781723864, 00781724906, 00781724964, 00904700906, 00904701006, 00904715404, 00904715504, 12496010001, 12496010002, 12496010005, 12496030001, 12496030002, 12496030005, 12496120201, 12496120203, 12496120401, 12496120403, 12496120801, 12496120803, 12496121201, 12496121203, 12496127802, 12496128302, 12496130602, 12496131002, 16590066605, 16590066630, 16590066705, 16590066730, 16590066790, 16729054910, 16729055010, 23490927003, 23490927006, 23490927009, 35356000407, 35356000430, 35356055530, 35356055630, 42291017430, 42291017530, 42858050103, 42858050203, 42858060103, 42858060203, 43063018407, 43063018430, 43063066706, 43063075306, 43598057901, 43598057930, 43598058001, 43598058030, 43598058101, 43598058130, 43598058201, 43598058230, 47781035503, 47781035511, 47781035603, 47781035611, 47781035703, 47781035711, 47781035803, 47781035811, 49999039507, 49999039515, 49999039530, 49999063830, 49999063930, 50090157100, 50090292400, 50090755900, 50268012811, 50268012815, 50268012911, 50268012915, 50268014411, 50268014415, 50268014511, 50268014515, 50383028793, 50383029493, 50383092493, 50383093093, 50742036401, 50742036430, 50742036501, 50742036530, 50742037201, 50742037204, 50742037301, 50742037304, 50742037401, 50742037404, 50742037501, 50742037504, 50742037601, 50742037604, 50742039701, 50742039730, 50742039801, 50742039830, 51862060830, 52427069203, 52427069211, 52427069403, 52427069411, 52427069803, 52427069811, 52427071203, 52427071211, 52440010014, 52959030430, 52959074930, 53217013830, 53217024630, 54123011430, 54123090730, 54123091430, 54123092930, 54123095730, 54123098630, 54569549600, 54569573900, 54569573901, 54569573902, 54569639900, 54569640800, 54569657800, 54868570700, 54868570701, 54868570702, 54868570703, 54868570704, 54868575000, 55045378403, 55700014730, 55700018430, 55700030230, 55700030330, 55700090130, 58284010014, 58284020801, 58284020891, 58284021601, 58284021691, 58284022401, 58284022491, 58284022801, 58284022891, 58284023201, 58284023291, 58284026401, 58284026491, 58284029601, 58284029691, 59385001201, 59385001230, 59385001401, 59385001430, 59385001601, 59385001630, 60429058611, 60429058630, 60429058633, 60429058711, 60429058730, 60429058733, 60687048111, 60687048121, 60687049211, 60687049221, 60687062611, 60687062665, 60687063711, 60687063765, 62175045232, 62175045832, 62756045983, 62756046083, 62756096983, 62756097083, 63629402801, 63629403401, 63629403402, 63629403403, 63629409201, 63629947501, 63629948201, 63629948301, 63874108403, 63874108503, 63874117303, 65162041503, 65162041603, 66336001630, 68071138003, 68071151003, 68258299103, 68258299903, 68308020230, 68308020830, 70518100700, 70518201400, 70518201401, 70518221700, 70518222600, 70518222602, 70518222603, 70518312900, 70518338900, 71335095001, 71335095002, 71335095003, 71335115401, 71335115402, 71335115403, 71335116301, 71335116302, 71335116303, 71335129601, 71335137801, 71335151401, 71335172501, 71335172502, 71335185801, 71335185802, 72162134403, 72162134503, 72162134603, 72162134703, 72189057960, 72189058060, 72189058090, 72189058260, 72888018230, 72888018330
+NDCs for Naltrexone (see exclusion criteria, below):
+00056001122, 00056001130, 00056001170, 00056007950, 00056008050, 00185003901, 00185003930, 00406009201, 00406009203, 00406117001, 00406117003, 00555090201, 00555090202, 00904703604, 16729008101, 16729008110, 23155088601, 23155088603, 42291063230, 43063059115, 47335032683, 47335032688, 50090286600, 50090492500, 50090682000, 50436010501, 51224020630, 51224020650, 51285027501, 51285027502, 52152010502, 52152010504, 52152010530, 54868557400, 62135024230, 62135024260, 62135024290, 63459030042, 63629104601, 63629104701, 65694010003, 65694010010, 65757030001, 65757030202, 68084029111, 68084029121, 68094085359, 68094085361, 68094085362, 68094085366, 68094090930, 68094090950, 68115068030, 71300660003, 71300661003, 71300664603, 71300664606, 71300664703, 71300664706, 71300664709, 71335248001, 71335248101, 72162156601, 72162156603, 72162215403, 72162231101, 72162231103, 82804019930
+Exclude beneficiaries with NDC for Naltrexone, if the CCW alcohol use disorder indicator = Yes and opioid use disorder DX indicator (from measure #2 OUD using diagnoses) = No; or CCW drug use disorder indicator = Yes and opioid use DX disorder = No 
+				 One or more drug claim with an NDC for opioid-MAT OR one or more non-drug claim with a HCPCS code.
+(NOTE: Naltrexone NDCs are excluded if there is evidence of an alcohol or other drug use disorder where OUD #2 is not present.) 
+				 Other Developmental Delays 
+				 2 Years 
+				 DX 315.5, 315.8, 315.9 (any DX on the claim) 
+				 DX F81.9, F82, F88, F89 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Peripheral Vascular Disease (PVD) 
+				 2 Years 
+				 DX 440.0, 440.1, 440.2, 440.20, 440.21, 440.22, 440.23, 440.29, 440.4, 443.8, 443.81, 443.82, 443.89, 443.9 (any DX on the claim) 
+				 DX E08.51, E08.52, E09.51, E09.52, E10.51, E10.52, E11.51, E11.52, E13.51, E13.52, I70.0, I70.1, I70.201, I70.202, I70.203, I70.208, I70.209, I70.211, I70.212, I70.213, I70.218, I70.219, I70.221, I70.222, I70.223, I70.228, I70.229, I70.231, I70.232, I70.233, I70.234, I70.235, I70.238, I70.239, I70.241, I70.242, I70.243, I70.244, I70.245, I70.248, I70.249, I70.25, I70.291, I70.292, I70.293, I70.298, I70.299, I70.92, I73.81, I73.89, I73.9, I79.1, I79.8 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Personality Disorders 
+				 2 Years 
+				 DX 301.0, 301.10, 301.11, 301.12, 301.13, 301.20, 301.21, 301.22, 301.3, 301.4, 301.50, 301.51, 301.59, 301.6, 301.7, 301.81, 301.82, 301.83, 301.84, 301.89, 301.9 (any DX on the claim) 
+				 DX F21, F34.0, F34.1, F60.0, F60.1, F60.2, F60.3, F60.4, F60.5, F60.6, F60.7, F60.81, F60.89, F60.9, F68.10, F68.11, F68.12, F68.13, F69 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Post-Traumatic Stress Disorder (PTSD) 
+				 2 Years 
+				 DX 309.81 (any DX on the claim) 
+				 DX F43.10, F43.11, F43.12 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Pressure Ulcers and Chronic Ulcers 
+				 2 Years 
+				 DX 707.00, 707.01, 707.02, 707.03, 707.04, 707.05, 707.06, 707.07, 707.09, 707.10, 707.11, 707.12, 707.13, 707.14, 707.15, 707.19, 707.20, 707.22, 707.23, 707.24, 707.25, 707.8, 707.9 (any DX on the claim)
+EXCEPTION: Codes 707.20, 707.22, 707.23, 707.24, 707.25, 707.8, and 707.9 require a qualifying claim from 707.00, 707.01, 707.02, 707.03, 707.04, 707.05, 707.06, 707.07, 707.09 
+				 DX I70.231, I70.232, I70.233, I70.234, I70.235, I70.238, I70.239, I70.241, I70.242, I70.243, I70.244, I70.245, I70.248, I70.249, I70.25, I70.331, I70.332, I70.333, I70.334, I70.335, I70.338, I70.339, I70.341, I70.342, I70.343, I70.344, I70.345, I70.348, I70.349, I70.35, I70.431, I70.432, I70.433, I70.434, I70.435, I70.438, I70.439, I70.441, I70.442, I70.443, I70.444, I70.445, I70.448, I70.449, I70.45, I70.531, I70.532, I70.533, I70.534, I70.535, I70.538, I70.539, I70.541, I70.542, I70.543, I70.544, I70.545, I70.548, I70.549, I70.55, I70.631, I70.632, I70.633, I70.634, I70.635, I70.638, I70.639, I70.641, I70.642, I70.643, I70.644, I70.645, I70.648, I70.649, I70.65, I70.731, I70.732, I70.733, I70.734, I70.735, I70.738, I70.739, I70.741, I70.742, I70.743, I70.744, I70.745, I70.748, I70.749, I70.75, L89.000, L89.001, L89.002, L89.003, L89.004, L89.006, L89.009, L89.010, L89.011, L89.012, L89.013, L89.014, L89.016, L89.019, L89.020, L89.021, L89.022, L89.023, L89.024, L89.026, L89.029, L89.100, L89.101, L89.102, L89.103, L89.104, L89.106, L89.109, L89.110, L89.111, L89.112, L89.113, L89.114, L89.116, L89.119, L89.120, L89.121, L89.122, L89.123, L89.124, L89.126, L89.129, L89.130, L89.131, L89.132, L89.133, L89.134, L89.136, L89.139, L89.140, L89.141, L89.142, L89.143, L89.144, L89.146, L89.149, L89.150, L89.151, L89.152, L89.153, L89.154, L89.156, L89.159, L89.200, L89.201, L89.202, L89.203, L89.204, L89.206, L89.209, L89.210, L89.211, L89.212, L89.213, L89.214, L89.216, L89.219, L89.220, L89.221, L89.222, L89.223, L89.224, L89.226, L89.229, L89.300, L89.301, L89.302, L89.303, L89.304, L89.306, L89.309, L89.310, L89.311, L89.312, L89.313, L89.314, L89.316, L89.319, L89.320, L89.321, L89.322, L89.323, L89.324, L89.326, L89.329, L89.40, L89.41, L89.42, L89.43, L89.44, L89.45, L89.46, L89.500, L89.501, L89.502, L89.503, L89.504, L89.506, L89.509, L89.510, L89.511, L89.512, L89.513, L89.514, L89.516, L89.519, L89.520, L89.521, L89.522, L89.523, L89.524, L89.526, L89.529, L89.600, L89.601, L89.602, L89.603, L89.604, L89.606, L89.609, L89.610, L89.611, L89.612, L89.613, L89.614, L89.616, L89.619, L89.620, L89.621, L89.622, L89.623, L89.624, L89.626, L89.629, L89.810, L89.811, L89.812, L89.813, L89.814, L89.816, L89.819, L89.890, L89.891, L89.892, L89.893, L89.894, L89.896, L89.899, L89.90, L89.91, L89.92, L89.93, L89.94, L89.95, L89.96, L97.101, L97.102, L97.103, L97.104, L97.105, L97.106, L97.108, L97.109, L97.111, L97.112, L97.113, L97.114, L97.115, L97.116, L97.118, L97.119, L97.121, L97.122, L97.123, L97.124, L97.125, L97.126, L97.128, L97.129, L97.201, L97.202, L97.203, L97.204, L97.205, L97.206, L97.208, L97.209, L97.211, L97.212, L97.213, L97.214, L97.215, L97.216, L97.218, L97.219, L97.221, L97.222, L97.223, L97.224, L97.225, L97.226, L97.228, L97.229, L97.301, L97.302, L97.303, L97.304, L97.305, L97.306, L97.308, L97.309, L97.311, L97.312, L97.313, L97.314, L97.315, L97.316, L97.318, L97.319, L97.321, L97.322, L97.323, L97.324, L97.325, L97.326, L97.328, L97.329, L97.401, L97.402, L97.403, L97.404, L97.405, L97.406, L97.408, L97.409, L97.411, L97.412, L97.413, L97.414, L97.415, L97.416, L97.418, L97.419, L97.421, L97.422, L97.423, L97.424, L97.425, L97.426, L97.428, L97.429, L97.501, L97.502, L97.503, L97.504, L97.505, L97.506, L97.508, L97.509, L97.511, L97.512, L97.513, L97.514, L97.515, L97.516, L97.518, L97.519, L97.521, L97.522, L97.523, L97.524, L97.525, L97.526, L97.528, L97.529, L97.801, L97.802, L97.803, L97.804, L97.805, L97.806, L97.808, L97.809, L97.811, L97.812, L97.813, L97.814, L97.815, L97.816, L97.818, L97.819, L97.821, L97.822, L97.823, L97.824, L97.825, L97.826, L97.828, L97.829, L97.901, L97.902, L97.903, L97.904, L97.905, L97.906, L97.908, L97.909, L97.911, L97.912, L97.913, L97.914, L97.915, L97.916, L97.918, L97.919, L97.921, L97.922, L97.923, L97.924, L97.925, L97.926, L97.928, L97.929, L98.411, L98.412, L98.413, L98.414, L98.415, L98.416, L98.418, L98.419, L98.421, L98.422, L98.423, L98.424, L98.425, L98.426, L98.428, L98.429, L98.491, L98.492, L98.493, L98.494, L98.495, L98.496, L98.498, L98.499 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Schizophrenia 
+				 2 Years 
+				 DX 295.00, 295.01, 295.02, 295.03, 295.04, 295.05, 295.10, 295.11, 295.12, 295.13, 295.14, 295.15, 295.20, 295.21, 295.22, 295.23, 295.24, 295.25, 295.30, 295.31, 295.32, 295.33, 295.34, 295.35, 295.40, 295.41, 295.42, 295.43, 295.44, 295.45, 295.50, 295.51, 295.52, 295.53, 295.54, 295.55, 295.60, 295.61, 295.62, 295.63, 295.64, 295.65, 295.70, 295.71, 295.72, 295.73, 295.74, 295.75, 295.80, 295.81, 295.82, 295.83, 295.84, 295.85, 295.90, 295.91, 295.92, 295.93, 295.94, 295.95 (any DX on the claim) 
+				 DX F20.0, F20.1, F20.2, F20.3, F20.5, F20.81, F20.89, F20.9, F25.0, F25.1, F25.8, F25.9 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Schizophrenia and Other Psychotic Disorders 
+				 2 Years 
+				 DX 293.81, 293.82, 295.00, 295.01, 295.02, 295.03, 295.04, 295.05, 295.10, 295.11, 295.12, 295.13, 295.14, 295.15, 295.20, 295.21, 295.22, 295.23, 295.24, 295.25, 295.30, 295.31, 295.32, 295.33, 295.34, 295.35, 295.40, 295.41, 295.42, 295.43, 295.44, 295.45, 295.50, 295.51, 295.52, 295.53, 295.54, 295.55, 295.60, 295.61, 295.62, 295.63, 295.64, 295.65, 295.70, 295.71, 295.72, 295.73, 295.74, 295.75, 295.80, 295.81, 295.82, 295.83, 295.84, 295.85, 295.90, 295.91, 295.92, 295.93, 295.94, 295.95, 297.0, 297.1, 297.2, 297.3, 297.8, 297.9, 298.0, 298.1, 298.2, 298.3, 298.4, 298.8, 298.9 (any DX on the claim) 
+				 DX F06.0, F06.2, F20.0, F20.1, F20.2, F20.3, F20.5, F20.81, F20.89, F20.9, F21, F22, F23, F24, F25.0, F25.1, F25.8, F25.9, F28, F29, F32.3, F33.3, F44.89 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Sensory – Blindness and Visual Impairment 
+				 2 Years 
+				 DX 369, 369.0, 369.00, 369.01, 369.02, 369.03, 369.04, 369.05, 369.06, 369.07, 369.08, 369.1, 369.10, 369.11, 369.12, 369.13, 369.14, 369.15, 369.16, 369.17, 369.18, 369.2, 369.20, 369.21, 369.22, 369.23, 369.24, 369.25, 369.3, 369.4 (any DX on the claim) 
+				 DX H54.0, H54.0X33, H54.0X34, H54.0X35, H54.0X43, H54.0X44, H54.0X45, H54.0X53, H54.0X54, H54.0X55, H54.10, H54.11, H54.1131, H54.1132, H54.1141, H54.1142, H54.1151, H54.1152, H54.12, H54.1213, H54.1214, H54.1215, H54.1223, H54.1224, H54.1225, H54.2, H54.2X11, H54.2X12, H54.2X21, H54.2X22, H54.3, H54.8 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Sensory – Deafness and Hearing Impairment 
+				 2 Years 
+				 DX 389, 389.1, 389.10, 389.11, 389.12, 389.13, 389.14, 389.15, 389.16, 389.17, 389.18, 389.2, 389.20, 389.21, 389.22, 389.7, 389.8, 389.9 (any DX on the claim) 
+				 DX H90.3, H90.41, H90.42, H90.5, H90.6, H90.71, H90.72, H90.8, H90.A21, H90.A22, H90.A31, H90.A32, H91.01, H91.02, H91.03, H91.09, H91.3, H91.8X1, H91.8X2, H91.8X3, H91.8X9, H91.90, H91.91, H91.92, H91.93 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Sickle Cell Disease 6  
+				 5 Years 
+				 282.41, 282.42, 282.60, 282.61, 282.62, 282.63, 282.64, 282.68, 282.69 
+				 DX D57.00, D57.01, D57.02, D57.03, D57.04, D57.09, D57.1, D57.20, D57.211, D57.212, D57.213, D57.214, D57.218, D57.219, D57.40, D57.411, D57.412, D57.413, D57.414, D57.418, D57.419, D57.42, D57.431, D57.432, D57.433, D57.434, D57.438, D57.439, D57.44, D57.451, D57.452, D57.453, D57.454, D57.458, D57.459, D57.80, D57.811, D57.812, D57.813, D57.814, D57.818, D57.819 
+				 3 or more non-drug claims of any service type 
+				 Spina Bifida and Other Congenital Anomalies of the Nervous System 
+				 2 Years 
+				 DX 740.0, 740.1, 740.2, 741, 741.0, 741.00, 741.01, 741.02, 741.03, 741.9, 741.90, 741.91, 741.92, 741.93, 742.0, 742.1, 742.2, 742.3, 742.4, 742.5, 742.51, 742.53, 742.59, 742.8, 742.9 (any DX on the claim) 
+				 DX G90.1, Q00.0, Q00.1, Q00.2, Q01.0, Q01.1, Q01.2, Q01.8, Q01.9, Q02, Q03.0, Q03.1, Q03.8, Q03.9, Q04.0, Q04.1, Q04.2, Q04.3, Q04.4, Q04.5, Q04.6, Q04.8, Q04.9, Q05.0, Q05.1, Q05.2, Q05.3, Q05.4, Q05.5, Q05.6, Q05.7, Q05.8, Q05.9, Q06.0, Q06.1, Q06.2, Q06.3, Q06.4, Q06.8, Q06.9, Q07.00, Q07.01, Q07.02, Q07.03, Q07.8, Q07.9 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Spinal Cord Injury 
+				 2 Years 
+				 DX 349.39, 806.00, 806.01, 806.02, 806.03, 806.04, 806.05, 806.06, 806.07, 806.08, 806.09, 806.10, 806.11, 806.12, 806.13, 806.14, 806.15, 806.16, 806.17, 806.18, 806.19, 806.20, 806.21, 806.22, 806.23, 806.24, 806.25, 806.26, 806.27, 806.28, 806.29, 806.30, 806.31, 806.32, 806.33, 806.34, 806.35, 806.36, 806.37, 806.38, 806.39, 806.4, 806.5, 806.60, 806.61, 806.62, 806.69, 806.70, 806.71, 806.72, 806.79, 806.8, 806.9, 907.2, 952.00, 952.01, 952.02, 952.03, 952.04, 952.05, 952.06, 952.07, 952.08, 952.09, 952.10, 952.11, 952.12, 952.13, 952.14, 952.15, 952.16, 952.17, 952.18, 952.19, 952.2, 952.3, 952.4, 952.8, 952.9 (any DX on the claim) 
+				 DX G96.11, S12.000A, S12.001A, S12.100A, S12.101A, S12.200A, S12.201A, S12.300A, S12.301A, S12.400A, S12.401A, S12.500A, S12.501A, S12.600A, S12.601A, S12.9XXA, S12.000B, S12.001B, S12.100B, S12.101B, S12.200B, S12.201B, S12.300B, S12.301B, S12.400B, S12.401B, S12.500B, S12.501B, S12.600B, S12.601B, S14.0XXA, S14.0XXS, S14.101A, S14.102A, S14.103A, S14.104A, S14.105A, S14.106A, S14.107A, S14.108A, S14.109A, S14.111A, S14.112A, S13.113A, S14.114A, S14.115A, S14.116A, S14.117A, S14.118A, S14.119A, S14.121A, S14.122A, S14.123A, S14.124A, S14.125A, S14.126A, S14.127A, S14.128A, S14.129A, S14.131A, S14.132A, S14.133A, S14.134A, S14.135A, S14.136A, S14.137A, S14.138A, S14.139A, S14.141A, S14.142A, S14.143A, S14.144A, S14.145A, S14.146A, S14.147A, S14.148A, S14.149A, S14.151A, S14.152A, S14.153A, S14.154A, S14.155A, S14.156A, S14.157A, S14.158A, S14.159A, S14.101S, S14.102S, S14.103S, S14.104S, S14.105S, S14.106S, S14.107S, S14.108S, S14.109S, S14.111S, S14.112S, S14.113S, S14.114S, S14.115S, S14.116S, S14.117S, S14.118S, S14.119S, S14.121S, S14.122S, S14.123S, S14.124S, S14.125S, S14.126S, S14.127S, S14.128S, S14.129S, S14.131S, S14.132S, S14.133S, S14.134S, S14.135S, S14.136S, S14.137S, S14.138S, S14.139S, S14.141S, S14.142S, S14.143S, S14.144S, S14.145S, S14.146S, S14.147S, S14.148S, S14.149S, S14.151S, S14.152S, S14.153S, S14.154S, S14.155S, S14.156S, S14.157S, S14.158S, S14.159S, S22.009A, S22.019A, S22.029A, S22.039A, S22.049A, S22.059A, S22.069A, S22.079A, S22.089A, S22.009B, S22.019B, S22.029B, S22.039B, S22.049B, S22.059B, S22.069B, S22.079B, S22.089B, S24.0XXA, S24.101A, S24.102A, S24.103A, S24.104A, S24.109A, S24.111A, S24.112A, S24.113A, S24.114A, S24.119A, S24.131A, S24.132A, S24.133A, S24.134A, S24.139A, S24.141A, S24.142A, S24.143A, S24.144A, S24.149A, S24.151A, S24.152A, S24.153A, S24.154A, S24.159A, S24.0XXS, S24.101S, S24.102S, S24.103S, S24.104S, S24.109S, S24.111S, S24.112S, S24.113S, S24.114S, S24.119S, S24.131S, S24.132S, S24.133S, S24.134S, S24.139S, S24.141S, S24.142S, S24.143S, S24.144S, S24.149S, S24.151S, S24.152S, S24.153S, S24.154S, S24.159S, S32.009A, S32.019A, S32.029A, S32.039A, S32.049A, S32.059A, S32.009B, S32.019B, S32.029B, S32.039B, S32.049B, S32.059B, S32.10XA, S32.2XXA, S32.10XB, S32.2XXB, S34.01XA, S34.02XA, S34.101A, S34.102A, S34.103A, S34.104A, S34.105A, S34.109A, S34.111A, S34.112A, S34.113A, S34.114A, S34.115A, S34.119A, S34.121A, S34.122A, S34.123A, S34.124A, S34.125A, S34.129A, S34.131A, S34.132A, S34.139A, S34.3XXA, S34.01XS, S34.02XS, S34.101S, S34.102S, S34.103S, S34.104S, S34.105S, S34.109S, S34.111S, S34.112S, S34.113S, S34.114S, S34.115S, S34.119S, S34.121S, S34.122S, S34.123S, S34.124S, S34.125S, S34.129S, S34.131S, S34.132S, S34.139S (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Tobacco Use Disorders 
+				 2 Years 
+				 DX 305.1, 649.00, 649.01, 649.02, 649.03, 649.04, 989.84 (any DX on the claim)
+HCPCS Codes: 99406, 99407 
+				 DX F17.200, F17.201, F17.203, F17.208, F17.209, F17.210, F17.211, F17.213, F17.218, F17.219, F17.220, F17.221, F17.223, F17.228, F17.229, F17.290, F17.291, F17.293, F17.298, F17.299, O99.330, O99.331, O99.332, O99.333, O99.334, O99.335, T65.211A, T65.212A, T65.213A, T65.214A, T65.221A, T65.222A, T65.223A, T65.224A, T65.291A, T65.292A, T65.293A, T65.294A, Z72.0 (any DX on the claim)
+HCPCS Codes: 99406, 99407, G9276, G9458 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type
+Procedure codes require only one claim to qualify 
+				 Traumatic Brain Injury and Nonpsychotic Mental Disorders due to Brain Damage 
+				 2 Years 
+				 DX 310, 310.0, 310.1, 310.2, 310.8, 310.81, 310.89, 907, 907.0, 907.1 (any DX on the claim) 
+				 DX F07.0, F07.81, F07.89, F48.2, S04.011S, S04.012S, S04.019S, S04.02XS, S04.031S, S04.032S, S04.039S, S04.041S, S04.042S, S04.049S, S04.10XS, S04.11XS, S04.12XS, S04.20XS, S04.21XS, S04.22XS, S04.30XS, S04.31XS, S04.32XS, S04.40XS, S04.41XS, S04.42XS, S04.50XS, S04.51XS, S04.52XS, S04.60XS, S04.61XS, S04.62XS, S04.70XS, S04.71XS, S04.72XS, S04.811S, S04.812S, S04.819S, S04.891S, S04.892S, S04.899S, S04.9XXS, S06.0X0S, S06.0X1S, S06.0X2S, S06.0X3S, S06.0X4S, S06.0X5S, S06.0X6S, S06.0X7S, S06.0X8S, S06.0XAS, S06.0X9S, S06.1X0S, S06.1X1S, S06.1X2S, S06.1X3S, S06.1X4S, S06.1X5S, S06.1X6S, S06.1X7S, S06.1X8S, S06.1XAS, S06.1X9S, S06.2X0S, S06.2X1S, S06.2X2S, S06.2X3S, S06.2X4S, S06.2X5S, S06.2X6S, S06.2X7S, S06.2X8S, S06.2XAS, S06.2X9S, S06.300S, S06.301S, S06.302S, S06.303S, S06.304S, S06.305S, S06.306S, S06.307S, S06.308S, S06.30AS, S06.309S, S06.310S, S06.311S, S06.312S, S06.313S, S06.314S, S06.315S, S06.316S, S06.317S, S06.318S, S06.31AS, S06.319S, S06.320S, S06.321S, S06.322S, S06.323S, S06.324S, S06.325S, S06.326S, S06.327S, S06.328S, S06.32AS, S06.329S, S06.330S, S06.331S, S06.332S, S06.333S, S06.334S, S06.335S, S06.336S, S06.337S, S06.338S, S06.33AS, S06.339S, S06.340S, S06.341S, S06.342S, S06.343S, S06.344S, S06.345S, S06.346S, S06.347S, S06.348S, S06.34AS, S06.349S, S06.350S, S06.351S, S06.352S, S06.353S, S06.354S, S06.355S, S06.356S, S06.357S, S06.358S, S06.35AS, S06.359S, S06.360S, S06.361S, S06.362S, S06.363S, S06.364S, S06.365S, S06.366S, S06.367S, S06.368S, S06.36AS, S06.369S, S06.370S, S06.371S, S06.372S, S06.373S, S06.374S, S06.375S, S06.376S, S06.377S, S06.378S, S06.37AS, S06.379S, S06.380S, S06.381S, S06.382S, S06.383S, S06.384S, S06.385S, S06.386S, S06.387S, S06.388S, S06.38AS, S06.389S, S06.4X0S, S06.4X1S, S06.4X2S, S06.4X3S, S06.4X4S, S06.4X5S, S06.4X6S, S06.4X7S, S06.4X8S, S06.4XAS, S06.4X9S, S06.5X0S, S06.5X1S, S06.5X2S, S06.5X3S, S06.5X4S, S06.5X5S, S06.5X6S, S06.5X7S, S06.5X8S, S06.5XAS, S06.5X9S, S06.6X0S, S06.6X1S, S06.6X2S, S06.6X3S, S06.6X4S, S06.6X5S, S06.6X6S, S06.6X7S, S06.6X8S, S06.6XAS, S06.6X9S, S06.810S, S06.811S, S06.812S, S06.813S, S06.814S, S06.815S, S06.816S, S06.817S, S06.818S, S06.81AS, S06.819S, S06.820S, S06.821S, S06.822S, S06.823S, S06.824S, S06.825S, S06.826S, S06.827S, S06.828S, S06.82AS, S06.829S, S06.8A0S, S06.8A1S, S06.8A2S, S06.8A3S, S06.8A4S, S06.8A5S, S06.8A6S, S06.8AAS, S06.8A9S, S06.890S, S06.891S, S06.892S, S06.893S, S06.894S, S06.895S, S06.896S, S06.897S, S06.898S, S06.89AS, S06.899S, S06.9X0S, S06.9X1S, S06.9X2S, S06.9X3S, S06.9X4S, S06.9X5S, S06.9X6S, S06.9X7S, S06.9X8S, S06.9XAS, S06.9X9S, S06.A0XS, S06.A1XS (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Viral Hepatitis (General) 7 , including: 
+				 2 Years 
+				 DX 070.0, 070.1, 070.2, 070.20, 070.21, 070.22, 070.23, 070.3, 070.30, 070.31, 070.32, 070.33, 070.4, 070.41, 070.42, 070.43, 070.44, 070.49, 070.5, 070.51, 070.52, 070.53, 070.54, 070.59, 070.6, 070.7, 070.70, 070.71, 070.9, V02.6, V02.60, V02.61, V02.62, V02.69 (any DX on the claim) 
+				 DX B15.0, B15.9, B16.0, B16.1, B16.2, B16.9, B17.0, B17.10, B17.11, B17.2, B17.8, B17.9, B18.0, B18.1, B18.2, B18.8, B18.9, B19.0, B19.10, B19.11, B19.20, B19.21, B19.9, Z22.50, Z22.51, Z22.52, Z22.59 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Hepatitis A 7  
+				 2 Years 
+				 DX 070.0, 070.1 (any DX on the claim) 
+				 DX B15.0, B15.9 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Hepatitis B (acute or unspecified) 7  
+				 2 Years 
+				 DX 070.2, 070.20, 070.21, 070.3, 070.30, 070.31 (any DX on the claim) 
+				 DX B16.0, B16.1, B16.2, B16.9, B19.10, B19.11 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Hepatitis B (chronic) 7  
+				 2 Years 
+				 DX 070.22, 070.23, 070.32, 070.33, V02.61 (any DX on the claim) 
+				 DX B18.0, B18.1, Z22.51 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Hepatitis C (acute) 7  
+				 2 Years 
+				 DX 070.41, 070.51 (any DX on the claim) 
+				 DX B17.10, B17.11 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Hepatitis C (chronic) 7  
+				 2 Years 
+				 DX 070.44, 070.54, V02.62 (any DX on the claim) 
+				 DX B18.2, Z22.52 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Hepatitis C (unspecified) 7  
+				 2 Years 
+				 DX 070.7, 070.70, 070.71 (any DX on the claim) 
+				 DX B19.20, B19.21 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Hepatitis D 7  
+				 2 Years 
+				 DX 070.21, 070.23, 070.31, 070.33, 070.42, 070.52 (any DX on the claim) 
+				 DX B16.0, B16.1, B17.0, B18.0 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+				 Hepatitis E 7  
+				 2 Years 
+				 DX 070.43, 070.53 (any DX on the claim) 
+				 DX B17.2 (any DX on the claim) 
+				 At least 1 inpatient claim OR 2 other non-drug claims of any service type 
+			  CCW data begins in 1999. When working with condition files prior to 2003, conditions with a reference period of two to five years will not have a sufficient length of data to fully meet the condition criteria in some years. 
+			 ICD-10 codes are effective 10/2015; effective dates for ICD-9 codes vary, but are valid through 09/2015. Researchers may be interested in confirming the code(s) of interest in the accompanying claims data files. 
+			 Non-drug claims do not include Medicare Part D Event or Medicaid MAX RX claims. When two claims are required, they must occur at least one day apart (i.e., different claim through dates [CLM_THRU_DT]). 
+			 Chronic Pain-related indicators are available for data years 2018 forward. These indicators are not included in MMLEADS or MESF. 
+			 There are also variables that measure care (largely Medicaid services) provided to individuals with HIV/AIDS. The CCW team does not include these variables in the MBSF or MESF. 
+			 Opioid-related indicators and Sickle Cell Disease-related indicators were added to the 2017 file and have been subsequently populated in the data file for all historical years going back to 2000. 
+			 The Viral Hepatitis (General) condition includes all other types of hepatitis covered; the variables for each specific type of hepatitis are not included in the MBSF. 
+    Hidden  
+			 This website was developed under contract with the Centers for Medicare & Medicaid Services (CMS).
+			 © 2013-2026 CCW VRDC.
+							  Home  
+							  Privacy Policy  
+							  Vulnerability Disclosure Policy  
+							  Accessibility  
+							  Copyrights & Disclaimers  
 
