@@ -788,14 +788,14 @@
       "service_year": 2024,
       "HCPCS_Cd": "99212",
       "n_rows": 92166,
-      "srvcs": 5819454.800000001,
+      "srvcs": 5819454.8,
       "benes": 4176764
     },
     {
       "service_year": 2019,
       "HCPCS_Cd": "99213",
       "n_rows": 471670,
-      "srvcs": 91279533.99999999,
+      "srvcs": 91279534.0,
       "benes": 54303194
     },
     {
@@ -830,42 +830,42 @@
       "service_year": 2024,
       "HCPCS_Cd": "99213",
       "n_rows": 473425,
-      "srvcs": 67927936.10000001,
+      "srvcs": 67927936.1,
       "benes": 45031608
     },
     {
       "service_year": 2019,
       "HCPCS_Cd": "99214",
       "n_rows": 460412,
-      "srvcs": 105661997.5,
+      "srvcs": 105661997.50000001,
       "benes": 58624088
     },
     {
       "service_year": 2020,
       "HCPCS_Cd": "99214",
       "n_rows": 449781,
-      "srvcs": 87626386.6,
+      "srvcs": 87626386.60000001,
       "benes": 50739373
     },
     {
       "service_year": 2021,
       "HCPCS_Cd": "99214",
       "n_rows": 471650,
-      "srvcs": 96343071.4,
+      "srvcs": 96343071.39999999,
       "benes": 55002122
     },
     {
       "service_year": 2022,
       "HCPCS_Cd": "99214",
       "n_rows": 486323,
-      "srvcs": 97229103.7,
+      "srvcs": 97229103.69999999,
       "benes": 56297566
     },
     {
       "service_year": 2023,
       "HCPCS_Cd": "99214",
       "n_rows": 501919,
-      "srvcs": 99338804.10000001,
+      "srvcs": 99338804.1,
       "benes": 57835693
     },
     {
@@ -886,7 +886,7 @@
       "service_year": 2020,
       "HCPCS_Cd": "99215",
       "n_rows": 112782,
-      "srvcs": 7848466.8,
+      "srvcs": 7848466.800000001,
       "benes": 5290227
     },
     {
@@ -6235,15 +6235,15 @@
       "n": 23
     },
     {
-      "designation_type": "High Needs Geographic HPSA",
-      "hpsa_status": "Designated",
-      "component_type": "County Subdivision",
-      "n": 9
-    },
-    {
       "designation_type": "Other Facility",
       "hpsa_status": "Designated",
       "component_type": "Unknown",
+      "n": 9
+    },
+    {
+      "designation_type": "High Needs Geographic HPSA",
+      "hpsa_status": "Designated",
+      "component_type": "County Subdivision",
       "n": 9
     },
     {
