@@ -4,7 +4,9 @@
 
 Medicare's Advanced Primary Care Management codes (G0556, G0557, G0558) started paying primary care practices a monthly per-patient fee in January 2025. The top tier, G0558, is for Qualified Medicare Beneficiaries (QMBs): low-income patients enrolled in both Medicare and Medicaid. This project sizes the APCM opportunity for U.S. primary care and asks whether the practices that see the most QMB patients are ready to bill it.
 
-**Dashboard:** [`dashboard/index.html`](dashboard/index.html), a single self-contained page rebuilt by the pipeline on every run. Download and open it, or serve the repository with GitHub Pages.
+### [Open the live dashboard](https://anandiganguli97.github.io/apcm-opportunity/)
+
+The dashboard is one self-contained page ([`dashboard/index.html`](dashboard/index.html)). The pipeline rebuilds it from the latest results on every run and publishes it to GitHub Pages.
 
 ## Findings
 
@@ -32,7 +34,7 @@ CMS / HRSA / CDC / Census  ->  pipeline/ingest.py   download, hash, filter to Pa
                            ->  dbt (DuckDB)         staging -> intermediate -> marts, with data tests
                            ->  pipeline/export.py   aggregate CSVs in pipeline_output/results
                            ->  pipeline/forecast.py draft readiness score and model card
-                           ->  pipeline/build_dashboard.py  dashboard/index.html
+                           ->  pipeline/build_dashboard.py  dashboard/index.html, published to GitHub Pages
 ```
 
 The source sites are often unreachable from sandboxed environments, so the pipeline runs on GitHub Actions (`.github/workflows/pipeline.yml`): put a job name in `pipeline/JOB` and push. The workflow restores cached Parquet, runs `pipeline/run.sh`, and commits the outputs and dashboard back to the branch. To run locally with network access:
@@ -54,7 +56,7 @@ python pipeline/export.py && python pipeline/forecast.py && python pipeline/buil
 | `seeds/` | Primary care definition, effective-dated code families, the only scenario assumptions (`apcm_scenarios.csv`), policy rule register |
 | `tests/` | dbt data tests |
 | `pipeline_output/` | Manifests with source URLs and SHA-256, profile, results, draft forecast, last run log |
-| `dashboard/` | `template.html` and the built `index.html` |
+| `dashboard/` | `template.html` and the built `index.html` ([live](https://anandiganguli97.github.io/apcm-opportunity/)) |
 | `docs/` | [Methods](docs/methods.md), [assumptions](docs/assumptions_log.md), [data validity](docs/data_validity_report.md), [sources](docs/data_source_inventory.md), [literature](docs/literature_scan.md), [policy evidence](docs/policy_evidence.md), client brief template |
 
 ## Limits

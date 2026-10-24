@@ -48,13 +48,12 @@ CMS Medicare Physician & Other Practitioners (by Provider, by Provider and Servi
 Done:
 - Pipeline green end to end on real data (all dbt models and tests passing). Results in `pipeline_output/results/`, draft forecast in `pipeline_output/forecast/`.
 - Sanity checks recorded in `docs/data_validity_report.md`.
-- Dashboard: `dashboard/index.html`, built by `pipeline/build_dashboard.py` from `dashboard/template.html`, rebuilt and committed by CI after every analyze run. A gzipped practice-level extract is also exported for Tableau.
+- Dashboard: `dashboard/index.html`, built by `pipeline/build_dashboard.py` from `dashboard/template.html`, rebuilt and committed by CI after every analyze run, then force-published to the `gh-pages` branch (live at https://anandiganguli97.github.io/apcm-opportunity/). A gzipped practice-level extract is also exported for Tableau.
 - README and `docs/` describe the real findings and methods.
 - Readiness score and draft 2025 forecast computed (`pipeline/forecast.py`, G2211-launch analog). NOT frozen.
 
 Next:
 1. Anandi to review the pull request to `main`.
 2. Decide whether and when to freeze the forecast (`scripts/freeze_forecast.py`); must happen before CMS publishes the 2025 service-year file. Ask Anandi first.
-3. Optional: enable GitHub Pages on `main` so the dashboard has a public URL.
-4. Optional: synthetic RIF logic-test module (needs the ZIP; download link is behind a JavaScript page).
-5. Optional: locality-adjusted payment using the staged GPCIs.
+3. Optional: synthetic RIF logic-test module (needs the ZIP; download link is behind a JavaScript page).
+4. Optional: locality-adjusted payment using the staged GPCIs.
