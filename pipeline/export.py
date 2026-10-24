@@ -83,6 +83,10 @@ save("practice_extract_tableau", """
            round(apcm_allowed_base_scenario, 0) apcm_allowed_base_scenario
     from mart_practice order by patient_panel_proxy desc""", gz=True)
 
+# NPI -> practice lookup for the app's practice search (primary care clinicians, public NPIs, no names)
+save("npi_practice_lookup", """
+    select npi, practice_id, provider_type, role, state from mart_clinician order by npi""", gz=True)
+
 headline = {
     "analysis_year": int(df("select max(service_year) y from mart_national_trend")["y"][0]),
     "trend": df("select * from mart_national_trend order by service_year").to_dict(orient="records"),

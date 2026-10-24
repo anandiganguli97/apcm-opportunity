@@ -4,9 +4,16 @@
 
 Medicare's Advanced Primary Care Management codes (G0556, G0557, G0558) started paying primary care practices a monthly per-patient fee in January 2025. The top tier, G0558, is for Qualified Medicare Beneficiaries (QMBs): low-income patients enrolled in both Medicare and Medicaid. This project sizes the APCM opportunity for U.S. primary care and asks whether the practices that see the most QMB patients are ready to bill it.
 
-### [Open the live dashboard](https://anandiganguli97.github.io/apcm-opportunity/)
+**[Open the app](https://anandiganguli97-apcm-opportunity-app-l8sdm0.streamlit.app/)** to explore findings, look up a practice, build an implementation plan or estimate APCM payment. **[Read the report](https://anandiganguli97.github.io/apcm-opportunity/)** for the one-page version.
 
-The dashboard is one self-contained page ([`dashboard/index.html`](dashboard/index.html)). The pipeline rebuilds it from the latest results on every run and publishes it to GitHub Pages.
+## What you can do in the app
+
+- **National findings:** the 2019 to 2024 trend, equity cuts by dual-eligible share, rurality, shortage area and social vulnerability, where QMB patients get care, CCM vs APCM payment, the national opportunity and the data's blind spots.
+- **Practice finder:** search 51,000+ primary care practices by name or clinician NPI. Each profile shows what the practice already bills, its patient mix, estimated QMB patients and its draft readiness score.
+- **Implementation planner:** a self-check that turns into a sequenced workplan with owners, tasks and "ready when" checks. Start it from a practice and it shows what that practice's billing already suggests for each area. Every area cites the Federal Register rule behind it, and the plan downloads as Markdown.
+- **Payment calculator:** what APCM could pay a practice at CMS's real 2026 amounts for its Medicare locality, by level, with patient coinsurance and a comparison with CCM.
+
+The app reads the pipeline's committed outputs, so it starts instantly and never downloads source data. It asks for no patient information.
 
 ## Findings
 
@@ -31,18 +38,28 @@ The readiness score is a pre-registered forecast of which practices will show AP
 ## How it works
 
 ```
-CMS / HRSA / CDC / Census  ->  pipeline/ingest.py   download, hash, filter to Parquet (not committed)
-                           ->  pipeline/profile.py  aggregate profile of every staged file
-                           ->  dbt (DuckDB)         staging -> intermediate -> marts, with data tests
-                           ->  pipeline/export.py   aggregate CSVs in pipeline_output/results
-                           ->  pipeline/forecast.py draft readiness score and model card
-                           ->  pipeline/build_dashboard.py  dashboard/index.html, published to GitHub Pages
+CMS / HRSA / CDC / Census  ->  pipeline/ingest.py      download, hash, filter to Parquet (not committed)
+                           ->  pipeline/profile.py     aggregate profile of every staged file
+                           ->  dbt (DuckDB)            staging -> intermediate -> marts, with data tests
+                           ->  pipeline/export.py      aggregate CSVs in pipeline_output/results
+                           ->  pipeline/forecast.py    draft readiness score and model card
+                           ->  pipeline/build_dashboard.py   report page, published to GitHub Pages
+pipeline_output/  ->  app.py (Streamlit)   findings, practice finder, planner, calculator
 ```
 
-The source sites are often unreachable from sandboxed environments, so the pipeline runs on GitHub Actions (`.github/workflows/pipeline.yml`): put a job name in `pipeline/JOB` and push. The workflow restores cached Parquet, runs `pipeline/run.sh`, and commits the outputs and dashboard back to the branch. To run locally with network access:
+The source sites are often unreachable from sandboxed environments, so the pipeline runs on GitHub Actions (`.github/workflows/pipeline.yml`): put a job name in `pipeline/JOB` and push. The workflow restores cached Parquet, runs `pipeline/run.sh`, and commits the outputs and report back to the branch. A second workflow runs the app's tests headless on every change.
+
+Run the app locally:
 
 ```bash
 pip install -r requirements.txt
+streamlit run app.py
+```
+
+Rebuild the data locally (needs network access to the source sites):
+
+```bash
+pip install -r requirements-pipeline.txt
 python pipeline/ingest.py mup && python pipeline/ingest.py reference && python pipeline/ingest.py pfs
 python pipeline/profile.py
 dbt build --project-dir . --profiles-dir .
@@ -58,8 +75,9 @@ python pipeline/export.py && python pipeline/forecast.py && python pipeline/buil
 | `seeds/` | Primary care definition, effective-dated code families, the only scenario assumptions (`apcm_scenarios.csv`), policy rule register |
 | `tests/` | dbt data tests |
 | `pipeline_output/` | Manifests with source URLs and SHA-256, profile, results, draft forecast, last run log |
-| `dashboard/` | `template.html` and the built `index.html` ([live](https://anandiganguli97.github.io/apcm-opportunity/)) |
-| `docs/` | [Methods](docs/methods.md), [assumptions](docs/assumptions_log.md), [data validity](docs/data_validity_report.md), [sources](docs/data_source_inventory.md), [literature](docs/literature_scan.md), [policy evidence](docs/policy_evidence.md), [chronic conditions](docs/chronic_conditions.md), [literature log](docs/literature.csv), client brief template |
+| `app.py`, `src/apcm_opportunity/` | Streamlit app ([live](https://anandiganguli97-apcm-opportunity-app-l8sdm0.streamlit.app/)); `app_tests/` runs it headless |
+| `dashboard/` | Report page: `template.html` and the built `index.html` ([live](https://anandiganguli97.github.io/apcm-opportunity/)) |
+| `docs/` | [Methods](docs/methods.md), [assumptions](docs/assumptions_log.md), [data validity](docs/data_validity_report.md), [sources](docs/data_source_inventory.md), [literature](docs/literature_scan.md), [policy evidence](docs/policy_evidence.md), [chronic conditions](docs/chronic_conditions.md), [literature log](docs/literature.csv), [architecture](docs/architecture.md), [data dictionary](docs/data_dictionary.md), [decision log](docs/decision_log.md), [roadmap](docs/production_roadmap.md), client brief template |
 
 ## Limits
 
@@ -72,5 +90,9 @@ Traditional Medicare Part B professional claims only: no Medicare Advantage, and
 - [CMS APCM overview](https://www.cms.gov/medicare/payment/fee-schedules/physician-fee-schedule/advanced-primary-care-management-services); [CY2025 PFS final rule](https://www.federalregister.gov/documents/2024/12/09/2024-25382/medicare-and-medicaid-programs-cy-2025-payment-policies-under-the-physician-fee-schedule-and-other); [CY2026 PFS final rule](https://www.cms.gov/medicare/payment/fee-schedules/physician/federal-regulation-notices/cms-1832-f).
 - Ganguli et al. [Billing of Medicare's G2211 Longitudinal Care Code Among Traditional Medicare Beneficiaries](https://jamanetwork.com/journals/jama/fullarticle/2845315), *JAMA*, 2026. Agarwal et al. Adoption of Medicare's Transitional Care Management and Chronic Care Management Codes in Primary Care, *JAMA*, 2018.
 - Grumbach et al. [Primary Care Clinician Uptake of Medicare APCM Billing Codes](https://doi.org/10.1007/s11606-026-10949-8), *JGIM*, 2026. Reddy et al. [Use of Chronic Care Management Among Primary Care Clinicians](https://doi.org/10.1370/afm.2573), *Ann Fam Med*, 2020. [Informing APCM: care coordination trends 2020 to 2023](https://doi.org/10.7812/TPP/25.040), *Perm J*, 2025.
+
+## About the build
+
+AI coding assistants (OpenAI Codex and Anthropic Claude Code) were used to speed up implementation. The research question, data choices, assumptions and interpretation are documented with the results, and every number traces to a public file and a script.
 
 CPT codes and descriptions are copyright American Medical Association.

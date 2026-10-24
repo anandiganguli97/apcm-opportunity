@@ -13,7 +13,7 @@ on:
       - "seeds/**"
       - "tests/**"
       - "dbt_project.yml"
-      - "requirements.txt"
+      - "requirements-pipeline.txt"
       - "dashboard/template.html"
       - ".github/workflows/pipeline.yml"
   workflow_dispatch:
@@ -35,7 +35,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: python -m pip install -r requirements.txt
+        run: python -m pip install -r requirements-pipeline.txt
       - name: Restore staged data cache
         id: restore-cache
         uses: actions/cache/restore@v4

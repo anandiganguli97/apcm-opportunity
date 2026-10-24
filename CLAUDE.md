@@ -37,6 +37,7 @@ If the sandbox can reach data.cms.gov (Anandi can allow domains in claude.ai Set
 - `seeds/apcm_scenarios.csv`: the only modeled inputs (share of patients meeting the 2+ chronic condition criterion, capture, consent). Clearly labeled as scenario assumptions.
 - `pipeline/export.py`: writes `pipeline_output/results/*.csv`, `headline.json`, and a gzipped practice-level extract for Tableau.
 - `pipeline/forecast.py`: draft readiness score and 2025 forecast (not frozen). `pipeline/build_dashboard.py`: builds `dashboard/index.html`.
+- `app.py` + `src/apcm_opportunity/dashboard.py`: Streamlit app (findings, practice finder, planner, payment calculator) reading committed `pipeline_output/`; tests in `app_tests/` run headless in `.github/workflows/app-check.yml`. App deps in `requirements.txt`; pipeline deps in `requirements-pipeline.txt`.
 - `docs/`: methods, assumptions log, data source inventory, validity report, literature scan, policy evidence, all written against real results. `client_brief_template.md` is Anandi's.
 
 ## Data sources (all public, real)
