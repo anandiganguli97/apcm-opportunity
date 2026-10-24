@@ -237,7 +237,7 @@ def ingest_reference() -> None:
     manifest.append(meta)
     f.unlink()
 
-    # The three smaller files below use pandas: HRSA ships Windows-1252 text and the
+    # The three smaller files below use pandas: HRSA text has stray non-UTF-8 bytes and the
     # SVI and Census files start with a byte-order mark, which trip DuckDB's sniffer.
     import pandas as pd
 
@@ -247,7 +247,7 @@ def ingest_reference() -> None:
     cols = {"HPSA ID": "hpsa_id", "Designation Type": "designation_type", "HPSA Status": "hpsa_status",
             "HPSA Component Type Description": "component_type",
             "Common State County FIPS Code": "county_fips", "HPSA Score": "hpsa_score", "Rural Status": "rural_status"}
-    frame = pd.read_csv(f, dtype=str, encoding="cp1252", usecols=list(cols)).rename(columns=cols)
+    frame = pd.read_csv(f, dtype=str, encoding="utf-8-sig", encoding_errors="replace", usecols=list(cols)).rename(columns=cols)
     frame.to_parquet(PROC / "hpsa_pc.parquet", index=False)
     meta.update(file="hrsa_hpsa_primary_care", rows_out=len(frame))
     manifest.append(meta)
