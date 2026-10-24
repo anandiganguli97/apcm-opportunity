@@ -1,4 +1,4 @@
-# Literature scan protocol and initial results
+# Literature scan
 
 **Search date:** 2026-10-24. **Status:** rapid scoping scan, not a systematic review.
 
@@ -11,7 +11,7 @@
 
 Search official journal/CMS sources and bibliographies. Include US Medicare claims / uptake analyses, APCM policy evaluations, and predecessor care-management adoption studies. Exclude vendor billing pages as evidence of uptake. Save screening decisions, publication dates, dataset years and outcome definitions in a future `literature.csv`.
 
-## Initial relevant studies
+## Relevant studies
 
 1. Reddy et al. “Use of Chronic Care Management Among Primary Care Clinicians.” *Annals of Family Medicine* 18(5):455–457 (2020), DOI [10.1370/afm.2573](https://doi.org/10.1370/afm.2573). Predecessor-code utilization; useful baseline for adoption patterns, not a direct APCM readiness validation.
 2. “Informing Advanced Primary Care Management: Trends From Care Coordination Among Medicare Beneficiaries in 2020–2023.” *The Permanente Journal* (2025), DOI [10.7812/TPP/25.040](https://doi.org/10.7812/TPP/25.040). Maps pre-APCM care coordination trends and provider mix.

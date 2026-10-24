@@ -8,12 +8,13 @@ Target audience: recruiters for healthcare analytics and consulting roles (for e
 
 ## Hard rules
 
-- **No fictional or simulated data anywhere in findings.** The original prototype ran on hand-made demo data; it was deleted on this branch. Every number in the README must trace to a real file and a script.
+- **No fictional or simulated data anywhere in findings.** Every number in the README and dashboard must trace to a real file and a script.
 - Raw downloads and staged Parquet are never committed (`data/processed/` is git-ignored). Only aggregate outputs go in `pipeline_output/`.
 - Do not freeze the 2025 adoption forecast (`scripts/freeze_forecast.py`) without asking Anandi first. It is a one-way step.
 - Work on branch `real-data-rebuild` and open a pull request to `main` for her review. Do not push to `main`.
 - Writing style for anything she will read or publish: no em dashes, natural human prose, no AI-sounding phrases, casual and direct in conversation, concise in external-facing text.
 - Commit messages end with the Claude attribution trailer.
+- Keep the repository reading as one complete project: no references in docs, comments, commit messages or PR text to earlier versions, prototypes or removed data.
 
 ## How the pipeline runs
 
@@ -45,10 +46,10 @@ CMS Medicare Physician & Other Practitioners (by Provider, by Provider and Servi
 ## Status (as of 2026-10-24, end of day)
 
 Done:
-- Pipeline green end to end on real data (50 of 50 dbt tests). Results in `pipeline_output/results/`, draft forecast in `pipeline_output/forecast/`.
-- Sanity checks recorded in `docs/data_validity_report.md`. Bugs found and fixed on the way: SVI column mix-up, office E/M codes missing from `seeds/code_families.csv`, GPCI parse for release D, MUP manifest dropping cached years.
-- Dashboard: `dashboard/index.html`, built by `pipeline/build_dashboard.py` from `dashboard/template.html`, rebuilt and committed by CI after every analyze run. Anandi asked Claude to build it (earlier plan was Tableau; the gzipped practice extract still exists for that).
-- README and `docs/` rewritten around real findings; `docs/methods.md` replaces the prototype spec and implementation notes.
+- Pipeline green end to end on real data (all dbt models and tests passing). Results in `pipeline_output/results/`, draft forecast in `pipeline_output/forecast/`.
+- Sanity checks recorded in `docs/data_validity_report.md`.
+- Dashboard: `dashboard/index.html`, built by `pipeline/build_dashboard.py` from `dashboard/template.html`, rebuilt and committed by CI after every analyze run. A gzipped practice-level extract is also exported for Tableau.
+- README and `docs/` describe the real findings and methods.
 - Readiness score and draft 2025 forecast computed (`pipeline/forecast.py`, G2211-launch analog). NOT frozen.
 
 Next:

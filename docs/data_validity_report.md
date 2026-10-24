@@ -2,7 +2,7 @@
 
 **Data as of:** pipeline run on 2026-10-24 (service years 2019 to 2024). Source files, retrieval times and SHA-256 hashes are in `pipeline_output/manifests/`. Aggregate profiles of every staged file are in `pipeline_output/profile/profile.json`.
 
-## Automated checks (dbt, 50 of 50 passing)
+## Automated checks (dbt, 48 of 48 passing)
 
 - Unique keys on every staging and mart grain (`models/schema.yml`).
 - `assert_dual_not_above_total`: no clinician has more dual-eligible patients than total patients.
@@ -62,4 +62,4 @@ What follows from this:
 - **Practice membership is a 2026 snapshot** applied to every year from 2019.
 - **QMB counts are ecological estimates** (county ratio applied to a clinician's duals). They will be off where a practice's duals differ from the county mix.
 - **Patient counts summed across clinicians double count** patients who see several clinicians in the same practice (`patient_panel_proxy`).
-- **One bug found and fixed during validation:** the SVI file was first staged with columns renamed by position after pandas reordered them, which put state codes in the county FIPS column and left every clinician unmatched. Ingestion now renames by name and checks that FIPS are numeric.
+- **Join keys are validated at ingestion.** SVI county FIPS must be numeric (pandas returns selected columns in file order, so columns are renamed by name, never by position), and the GPCI file is parsed by header text because CMS changes its columns between releases.

@@ -26,7 +26,7 @@ seeds:
         rule_id: varchar
         effective_start: varchar
         topic: varchar
-        prototype_interpretation: varchar
+        interpretation: varchar
         federal_register_citation: varchar
         source_url: varchar
         verification_status: varchar

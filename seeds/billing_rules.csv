@@ -1,4 +1,4 @@
-"rule_id","effective_start","topic","prototype_interpretation","federal_register_citation","source_url","verification_status"
+"rule_id","effective_start","topic","interpretation","federal_register_citation","source_url","verification_status"
 "APCM-BASE","2025-01-01","base service and practitioner","once per patient calendar month; primary-care responsible practitioner / focal point; patient consent required","89 FR 97859-97897","https://www.govinfo.gov/content/pkg/FR-2024-12-09/pdf/2024-25382.pdf","verify exact subsection/page before production"
 "APCM-TIER-2","2025-01-01","G0557","2+ qualifying chronic conditions expected 12 months or until death and significant risk","89 FR 97859-97897","https://www.govinfo.gov/content/pkg/FR-2024-12-09/pdf/2024-25382.pdf","CMS overview cross-check; rule transcription pending"
 "APCM-TIER-3","2025-01-01","G0558","QMB plus 2+ qualifying chronic conditions","89 FR 97859-97897","https://www.govinfo.gov/content/pkg/FR-2024-12-09/pdf/2024-25382.pdf","CMS overview cross-check; rule transcription pending"

@@ -1,6 +1,6 @@
 # Methods
 
-**Last updated:** 2026-10-24. Describes the pipeline on branch `real-data-rebuild`. Every number in the README and dashboard comes from files under `pipeline_output/`, which the GitHub Actions pipeline writes from the public sources in [`data_source_inventory.md`](data_source_inventory.md).
+**Last updated:** 2026-10-24. Every number in the README and dashboard comes from files under `pipeline_output/`, which the GitHub Actions pipeline writes from the public sources in [`data_source_inventory.md`](data_source_inventory.md).
 
 ## Question
 

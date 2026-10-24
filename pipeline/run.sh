@@ -9,10 +9,10 @@ ingest() {
   # Staged Parquet is cached between runs; only missing pieces are rebuilt.
   [ -f data/processed/mup_prov_2024.parquet ] || python pipeline/ingest.py mup
   [ -f data/processed/svi_county.parquet ] || python pipeline/ingest.py reference
-  # Rebuild SVI alone if the cached file has the column-order bug (state codes in county_fips)
+  # Rebuild SVI alone if the cached file fails the numeric-FIPS check
   python -c "import duckdb, sys; sys.exit(0 if duckdb.connect().execute(\"SELECT count(*) FROM 'data/processed/svi_county.parquet' WHERE NOT regexp_full_match(county_fips, '\\d{4,5}')\").fetchone()[0] == 0 else 1)" 2>/dev/null \
     || python pipeline/ingest.py svi
-  # Rebuild PFS if either file is missing or GPCI came out empty (run 40112642818)
+  # Rebuild PFS if either file is missing or the GPCI file has no rows
   python -c "import duckdb, sys; sys.exit(0 if duckdb.connect().execute(\"SELECT count(*) FROM 'data/processed/pfs_gpci.parquet'\").fetchone()[0] > 0 else 1)" 2>/dev/null \
     && [ -f data/processed/pfs_rvu.parquet ] || python pipeline/ingest.py pfs
   python pipeline/profile.py

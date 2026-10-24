@@ -29,7 +29,7 @@ The readiness score is a pre-registered forecast of which practices will show AP
 ```
 CMS / HRSA / CDC / Census  ->  pipeline/ingest.py   download, hash, filter to Parquet (not committed)
                            ->  pipeline/profile.py  aggregate profile of every staged file
-                           ->  dbt (DuckDB)         staging -> intermediate -> marts, 50 tests
+                           ->  dbt (DuckDB)         staging -> intermediate -> marts, with data tests
                            ->  pipeline/export.py   aggregate CSVs in pipeline_output/results
                            ->  pipeline/forecast.py draft readiness score and model card
                            ->  pipeline/build_dashboard.py  dashboard/index.html
