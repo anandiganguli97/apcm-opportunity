@@ -1,23 +1,31 @@
 Running job: analyze
-MUP 2019 done
-MUP 2020 done
-MUP 2021 done
-MUP 2022 done
-MUP 2023 done
-curl: (22) The requested URL returned error: 429
-curl: (22) The requested URL returned error: 429
-curl: (22) The requested URL returned error: 429
-curl: (22) The requested URL returned error: 429
-curl: (22) The requested URL returned error: 429
-curl: (22) The requested URL returned error: 429
+MUP 2019 already staged
+MUP 2020 already staged
+MUP 2021 already staged
+MUP 2022 already staged
+MUP 2023 already staged
+MUP 2024 done
 Traceback (most recent call last):
-  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 330, in <module>
-    ingest_mup(a.years, a.keep_raw)
-  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 145, in ingest_mup
-    meta = download(prov[y], f)
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 66, in download
-    subprocess.run(["curl", "-fsSL", "--retry", "5", "--retry-delay", "10", "-A", UA,
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/subprocess.py", line 571, in run
-    raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['curl', '-fsSL', '--retry', '5', '--retry-delay', '10', '-A', 'apcm-opportunity/1.0 (+https://github.com/anandiganguli97/apcm-opportunity)', '-o', '/tmp/apcm_raw/mup_prov_2024.csv.part', 'https://data.cms.gov/sites/default/files/2026-05/7323ba02-52e7-4a86-b2ce-ad210c25d9aa/MUP_PHY_R26_P05_V10_D24_Prov.csv']' returned non-zero exit status 22.
+  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 342, in <module>
+    ingest_reference()
+  File "/home/runner/work/apcm-opportunity/apcm-opportunity/pipeline/ingest.py", line 250, in ingest_reference
+    frame = pd.read_csv(f, dtype=str, encoding="cp1252", usecols=list(cols)).rename(columns=cols)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1866, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 429, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 3061, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 297, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 1041, in pandas._libs.parsers.TextReader.read_low_memory
+  File "pandas/_libs/parsers.pyx", line 1182, in pandas._libs.parsers.TextReader._read_rows
+  File "pandas/_libs/parsers.pyx", line 1149, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "pandas/_libs/parsers.pyx", line 1170, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "pandas/_libs/parsers.pyx", line 4392, in pandas._libs.parsers.raise_parser_error
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 79096: character maps to <undefined>
