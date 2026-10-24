@@ -34,6 +34,11 @@ jobs:
           python-version: "3.11"
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
+      - name: Restore staged data cache
+        uses: actions/cache@v4
+        with:
+          path: data/processed
+          key: staged-${{ hashFiles('pipeline/ingest.py', 'pipeline/hcpcs_codes.json') }}
       - name: Free disk space
         run: |
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc || true

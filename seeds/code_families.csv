@@ -1,18 +1,45 @@
-code,family,effective_start,effective_end,displacement_candidate,source_status,source
-G0556,APCM,2025-01-01,,false,verified_overview,CMS APCM overview
-G0557,APCM,2025-01-01,,false,verified_overview,CMS APCM overview
-G0558,APCM,2025-01-01,,false,verified_overview,CMS APCM overview
-G0568,APCM_BHI_ADDON,2026-01-01,,false,verified_2026_summary,CY2026 PFS final rule summary
-G0569,APCM_BHI_ADDON,2026-01-01,,false,verified_2026_summary,CY2026 PFS final rule summary
-G0570,APCM_COCM_ADDON,2026-01-01,,false,verified_2026_summary,CY2026 PFS final rule summary
-99490,CCM,2015-01-01,,true,starter_only,Map complete effective-dated family before production
-99439,CCM,2020-01-01,,true,starter_only,Map complete effective-dated family before production
-99491,CCM,2015-01-01,,true,starter_only,Map complete effective-dated family before production
-99487,COMPLEX_CCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
-99489,COMPLEX_CCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
-99495,TCM,2013-01-01,,true,starter_only,Map complete effective-dated family before production
-99496,TCM,2013-01-01,,true,starter_only,Map complete effective-dated family before production
-99484,BHI,2018-01-01,,true,starter_only,Map complete effective-dated family before production
-99492,COCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
-99493,COCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
-99494,COCM,2017-01-01,,true,starter_only,Map complete effective-dated family before production
+code,family,effective_start,effective_end,apcm_duplicative_candidate,description,source_status
+99490,CCM,2015-01-01,,true,"CCM, first 20 min clinical staff time",CPT/PFS history; confirm APCM concurrency in 89 FR 97894-97897
+99439,CCM,2021-01-01,,true,"CCM, each additional 20 min clinical staff",CPT/PFS history; confirm APCM concurrency
+G2058,CCM,2020-01-01,2020-12-31,true,"CCM, additional 20 min (replaced by 99439)",CMS CY2020 PFS; replaced 2021
+99491,CCM,2019-01-01,,true,"CCM, first 30 min physician/QHP time",CPT/PFS history; confirm APCM concurrency
+99437,CCM,2022-01-01,,true,"CCM, each additional 30 min physician/QHP",CPT/PFS history; confirm APCM concurrency
+99487,CCM,2017-01-01,,true,"Complex CCM, first 60 min",CPT/PFS history; confirm APCM concurrency
+99489,CCM,2017-01-01,,true,"Complex CCM, each additional 30 min",CPT/PFS history; confirm APCM concurrency
+G0506,CCM,2017-01-01,,true,CCM initiation add-on (comprehensive assessment and care planning),CMS CY2017 PFS
+99424,PCM,2022-01-01,,true,"PCM, first 30 min physician/QHP",CPT/PFS history; confirm APCM concurrency
+99425,PCM,2022-01-01,,true,"PCM, each additional 30 min physician/QHP",CPT/PFS history; confirm APCM concurrency
+99426,PCM,2022-01-01,,true,"PCM, first 30 min clinical staff",CPT/PFS history; confirm APCM concurrency
+99427,PCM,2022-01-01,,true,"PCM, each additional 30 min clinical staff",CPT/PFS history; confirm APCM concurrency
+G2064,PCM,2020-01-01,2021-12-31,true,"PCM, 30 min physician/QHP (replaced by 99424)",CMS CY2020 PFS; replaced 2022
+G2065,PCM,2020-01-01,2021-12-31,true,"PCM, 30 min clinical staff (replaced by 99426)",CMS CY2020 PFS; replaced 2022
+99495,TCM,2013-01-01,,true,"TCM, moderate complexity",CPT/PFS history; confirm APCM concurrency
+99496,TCM,2013-01-01,,true,"TCM, high complexity",CPT/PFS history; confirm APCM concurrency
+99484,BHI,2018-01-01,,false,General behavioral health integration,CPT/PFS history; APCM add-on G0570 from 2026
+G0323,BHI,2023-01-01,,false,General BHI by clinical psychologist or social worker,CMS CY2023 PFS
+99492,COCM,2018-01-01,,false,"Psychiatric collaborative care, initial month",CPT/PFS history; APCM add-ons G0568-G0569 from 2026
+99493,COCM,2018-01-01,,false,"Psychiatric collaborative care, subsequent month",CPT/PFS history
+99494,COCM,2018-01-01,,false,"Psychiatric collaborative care, each additional 30 min",CPT/PFS history
+G2214,COCM,2021-01-01,,false,"Psychiatric collaborative care, first 30 min",CMS CY2021 PFS
+99453,RPM,2019-01-01,,false,"RPM setup and education",CPT/PFS history
+99454,RPM,2019-01-01,,false,"RPM device supply, 30 days",CPT/PFS history
+99457,RPM,2019-01-01,,false,"RPM treatment management, first 20 min",CPT/PFS history
+99458,RPM,2020-01-01,,false,"RPM treatment management, each additional 20 min",CPT/PFS history
+99091,RPM,2018-01-01,,false,"Collection and interpretation of physiologic data, 30 min",CPT/PFS history
+G0438,AWV,2011-01-01,,false,"Annual wellness visit, initial",CMS
+G0439,AWV,2011-01-01,,false,"Annual wellness visit, subsequent",CMS
+G0402,AWV,2005-01-01,,false,Initial preventive physical examination (Welcome to Medicare),CMS
+99497,ACP,2016-01-01,,false,"Advance care planning, first 30 min",CPT/PFS history
+99498,ACP,2016-01-01,,false,"Advance care planning, each additional 30 min",CPT/PFS history
+G2211,COMPLEXITY_ADDON,2024-01-01,,false,Visit complexity add-on for longitudinal care,CMS CY2024 PFS
+G0019,SDOH_NAVIGATION,2024-01-01,,false,"Community health integration, first 60 min",CMS CY2024 PFS
+G0022,SDOH_NAVIGATION,2024-01-01,,false,"Community health integration, each additional 30 min",CMS CY2024 PFS
+G0023,SDOH_NAVIGATION,2024-01-01,,false,"Principal illness navigation, first 60 min",CMS CY2024 PFS
+G0024,SDOH_NAVIGATION,2024-01-01,,false,"Principal illness navigation, each additional 30 min",CMS CY2024 PFS
+G0136,SDOH_NAVIGATION,2024-01-01,,false,SDOH risk assessment,CMS CY2024 PFS
+G0556,APCM,2025-01-01,,false,"APCM level 1: one or fewer chronic conditions",CMS APCM overview; 89 FR 97859-97902
+G0557,APCM,2025-01-01,,false,"APCM level 2: two or more chronic conditions",CMS APCM overview; 89 FR 97859-97902
+G0558,APCM,2025-01-01,,false,"APCM level 3: QMB with two or more chronic conditions",CMS APCM overview; 89 FR 97859-97902
+G0568,APCM_BH_ADDON,2026-01-01,,false,APCM collaborative care add-on (initial month),CY2026 PFS final rule 90 FR 49464-49471
+G0569,APCM_BH_ADDON,2026-01-01,,false,APCM collaborative care add-on (subsequent month),CY2026 PFS final rule 90 FR 49464-49471
+G0570,APCM_BH_ADDON,2026-01-01,,false,APCM general BHI add-on,CY2026 PFS final rule 90 FR 49464-49471
