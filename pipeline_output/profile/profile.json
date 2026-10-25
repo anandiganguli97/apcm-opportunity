@@ -851,7 +851,7 @@
       "service_year": 2021,
       "HCPCS_Cd": "99214",
       "n_rows": 471650,
-      "srvcs": 96343071.4,
+      "srvcs": 96343071.39999999,
       "benes": 55002122
     },
     {
@@ -2925,12 +2925,12 @@
   ],
   "geo_levels": [
     {
-      "lvl": "State",
-      "n": 26852
-    },
-    {
       "lvl": "National",
       "n": 669
+    },
+    {
+      "lvl": "State",
+      "n": 26852
     }
   ],
   "geo_national_by_code": [
