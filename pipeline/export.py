@@ -88,6 +88,43 @@ save("practice_extract_tableau", """
 save("npi_practice_lookup", """
     select npi, practice_id, provider_type, role, state from mart_clinician order by npi""", gz=True)
 
+# Largest practices with their organization's specialty mix: a check that the rollup
+# lands office-based clinicians in primary care groups
+save("largest_practices_check", """
+    with top as (
+      select practice_id, practice_name, pcp_clinicians, patient_panel_proxy
+      from mart_practice order by patient_panel_proxy desc limit 40
+    ),
+    members as (
+      select org_pac_id, count(distinct npi) as org_npis,
+             string_agg(distinct primary_specialty, '; ') filter (where primary_specialty is not null) as _all
+      from stg_dac where org_pac_id in (select practice_id from top) group by 1
+    ),
+    spec as (
+      select org_pac_id, primary_specialty, count(distinct npi) as n,
+             row_number() over (partition by org_pac_id order by count(distinct npi) desc) as rk
+      from stg_dac where org_pac_id in (select practice_id from top) group by 1, 2
+    ),
+    orgs_per_npi as (
+      select npi, count(distinct org_pac_id) as n_orgs from stg_dac where org_pac_id is not null group by 1
+    ),
+    clin as (
+      select c.practice_id, count(*) as clinicians_2024,
+             avg(case when o.n_orgs = 1 then 1.0 else 0.0 end) as share_listed_only_here,
+             median(y.office_em_services) as median_office_visits,
+             median(coalesce(y.nursing_facility_services, 0) + coalesce(y.home_residence_services, 0)) as median_facility_home_visits
+      from mart_clinician c
+      join orgs_per_npi o using (npi)
+      join int_clinician_year_candidates y on y.npi = c.npi and y.service_year = 2024
+      where c.practice_id in (select practice_id from top) group by 1
+    )
+    select t.*, m.org_npis,
+           (select string_agg(primary_specialty || ' ' || n, '; ' order by n desc) from spec s
+             where s.org_pac_id = t.practice_id and rk <= 5) as top_member_specialties,
+           cl.clinicians_2024, cl.share_listed_only_here, cl.median_office_visits, cl.median_facility_home_visits
+    from top t left join members m on m.org_pac_id = t.practice_id left join clin cl using (practice_id)
+    order by t.patient_panel_proxy desc""")
+
 headline = {
     "analysis_year": int(df("select max(service_year) y from mart_national_trend")["y"][0]),
     "trend": df("select * from mart_national_trend order by service_year").to_dict(orient="records"),
