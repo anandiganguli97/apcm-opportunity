@@ -39,24 +39,24 @@
         "p_value": 6.716657277093125e-71
       },
       "avg_hcc_risk_score": {
-        "beta_per_sd": -0.017145360862983322,
+        "beta_per_sd": -0.01714536086298333,
         "odds_ratio_per_sd": 0.9830007844067764,
-        "p_value": 0.38944134063118785
+        "p_value": 0.3894413406311875
       },
       "metro_share": {
-        "beta_per_sd": 0.03528255801128373,
+        "beta_per_sd": 0.03528255801128374,
         "odds_ratio_per_sd": 1.0359123727903183,
-        "p_value": 0.006056229806911865
+        "p_value": 0.006056229806911851
       },
       "has_ccm": {
-        "beta_per_sd": 0.07433264383140761,
+        "beta_per_sd": 0.07433264383140763,
         "odds_ratio_per_sd": 1.0771650582196617,
         "p_value": 4.007540384519217e-09
       },
       "has_pcm": {
-        "beta_per_sd": 0.019896597624059587,
+        "beta_per_sd": 0.019896597624059584,
         "odds_ratio_per_sd": 1.020095854238094,
-        "p_value": 0.08491872473319229
+        "p_value": 0.08491872473319238
       },
       "has_tcm": {
         "beta_per_sd": 0.1332842526693099,
@@ -64,24 +64,24 @@
         "p_value": 3.5189214288915514e-25
       },
       "has_bhi_or_cocm": {
-        "beta_per_sd": 0.006824489248458505,
+        "beta_per_sd": 0.006824489248458499,
         "odds_ratio_per_sd": 1.0068478291392788,
-        "p_value": 0.5844017556711725
+        "p_value": 0.5844017556711728
       },
       "has_rpm": {
-        "beta_per_sd": 0.04240262877868952,
+        "beta_per_sd": 0.04240262877868953,
         "odds_ratio_per_sd": 1.0433144626241682,
-        "p_value": 0.0005925387097902864
+        "p_value": 0.0005925387097902847
       },
       "has_acp": {
-        "beta_per_sd": 0.07856198750125004,
+        "beta_per_sd": 0.07856198750125006,
         "odds_ratio_per_sd": 1.0817304068490188,
-        "p_value": 2.381553782524601e-10
+        "p_value": 2.381553782524584e-10
       },
       "awv_clinician_share": {
         "beta_per_sd": 0.47407168295301794,
         "odds_ratio_per_sd": 1.6065221431513554,
-        "p_value": 2.855894910512735e-162
+        "p_value": 2.85589491051306e-162
       },
       "log_office_em_per_bene": {
         "beta_per_sd": 0.2383274369973522,
@@ -89,9 +89,9 @@
         "p_value": 8.034472369591251e-41
       },
       "dual_share_missing": {
-        "beta_per_sd": 0.08111907636778114,
+        "beta_per_sd": 0.08111907636778112,
         "odds_ratio_per_sd": 1.084500027202502,
-        "p_value": 1.0278809704691995e-08
+        "p_value": 1.0278809704692069e-08
       }
     },
     "standardisation": {
@@ -165,24 +165,24 @@
         "p_value": 0.0
       },
       "log_panel": {
-        "beta_per_sd": 0.4937943829317471,
-        "odds_ratio_per_sd": 1.638521618142974,
-        "p_value": 3.413082353515214e-17
+        "beta_per_sd": 0.493794382931747,
+        "odds_ratio_per_sd": 1.6385216181429738,
+        "p_value": 3.41308235351514e-17
       },
       "log_clinicians": {
-        "beta_per_sd": 0.035545473369794564,
+        "beta_per_sd": 0.035545473369794606,
         "odds_ratio_per_sd": 1.0361847658697894,
-        "p_value": 0.3383724701002714
+        "p_value": 0.3383724701002705
       },
       "physician_share": {
-        "beta_per_sd": -0.05544171523573844,
+        "beta_per_sd": -0.05544171523573843,
         "odds_ratio_per_sd": 0.9460671633651093,
-        "p_value": 0.08400014991014904
+        "p_value": 0.08400014991014909
       },
       "dual_share": {
         "beta_per_sd": 0.09415662750036902,
         "odds_ratio_per_sd": 1.0987318240599158,
-        "p_value": 0.003844532496770844
+        "p_value": 0.0038445324967708518
       },
       "avg_hcc_risk_score": {
         "beta_per_sd": 0.21004609770603194,
@@ -190,44 +190,44 @@
         "p_value": 2.418455574414401e-08
       },
       "metro_share": {
-        "beta_per_sd": -0.014582098377386086,
+        "beta_per_sd": -0.014582098377386084,
         "odds_ratio_per_sd": 0.9855237055139077,
         "p_value": 0.6634497997785483
       },
       "has_tcm": {
-        "beta_per_sd": 2.132243038630926e-05,
+        "beta_per_sd": 2.132243038632754e-05,
         "odds_ratio_per_sd": 1.000021322657711,
-        "p_value": 0.9994285963627005
+        "p_value": 0.9994285963627001
       },
       "has_bhi_or_cocm": {
-        "beta_per_sd": 0.022988268931367274,
+        "beta_per_sd": 0.022988268931367267,
         "odds_ratio_per_sd": 1.0232545356076221,
-        "p_value": 0.15117889530994763
+        "p_value": 0.1511788953099477
       },
       "has_rpm": {
         "beta_per_sd": 0.17130629538763795,
         "odds_ratio_per_sd": 1.186854221327716,
-        "p_value": 1.0197116050766248e-27
+        "p_value": 1.0197116050766108e-27
       },
       "has_acp": {
-        "beta_per_sd": 0.15252185158675066,
+        "beta_per_sd": 0.1525218515867507,
         "odds_ratio_per_sd": 1.1647679138436464,
-        "p_value": 1.6179295892165347e-09
+        "p_value": 1.617929589216506e-09
       },
       "awv_clinician_share": {
-        "beta_per_sd": 0.3122643114013601,
+        "beta_per_sd": 0.31226431140136013,
         "odds_ratio_per_sd": 1.3665158310152103,
-        "p_value": 1.365304350737372e-11
+        "p_value": 1.3653043507373567e-11
       },
       "log_office_em_per_bene": {
-        "beta_per_sd": 0.32873879917684484,
+        "beta_per_sd": 0.3287387991768448,
         "odds_ratio_per_sd": 1.389214944106345,
-        "p_value": 3.0641422509118396e-13
+        "p_value": 3.0641422509118613e-13
       },
       "dual_share_missing": {
-        "beta_per_sd": -0.019993126432009737,
+        "beta_per_sd": -0.019993126432009754,
         "odds_ratio_per_sd": 0.9802054107921355,
-        "p_value": 0.6285444190590505
+        "p_value": 0.6285444190590501
       }
     },
     "standardisation": {
@@ -288,5 +288,5 @@
     "pfs.json": "7658998edaa1a82e67f9066ab7d71c0c36c725ec52afc6ccdf8b8179b3a874ae",
     "reference.json": "447885d39d5cf36e512647de549a3cfcb020b66342a55f1e49f81a87edb5b5b0"
   },
-  "repository_commit": "344e0caef489055f97b13739fac99b7f2ab30249"
+  "repository_commit": "9f4ec914bdf813722dc61a5c77861794a2cdb5e9"
 }
