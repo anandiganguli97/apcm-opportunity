@@ -2,7 +2,7 @@
 
 ## What this is
 
-Portfolio project for Anandi (public health research scientist moving into hospital and healthcare analytics consulting roles). It sizes Medicare's Advanced Primary Care Management (APCM, codes G0556-G0558, launched January 2025) opportunity for U.S. primary care practices, using **real CMS public data only**, and asks whether practices serving low-income dual-eligible (QMB) patients, who qualify for the highest-paying tier, are ready to bill it.
+It sizes Medicare's Advanced Primary Care Management (APCM, codes G0556-G0558, launched January 2025) opportunity for U.S. primary care practices, using **real CMS public data only**, and asks whether practices serving low-income dual-eligible (QMB) patients, who qualify for the highest-paying tier, are ready to bill it.
 
 Target audience: recruiters for healthcare analytics and consulting roles (for example, a McKinsey healthcare analytics role asking for SQL, claims and code sets, Tableau or Power BI, and data skepticism).
 
