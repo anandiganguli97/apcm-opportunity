@@ -198,7 +198,7 @@ def _profile(p: pd.Series) -> None:
     c[1].metric("Medicare patients (sum across clinicians)", f"{int(p.patient_panel_proxy):,}")
     c[2].metric("Dual-eligible share", _pct(p.dual_share), f"~{p.est_qmb_patients:,.0f} QMB patients" if pd.notna(p.est_qmb_patients) else None, delta_color="off")
     c[3].metric("Readiness score", "n/a" if pd.isna(p.readiness_score) else f"{p.readiness_score:.0f} / 100",
-                help="Percentile of predicted likelihood of early APCM billing, from a model trained on how practices took up G2211 in 2024. Frozen on 25 Oct 2026, before CMS published 2025 data.")
+                help="Percentile of predicted likelihood of early APCM billing, from a model trained on how practices took up G2211 in 2024. Frozen on 25 Oct 2026, before CMS published 2025 data. n/a means the practice was not in the frozen list (about 2% of practices, mostly regrouped clinicians).")
     chips = "".join(f'<span class="chip{"" if str(p[k]) == "True" else " off"}">{v}</span>' for k, v in SIGNALS.items())
     st.markdown(f"**Visible 2024 billing** ({TIER_NAMES.get(p.readiness_tier, p.readiness_tier)})<br>{chips}", unsafe_allow_html=True)
     st.markdown(f'<div class="cite">A struck-through service means no visible row, which can mean fewer than 11 patients rather than none. '
@@ -258,7 +258,7 @@ def _one_pager(p: pd.Series, d: dict) -> str:
 
 
 def _finder(d: dict) -> None:
-    _band("Find a practice", "Search 51,000+ primary care practices: group practices from CMS's Doctors and Clinicians file, plus solo clinicians. "
+    _band("Find a practice", "Search 47,000+ primary care practices: group practices from CMS's Doctors and Clinicians file, plus solo clinicians. "
           "See what each already bills, its patient mix and its readiness score.", "PRACTICE FINDER · 2024")
     pr = d["practices"]
     f = st.columns([1.3, 1, 1, 1.2])
@@ -704,7 +704,7 @@ def _calculator(d: dict) -> None:
     st.dataframe(t.style.format({"Patients": "{:,.0f}", "Rate per month": "${:,.2f}", "Allowed per year": "${:,.0f}"}), hide_index=True, width="stretch")
     st.write(_md(f"For comparison, billing base CCM (99490, ${r['99490']:.2f}) for the same {months['G0557'] + months['G0558']:,.0f} patients with 2+ conditions "
              f"in every month would be {_money(12 * r['99490'] * (months['G0557'] + months['G0558']))} a year, but each month needs 20 documented minutes. "
-             "The median 2024 CCM biller billed 4.5 months per patient."))
+             f"The median 2024 CCM biller billed {d['ccm_vs_apcm_summary'].iloc[0].median_ccm_months_per_patient:.1f} months per patient."))
     st.caption("Rates: CMS National Payment Amount File 2026 (non-QP). Allowed amount includes the patient's share. The practitioner billing APCM cannot bill CCM, PCM or TCM for the same patient in the same month (89 FR 97896).")
 
 

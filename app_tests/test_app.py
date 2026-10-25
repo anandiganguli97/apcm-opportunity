@@ -21,7 +21,7 @@ def test_findings_loads_with_real_numbers():
     at = run()
     labels = [m.label for m in at.metric]
     assert "Primary care clinicians" in labels
-    assert at.metric[0].value == "215,245"
+    assert at.metric[0].value == "202,294"
 
 
 def test_every_view_renders():

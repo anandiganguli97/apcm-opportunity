@@ -49,6 +49,8 @@ Probabilities are scaled to G2211 uptake, so only the ranking carries over to AP
 | `apcm_opportunity_national.csv` | Scenario | Inputs, patient-months by level, allowed amounts, coinsurance |
 | `fee_schedule_2026.csv` | Code and conversion factor | RVUs and national amounts |
 | `suppression_by_code.csv`, `suppression_by_family.csv` | Code or family and year | National vs visible services; hidden share |
+| `primary_care_exclusions.csv` | Service year | Candidates, clinicians removed as not office-based (by reason), and CCM/PCM and RPM billing among removed and kept clinicians |
+| `largest_practices_check.csv` | Practice (40 largest) | Organization size, top member specialties, share of clinicians listed with no other organization, median office and facility/home visits |
 
 ## Reference outputs (`references/`)
 

@@ -55,7 +55,7 @@ APCM rules are transcribed from the final rules with page cites in [`policy_evid
 
 ## Dual-eligible and QMB estimates
 
-- Dual-eligible count per clinician is `Bene_Dual_Cnt` from the by-Provider file. CMS blanks both dual fields for small panels (464,482 of 1,296,739 providers in 2024), so equity tables cover the 150,899 of 215,245 primary care clinicians with a reported count.
+- Dual-eligible count per clinician is `Bene_Dual_Cnt` from the by-Provider file. CMS blanks both dual fields for small panels (464,482 of 1,296,739 providers in 2024), so equity tables cover the 139,202 of 202,294 primary care clinicians with a reported count.
 - QMB patients are not in any clinician-level public file. The estimate is the clinician's dual count times the county ratio `(QMB only + QMB plus) / all duals` from CMS Medicare Monthly Enrollment (annual rows, same year), using the clinician's ZIP mapped to the county with most of its land area (Census 2020 ZCTA relationship file). Counties with fewer than 100 duals use the state ratio.
 - Nationally in 2024, QMBs were 8.33M of 12.17M dual enrollees (68%).
 

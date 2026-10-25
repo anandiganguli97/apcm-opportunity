@@ -684,11 +684,12 @@ function fill() {
     b.addEventListener("click", () => { dim = d; drawEquity(); });
   }
   const q = D.equity.filter(x => x.dimension.startsWith("Dual"));
-  const qLow = q.find(x => x.grp.startsWith("Q1")), qMid = q.find(x => x.grp === "Q3"), qHigh = q.find(x => x.grp.startsWith("Q5"));
+  const qLow = q.find(x => x.grp.startsWith("Q1")), qHigh = q.find(x => x.grp.startsWith("Q5"));
+  const qMin = q.reduce((a, b) => (b.clinician_share_ccm_or_pcm < a.clinician_share_ccm_or_pcm ? b : a));
   const hp = D.equity.filter(x => x.dimension.startsWith("County"));
   const hpsa = hp.find(x => x.grp.startsWith("Geographic")), nohpsa = hp.find(x => x.grp.startsWith("Not"));
   document.getElementById("equity-takeaway").textContent =
-    `Readiness is U-shaped. ${pct(qLow.clinician_share_ccm_or_pcm)} of clinicians with the fewest dual-eligible patients bill CCM or PCM, falling to ${pct(qMid.clinician_share_ccm_or_pcm)} in the middle fifth and rising again to ${pct(qHigh.clinician_share_ccm_or_pcm)} among clinicians whose panels are mostly dual-eligible. In primary care shortage counties, ${pct(hpsa.dual_patient_share_with_ccm_or_pcm)} of dual-eligible patients have a clinician who bills it, against ${pct(nohpsa.dual_patient_share_with_ccm_or_pcm)} elsewhere.`;
+    `${pct(qLow.clinician_share_ccm_or_pcm)} of clinicians with the fewest dual-eligible patients bill CCM or PCM, falling to ${pct(qMin.clinician_share_ccm_or_pcm)} in the ${["", "lowest", "second", "middle", "fourth", "highest"][+qMin.grp[1]]} fifth and ${pct(qHigh.clinician_share_ccm_or_pcm)} among clinicians whose panels are mostly dual-eligible. In primary care shortage counties, ${pct(hpsa.dual_patient_share_with_ccm_or_pcm)} of dual-eligible patients have a clinician who bills it, against ${pct(nohpsa.dual_patient_share_with_ccm_or_pcm)} elsewhere.`;
 
   // QMB by tier
   const tierNames = ["No visible care management", "Visit-based services only", "CCM or PCM only", "Multi-service care management"];
@@ -699,7 +700,7 @@ function fill() {
     sub: `duals ${pct(r.min_dual, 0)} to ${pct(r.max_dual, 0)} · ${num(r.qmb_total)} QMB`, shares: r.shares }));
   const lowQ = QT[0], highQ = QT[QT.length - 1];
   document.getElementById("qmb-takeaway").textContent =
-    `In practices where most patients are dual-eligible, ${pct(highQ.shares[0], 0)} of estimated QMB patients are with a practice showing no visible care management at all, against ${pct(lowQ.shares[0], 0)} in the practices with the fewest duals. Those QMB patients are the ones G0558 pays ${money(D.rates.G0558)} a month for.`;
+    `In the fifth of practices with the most dual-eligible patients, ${pct(highQ.shares[0], 0)} of estimated QMB patients are with a practice showing no visible care management at all, against ${pct(lowQ.shares[0], 0)} in the fifth with the fewest. Those QMB patients are the ones G0558 pays ${money(D.rates.G0558)} a month for.`;
   table(document.getElementById("tier-table"), [{ key: "q", label: "Dual-share fifth" }, { key: "range", label: "Dual share" }, { key: "qmb", label: "Est. QMB patients", fmt: int },
     ...tierNames.map((n, i) => ({ key: "s" + i, label: n, fmt: (v) => pct(v) }))],
     QT.map(r => ({ q: r.quintile, range: `${pct(r.min_dual, 0)} to ${pct(r.max_dual, 0)}`, qmb: r.qmb_total, s0: r.shares[0], s1: r.shares[1], s2: r.shares[2], s3: r.shares[3] })));
