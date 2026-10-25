@@ -17,7 +17,7 @@
       "share_billing_g2211": 0.0,
       "share_billing_sdoh_navigation": 0.0,
       "ccm_patient_months_per_100_benes": 5.893974767173861,
-      "ccm_allowed_visible": 136489452.8800091
+      "ccm_allowed_visible": 136489452.8800088
     },
     {
       "service_year": 2020,
@@ -35,7 +35,7 @@
       "share_billing_g2211": 0.0,
       "share_billing_sdoh_navigation": 0.0,
       "ccm_patient_months_per_100_benes": 7.164486938811107,
-      "ccm_allowed_visible": 162238509.56002855
+      "ccm_allowed_visible": 162238509.5600288
     },
     {
       "service_year": 2021,
@@ -53,7 +53,7 @@
       "share_billing_g2211": 0.0,
       "share_billing_sdoh_navigation": 0.0,
       "ccm_patient_months_per_100_benes": 5.79518693334904,
-      "ccm_allowed_visible": 149140676.1800261
+      "ccm_allowed_visible": 149140676.18002602
     },
     {
       "service_year": 2022,
@@ -71,7 +71,7 @@
       "share_billing_g2211": 0.0,
       "share_billing_sdoh_navigation": 0.0,
       "ccm_patient_months_per_100_benes": 6.407048874484831,
-      "ccm_allowed_visible": 222835400.47001964
+      "ccm_allowed_visible": 222835400.47001928
     },
     {
       "service_year": 2023,
@@ -89,7 +89,7 @@
       "share_billing_g2211": 0.0,
       "share_billing_sdoh_navigation": 0.0,
       "ccm_patient_months_per_100_benes": 7.290440963127157,
-      "ccm_allowed_visible": 251891210.97006363
+      "ccm_allowed_visible": 251891210.9700634
     },
     {
       "service_year": 2024,
@@ -107,7 +107,7 @@
       "share_billing_g2211": 0.31038982866521003,
       "share_billing_sdoh_navigation": 0.009851997587669432,
       "ccm_patient_months_per_100_benes": 8.333080988531282,
-      "ccm_allowed_visible": 307129193.14007574
+      "ccm_allowed_visible": 307129193.14007497
     }
   ],
   "equity_all": [
@@ -115,14 +115,14 @@
       "dimension": "All primary care clinicians",
       "grp": "All",
       "clinicians": 139202,
-      "mean_dual_share": 0.22871999127365594,
+      "mean_dual_share": 0.2287199912736734,
       "clinician_share_ccm_or_pcm": 0.05416588842114337,
       "clinician_share_ccm": 0.053856984813436586,
       "clinician_share_tcm": 0.1308170859614086,
       "clinician_share_bhi_or_cocm": 0.0020761195959828165,
       "dual_patient_share_with_ccm_or_pcm": 0.07759149686789292,
       "nondual_patient_share_with_ccm_or_pcm": 0.08387933696257996,
-      "est_qmb_patient_share_with_ccm_or_pcm": 0.0811545417238217,
+      "est_qmb_patient_share_with_ccm_or_pcm": 0.08115454172382187,
       "ccm_patient_months_per_100_benes": 8.540101564250762
     }
   ],
@@ -130,7 +130,7 @@
     {
       "scenario": "base",
       "ffs_benes": 27732177.0,
-      "qmb_share": 0.1288540935386896,
+      "qmb_share": 0.1288540935386901,
       "share_2plus_qmb": 0.8,
       "share_2plus_non_qmb": 0.65,
       "capture_rate": 0.25,
@@ -138,17 +138,17 @@
       "r556": 16.37,
       "r557": 53.78,
       "r558": 117.24,
-      "g0556_months": 110043015.2474589,
-      "g0557_months": 188438425.27232194,
-      "g0558_months": 34304683.48021916,
-      "allowed_full_capture": 15957503761.96727,
-      "allowed_scenario": 2992031955.368863,
-      "patient_coinsurance_scenario": 442321153.2601342
+      "g0556_months": 110043015.24745888,
+      "g0557_months": 188438425.27232182,
+      "g0558_months": 34304683.4802193,
+      "allowed_full_capture": 15957503761.967281,
+      "allowed_scenario": 2992031955.368865,
+      "patient_coinsurance_scenario": 442321153.260134
     },
     {
       "scenario": "high",
       "ffs_benes": 27732177.0,
-      "qmb_share": 0.1288540935386896,
+      "qmb_share": 0.1288540935386901,
       "share_2plus_qmb": 0.9,
       "share_2plus_non_qmb": 0.8,
       "capture_rate": 0.5,
@@ -156,17 +156,17 @@
       "r556": 16.37,
       "r557": 53.78,
       "r558": 117.24,
-      "g0556_months": 62269139.36497259,
-      "g0557_months": 231924215.71978083,
-      "g0558_months": 38592768.91524656,
-      "allowed_full_capture": 18016846360.43792,
-      "allowed_scenario": 8107580862.197064,
-      "patient_coinsurance_scenario": 1207983075.6818714
+      "g0556_months": 62269139.36497257,
+      "g0557_months": 231924215.71978068,
+      "g0558_months": 38592768.91524671,
+      "allowed_full_capture": 18016846360.437927,
+      "allowed_scenario": 8107580862.197067,
+      "patient_coinsurance_scenario": 1207983075.681871
     },
     {
       "scenario": "low",
       "ffs_benes": 27732177.0,
-      "qmb_share": 0.1288540935386896,
+      "qmb_share": 0.1288540935386901,
       "share_2plus_qmb": 0.65,
       "share_2plus_non_qmb": 0.5,
       "capture_rate": 0.1,
@@ -174,12 +174,12 @@
       "r556": 16.37,
       "r557": 53.78,
       "r558": 117.24,
-      "g0556_months": 159960933.8474589,
-      "g0557_months": 144952634.82486302,
-      "g0558_months": 27872555.32767807,
-      "allowed_full_capture": 13681891574.581013,
-      "allowed_scenario": 684094578.7290506,
-      "patient_coinsurance_scenario": 101684273.32964143
+      "g0556_months": 159960933.84745887,
+      "g0557_months": 144952634.82486293,
+      "g0558_months": 27872555.32767818,
+      "allowed_full_capture": 13681891574.58102,
+      "allowed_scenario": 684094578.7290511,
+      "patient_coinsurance_scenario": 101684273.32964134
     }
   ],
   "ccm_vs_apcm": {
@@ -195,8 +195,8 @@
     },
     "ccm_months_per_patient": {
       "count": 9674.0,
-      "mean": 5.03036562319094,
-      "std": 5.289897432459762,
+      "mean": 5.0303656231909395,
+      "std": 5.289897432459763,
       "min": 0.05102040816326531,
       "25%": 2.8027312599681022,
       "50%": 4.846153846153846,
@@ -235,8 +235,8 @@
     },
     "ccm_minus_apcm_same_months": {
       "count": 9674.0,
-      "mean": 173.10189160900458,
-      "std": 249.66882809206513,
+      "mean": 173.1018916090046,
+      "std": 249.66882809206516,
       "min": 12.349999999999994,
       "25%": 54.33999999999995,
       "50%": 100.85833333333329,
