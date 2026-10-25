@@ -49,6 +49,20 @@ G2214,COCM,Init/sub psych care m 1st 30,nonqpp,1.82,33.4009,60.79,33.73
 G2214,COCM,Init/sub psych care m 1st 30,qpp,1.82,33.5675,61.09,33.9
 G2211,COMPLEXITY_ADDON,Complex e/m visit add on,nonqpp,0.52,33.4009,17.37,14.36
 G2211,COMPLEXITY_ADDON,Complex e/m visit add on,qpp,0.52,33.5675,17.46,14.43
+99304,NURSING_FACILITY,1st nf care sf/low mdm 25,nonqpp,2.43,33.4009,81.16,71.14
+99304,NURSING_FACILITY,1st nf care sf/low mdm 25,qpp,2.43,33.5675,81.57,71.5
+99305,NURSING_FACILITY,1st nf care moderate mdm 35,nonqpp,4.22,33.4009,140.95,119.91
+99305,NURSING_FACILITY,1st nf care moderate mdm 35,qpp,4.22,33.5675,141.65,120.51
+99306,NURSING_FACILITY,1st nf care high mdm 50,nonqpp,5.78,33.4009,193.06,163.33
+99306,NURSING_FACILITY,1st nf care high mdm 50,qpp,5.78,33.5675,194.02,164.15
+99307,NURSING_FACILITY,Sbsq nf care sf mdm 10,nonqpp,1.26,33.4009,42.09,37.07
+99307,NURSING_FACILITY,Sbsq nf care sf mdm 10,qpp,1.26,33.5675,42.3,37.26
+99308,NURSING_FACILITY,Sbsq nf care low mdm 20,nonqpp,2.36,33.4009,78.83,67.8
+99308,NURSING_FACILITY,Sbsq nf care low mdm 20,qpp,2.36,33.5675,79.22,68.14
+99309,NURSING_FACILITY,Sbsq nf care moderate mdm 30,nonqpp,3.43,33.4009,114.57,98.53
+99309,NURSING_FACILITY,Sbsq nf care moderate mdm 30,qpp,3.43,33.5675,115.14,99.02
+99310,NURSING_FACILITY,Sbsq nf care high mdm 45,nonqpp,4.89,33.4009,163.33,140.28
+99310,NURSING_FACILITY,Sbsq nf care high mdm 45,qpp,4.89,33.5675,164.15,140.98
 99202,OFFICE_EM,Office o/p new sf 15 min,nonqpp,2.25,33.4009,75.15,41.08
 99202,OFFICE_EM,Office o/p new sf 15 min,qpp,2.25,33.5675,75.53,41.29
 99203,OFFICE_EM,Office o/p new low 30 min,nonqpp,3.52,33.4009,117.57,71.48
