@@ -4,7 +4,7 @@
 -- clinician bills CCM or PCM. Patients seeing several clinicians count more than once.
 with c as (
   select *,
-    ntile(5) over (order by dual_share) as dual_share_quintile
+    ntile(5) over (order by dual_share, npi) as dual_share_quintile
   from {{ ref('mart_clinician') }}
   where dual_share is not null
 ),

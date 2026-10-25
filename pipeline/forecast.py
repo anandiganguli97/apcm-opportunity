@@ -42,7 +42,7 @@ IMPUTED = ["dual_share", "avg_hcc_risk_score", "metro_share"]
 
 
 def frame(year: int) -> pd.DataFrame:
-    d = db.execute("select * from int_practice_year where service_year = ?", [year]).df()
+    d = db.execute("select * from int_practice_year where service_year = ? order by practice_id", [year]).df()
     d["log_panel"] = np.log1p(d["patient_panel_proxy"].fillna(0))
     d["log_clinicians"] = np.log1p(d["pcp_clinicians"])
     d["log_office_em_per_bene"] = np.log1p(d["office_em_per_bene"].fillna(0))
