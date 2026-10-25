@@ -33,7 +33,7 @@ What is done, what is next, and the gate for each phase.
 - [x] Literature reviewed; contribution stated against the published survey of APCM uptake.
 - [x] Target, features and evaluation plan pre-registered in the model card.
 - [x] Interpretable logistic model with cross-validated AUROC and Brier score.
-- [ ] Freeze the forecast before CMS publishes the 2025 file (owner decision).
+- [x] Freeze the forecast before CMS publishes the 2025 file (frozen 2026-10-25, tag `forecast-2025-v1`).
 - [ ] Score it against the 2025 file when published: AUROC, average precision, calibration by decile, uptake by dual-share fifth.
 
 **Gate:** an immutable, timestamped forecast, then a public scorecard of where it was wrong.

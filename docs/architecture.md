@@ -13,7 +13,7 @@ Every number a user sees traces to a public source file, a version and a script.
 | Reference checks | `pipeline/references.py` | Fetch Federal Register rule text, CMS payment amount files and condition definitions; check fee arithmetic | Stand in for legal or billing review |
 | Warehouse | dbt (DuckDB): staging, intermediate, marts | Primary care definition, practice roll-up, readiness tiers, QMB estimates, equity, payment, opportunity; 48 models and tests | Hide policy rules in the app |
 | Export | `pipeline/export.py` | Aggregate results, practice extract, NPI to practice lookup (`pipeline_output/results/`) | Export patient-level or name data |
-| Forecast | `pipeline/forecast.py`, `scripts/freeze_forecast.py` | Draft readiness score and model card; one-way freeze with a hash manifest | Overwrite a freeze or train on the outcome |
+| Forecast | `pipeline/forecast.py`, `scripts/freeze_forecast.py` | Readiness score and model card; frozen forecast of record in `forecast/frozen_2025_v1/`; one-way freeze with a hash manifest | Overwrite a freeze or train on the outcome |
 | Report | `pipeline/build_dashboard.py` | Single-file report page published to GitHub Pages | Fetch data at view time |
 | App | `app.py`, `src/apcm_opportunity/dashboard.py` | Findings, practice finder, planner, payment calculator over committed outputs | Recalculate analysis, download source data, or collect patient information |
 

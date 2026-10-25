@@ -1,4 +1,4 @@
-"""Draft 2025 APCM adoption forecast and readiness score (NOT frozen).
+"""2025 APCM adoption forecast and readiness score.
 
 Target (assumptions log A19): a primary care practice has at least one visible APCM
 row (G0556-G0558) in the 2025 Physician & Other Practitioners file. That file is not
@@ -14,8 +14,9 @@ Each model is an unpenalised logistic regression on standardised features (A20).
 percentile (0-100) of that predicted probability. Probabilities are scaled to G2211
 uptake, not APCM uptake, so only the ranking is meaningful.
 
-Outputs go to pipeline_output/forecast/ as DRAFT files. Freezing them with
-scripts/freeze_forecast.py is a one-way step and needs Anandi's sign-off.
+Outputs in pipeline_output/forecast/ are regenerated on every run. The forecast of
+record is the frozen copy in pipeline_output/forecast/frozen_2025_v1/ (see FREEZE.md),
+made with scripts/freeze_forecast.py, which never overwrites.
 """
 from __future__ import annotations
 
@@ -151,7 +152,7 @@ def sha(path: Path) -> str:
 manifests = {p.name: sha(p) for p in sorted((ROOT / "pipeline_output" / "manifests").glob("*.json"))}
 commit = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
 model_card = {
-    "status": "DRAFT, not frozen. Freeze only with Anandi's approval (scripts/freeze_forecast.py).",
+    "status": "Regenerated each run. Forecast of record: pipeline_output/forecast/frozen_2025_v1/ (frozen 2026-10-25T04:35:06Z).",
     "target": "Practice has >=1 visible APCM (G0556-G0558) row in the 2025 CMS Physician & Other "
               "Practitioners by Provider and Service file (clinician-code rows with 11+ beneficiaries).",
     "outcome_release": "Expected with the 2025 service-year file (CMS has published each year's file about "

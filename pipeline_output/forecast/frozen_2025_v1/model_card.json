@@ -1,0 +1,292 @@
+{
+  "status": "DRAFT, not frozen. Freeze only with Anandi's approval (scripts/freeze_forecast.py).",
+  "target": "Practice has >=1 visible APCM (G0556-G0558) row in the 2025 CMS Physician & Other Practitioners by Provider and Service file (clinician-code rows with 11+ beneficiaries).",
+  "outcome_release": "Expected with the 2025 service-year file (CMS has published each year's file about 17 months after year end; 2024 data appeared May 2026).",
+  "practice_definition": "Group practice (org PAC ID) from the current Doctors and Clinicians file, else solo NPI.",
+  "training_design": "Launch analog. Model A: 2023 features -> G2211 billing in 2024. Model B: 2023 features -> new CCM/PCM billing in 2024 among practices with neither in 2023.",
+  "scoring": "2024 features scored with model A; readiness_score = percentile of predicted probability.",
+  "model_a_g2211_launch": {
+    "n": 47564,
+    "events": 11623,
+    "prevalence": 0.24436548650239678,
+    "cv_auroc": 0.7999862273923779,
+    "cv_brier": 0.13912833611161873,
+    "brier_null": 0.18465099550884373,
+    "coef": {
+      "const": {
+        "beta_per_sd": -1.4459731903925757,
+        "odds_ratio_per_sd": 0.23551676234036628,
+        "p_value": 0.0
+      },
+      "log_panel": {
+        "beta_per_sd": 0.48065166171744667,
+        "odds_ratio_per_sd": 1.617127879231395,
+        "p_value": 4.521051533752475e-92
+      },
+      "log_clinicians": {
+        "beta_per_sd": 0.5993336460893363,
+        "odds_ratio_per_sd": 1.8209050288477941,
+        "p_value": 6.095150293585844e-162
+      },
+      "physician_share": {
+        "beta_per_sd": -0.027307342778176338,
+        "odds_ratio_per_sd": 0.9730621319431368,
+        "p_value": 0.020198885498352998
+      },
+      "dual_share": {
+        "beta_per_sd": -0.3400041840893984,
+        "odds_ratio_per_sd": 0.7117673446581785,
+        "p_value": 2.5170909966309896e-94
+      },
+      "avg_hcc_risk_score": {
+        "beta_per_sd": -0.07763905092781286,
+        "odds_ratio_per_sd": 0.9252983518564968,
+        "p_value": 0.0003205068073135531
+      },
+      "metro_share": {
+        "beta_per_sd": 0.020561906120604913,
+        "odds_ratio_per_sd": 1.0207747584925515,
+        "p_value": 0.09964308660942753
+      },
+      "has_ccm": {
+        "beta_per_sd": 0.05654646867755086,
+        "odds_ratio_per_sd": 1.0581757856871414,
+        "p_value": 6.438546421436133e-06
+      },
+      "has_pcm": {
+        "beta_per_sd": 0.021023003273172313,
+        "odds_ratio_per_sd": 1.0212455433575442,
+        "p_value": 0.062393690163249256
+      },
+      "has_tcm": {
+        "beta_per_sd": 0.1254786674601434,
+        "odds_ratio_per_sd": 1.133690984194461,
+        "p_value": 4.9033690133761365e-24
+      },
+      "has_bhi_or_cocm": {
+        "beta_per_sd": -0.014417310640558487,
+        "odds_ratio_per_sd": 0.9856861211166115,
+        "p_value": 0.24799303366046022
+      },
+      "has_rpm": {
+        "beta_per_sd": 0.049986540436721044,
+        "odds_ratio_per_sd": 1.0512569468214026,
+        "p_value": 2.7722633966308927e-05
+      },
+      "has_acp": {
+        "beta_per_sd": 0.07182158277665475,
+        "odds_ratio_per_sd": 1.074463624144849,
+        "p_value": 7.426009948935561e-09
+      },
+      "awv_clinician_share": {
+        "beta_per_sd": 0.4632600751353876,
+        "odds_ratio_per_sd": 1.5892466122009854,
+        "p_value": 2.1518002779320563e-164
+      },
+      "log_office_em_per_bene": {
+        "beta_per_sd": 0.32184141928419185,
+        "odds_ratio_per_sd": 1.3796659701913885,
+        "p_value": 3.3924901459978873e-74
+      },
+      "dual_share_missing": {
+        "beta_per_sd": 0.0891077467896193,
+        "odds_ratio_per_sd": 1.0931984386030615,
+        "p_value": 1.2292455102063554e-10
+      }
+    },
+    "standardisation": {
+      "median": {
+        "log_panel": 5.3230099791384085,
+        "log_clinicians": 0.6931471805599453,
+        "physician_share": 1.0,
+        "dual_share": 0.215962441314554,
+        "avg_hcc_risk_score": 1.2171,
+        "metro_share": 1.0,
+        "has_ccm": 0.0,
+        "has_pcm": 0.0,
+        "has_tcm": 0.0,
+        "has_bhi_or_cocm": 0.0,
+        "has_rpm": 0.0,
+        "has_acp": 0.0,
+        "awv_clinician_share": 0.5,
+        "log_office_em_per_bene": 0.9641164195181856
+      },
+      "mean": {
+        "log_panel": 5.399784239171938,
+        "log_clinicians": 0.9640890675389081,
+        "physician_share": 0.891786525066099,
+        "dual_share": 0.26190039995706677,
+        "avg_hcc_risk_score": 1.459170127607279,
+        "metro_share": 0.8472593019326509,
+        "has_ccm": 0.10829619039609789,
+        "has_pcm": 0.0019132116726936338,
+        "has_tcm": 0.1746488941216046,
+        "has_bhi_or_cocm": 0.0063493398368514005,
+        "has_rpm": 0.04583298292826508,
+        "has_acp": 0.1624547977461946,
+        "awv_clinician_share": 0.508345320281608,
+        "log_office_em_per_bene": 0.8863540575329654,
+        "dual_share_missing": 0.25605499957951394
+      },
+      "sd": {
+        "log_panel": 1.3592359336321878,
+        "log_clinicians": 0.7000931210769064,
+        "physician_share": 0.2824813135463409,
+        "dual_share": 0.19365830046233862,
+        "avg_hcc_risk_score": 0.6998451627999205,
+        "metro_share": 0.3445756842306667,
+        "has_ccm": 0.3107573906797928,
+        "has_pcm": 0.04369887231520134,
+        "has_tcm": 0.37967049997411245,
+        "has_bhi_or_cocm": 0.07943021066415254,
+        "has_rpm": 0.20912493888845646,
+        "has_acp": 0.36887138291068444,
+        "awv_clinician_share": 0.4797216118852154,
+        "log_office_em_per_bene": 0.5808290004410531,
+        "dual_share_missing": 0.4364571477147917
+      },
+      "dropped_constant": [
+        "avg_hcc_risk_score_missing",
+        "metro_share_missing"
+      ]
+    }
+  },
+  "model_b_new_care_management": {
+    "n": 42386,
+    "events": 1228,
+    "prevalence": 0.028971830321332517,
+    "cv_auroc": 0.7418250800561529,
+    "cv_brier": 0.027277880133568338,
+    "brier_null": 0.028132463369164435,
+    "coef": {
+      "const": {
+        "beta_per_sd": -3.8379981222988033,
+        "odds_ratio_per_sd": 0.021536672003052086,
+        "p_value": 0.0
+      },
+      "log_panel": {
+        "beta_per_sd": 0.4116776268963836,
+        "odds_ratio_per_sd": 1.5093477847614614,
+        "p_value": 1.4788049837474017e-15
+      },
+      "log_clinicians": {
+        "beta_per_sd": 0.04850872036503846,
+        "odds_ratio_per_sd": 1.0497045255870585,
+        "p_value": 0.13426355865756678
+      },
+      "physician_share": {
+        "beta_per_sd": -0.10757968157250869,
+        "odds_ratio_per_sd": 0.8980049651521974,
+        "p_value": 0.00017538889450146545
+      },
+      "dual_share": {
+        "beta_per_sd": 0.15664957918225203,
+        "odds_ratio_per_sd": 1.169585694907398,
+        "p_value": 1.738149368391118e-07
+      },
+      "avg_hcc_risk_score": {
+        "beta_per_sd": 0.18972597574779712,
+        "odds_ratio_per_sd": 1.2089182793372275,
+        "p_value": 2.1628887185057836e-07
+      },
+      "metro_share": {
+        "beta_per_sd": -0.01805202386150392,
+        "odds_ratio_per_sd": 0.9821099378778564,
+        "p_value": 0.5646063216970776
+      },
+      "has_tcm": {
+        "beta_per_sd": 0.007374615056582453,
+        "odds_ratio_per_sd": 1.0074018744982944,
+        "p_value": 0.7909082366269468
+      },
+      "has_bhi_or_cocm": {
+        "beta_per_sd": 0.03176197853447385,
+        "odds_ratio_per_sd": 1.0322717732212399,
+        "p_value": 0.03512343695895228
+      },
+      "has_rpm": {
+        "beta_per_sd": 0.1757909893172476,
+        "odds_ratio_per_sd": 1.1921888524021822,
+        "p_value": 9.213271102576228e-33
+      },
+      "has_acp": {
+        "beta_per_sd": 0.21607780802600454,
+        "odds_ratio_per_sd": 1.2411989504838208,
+        "p_value": 4.5422817806372654e-20
+      },
+      "awv_clinician_share": {
+        "beta_per_sd": 0.24783198470376183,
+        "odds_ratio_per_sd": 1.2812446454101392,
+        "p_value": 7.910453653801837e-09
+      },
+      "log_office_em_per_bene": {
+        "beta_per_sd": 0.18973087510991063,
+        "odds_ratio_per_sd": 1.208924202280153,
+        "p_value": 3.932126811027342e-06
+      },
+      "dual_share_missing": {
+        "beta_per_sd": -0.017768191532327133,
+        "odds_ratio_per_sd": 0.9823887319925517,
+        "p_value": 0.6501090057678114
+      }
+    },
+    "standardisation": {
+      "median": {
+        "log_panel": 5.241747015059643,
+        "log_clinicians": 0.6931471805599453,
+        "physician_share": 1.0,
+        "dual_share": 0.21800127912888045,
+        "avg_hcc_risk_score": 1.2006868298368298,
+        "metro_share": 1.0,
+        "has_tcm": 0.0,
+        "has_bhi_or_cocm": 0.0,
+        "has_rpm": 0.0,
+        "has_acp": 0.0,
+        "awv_clinician_share": 0.2857142857142857,
+        "log_office_em_per_bene": 0.9486687204577009
+      },
+      "mean": {
+        "log_panel": 5.262101118157026,
+        "log_clinicians": 0.9017108744400827,
+        "physician_share": 0.8998334383995987,
+        "dual_share": 0.26118930685105624,
+        "avg_hcc_risk_score": 1.4536221343608458,
+        "metro_share": 0.8483373864149979,
+        "has_tcm": 0.13879582881139998,
+        "has_bhi_or_cocm": 0.0015335252205917048,
+        "has_rpm": 0.01988864247628934,
+        "has_acp": 0.12246968338602368,
+        "awv_clinician_share": 0.4781203019317058,
+        "log_office_em_per_bene": 0.869916536969665,
+        "dual_share_missing": 0.2740999386589912
+      },
+      "sd": {
+        "log_panel": 1.254455077444987,
+        "log_clinicians": 0.5749671711066563,
+        "physician_share": 0.27833763537001527,
+        "dual_share": 0.19096017427038736,
+        "avg_hcc_risk_score": 0.7142702015404175,
+        "metro_share": 0.34582705711557843,
+        "has_tcm": 0.3457374247227216,
+        "has_bhi_or_cocm": 0.03913067398285845,
+        "has_rpm": 0.13961928334581172,
+        "has_acp": 0.327831352412288,
+        "awv_clinician_share": 0.48361399482685435,
+        "log_office_em_per_bene": 0.5835293131549639,
+        "dual_share_missing": 0.44606485696116
+      },
+      "dropped_constant": [
+        "avg_hcc_risk_score_missing",
+        "metro_share_missing"
+      ]
+    }
+  },
+  "rank_agreement_spearman_a_vs_b_2024": 0.7273076132144919,
+  "evaluation_plan": "When 2025 data publish: AUROC, average precision, Brier score, calibration by decile, and uptake by decile within dual-share quintiles. Compare against the naive rule 'practice billed CCM or PCM in 2024'.",
+  "source_manifest_sha256": {
+    "mup.json": "a38d47ee683af1c3ccf6c9af26f6b4f048058f49adb809d34294c69b6edeb208",
+    "pfs.json": "7658998edaa1a82e67f9066ab7d71c0c36c725ec52afc6ccdf8b8179b3a874ae",
+    "reference.json": "447885d39d5cf36e512647de549a3cfcb020b66342a55f1e49f81a87edb5b5b0"
+  },
+  "repository_commit": "b678262891fa7f581e488173e6945788cec677e2"
+}

@@ -24,16 +24,16 @@ Service year 2024 unless noted; CY2026 payment rates. Each figure links to the f
 3. **But readiness is U-shaped, not a straight gradient.** 9.2% of clinicians with the fewest dual-eligible patients bill CCM or PCM, 4.4% in the middle fifth, and 7.7% among clinicians whose panels are mostly dual-eligible. In primary care shortage counties, 11.0% of dual-eligible patients have a clinician who bills CCM or PCM, against 12.9% elsewhere. ([`equity.csv`](pipeline_output/results/equity.csv))
 4. **APCM pays less per month than CCM but can pay more per year.** G0557 is $53.78 a month against $66.13 for the base CCM code, with no monthly time minimum. The median 2024 CCM biller billed 4.5 months per patient ($383 a year at 2026 rates); G0557 billed all 12 months is $645, more than CCM for 84% of CCM billers. G0558 every month is $1,407 per QMB patient. ([`ccm_vs_apcm_summary.csv`](pipeline_output/results/ccm_vs_apcm_summary.csv), [`fee_schedule_2026.csv`](pipeline_output/results/fee_schedule_2026.csv))
 5. **National opportunity: $0.7B to $8.3B a year in allowed charges** for traditional Medicare (base case $3.1B), depending on capture, consent and the share of patients meeting the two-condition criterion. Full enrollment would be $14.0B to $18.4B. ([`apcm_opportunity_national.csv`](pipeline_output/results/apcm_opportunity_national.csv), assumptions in [`docs/assumptions_log.md`](docs/assumptions_log.md))
-6. **Draft readiness score.** A logistic model trained on how practices took up G2211, a primary care code launched in 2024, ranks every practice for likely APCM uptake (cross-validated AUROC 0.80). The least-ready tenth of practices holds 3.6 times the QMB patients its share of all patients would suggest, and averages a 57% dual-eligible panel. A check model trained on new CCM/PCM adoption (AUROC 0.74) ranks practices similarly (Spearman 0.73), but the two disagree on dual share: high-dual practices were slower to add G2211 and more likely to start care management. ([`pipeline_output/forecast/`](pipeline_output/forecast/))
+6. **A frozen forecast of who adopts first.** A logistic model trained on how practices took up G2211, a primary care code launched in 2024, ranks every practice for likely APCM uptake (cross-validated AUROC 0.80). The least-ready tenth of practices holds 3.6 times the QMB patients its share of all patients would suggest, and averages a 57% dual-eligible panel. A check model trained on new CCM/PCM adoption (AUROC 0.74) ranks practices similarly (Spearman 0.73), but the two disagree on dual share: high-dual practices were slower to add G2211 and more likely to start care management. ([`frozen_2025_v1/`](pipeline_output/forecast/frozen_2025_v1/FREEZE.md))
 7. **The data has blind spots, and they are measured.** CMS hides clinician-code rows with fewer than 11 patients. That hides 3.9% of CCM services but 39% of transitional care management services, so TCM-based readiness is understated for small practices. ([`suppression_by_family.csv`](pipeline_output/results/suppression_by_family.csv), [`docs/data_validity_report.md`](docs/data_validity_report.md))
 
 The closest prior work is a survey of 404 primary care clinicians in which 14.9% reported using APCM (Grumbach et al., *JGIM*, October 2026). This project is the national, claims-based complement. See [`docs/literature_scan.md`](docs/literature_scan.md).
 
 **Checked against the sources.** Every fee used here matches CMS's published 2026 payment amounts in all 109 Medicare localities to the cent, the APCM rules are transcribed from the Federal Register with page citations ([`docs/policy_evidence.md`](docs/policy_evidence.md)), and the G2211 uptake that trains the forecast is consistent with a 100% claims study (Ganguli et al., *JAMA* 2026). Full checks in [`docs/data_validity_report.md`](docs/data_validity_report.md).
 
-## The forecast is not frozen yet
+## The forecast is frozen
 
-The readiness score is a pre-registered forecast of which practices will show APCM billing in the 2025 CMS file, which is not yet published. It stays a draft until it is frozen with [`scripts/freeze_forecast.py`](scripts/freeze_forecast.py), which writes a timestamped SHA-256 manifest and never overwrites. The target, features, training design and evaluation plan are in [`model_card_draft.json`](pipeline_output/forecast/model_card_draft.json).
+On 25 October 2026, before CMS published any 2025 service-year data, the readiness score for all 51,451 practices was frozen with SHA-256 hashes ([`FREEZE.md`](pipeline_output/forecast/frozen_2025_v1/FREEZE.md)), and the commit is tagged `forecast-2025-v1`. It predicts which practices will show APCM billing in the 2025 file. When that file is published, the same pipeline will score it (AUROC, uptake by readiness decile, and uptake by dual-eligible share at the same readiness) against a naive "already bills CCM or PCM" baseline, and the results will be posted next to the frozen file, whatever they show.
 
 ## How it works
 
@@ -42,7 +42,7 @@ CMS / HRSA / CDC / Census  ->  pipeline/ingest.py      download, hash, filter to
                            ->  pipeline/profile.py     aggregate profile of every staged file
                            ->  dbt (DuckDB)            staging -> intermediate -> marts, with data tests
                            ->  pipeline/export.py      aggregate CSVs in pipeline_output/results
-                           ->  pipeline/forecast.py    draft readiness score and model card
+                           ->  pipeline/forecast.py    readiness score and model card
                            ->  pipeline/build_dashboard.py   report page, published to GitHub Pages
 pipeline_output/  ->  app.py (Streamlit)   findings, practice finder, planner, calculator
 ```
@@ -74,7 +74,7 @@ python pipeline/export.py && python pipeline/forecast.py && python pipeline/buil
 | `models/staging`, `intermediate`, `marts` | dbt models. Key marts: `mart_national_trend`, `mart_equity`, `mart_practice`, `mart_ccm_vs_apcm`, `mart_apcm_opportunity_national`, `mart_suppression` |
 | `seeds/` | Primary care definition, effective-dated code families, the only scenario assumptions (`apcm_scenarios.csv`), policy rule register |
 | `tests/` | dbt data tests |
-| `pipeline_output/` | Manifests with source URLs and SHA-256, profile, results, draft forecast, last run log |
+| `pipeline_output/` | Manifests with source URLs and SHA-256, profile, results, frozen forecast, last run log |
 | `app.py`, `src/apcm_opportunity/` | Streamlit app ([live](https://anandiganguli97-apcm-opportunity-app-l8sdm0.streamlit.app/)); `app_tests/` runs it headless |
 | `dashboard/` | Report page: `template.html` and the built `index.html` ([live](https://anandiganguli97.github.io/apcm-opportunity/)) |
 | `docs/` | [Methods](docs/methods.md), [assumptions](docs/assumptions_log.md), [data validity](docs/data_validity_report.md), [sources](docs/data_source_inventory.md), [literature](docs/literature_scan.md), [policy evidence](docs/policy_evidence.md), [chronic conditions](docs/chronic_conditions.md), [literature log](docs/literature.csv), [architecture](docs/architecture.md), [data dictionary](docs/data_dictionary.md), [decision log](docs/decision_log.md), [roadmap](docs/production_roadmap.md), client brief template |

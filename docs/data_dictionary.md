@@ -22,7 +22,7 @@ Fields in the files the app, the report and Tableau users read. All live in `pip
 | `care_mgmt_allowed_visible` | Visible care management allowed dollars | Suppressed rows excluded |
 | `apcm_allowed_full_capture_base`, `apcm_allowed_base_scenario` | Annual APCM allowed amount at 2026 rates, before and after base capture and consent | Scenario, not a forecast |
 
-## Readiness score (`forecast/draft_2025_apcm_predictions.csv.gz`)
+## Readiness score (`forecast/frozen_2025_v1/apcm_2025_predictions.csv.gz`)
 
 | Field | Meaning |
 |---|---|
@@ -31,7 +31,7 @@ Fields in the files the app, the report and Tableau users read. All live in `pip
 | `readiness_decile` | 1 (least likely to adopt first) to 10 |
 | `observed_g2211_2024` | Whether the practice billed G2211 in 2024 (the training event) |
 
-Probabilities are scaled to G2211 uptake, so only the ranking carries over to APCM. Draft until frozen.
+Probabilities are scaled to G2211 uptake, so only the ranking carries over to APCM. Frozen on 2026-10-25; `forecast/draft_2025_apcm_predictions.csv.gz` is the same output regenerated on each run.
 
 ## NPI lookup (`results/npi_practice_lookup.csv.gz`)
 

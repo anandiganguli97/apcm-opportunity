@@ -1,0 +1,6 @@
+{
+  "frozen_at_utc": "2026-10-25T04:35:06Z",
+  "prediction_file": "apcm_2025_predictions.csv.gz",
+  "sha256": "986b088637ff85a752544526dd0ba4341f025e856b3be189ad9d9ca2651388ba",
+  "note": "Analyst must record target definition, data cutoff, model and source provenance alongside this manifest."
+}
