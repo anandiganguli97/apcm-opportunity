@@ -33,6 +33,7 @@ import re
 import shutil
 import subprocess
 import time
+import urllib.error
 import urllib.request
 import zipfile
 from pathlib import Path
@@ -53,10 +54,24 @@ ALL_CODES = sorted({c for fam in CODES.values() for c in fam})
 
 
 # ----------------------------------------------------------------- helpers
-def http_bytes(url: str, timeout: int = 300) -> bytes:
+def http_bytes(url: str, timeout: int = 300, tries: int = 6) -> bytes:
+    """GET with backoff on rate limits and server errors (data.cms.gov returns 429 under load)."""
     req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read()
+    for attempt in range(tries):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code != 429 and e.code < 500 or attempt == tries - 1:
+                raise
+            after = e.headers.get("Retry-After", "")
+            wait = int(after) if after.isdigit() else 15 * 2 ** attempt
+        except urllib.error.URLError:
+            if attempt == tries - 1:
+                raise
+            wait = 15 * 2 ** attempt
+        print(f"retrying {url} in {wait}s")
+        time.sleep(wait)
 
 
 def download(url: str, dest: Path) -> dict:
