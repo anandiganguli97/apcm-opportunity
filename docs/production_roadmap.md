@@ -24,6 +24,7 @@ What is done, what is next, and the gate for each phase.
 - [x] Dual-eligible counts, county QMB ratios, rurality, HPSA and SVI joined with join-rate diagnostics.
 - [x] Suppression measured by code and family against national totals.
 - [x] Remove post-acute and nursing-facility clinicians: no visible office visits, or nursing facility and home visits outnumbering them.
+- [x] Keep therapy companies from absorbing primary care physicians in the practice rollup.
 - [ ] Quantify FQHC, RHC and Medicare Advantage coverage gaps by state.
 
 **Gate:** every estimate has a denominator, suppression coverage and join rates. Met for national and state results.
