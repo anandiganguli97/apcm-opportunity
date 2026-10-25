@@ -14,7 +14,7 @@ Advanced Primary Care Management (APCM, HCPCS G0556, G0557, G0558) started on Ja
 ## Units
 
 - **Clinician-year.** One row per NPI and service year in the CMS by-Provider file, restricted to individuals (entity code I).
-- **Practice.** One organization (Org PAC ID) per NPI from the current CMS Doctors and Clinicians file. About 260,000 clinicians are listed with more than one organization, often including national therapy and post-acute companies with thousands of members, so the practice is the organization with the highest share of primary care clinicians among its members, then the one the NPI is listed with most often, then the larger organization, then lowest ID. NPIs with no organization are their own practice (`npi:<NPI>`). CMS publishes no historical snapshot, so the current file assigns practices for every year.
+- **Practice.** One organization (Org PAC ID) per NPI from the current CMS Doctors and Clinicians file. About 260,000 clinicians are listed with more than one organization. Some organizations, notably national therapy companies, list thousands of family and internal medicine physicians, over 90% of whom are also listed with another group. So the practice is the organization with the highest share of members listed nowhere else, then the one the NPI is listed with most often, then the larger organization, then lowest ID. `results/largest_practices_check.csv` shows the member mix of the 40 largest practices as a check.
 
 ## Primary care definition
 
