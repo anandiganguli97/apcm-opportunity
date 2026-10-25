@@ -28,6 +28,7 @@ def save(name: str, sql: str, gz: bool = False) -> None:
 
 
 save("national_trend", "select * from mart_national_trend order by service_year")
+save("primary_care_exclusions", "select * from mart_primary_care_exclusions order by service_year")
 save("suppression_by_code", "select * from mart_suppression order by family, hcpcs, service_year")
 save("suppression_by_family", """
     select service_year, family, sum(national_services) national_services, sum(visible_services) visible_services,
@@ -42,7 +43,7 @@ save("readiness_tiers", """
            sum(apcm_allowed_base_scenario) apcm_allowed_base_scenario
     from mart_practice group by 1 order by 1""")
 save("readiness_by_dual_quintile", """
-    with p as (select *, ntile(5) over (order by dual_share) dual_quintile from mart_practice where dual_share is not null)
+    with p as (select *, ntile(5) over (order by dual_share, practice_id) dual_quintile from mart_practice where dual_share is not null)
     select dual_quintile, readiness_tier, count(*) practices, sum(pcp_clinicians) clinicians,
            sum(patient_panel_proxy) patient_panel_proxy, sum(est_qmb_patients) est_qmb_patients,
            min(dual_share) min_dual_share, max(dual_share) max_dual_share
@@ -81,11 +82,48 @@ save("practice_extract_tableau", """
            has_awv, has_acp, has_g2211, ccm_patient_months, care_mgmt_allowed_visible,
            round(apcm_allowed_full_capture_base, 0) apcm_allowed_full_capture_base,
            round(apcm_allowed_base_scenario, 0) apcm_allowed_base_scenario
-    from mart_practice order by patient_panel_proxy desc""", gz=True)
+    from mart_practice order by patient_panel_proxy desc, practice_id""", gz=True)
 
 # NPI -> practice lookup for the app's practice search (primary care clinicians, public NPIs, no names)
 save("npi_practice_lookup", """
     select npi, practice_id, provider_type, role, state from mart_clinician order by npi""", gz=True)
+
+# Largest practices with their organization's specialty mix: a check that the rollup
+# lands office-based clinicians in primary care groups
+save("largest_practices_check", """
+    with top as (
+      select practice_id, practice_name, pcp_clinicians, patient_panel_proxy
+      from mart_practice order by patient_panel_proxy desc, practice_id limit 40
+    ),
+    members as (
+      select org_pac_id, count(distinct npi) as org_npis,
+             string_agg(distinct primary_specialty, '; ') filter (where primary_specialty is not null) as _all
+      from stg_dac where org_pac_id in (select practice_id from top) group by 1
+    ),
+    spec as (
+      select org_pac_id, primary_specialty, count(distinct npi) as n,
+             row_number() over (partition by org_pac_id order by count(distinct npi) desc, primary_specialty) as rk
+      from stg_dac where org_pac_id in (select practice_id from top) group by 1, 2
+    ),
+    orgs_per_npi as (
+      select npi, count(distinct org_pac_id) as n_orgs from stg_dac where org_pac_id is not null group by 1
+    ),
+    clin as (
+      select c.practice_id, count(*) as clinicians_2024,
+             avg(case when o.n_orgs = 1 then 1.0 else 0.0 end) as share_listed_only_here,
+             median(y.office_em_services) as median_office_visits,
+             median(coalesce(y.nursing_facility_services, 0) + coalesce(y.home_residence_services, 0)) as median_facility_home_visits
+      from mart_clinician c
+      join orgs_per_npi o using (npi)
+      join int_clinician_year_candidates y on y.npi = c.npi and y.service_year = 2024
+      where c.practice_id in (select practice_id from top) group by 1
+    )
+    select t.*, m.org_npis,
+           (select string_agg(primary_specialty || ' ' || n, '; ' order by n desc) from spec s
+             where s.org_pac_id = t.practice_id and rk <= 5) as top_member_specialties,
+           cl.clinicians_2024, cl.share_listed_only_here, cl.median_office_visits, cl.median_facility_home_visits
+    from top t left join members m on m.org_pac_id = t.practice_id left join clin cl using (practice_id)
+    order by t.patient_panel_proxy desc, t.practice_id""")
 
 headline = {
     "analysis_year": int(df("select max(service_year) y from mart_national_trend")["y"][0]),

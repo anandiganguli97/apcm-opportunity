@@ -30,7 +30,7 @@ With network access to the sources, the same steps run locally: `pip install -r 
 - `pipeline/hcpcs_codes.json` and `seeds/code_families.csv`: effective-dated HCPCS families (CCM, PCM, TCM, BHI, CoCM, RPM, AWV, ACP, G2211, SDOH navigation, APCM, office E/M).
 - `pipeline/profile.py`: aggregate profile of staged data (`pipeline_output/profile/profile.json`).
 - `models/staging`, `models/intermediate`, `models/marts`: dbt-duckdb models. Key marts: `mart_national_trend`, `mart_suppression`, `mart_clinician`, `mart_practice`, `mart_equity`, `mart_ccm_vs_apcm`, `mart_apcm_opportunity_national`.
-- `seeds/primary_care_specialties.csv`: primary care definition (physicians in FM, IM, GP, geriatrics; NPs and PAs only with visible wellness-visit billing).
+- `seeds/primary_care_specialties.csv`: primary care definition (physicians in FM, IM, GP, geriatrics; NPs and PAs only with visible wellness-visit billing). `int_clinician_year` keeps only office-based clinicians: visible office visits, not outnumbered by nursing facility plus home and residence visits (`int_clinician_year_candidates` keeps the rest with flags).
 - `seeds/apcm_scenarios.csv`: the only modeled inputs (share of patients meeting the 2+ chronic condition criterion, capture, consent), labeled as scenario assumptions.
 - `pipeline/export.py`: `pipeline_output/results/*.csv`, `headline.json`, the practice extract and the NPI to practice lookup.
 - `pipeline/forecast.py`: readiness score and 2025 forecast, regenerated each run; the forecast of record is frozen in `pipeline_output/forecast/frozen_2025_v1/` (never modify it). `pipeline/build_dashboard.py`: report page from `dashboard/template.html`.
@@ -51,6 +51,4 @@ Done:
 
 Next:
 1. When CMS publishes the 2025 service-year file, score the frozen forecast per `FREEZE.md` and publish the results next to it.
-2. Remove post-acute and nursing-facility clinician groups using nursing facility visit codes (99304 to 99310).
-3. Practice one-pager export from the app.
-4. Optional: synthetic claims logic-test module; locality-adjusted payment in the national model.
+2. Optional: synthetic claims logic-test module; locality-adjusted payment in the national model.

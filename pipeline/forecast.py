@@ -42,7 +42,7 @@ IMPUTED = ["dual_share", "avg_hcc_risk_score", "metro_share"]
 
 
 def frame(year: int) -> pd.DataFrame:
-    d = db.execute("select * from int_practice_year where service_year = ?", [year]).df()
+    d = db.execute("select * from int_practice_year where service_year = ? order by practice_id", [year]).df()
     d["log_panel"] = np.log1p(d["patient_panel_proxy"].fillna(0))
     d["log_clinicians"] = np.log1p(d["pcp_clinicians"])
     d["log_office_em_per_bene"] = np.log1p(d["office_em_per_bene"].fillna(0))
@@ -127,7 +127,11 @@ practice = db.execute("""select practice_id, state, rurality, county_geographic_
 scored = score.merge(practice, on="practice_id", how="left")
 scored.round(5).to_csv(OUT / "draft_2025_apcm_predictions.csv.gz", index=False, compression="gzip")
 
-deciles = scored.groupby("readiness_decile").agg(
+# Decile summaries describe the forecast of record once it is frozen, so the published
+# figures do not drift as the draft is regenerated
+FROZEN = OUT / "frozen_2025_v1" / "apcm_2025_predictions.csv.gz"
+ranked = pd.read_csv(FROZEN) if FROZEN.exists() else scored
+deciles = ranked.groupby("readiness_decile").agg(
     practices=("practice_id", "size"), mean_p_model_a=("p_model_a", "mean"),
     observed_g2211_2024=("observed_g2211_2024", "mean"), patient_panel_proxy=("patient_panel_proxy", "sum"),
     est_qmb_patients=("est_qmb_patients", "sum"), mean_dual_share=("dual_share", "mean"),

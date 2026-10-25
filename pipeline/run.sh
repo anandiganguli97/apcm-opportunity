@@ -7,7 +7,7 @@ echo "Running job: ${JOB}"
 
 ingest() {
   # Staged Parquet is cached between runs; only missing pieces are rebuilt.
-  [ -f data/processed/mup_prov_2024.parquet ] || python pipeline/ingest.py mup
+  python pipeline/ingest.py mup   # skips years already staged with the current code list
   [ -f data/processed/svi_county.parquet ] || python pipeline/ingest.py reference
   # Rebuild SVI alone if the cached file fails the numeric-FIPS check
   python -c "import duckdb, sys; sys.exit(0 if duckdb.connect().execute(\"SELECT count(*) FROM 'data/processed/svi_county.parquet' WHERE NOT regexp_full_match(county_fips, '\\d{4,5}')\").fetchone()[0] == 0 else 1)" 2>/dev/null \

@@ -6,7 +6,7 @@ name: Real-data pipeline
 
 on:
   push:
-    branches: [real-data-rebuild, main]
+    branches-ignore: [gh-pages]
     paths:
       - "pipeline/**"
       - "models/**"
@@ -71,7 +71,7 @@ jobs:
           git pull --rebase origin "${GITHUB_REF_NAME}" || true
           git push origin "HEAD:${GITHUB_REF_NAME}"
       - name: Publish dashboard to GitHub Pages
-        if: success() && hashFiles('dashboard/index.html') != ''
+        if: success() && github.ref == 'refs/heads/main' && hashFiles('dashboard/index.html') != ''
         run: |
           site="$(mktemp -d)"
           cp dashboard/index.html "$site/"

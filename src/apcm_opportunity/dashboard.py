@@ -26,7 +26,9 @@ SIGNALS = {
 }
 FAMILY_NAMES = {"ACP": "Advance care planning", "AWV": "Wellness visits", "BHI": "Behavioral health integration", "CCM": "Chronic care management",
                 "COCM": "Collaborative care", "COMPLEXITY_ADDON": "G2211 add-on", "PCM": "Principal care management", "RPM": "Remote monitoring",
-                "SDOH_NAVIGATION": "Social needs navigation", "TCM": "Transitional care management", "OFFICE_EM": "Office visits"}
+                "SDOH_NAVIGATION": "Social needs navigation", "TCM": "Transitional care management", "OFFICE_EM": "Office visits",
+                "NURSING_FACILITY": "Nursing facility visits",
+                "HOME_RESIDENCE": "Home and residence visits"}
 REPO = "https://github.com/anandiganguli97/apcm-opportunity"
 ATLAS = "https://anandiganguli97.github.io/apcm-opportunity/"
 
@@ -196,7 +198,7 @@ def _profile(p: pd.Series) -> None:
     c[1].metric("Medicare patients (sum across clinicians)", f"{int(p.patient_panel_proxy):,}")
     c[2].metric("Dual-eligible share", _pct(p.dual_share), f"~{p.est_qmb_patients:,.0f} QMB patients" if pd.notna(p.est_qmb_patients) else None, delta_color="off")
     c[3].metric("Readiness score", "n/a" if pd.isna(p.readiness_score) else f"{p.readiness_score:.0f} / 100",
-                help="Percentile of predicted likelihood of early APCM billing, from a model trained on how practices took up G2211 in 2024. Frozen on 25 Oct 2026, before CMS published 2025 data.")
+                help="Percentile of predicted likelihood of early APCM billing, from a model trained on how practices took up G2211 in 2024. Frozen on 25 Oct 2026, before CMS published 2025 data. n/a means the practice was not in the frozen list (about 2% of practices, mostly regrouped clinicians).")
     chips = "".join(f'<span class="chip{"" if str(p[k]) == "True" else " off"}">{v}</span>' for k, v in SIGNALS.items())
     st.markdown(f"**Visible 2024 billing** ({TIER_NAMES.get(p.readiness_tier, p.readiness_tier)})<br>{chips}", unsafe_allow_html=True)
     st.markdown(f'<div class="cite">A struck-through service means no visible row, which can mean fewer than 11 patients rather than none. '
@@ -204,8 +206,59 @@ def _profile(p: pd.Series) -> None:
                 'Patient counts add up across clinicians and can count shared patients twice.</div>', unsafe_allow_html=True)
 
 
+# ------------------------------------------------------------------ practice one-pager
+def _one_pager(p: pd.Series, d: dict) -> str:
+    """A printable single-page HTML brief for one practice (open in a browser, print to PDF)."""
+    import html as _h
+    esc = lambda x: _h.escape(str(x))
+    name = p.practice_name if isinstance(p.practice_name, str) else f"Solo clinician {p.practice_id.removeprefix('npi:')}"
+    rules = d["rules"]
+    fee = d["fee_schedule_2026"].query("cf_type == 'nonqpp'").set_index("hcpcs").national_nonfac_amount
+    hints = _hints(p)
+    signals = "".join(f'<li class="{"on" if str(p[k]) == "True" else "off"}">{esc(v)}</li>' for k, v in SIGNALS.items())
+    steps = "".join(f"<li><b>{esc(area)}.</b> {esc(text)} <span class=cite>({esc(', '.join(rules.loc[r, 'federal_register_citation'] for r in AREA_RULES.get(area, []) if r in rules.index))})</span></li>"
+                    for area, text in hints.items()) or "<li>No visible care management billing yet. Start with the accountable lead, consent and initiating-visit workflows in the planner.</li>"
+    score = "n/a" if pd.isna(p.readiness_score) else f"{p.readiness_score:.0f} / 100"
+    base = d["apcm_opportunity_national"].set_index("scenario").loc["base"]
+    assumptions = (f"{base.capture_rate * base.consent_rate:.0%} of patients enrolled; {base.share_2plus_qmb:.0%} of QMBs "
+                   f"and {base.share_2plus_non_qmb:.0%} of others with 2+ conditions")
+    qmb = "n/a" if pd.isna(p.est_qmb_patients) else f"{p.est_qmb_patients:,.0f}"
+    return f"""<!doctype html><html><head><meta charset="utf-8"><title>APCM brief: {esc(name)}</title>
+<style>
+ body {{ font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; color: #132D3A; max-width: 760px; margin: 28px auto; padding: 0 20px; }}
+ h1 {{ font-size: 22px; margin: 0; }} h2 {{ font-size: 15px; margin: 18px 0 6px; border-bottom: 1px solid #E4EBE8; padding-bottom: 3px; }}
+ .sub {{ color: #60737D; margin: 2px 0 14px; }} .grid {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }}
+ .k {{ border: 1px solid #E4EBE8; border-radius: 8px; padding: 8px; }} .k b {{ display: block; font-size: 18px; }} .k span {{ color: #60737D; font-size: 12px; }}
+ ul {{ margin: 4px 0; padding-left: 18px; }} li.off {{ color: #9AA7AD; text-decoration: line-through; }} .cols {{ columns: 2; }}
+ .cite, .note {{ color: #60737D; font-size: 12px; }} table {{ border-collapse: collapse; width: 100%; }} td, th {{ text-align: left; padding: 3px 6px; border-bottom: 1px solid #E4EBE8; }}
+ @media print {{ body {{ margin: 0; }} }}
+</style></head><body>
+<h1>{esc(name)}</h1>
+<p class="sub">{esc(p.state)} · {esc(p.rurality)} · {"primary care shortage county" if str(p.county_geographic_pc_hpsa) == "True" else "not a shortage county"} · practice ID {esc(p.practice_id)}</p>
+<div class="grid">
+ <div class="k"><b>{int(p.pcp_clinicians):,}</b><span>primary care clinicians</span></div>
+ <div class="k"><b>{int(p.patient_panel_proxy):,}</b><span>Medicare patients (sum across clinicians)</span></div>
+ <div class="k"><b>{qmb}</b><span>estimated QMB patients ({_pct(p.dual_share)} dual-eligible)</span></div>
+ <div class="k"><b>{score}</b><span>readiness score (frozen 2025 forecast)</span></div>
+</div>
+<h2>What the practice already bills (2024)</h2>
+<p>{esc(TIER_NAMES.get(p.readiness_tier, p.readiness_tier))}</p><ul class="cols">{signals}</ul>
+<p class="note">A struck-through service has no visible row, which can mean fewer than 11 patients rather than none.</p>
+<h2>APCM payment at 2026 national rates</h2>
+<table><tr><th>Level</th><th>Monthly rate</th><th>Who</th></tr>
+<tr><td>G0556</td><td>${fee["G0556"]:.2f}</td><td>0 or 1 qualifying chronic condition</td></tr>
+<tr><td>G0557</td><td>${fee["G0557"]:.2f}</td><td>2 or more qualifying chronic conditions</td></tr>
+<tr><td>G0558</td><td>${fee["G0558"]:.2f}</td><td>QMB with 2 or more qualifying conditions</td></tr></table>
+<p>Base scenario for this practice: <b>{_money(p.apcm_allowed_base_scenario)}</b> allowed per year ({assumptions}). With every patient enrolled: {_money(p.apcm_allowed_full_capture_base)}.</p>
+<h2>Where to start, from the practice's billing</h2><ul>{steps}</ul>
+<h2>Limits</h2>
+<p class="note">Traditional Medicare Part B professional claims only. QMB counts are estimates from dual-eligible counts and county QMB shares. Patient counts add up across clinicians. Billing a code shows a workflow exists; it does not establish APCM eligibility or compliance. Confirm requirements with CMS and the practice's billing lead.</p>
+<p class="note">Source: APCM Readiness Atlas, built from CMS, HRSA, CDC and Census public data and the CY2025 and CY2026 PFS final rules. {REPO}</p>
+</body></html>"""
+
+
 def _finder(d: dict) -> None:
-    _band("Find a practice", "Search 51,000+ primary care practices: group practices from CMS's Doctors and Clinicians file, plus solo clinicians. "
+    _band("Find a practice", "Search 47,000+ primary care practices: group practices from CMS's Doctors and Clinicians file, plus solo clinicians. "
           "See what each already bills, its patient mix and its readiness score.", "PRACTICE FINDER · 2024")
     pr = d["practices"]
     f = st.columns([1.3, 1, 1, 1.2])
@@ -249,11 +302,14 @@ def _finder(d: dict) -> None:
         p = v.iloc[picked[0]]
         st.markdown("---")
         _profile(p)
-        b = st.columns(2)
+        b = st.columns(3)
         if b[0].button("Plan APCM for this practice", type="primary"):
             st.session_state["practice_id"] = p.practice_id
             st.session_state["nav_target"] = "Plan APCM next steps"
             st.rerun()
+        b[2].download_button("Download one-page brief", _one_pager(p, d).encode("utf-8"),
+                             f"apcm_brief_{p.practice_id.replace(':', '_')}.html", "text/html",
+                             help="A printable page with the profile, billing signals, payment and first steps. Open it and print to PDF.")
         if b[1].button("Estimate APCM payment for this practice"):
             st.session_state["practice_id"] = p.practice_id
             st.session_state["nav_target"] = "Payment calculator"
@@ -438,7 +494,7 @@ READINESS_QUESTIONS = [
             "Add a check for the one-provider-per-patient-per-calendar-month rule and for potentially overlapping care-management billing. Route possible conflicts to a qualified reviewer.",
             "Define who compares the roster with submitted and paid claims, who reviews denials or rejects, and how corrections and staff education are recorded.",
             "Review a small sample each month with the clinical lead and billing lead. Track error themes and update the workflow when official guidance or payer instructions change.",
-            "Keep operational financial reporting separate from patient-identifiable details in any portfolio or public reporting.",
+            "Keep operational financial reporting separate from patient-identifiable details in any external or public reporting.",
         ],
         "deliverable": "A monthly reconciliation checklist, escalation process, and audit log owned by the practice.",
         "done_when": "A reviewer can trace a sample month from roster through documentation review and claim disposition.",
@@ -481,7 +537,9 @@ def _hints(p: pd.Series | None) -> dict[str, str]:
     if on("has_rpm"):
         h["Secure communication options"] = "Bills remote monitoring, which suggests technology-based patient contact is in place. RPM can continue alongside APCM."
     if on("has_bhi_or_cocm"):
-        h["Population review and care gaps"] = "Bills behavioral health integration. BHI can be billed alongside APCM, and 2026 adds APCM behavioral health add-ons (G0568 to G0570)."
+        key = "Monthly billing and documentation review"  # cites the rule allowing BHI alongside APCM (89 FR 97897)
+        h[key] = (h.get(key, "") + " Bills behavioral health integration, which can be billed alongside APCM; "
+                  "2026 adds APCM behavioral health add-ons (G0568 to G0570).").strip()
     return h
 
 
@@ -646,7 +704,7 @@ def _calculator(d: dict) -> None:
     st.dataframe(t.style.format({"Patients": "{:,.0f}", "Rate per month": "${:,.2f}", "Allowed per year": "${:,.0f}"}), hide_index=True, width="stretch")
     st.write(_md(f"For comparison, billing base CCM (99490, ${r['99490']:.2f}) for the same {months['G0557'] + months['G0558']:,.0f} patients with 2+ conditions "
              f"in every month would be {_money(12 * r['99490'] * (months['G0557'] + months['G0558']))} a year, but each month needs 20 documented minutes. "
-             "The median 2024 CCM biller billed 4.5 months per patient."))
+             f"The median 2024 CCM biller billed {d['ccm_vs_apcm_summary'].iloc[0].median_ccm_months_per_patient:.1f} months per patient."))
     st.caption("Rates: CMS National Payment Amount File 2026 (non-QP). Allowed amount includes the patient's share. The practitioner billing APCM cannot bill CCM, PCM or TCM for the same patient in the same month (89 FR 97896).")
 
 

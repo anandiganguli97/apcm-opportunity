@@ -14,7 +14,7 @@ Advanced Primary Care Management (APCM, HCPCS G0556, G0557, G0558) started on Ja
 ## Units
 
 - **Clinician-year.** One row per NPI and service year in the CMS by-Provider file, restricted to individuals (entity code I).
-- **Practice.** The organization (Org PAC ID) each NPI is listed with most often in the current CMS Doctors and Clinicians file, ties broken by larger organization, then lowest ID. NPIs with no organization are their own practice (`npi:<NPI>`). CMS publishes no historical snapshot, so the current file assigns practices for every year.
+- **Practice.** One organization (Org PAC ID) per NPI from the current CMS Doctors and Clinicians file. About 260,000 clinicians are listed with more than one organization. Some organizations, notably national therapy companies, list thousands of family and internal medicine physicians, over 90% of whom are also listed with another group. So the practice is the organization with the highest share of members listed nowhere else, then the one the NPI is listed with most often, then the larger organization, then lowest ID. `results/largest_practices_check.csv` shows the member mix of the 40 largest practices as a check.
 
 ## Primary care definition
 
@@ -22,6 +22,7 @@ Advanced Primary Care Management (APCM, HCPCS G0556, G0557, G0558) started on Ja
 
 - Physicians with CMS provider type Family Practice, Internal Medicine, General Practice or Geriatric Medicine.
 - Nurse practitioners and physician assistants only in years they have a visible annual or initial wellness visit row (G0438, G0439, G0402). Without this, the NP and PA counts (203,212 and 112,514 in 2024) would swamp the physician count with specialty-practice clinicians.
+- Keeping only office-based clinicians: a clinician needs visible office visits (99202 to 99215) in the year, and their nursing facility (99304 to 99310) plus home and residence visits (99324 to 99350) must not outnumber them. The rest are mostly post-acute, long-term care and house-call clinicians, whose patients are not the office panels APCM is built for. They stay in `int_clinician_year_candidates` with flags for each reason, and `mart_primary_care_exclusions` (exported as `results/primary_care_exclusions.csv`) reports how many are removed each year.
 
 ## Code families
 
@@ -54,7 +55,7 @@ APCM rules are transcribed from the final rules with page cites in [`policy_evid
 
 ## Dual-eligible and QMB estimates
 
-- Dual-eligible count per clinician is `Bene_Dual_Cnt` from the by-Provider file. CMS blanks both dual fields for small panels (464,482 of 1,296,739 providers in 2024), so equity tables cover the 150,899 of 215,245 primary care clinicians with a reported count.
+- Dual-eligible count per clinician is `Bene_Dual_Cnt` from the by-Provider file. CMS blanks both dual fields for small panels (464,482 of 1,296,739 providers in 2024), so equity tables cover the 139,202 of 202,294 primary care clinicians with a reported count.
 - QMB patients are not in any clinician-level public file. The estimate is the clinician's dual count times the county ratio `(QMB only + QMB plus) / all duals` from CMS Medicare Monthly Enrollment (annual rows, same year), using the clinician's ZIP mapped to the county with most of its land area (Census 2020 ZCTA relationship file). Counties with fewer than 100 duals use the state ratio.
 - Nationally in 2024, QMBs were 8.33M of 12.17M dual enrollees (68%).
 
@@ -94,8 +95,9 @@ National non-facility amounts are RVUs times the conversion factor from the CY20
 - **Problem:** no APCM outcome exists yet to train on.
 - **Design:** train on the closest real launch. Model A predicts visible G2211 billing in 2024 (the code launched January 2024) from each practice's 2023 profile. Model B, a check, predicts first visible CCM or PCM in 2024 among practices with neither in 2023.
 - **Model:** unpenalised logistic regression on standardised features: log panel size, log clinician count, physician share, dual share, average HCC risk score, metropolitan share, CCM, PCM, TCM, BHI or CoCM, RPM, ACP, wellness-visit share of clinicians, with median imputation and missing flags. Flags with fewer than 50 practices in the minority class are dropped.
-- **Validation:** 5-fold cross-validated AUROC and Brier score (`model_card_draft.json`).
+- **Validation:** 5-fold cross-validated AUROC and Brier score (`frozen_2025_v1/model_card.json`; `model_card_draft.json` is the same card regenerated on each run).
 - **Score:** 2024 profiles scored with model A. `readiness_score` is the practice's percentile (0 to 100) of the predicted probability. The probabilities describe G2211 uptake, so only the ranking carries over to APCM.
+- **Definitions at freeze:** the frozen file keeps the practice and primary care definitions of its commit (tag `forecast-2025-v1`), and the outcome will be built with that tagged code. Later refinements to those definitions change the descriptive results, not the forecast or how it is scored.
 - **Freeze:** frozen on 2026-10-25T04:35:06Z with `scripts/freeze_forecast.py` (SHA-256 manifests, never overwrites) in `pipeline_output/forecast/frozen_2025_v1/`, with the target, method, scoring protocol and source hashes in `FREEZE.md`. When CMS publishes the 2025 file, evaluation will report AUROC, average precision, uptake by decile and uptake by decile within dual-share fifths, against the naive rule "billed CCM or PCM in 2024".
 
 ## What this does not claim

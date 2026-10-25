@@ -19,7 +19,7 @@
 | APCM amounts | RVU times conversion factor: G0556 0.49 RVU, $16.37; G0557 1.61, $53.78; G0558 3.51, $117.24 |
 | Fee arithmetic against CMS's published amounts | For all 14 project codes (APCM, its 2026 add-ons, CCM, PCM, G2211, 99213) in all 109 Medicare localities, (work RVU x PW GPCI + PE RVU x PE GPCI + MP RVU x MP GPCI) x conversion factor from the staged files equals the amount in CMS's 2026 National Payment Amount File (PFREV26A to D, latest release per locality) to the cent; largest difference $0.00. `pipeline_output/references/pfs_payment_check.csv` |
 | APCM work RVUs against the final rule | Staged RVU file: G0556 0.25, G0557 0.77, G0558 1.67, the values finalized at 89 FR 97900-97901 |
-| G2211 uptake against published research | 29.7% of primary care clinicians had visible G2211 billing in 2024. Ganguli et al. (JAMA 2026), using 100% claims, report 24.0% of all clinicians with an eligible visit, with primary care physicians billing at the highest rate |
+| G2211 uptake against published research | 31.0% of primary care clinicians had visible G2211 billing in 2024. Ganguli et al. (JAMA 2026), using 100% claims, report 24.0% of all clinicians with an eligible visit, with primary care physicians billing at the highest rate |
 | Clinician file rows | One row per NPI per year in all six years (1,155,870 in 2019 to 1,296,739 in 2024) |
 | HPSA designation labels | "Geographic HPSA" and "High Needs Geographic HPSA" present as `stg_hpsa_county` expects; only rows with status "Designated" are used |
 | Provider type labels | "Family Practice", "Internal Medicine", "General Practice", "Geriatric Medicine", "Nurse Practitioner", "Physician Assistant" match the seed exactly |
@@ -48,14 +48,20 @@ What follows from this:
 - **Collaborative care is mostly invisible** at the clinician level (36% to 56% of services), so the BHI/CoCM readiness signal is weak.
 - The initial Welcome to Medicare visit (G0402) is 60% invisible, which matters only for the NP/PA inclusion rule; the annual codes G0438 and G0439 carry it.
 
+## Who the office-based rule removes
+
+Primary care candidates by provider type and wellness-visit billing number 215,245 in 2024. The office-based rule removes 12,951 of them (6.0%), most for having no visible office visit row at all (9,181), the rest because nursing facility and home visits outnumber office visits (3,770). These are mostly post-acute, house-call and care-management groups, not continuing office primary care.
+
+They matter for the headline: 17.5% of removed clinicians bill CCM or PCM, against 4.9% of those kept, so the national share would be 5.6% without the rule. Their CCM or PCM share has risen from 12.0% in 2019. Source: `results/primary_care_exclusions.csv`.
+
 ## Coverage of the joined measures (2024)
 
 | Measure | Coverage |
 |---|---|
-| Dual-eligible count | Blank for 464,482 of 1,296,739 providers (all specialties). 150,899 of 215,245 primary care clinicians (70%) have a reported count; equity and QMB results use only these |
-| Practice assignment | 357,285 of 3,630,233 Doctors and Clinicians rows list no organization; those NPIs count as solo practices. 2024 primary care rolls up to 51,451 practices |
-| Rurality (RUCA) | 77 of 150,899 clinicians unknown |
-| County (ZIP to county) and SVI | 4,617 of 150,899 clinicians (3.1%) have no county SVI value, mostly ZIPs with no ZCTA (PO boxes, unique ZIPs) |
+| Dual-eligible count | Blank for 464,482 of 1,296,739 providers (all specialties). 139,202 of 202,294 primary care clinicians (69%) have a reported count; equity and QMB results use only these |
+| Practice assignment | 357,285 of 3,630,233 Doctors and Clinicians rows list no organization; those NPIs count as solo practices. 2024 primary care rolls up to 47,199 practices. Clinicians listed with several organizations go to the one whose members are most often listed nowhere else; `results/largest_practices_check.csv` shows that the 40 largest resulting practices are all health systems and medical groups |
+| Rurality (RUCA) | 75 of 139,202 clinicians unknown |
+| County (ZIP to county) and SVI | 4,361 of 139,202 clinicians (3.1%) have no county SVI value, mostly ZIPs with no ZCTA (PO boxes, unique ZIPs) |
 | QMB ratio | County ratio when the county has 100+ duals, otherwise the state ratio |
 
 ## Known limitations

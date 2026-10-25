@@ -21,7 +21,7 @@ def test_findings_loads_with_real_numbers():
     at = run()
     labels = [m.label for m in at.metric]
     assert "Primary care clinicians" in labels
-    assert at.metric[0].value == "215,245"
+    assert at.metric[0].value == "202,294"
 
 
 def test_every_view_renders():
@@ -81,3 +81,15 @@ def test_frozen_forecast_is_unchanged():
         manifest = json.loads((frozen / f"{name}.json").read_text())
         assert manifest["frozen_at_utc"] == "2026-10-25T04:35:06Z"
         assert hashlib.sha256((frozen / name).read_bytes()).hexdigest() == manifest["sha256"], name
+
+
+def test_one_pager_renders_for_a_practice():
+    import importlib.util
+    import pandas as pd
+    spec = importlib.util.spec_from_file_location("dash", Path(APP).parent / "src/apcm_opportunity/dashboard.py")
+    dash = importlib.util.module_from_spec(spec); spec.loader.exec_module(dash)
+    d = dash._load.__wrapped__(str(Path(APP).parent)) if hasattr(dash._load, "__wrapped__") else dash._load(str(Path(APP).parent))
+    p = d["practices"].sort_values("est_qmb_patients", ascending=False).iloc[0]
+    page = dash._one_pager(p, d)
+    assert page.startswith("<!doctype html>") and "G0558" in page and "89 FR" in page
+    assert "$117.24" in page
