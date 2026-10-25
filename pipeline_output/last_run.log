@@ -6,132 +6,132 @@ MUP 2022 already staged
 MUP 2023 already staged
 MUP 2024 already staged
 profile keys: ['prov_rows_by_year', 'prov_types_2024', 'prov_dual_missing_2024', 'prov_ruca_values_2024', 'svc_rows_by_year_code', 'svc_place_of_service', 'geo_levels', 'geo_national_by_code', 'dac', 'dac_orgs_per_npi', 'enrollment', 'enrollment_sample_county', 'gv_national', 'hpsa', 'pfs_codes']
-[0m05:06:49  Running with dbt=1.12.6
-[0m05:06:49  Warning: No packages were found in packages.yml
-[0m05:06:49  Warning: No packages were found in packages.yml
-[0m05:06:51  Running with dbt=1.12.6
-[0m05:06:51  Registered adapter: duckdb=1.11.0
-[0m05:06:51  Unable to do partial parsing because saved manifest not found. Starting full parse.
-[0m05:06:53  [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+[0m05:10:32  Running with dbt=1.12.6
+[0m05:10:32  Warning: No packages were found in packages.yml
+[0m05:10:32  Warning: No packages were found in packages.yml
+[0m05:10:34  Running with dbt=1.12.6
+[0m05:10:34  Registered adapter: duckdb=1.11.0
+[0m05:10:34  Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m05:10:36  [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
 functionality
 Found top-level arguments to test `unique_combination_of_columns` defined on
 'stg_mup_provider' in package 'apcm_opportunity' (models/schema.yml). Arguments
 to generic tests should be nested under the `arguments` property.
-[0m05:06:53  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+[0m05:10:36  [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
 There are 2 unused configuration paths:
-- seeds.apcm_opportunity.primary_care_service_codes
 - seeds.apcm_opportunity.ccw_condition_catalog
-[0m05:06:54  Found 24 models, 22 data tests, 4 seeds, 501 macros
-[0m05:06:54  
-[0m05:06:54  Concurrency: 4 threads (target='dev')
-[0m05:06:54  
-[0m05:06:54  1 of 50 START sql view model main.stg_dac ...................................... [RUN]
-[0m05:06:54  2 of 50 START sql view model main.stg_enrollment ............................... [RUN]
-[0m05:06:54  3 of 50 START sql view model main.stg_geo_variation ............................ [RUN]
-[0m05:06:54  4 of 50 START sql view model main.stg_hpsa_county .............................. [RUN]
-[0m05:06:54  3 of 50 OK created sql view model main.stg_geo_variation ....................... [[32mOK[0m in 0.14s]
-[0m05:06:54  2 of 50 OK created sql view model main.stg_enrollment .......................... [[32mOK[0m in 0.15s]
-[0m05:06:54  1 of 50 OK created sql view model main.stg_dac ................................. [[32mOK[0m in 0.15s]
-[0m05:06:54  4 of 50 OK created sql view model main.stg_hpsa_county ......................... [[32mOK[0m in 0.15s]
-[0m05:06:54  5 of 50 START sql view model main.stg_mup_geography ............................ [RUN]
-[0m05:06:54  6 of 50 START sql view model main.stg_mup_provider ............................. [RUN]
-[0m05:06:54  7 of 50 START sql view model main.stg_svi_county ............................... [RUN]
-[0m05:06:54  8 of 50 START sql view model main.stg_zip_county ............................... [RUN]
-[0m05:06:54  8 of 50 OK created sql view model main.stg_zip_county .......................... [[32mOK[0m in 0.08s]
-[0m05:06:54  5 of 50 OK created sql view model main.stg_mup_geography ....................... [[32mOK[0m in 0.08s]
-[0m05:06:54  7 of 50 OK created sql view model main.stg_svi_county .......................... [[32mOK[0m in 0.09s]
-[0m05:06:54  6 of 50 OK created sql view model main.stg_mup_provider ........................ [[32mOK[0m in 0.09s]
-[0m05:06:54  9 of 50 START seed file main.apcm_scenarios .................................... [RUN]
-[0m05:06:54  10 of 50 START seed file main.billing_rules .................................... [RUN]
-[0m05:06:54  11 of 50 START seed file main.code_families .................................... [RUN]
-[0m05:06:54  12 of 50 START seed file main.primary_care_specialties ......................... [RUN]
-[0m05:06:54  9 of 50 OK loaded seed file main.apcm_scenarios ................................ [[32mINSERT 3[0m in 0.10s]
-[0m05:06:54  13 of 50 START sql table model main.int_county_qmb_ratio ....................... [RUN]
-[0m05:06:54  10 of 50 OK loaded seed file main.billing_rules ................................ [[32mINSERT 18[0m in 0.11s]
-[0m05:06:54  14 of 50 START sql table model main.int_npi_practice ........................... [RUN]
-[0m05:06:54  12 of 50 OK loaded seed file main.primary_care_specialties ..................... [[32mINSERT 6[0m in 0.14s]
-[0m05:06:54  11 of 50 OK loaded seed file main.code_families ................................ [[32mINSERT 78[0m in 0.17s]
-[0m05:06:54  15 of 50 START test not_null_stg_mup_provider_npi .............................. [RUN]
-[0m05:06:54  16 of 50 START test not_null_stg_mup_provider_service_year ..................... [RUN]
-[0m05:06:54  13 of 50 OK created sql table model main.int_county_qmb_ratio .................. [[32mOK[0m in 0.16s]
-[0m05:06:54  17 of 50 START test unique_combination_of_columns_stg_mup_provider_service_year__npi  [RUN]
-[0m05:06:54  15 of 50 PASS not_null_stg_mup_provider_npi .................................... [[32mPASS[0m in 0.12s]
-[0m05:06:54  16 of 50 PASS not_null_stg_mup_provider_service_year ........................... [[32mPASS[0m in 0.12s]
-[0m05:06:54  18 of 50 START sql view model main.stg_mup_service ............................. [RUN]
-[0m05:06:54  19 of 50 START sql view model main.stg_pfs_rates ............................... [RUN]
-[0m05:06:55  18 of 50 OK created sql view model main.stg_mup_service ........................ [[32mOK[0m in 0.12s]
-[0m05:06:55  19 of 50 OK created sql view model main.stg_pfs_rates .......................... [[32mOK[0m in 0.11s]
-[0m05:06:55  20 of 50 START sql table model main.int_npi_family_year ........................ [RUN]
-[0m05:06:55  21 of 50 START sql table model main.mart_suppression ........................... [RUN]
-[0m05:06:56  17 of 50 PASS unique_combination_of_columns_stg_mup_provider_service_year__npi . [[32mPASS[0m in 1.77s]
-[0m05:06:56  22 of 50 START test assert_apcm_rates_loaded ................................... [RUN]
-[0m05:06:56  22 of 50 PASS assert_apcm_rates_loaded ......................................... [[32mPASS[0m in 0.06s]
-[0m05:06:56  23 of 50 START test not_null_stg_pfs_rates_national_nonfac_amount .............. [RUN]
-[0m05:06:56  23 of 50 PASS not_null_stg_pfs_rates_national_nonfac_amount .................... [[32mPASS[0m in 0.07s]
-[0m05:06:58  21 of 50 OK created sql table model main.mart_suppression ...................... [[32mOK[0m in 3.90s]
-[0m05:06:58  24 of 50 START test assert_visible_not_above_national .......................... [RUN]
-[0m05:06:58  25 of 50 START test unique_combination_of_columns_mart_suppression_service_year__hcpcs  [RUN]
-[0m05:06:59  24 of 50 PASS assert_visible_not_above_national ................................ [[32mPASS[0m in 0.09s]
-[0m05:06:59  25 of 50 PASS unique_combination_of_columns_mart_suppression_service_year__hcpcs  [[32mPASS[0m in 0.10s]
-[0m05:07:01  14 of 50 OK created sql table model main.int_npi_practice ...................... [[32mOK[0m in 6.35s]
-[0m05:07:01  26 of 50 START test not_null_int_npi_practice_npi .............................. [RUN]
-[0m05:07:01  27 of 50 START test unique_int_npi_practice_npi ................................ [RUN]
-[0m05:07:01  26 of 50 PASS not_null_int_npi_practice_npi .................................... [[32mPASS[0m in 0.06s]
-[0m05:07:01  27 of 50 PASS unique_int_npi_practice_npi ...................................... [[32mPASS[0m in 0.34s]
-[0m05:07:02  20 of 50 OK created sql table model main.int_npi_family_year ................... [[32mOK[0m in 7.51s]
-[0m05:07:02  28 of 50 START sql table model main.int_clinician_year_candidates .............. [RUN]
-[0m05:07:07  28 of 50 OK created sql table model main.int_clinician_year_candidates ......... [[32mOK[0m in 4.99s]
-[0m05:07:07  29 of 50 START sql table model main.int_clinician_year ......................... [RUN]
-[0m05:07:07  30 of 50 START sql table model main.mart_primary_care_exclusions ............... [RUN]
-[0m05:07:07  30 of 50 OK created sql table model main.mart_primary_care_exclusions .......... [[32mOK[0m in 0.10s]
-[0m05:07:09  29 of 50 OK created sql table model main.int_clinician_year .................... [[32mOK[0m in 1.85s]
-[0m05:07:09  31 of 50 START test accepted_values_int_clinician_year_role__physician__app .... [RUN]
-[0m05:07:09  32 of 50 START test accepted_values_int_clinician_year_rurality__Metropolitan__Micropolitan__Small_town__Rural__Unknown  [RUN]
-[0m05:07:09  33 of 50 START test assert_dual_not_above_total ................................ [RUN]
-[0m05:07:09  34 of 50 START test unique_combination_of_columns_int_clinician_year_service_year__npi  [RUN]
-[0m05:07:09  31 of 50 PASS accepted_values_int_clinician_year_role__physician__app .......... [[32mPASS[0m in 0.06s]
-[0m05:07:09  33 of 50 PASS assert_dual_not_above_total ...................................... [[32mPASS[0m in 0.06s]
-[0m05:07:09  32 of 50 PASS accepted_values_int_clinician_year_rurality__Metropolitan__Micropolitan__Small_town__Rural__Unknown  [[32mPASS[0m in 0.09s]
-[0m05:07:09  34 of 50 PASS unique_combination_of_columns_int_clinician_year_service_year__npi  [[32mPASS[0m in 0.13s]
-[0m05:07:09  35 of 50 START sql table model main.int_practice_year .......................... [RUN]
-[0m05:07:09  36 of 50 START sql table model main.mart_clinician ............................. [RUN]
-[0m05:07:09  37 of 50 START sql table model main.mart_national_trend ........................ [RUN]
-[0m05:07:09  37 of 50 OK created sql table model main.mart_national_trend ................... [[32mOK[0m in 0.15s]
-[0m05:07:10  36 of 50 OK created sql table model main.mart_clinician ........................ [[32mOK[0m in 1.25s]
-[0m05:07:10  38 of 50 START test not_null_mart_clinician_npi ................................ [RUN]
-[0m05:07:10  39 of 50 START test not_null_mart_clinician_practice_id ........................ [RUN]
-[0m05:07:10  40 of 50 START test unique_mart_clinician_npi .................................. [RUN]
-[0m05:07:10  38 of 50 PASS not_null_mart_clinician_npi ...................................... [[32mPASS[0m in 0.06s]
-[0m05:07:10  39 of 50 PASS not_null_mart_clinician_practice_id .............................. [[32mPASS[0m in 0.06s]
-[0m05:07:10  40 of 50 PASS unique_mart_clinician_npi ........................................ [[32mPASS[0m in 0.08s]
-[0m05:07:10  41 of 50 START sql table model main.mart_apcm_opportunity_national ............. [RUN]
-[0m05:07:10  42 of 50 START sql table model main.mart_ccm_vs_apcm ........................... [RUN]
-[0m05:07:10  43 of 50 START sql table model main.mart_equity ................................ [RUN]
-[0m05:07:11  35 of 50 OK created sql table model main.int_practice_year ..................... [[32mOK[0m in 1.59s]
-[0m05:07:11  44 of 50 START sql table model main.mart_practice .............................. [RUN]
-[0m05:07:11  41 of 50 OK created sql table model main.mart_apcm_opportunity_national ........ [[32mOK[0m in 0.25s]
-[0m05:07:11  42 of 50 OK created sql table model main.mart_ccm_vs_apcm ...................... [[32mOK[0m in 0.26s]
-[0m05:07:11  45 of 50 START test accepted_values_mart_apcm_opportunity_national_scenario__low__base__high  [RUN]
-[0m05:07:11  43 of 50 OK created sql table model main.mart_equity ........................... [[32mOK[0m in 0.26s]
-[0m05:07:11  46 of 50 START test not_null_mart_apcm_opportunity_national_allowed_full_capture  [RUN]
-[0m05:07:11  47 of 50 START test unique_mart_apcm_opportunity_national_scenario ............. [RUN]
-[0m05:07:11  45 of 50 PASS accepted_values_mart_apcm_opportunity_national_scenario__low__base__high  [[32mPASS[0m in 0.07s]
-[0m05:07:11  47 of 50 PASS unique_mart_apcm_opportunity_national_scenario ................... [[32mPASS[0m in 0.05s]
-[0m05:07:11  46 of 50 PASS not_null_mart_apcm_opportunity_national_allowed_full_capture ..... [[32mPASS[0m in 0.06s]
-[0m05:07:11  44 of 50 OK created sql table model main.mart_practice ......................... [[32mOK[0m in 0.25s]
-[0m05:07:11  48 of 50 START test accepted_values_mart_practice_readiness_tier__0_No_visible_care_management__1_Visit_based_services_only__2_CCM_or_PCM__3_Multi_service_care_management  [RUN]
-[0m05:07:11  49 of 50 START test not_null_mart_practice_practice_id ......................... [RUN]
-[0m05:07:11  50 of 50 START test unique_mart_practice_practice_id ........................... [RUN]
-[0m05:07:11  49 of 50 PASS not_null_mart_practice_practice_id ............................... [[32mPASS[0m in 0.05s]
-[0m05:07:11  50 of 50 PASS unique_mart_practice_practice_id ................................. [[32mPASS[0m in 0.05s]
-[0m05:07:11  48 of 50 PASS accepted_values_mart_practice_readiness_tier__0_No_visible_care_management__1_Visit_based_services_only__2_CCM_or_PCM__3_Multi_service_care_management  [[32mPASS[0m in 0.05s]
-[0m05:07:11  
-[0m05:07:11  Finished running 4 seeds, 14 table models, 22 data tests, 10 view models in 0 hours 0 minutes and 17.30 seconds (17.30s).
-[0m05:07:11  
-[0m05:07:11  [32mCompleted successfully[0m
-[0m05:07:11  
-[0m05:07:11  Done. PASS=50 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=50
-[0m05:07:11  [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+- seeds.apcm_opportunity.primary_care_service_codes
+[0m05:10:36  Found 24 models, 22 data tests, 4 seeds, 501 macros
+[0m05:10:36  
+[0m05:10:36  Concurrency: 4 threads (target='dev')
+[0m05:10:36  
+[0m05:10:36  1 of 50 START sql view model main.stg_dac ...................................... [RUN]
+[0m05:10:36  2 of 50 START sql view model main.stg_enrollment ............................... [RUN]
+[0m05:10:36  3 of 50 START sql view model main.stg_geo_variation ............................ [RUN]
+[0m05:10:36  4 of 50 START sql view model main.stg_hpsa_county .............................. [RUN]
+[0m05:10:36  2 of 50 OK created sql view model main.stg_enrollment .......................... [[32mOK[0m in 0.19s]
+[0m05:10:36  4 of 50 OK created sql view model main.stg_hpsa_county ......................... [[32mOK[0m in 0.19s]
+[0m05:10:36  1 of 50 OK created sql view model main.stg_dac ................................. [[32mOK[0m in 0.20s]
+[0m05:10:36  5 of 50 START sql view model main.stg_mup_geography ............................ [RUN]
+[0m05:10:36  6 of 50 START sql view model main.stg_mup_provider ............................. [RUN]
+[0m05:10:36  3 of 50 OK created sql view model main.stg_geo_variation ....................... [[32mOK[0m in 0.20s]
+[0m05:10:36  7 of 50 START sql view model main.stg_svi_county ............................... [RUN]
+[0m05:10:36  8 of 50 START sql view model main.stg_zip_county ............................... [RUN]
+[0m05:10:37  5 of 50 OK created sql view model main.stg_mup_geography ....................... [[32mOK[0m in 0.07s]
+[0m05:10:37  7 of 50 OK created sql view model main.stg_svi_county .......................... [[32mOK[0m in 0.07s]
+[0m05:10:37  6 of 50 OK created sql view model main.stg_mup_provider ........................ [[32mOK[0m in 0.08s]
+[0m05:10:37  8 of 50 OK created sql view model main.stg_zip_county .......................... [[32mOK[0m in 0.07s]
+[0m05:10:37  9 of 50 START seed file main.apcm_scenarios .................................... [RUN]
+[0m05:10:37  10 of 50 START seed file main.billing_rules .................................... [RUN]
+[0m05:10:37  11 of 50 START seed file main.code_families .................................... [RUN]
+[0m05:10:37  12 of 50 START seed file main.primary_care_specialties ......................... [RUN]
+[0m05:10:37  9 of 50 OK loaded seed file main.apcm_scenarios ................................ [[32mINSERT 3[0m in 0.06s]
+[0m05:10:37  13 of 50 START sql table model main.int_county_qmb_ratio ....................... [RUN]
+[0m05:10:37  10 of 50 OK loaded seed file main.billing_rules ................................ [[32mINSERT 18[0m in 0.13s]
+[0m05:10:37  11 of 50 OK loaded seed file main.code_families ................................ [[32mINSERT 78[0m in 0.13s]
+[0m05:10:37  12 of 50 OK loaded seed file main.primary_care_specialties ..................... [[32mINSERT 6[0m in 0.13s]
+[0m05:10:37  14 of 50 START sql table model main.int_npi_practice ........................... [RUN]
+[0m05:10:37  15 of 50 START test not_null_stg_mup_provider_npi .............................. [RUN]
+[0m05:10:37  16 of 50 START test not_null_stg_mup_provider_service_year ..................... [RUN]
+[0m05:10:37  13 of 50 OK created sql table model main.int_county_qmb_ratio .................. [[32mOK[0m in 0.13s]
+[0m05:10:37  17 of 50 START test unique_combination_of_columns_stg_mup_provider_service_year__npi  [RUN]
+[0m05:10:37  16 of 50 PASS not_null_stg_mup_provider_service_year ........................... [[32mPASS[0m in 0.08s]
+[0m05:10:37  18 of 50 START sql view model main.stg_mup_service ............................. [RUN]
+[0m05:10:37  15 of 50 PASS not_null_stg_mup_provider_npi .................................... [[32mPASS[0m in 0.12s]
+[0m05:10:37  19 of 50 START sql view model main.stg_pfs_rates ............................... [RUN]
+[0m05:10:37  18 of 50 OK created sql view model main.stg_mup_service ........................ [[32mOK[0m in 0.08s]
+[0m05:10:37  20 of 50 START sql table model main.int_npi_family_year ........................ [RUN]
+[0m05:10:37  19 of 50 OK created sql view model main.stg_pfs_rates .......................... [[32mOK[0m in 0.10s]
+[0m05:10:37  21 of 50 START sql table model main.mart_suppression ........................... [RUN]
+[0m05:10:38  17 of 50 PASS unique_combination_of_columns_stg_mup_provider_service_year__npi . [[32mPASS[0m in 1.57s]
+[0m05:10:38  22 of 50 START test assert_apcm_rates_loaded ................................... [RUN]
+[0m05:10:38  22 of 50 PASS assert_apcm_rates_loaded ......................................... [[32mPASS[0m in 0.06s]
+[0m05:10:38  23 of 50 START test not_null_stg_pfs_rates_national_nonfac_amount .............. [RUN]
+[0m05:10:38  23 of 50 PASS not_null_stg_pfs_rates_national_nonfac_amount .................... [[32mPASS[0m in 0.05s]
+[0m05:10:40  21 of 50 OK created sql table model main.mart_suppression ...................... [[32mOK[0m in 3.37s]
+[0m05:10:40  24 of 50 START test assert_visible_not_above_national .......................... [RUN]
+[0m05:10:40  25 of 50 START test unique_combination_of_columns_mart_suppression_service_year__hcpcs  [RUN]
+[0m05:10:40  24 of 50 PASS assert_visible_not_above_national ................................ [[32mPASS[0m in 0.05s]
+[0m05:10:40  25 of 50 PASS unique_combination_of_columns_mart_suppression_service_year__hcpcs  [[32mPASS[0m in 0.06s]
+[0m05:10:42  14 of 50 OK created sql table model main.int_npi_practice ...................... [[32mOK[0m in 5.21s]
+[0m05:10:42  26 of 50 START test not_null_int_npi_practice_npi .............................. [RUN]
+[0m05:10:42  27 of 50 START test unique_int_npi_practice_npi ................................ [RUN]
+[0m05:10:42  26 of 50 PASS not_null_int_npi_practice_npi .................................... [[32mPASS[0m in 0.07s]
+[0m05:10:42  27 of 50 PASS unique_int_npi_practice_npi ...................................... [[32mPASS[0m in 0.37s]
+[0m05:10:44  20 of 50 OK created sql table model main.int_npi_family_year ................... [[32mOK[0m in 6.88s]
+[0m05:10:44  28 of 50 START sql table model main.int_clinician_year_candidates .............. [RUN]
+[0m05:10:48  28 of 50 OK created sql table model main.int_clinician_year_candidates ......... [[32mOK[0m in 4.62s]
+[0m05:10:48  29 of 50 START sql table model main.int_clinician_year ......................... [RUN]
+[0m05:10:48  30 of 50 START sql table model main.mart_primary_care_exclusions ............... [RUN]
+[0m05:10:48  30 of 50 OK created sql table model main.mart_primary_care_exclusions .......... [[32mOK[0m in 0.07s]
+[0m05:10:51  29 of 50 OK created sql table model main.int_clinician_year .................... [[32mOK[0m in 2.17s]
+[0m05:10:51  31 of 50 START test accepted_values_int_clinician_year_role__physician__app .... [RUN]
+[0m05:10:51  32 of 50 START test accepted_values_int_clinician_year_rurality__Metropolitan__Micropolitan__Small_town__Rural__Unknown  [RUN]
+[0m05:10:51  33 of 50 START test assert_dual_not_above_total ................................ [RUN]
+[0m05:10:51  34 of 50 START test unique_combination_of_columns_int_clinician_year_service_year__npi  [RUN]
+[0m05:10:51  31 of 50 PASS accepted_values_int_clinician_year_role__physician__app .......... [[32mPASS[0m in 0.06s]
+[0m05:10:51  33 of 50 PASS assert_dual_not_above_total ...................................... [[32mPASS[0m in 0.06s]
+[0m05:10:51  32 of 50 PASS accepted_values_int_clinician_year_rurality__Metropolitan__Micropolitan__Small_town__Rural__Unknown  [[32mPASS[0m in 0.07s]
+[0m05:10:51  34 of 50 PASS unique_combination_of_columns_int_clinician_year_service_year__npi  [[32mPASS[0m in 0.10s]
+[0m05:10:51  35 of 50 START sql table model main.int_practice_year .......................... [RUN]
+[0m05:10:51  36 of 50 START sql table model main.mart_clinician ............................. [RUN]
+[0m05:10:51  37 of 50 START sql table model main.mart_national_trend ........................ [RUN]
+[0m05:10:51  37 of 50 OK created sql table model main.mart_national_trend ................... [[32mOK[0m in 0.21s]
+[0m05:10:52  36 of 50 OK created sql table model main.mart_clinician ........................ [[32mOK[0m in 1.32s]
+[0m05:10:52  38 of 50 START test not_null_mart_clinician_npi ................................ [RUN]
+[0m05:10:52  39 of 50 START test not_null_mart_clinician_practice_id ........................ [RUN]
+[0m05:10:52  40 of 50 START test unique_mart_clinician_npi .................................. [RUN]
+[0m05:10:52  38 of 50 PASS not_null_mart_clinician_npi ...................................... [[32mPASS[0m in 0.04s]
+[0m05:10:52  39 of 50 PASS not_null_mart_clinician_practice_id .............................. [[32mPASS[0m in 0.04s]
+[0m05:10:52  40 of 50 PASS unique_mart_clinician_npi ........................................ [[32mPASS[0m in 0.07s]
+[0m05:10:52  41 of 50 START sql table model main.mart_apcm_opportunity_national ............. [RUN]
+[0m05:10:52  42 of 50 START sql table model main.mart_ccm_vs_apcm ........................... [RUN]
+[0m05:10:52  43 of 50 START sql table model main.mart_equity ................................ [RUN]
+[0m05:10:52  35 of 50 OK created sql table model main.int_practice_year ..................... [[32mOK[0m in 1.56s]
+[0m05:10:52  44 of 50 START sql table model main.mart_practice .............................. [RUN]
+[0m05:10:52  41 of 50 OK created sql table model main.mart_apcm_opportunity_national ........ [[32mOK[0m in 0.16s]
+[0m05:10:52  43 of 50 OK created sql table model main.mart_equity ........................... [[32mOK[0m in 0.16s]
+[0m05:10:52  42 of 50 OK created sql table model main.mart_ccm_vs_apcm ...................... [[32mOK[0m in 0.17s]
+[0m05:10:52  45 of 50 START test accepted_values_mart_apcm_opportunity_national_scenario__low__base__high  [RUN]
+[0m05:10:52  46 of 50 START test not_null_mart_apcm_opportunity_national_allowed_full_capture  [RUN]
+[0m05:10:52  47 of 50 START test unique_mart_apcm_opportunity_national_scenario ............. [RUN]
+[0m05:10:52  46 of 50 PASS not_null_mart_apcm_opportunity_national_allowed_full_capture ..... [[32mPASS[0m in 0.05s]
+[0m05:10:52  45 of 50 PASS accepted_values_mart_apcm_opportunity_national_scenario__low__base__high  [[32mPASS[0m in 0.05s]
+[0m05:10:52  47 of 50 PASS unique_mart_apcm_opportunity_national_scenario ................... [[32mPASS[0m in 0.04s]
+[0m05:10:52  44 of 50 OK created sql table model main.mart_practice ......................... [[32mOK[0m in 0.24s]
+[0m05:10:52  48 of 50 START test accepted_values_mart_practice_readiness_tier__0_No_visible_care_management__1_Visit_based_services_only__2_CCM_or_PCM__3_Multi_service_care_management  [RUN]
+[0m05:10:52  49 of 50 START test not_null_mart_practice_practice_id ......................... [RUN]
+[0m05:10:52  50 of 50 START test unique_mart_practice_practice_id ........................... [RUN]
+[0m05:10:52  49 of 50 PASS not_null_mart_practice_practice_id ............................... [[32mPASS[0m in 0.03s]
+[0m05:10:52  48 of 50 PASS accepted_values_mart_practice_readiness_tier__0_No_visible_care_management__1_Visit_based_services_only__2_CCM_or_PCM__3_Multi_service_care_management  [[32mPASS[0m in 0.04s]
+[0m05:10:52  50 of 50 PASS unique_mart_practice_practice_id ................................. [[32mPASS[0m in 0.04s]
+[0m05:10:53  
+[0m05:10:53  Finished running 4 seeds, 14 table models, 22 data tests, 10 view models in 0 hours 0 minutes and 16.44 seconds (16.44s).
+[0m05:10:53  
+[0m05:10:53  [32mCompleted successfully[0m
+[0m05:10:53  
+[0m05:10:53  Done. PASS=50 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=50
+[0m05:10:53  [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
 Summary of encountered deprecations:
 - MissingArgumentsPropertyInGenericTestDeprecation: 7 occurrences
 To see all deprecation instances instead of just the first occurrence of each,
@@ -154,5 +154,5 @@ practice_extract_tableau: 47199 rows -> practice_extract_tableau.csv.gz
 npi_practice_lookup: 202294 rows -> npi_practice_lookup.csv.gz
 largest_practices_check: 40 rows -> largest_practices_check.csv
 headline.json written
-forecast: A auroc=0.792 n=43491, B auroc=0.750 n=39267, spearman=0.857, scored=47199
+forecast: A auroc=0.792 n=43491, B auroc=0.749 n=39267, spearman=0.857, scored=47199
 dashboard -> /home/runner/work/apcm-opportunity/apcm-opportunity/dashboard/index.html (80 KB)
