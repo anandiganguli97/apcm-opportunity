@@ -1,0 +1,35 @@
+name: Tag frozen forecast
+
+# Tags the commit that added each frozen forecast (forecast-<year>-v<n>) so the
+# freeze point is easy to cite. Never moves an existing tag.
+on:
+  push:
+    branches: [main]
+    paths: ["pipeline_output/forecast/frozen_*/**", ".github/workflows/tag-forecast.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Create missing tags
+        run: |
+          git config user.name "pipeline-bot"
+          git config user.email "pipeline-bot@users.noreply.github.com"
+          for dir in pipeline_output/forecast/frozen_*; do
+            [ -f "$dir/FREEZE.md" ] || continue
+            name="${dir##*/frozen_}"                 # e.g. 2025_v1
+            tag="forecast-${name/_/-}"               # e.g. forecast-2025-v1
+            if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+              echo "$tag exists"; continue
+            fi
+            commit=$(git log --diff-filter=A --format=%H -1 -- "$dir/FREEZE.md")
+            git tag -a "$tag" "$commit" -m "Frozen forecast. See $dir/FREEZE.md"
+            git push origin "$tag"
+            echo "tagged $commit as $tag"
+          done
