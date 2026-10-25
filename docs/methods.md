@@ -14,7 +14,7 @@ Advanced Primary Care Management (APCM, HCPCS G0556, G0557, G0558) started on Ja
 ## Units
 
 - **Clinician-year.** One row per NPI and service year in the CMS by-Provider file, restricted to individuals (entity code I).
-- **Practice.** The organization (Org PAC ID) each NPI is listed with most often in the current CMS Doctors and Clinicians file, ties broken by larger organization, then lowest ID. NPIs with no organization are their own practice (`npi:<NPI>`). CMS publishes no historical snapshot, so the current file assigns practices for every year.
+- **Practice.** One organization (Org PAC ID) per NPI from the current CMS Doctors and Clinicians file. About 260,000 clinicians are listed with more than one organization, often including national therapy and post-acute companies with thousands of members, so the practice is the organization with the highest share of primary care clinicians among its members, then the one the NPI is listed with most often, then the larger organization, then lowest ID. NPIs with no organization are their own practice (`npi:<NPI>`). CMS publishes no historical snapshot, so the current file assigns practices for every year.
 
 ## Primary care definition
 
@@ -97,6 +97,7 @@ National non-facility amounts are RVUs times the conversion factor from the CY20
 - **Model:** unpenalised logistic regression on standardised features: log panel size, log clinician count, physician share, dual share, average HCC risk score, metropolitan share, CCM, PCM, TCM, BHI or CoCM, RPM, ACP, wellness-visit share of clinicians, with median imputation and missing flags. Flags with fewer than 50 practices in the minority class are dropped.
 - **Validation:** 5-fold cross-validated AUROC and Brier score (`frozen_2025_v1/model_card.json`; `model_card_draft.json` is the same card regenerated on each run).
 - **Score:** 2024 profiles scored with model A. `readiness_score` is the practice's percentile (0 to 100) of the predicted probability. The probabilities describe G2211 uptake, so only the ranking carries over to APCM.
+- **Definitions at freeze:** the frozen file keeps the practice and primary care definitions of its commit (tag `forecast-2025-v1`), and the outcome will be built with that tagged code. Later refinements to those definitions change the descriptive results, not the forecast or how it is scored.
 - **Freeze:** frozen on 2026-10-25T04:35:06Z with `scripts/freeze_forecast.py` (SHA-256 manifests, never overwrites) in `pipeline_output/forecast/frozen_2025_v1/`, with the target, method, scoring protocol and source hashes in `FREEZE.md`. When CMS publishes the 2025 file, evaluation will report AUROC, average precision, uptake by decile and uptake by decile within dual-share fifths, against the naive rule "billed CCM or PCM in 2024".
 
 ## What this does not claim
