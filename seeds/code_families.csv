@@ -59,3 +59,21 @@ G0570,APCM_BH_ADDON,2026-01-01,,false,APCM general BHI add-on,CY2026 PFS final r
 99308,NURSING_FACILITY,2006-01-01,,false,"Subsequent nursing facility care, low",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians
 99309,NURSING_FACILITY,2006-01-01,,false,"Subsequent nursing facility care, moderate",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians
 99310,NURSING_FACILITY,2006-01-01,,false,"Subsequent nursing facility care, high",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians
+99324,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Domiciliary or rest home visit",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99325,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Domiciliary or rest home visit",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99326,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Domiciliary or rest home visit",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99327,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Domiciliary or rest home visit",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99328,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Domiciliary or rest home visit",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99334,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Domiciliary or rest home visit",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99335,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Domiciliary or rest home visit",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99336,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Domiciliary or rest home visit",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99337,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Domiciliary or rest home visit",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99343,HOME_RESIDENCE,2006-01-01,2022-12-31,false,"Home visit, new patient",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99341,HOME_RESIDENCE,2006-01-01,,false,"Home or residence visit (includes assisted living from 2023)",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99342,HOME_RESIDENCE,2006-01-01,,false,"Home or residence visit (includes assisted living from 2023)",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99344,HOME_RESIDENCE,2006-01-01,,false,"Home or residence visit (includes assisted living from 2023)",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99345,HOME_RESIDENCE,2006-01-01,,false,"Home or residence visit (includes assisted living from 2023)",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99347,HOME_RESIDENCE,2006-01-01,,false,"Home or residence visit (includes assisted living from 2023)",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99348,HOME_RESIDENCE,2006-01-01,,false,"Home or residence visit (includes assisted living from 2023)",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99349,HOME_RESIDENCE,2006-01-01,,false,"Home or residence visit (includes assisted living from 2023)",CPT home/residence E/M; used only to flag clinicians who are not office-based
+99350,HOME_RESIDENCE,2006-01-01,,false,"Home or residence visit (includes assisted living from 2023)",CPT home/residence E/M; used only to flag clinicians who are not office-based

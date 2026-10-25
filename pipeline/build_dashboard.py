@@ -42,7 +42,8 @@ def build() -> dict:
     dec = pd.read_csv(FC / "qmb_by_readiness_decile.csv").merge(
         pd.read_csv(FC / "readiness_deciles.csv")[["readiness_decile", "practices", "mean_dual_share", "mean_p_model_a"]],
         on="readiness_decile")
-    card = json.loads((FC / "model_card_draft.json").read_text())
+    frozen = FC / "frozen_2025_v1" / "model_card.json"
+    card = json.loads((frozen if frozen.exists() else FC / "model_card_draft.json").read_text())
     manifests = {p.stem: json.loads(p.read_text()) for p in sorted((ROOT / "pipeline_output" / "manifests").glob("*.json"))}
 
     rate = {r.hcpcs: r.national_nonfac_amount for r in fee[fee.cf_type == "nonqpp"].itertuples()}
@@ -64,12 +65,13 @@ def build() -> dict:
                  "CCM": "Chronic care management", "COCM": "Collaborative care", "COMPLEXITY_ADDON": "Visit complexity add-on (G2211)",
                  "PCM": "Principal care management", "RPM": "Remote monitoring", "SDOH_NAVIGATION": "Social needs and navigation",
                  "TCM": "Transitional care management", "OFFICE_EM": "Office visits", "APCM": "APCM",
-                 "NURSING_FACILITY": "Nursing facility visits"}
+                 "NURSING_FACILITY": "Nursing facility visits",
+                 "HOME_RESIDENCE": "Home and residence visits"}
 
     mup_files = [m for m in manifests.get("mup", []) if m.get("service_year") == year]
     return {
         "year": year,
-        "built_from_commit": card.get("repository_commit"),
+        "built_from_commit": json.loads((FC / "model_card_draft.json").read_text()).get("repository_commit"),
         "trend": rows(trend),
         "headline": {
             "clinicians": int(last.pcp_clinicians), "share_ccm_or_pcm": float(last.share_billing_ccm_or_pcm),

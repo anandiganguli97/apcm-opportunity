@@ -23,7 +23,7 @@ What is done, what is next, and the gate for each phase.
 - [x] Practice links from CMS Doctors and Clinicians, with solo clinicians kept separate.
 - [x] Dual-eligible counts, county QMB ratios, rurality, HPSA and SVI joined with join-rate diagnostics.
 - [x] Suppression measured by code and family against national totals.
-- [ ] Remove post-acute and nursing-facility clinician groups using nursing facility visit codes (99304 to 99310) and place of service.
+- [x] Remove post-acute and nursing-facility clinicians: no visible office visits, or nursing facility and home visits outnumbering them.
 - [ ] Quantify FQHC, RHC and Medicare Advantage coverage gaps by state.
 
 **Gate:** every estimate has a denominator, suppression coverage and join rates. Met for national and state results.
@@ -43,7 +43,7 @@ What is done, what is next, and the gate for each phase.
 - [x] Report page on GitHub Pages, rebuilt on every pipeline run.
 - [x] Streamlit app: findings, practice finder, rule-cited planner, locality payment calculator; headless tests in CI.
 - [ ] Validate the planner and calculator with a primary care practice manager and a billing lead.
-- [ ] Practice one-pager export (profile, plan and payment estimate as one PDF-ready page).
+- [x] Practice one-page brief from the app (profile, billing, payment, first steps with rule citations), printable to PDF.
 
 ## P5. Patient-level logic (optional)
 

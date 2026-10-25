@@ -1,7 +1,8 @@
 -- Primary care candidates by service year, with patient mix and visible care
 -- management billing. Definition of primary care lives in seeds/primary_care_specialties.csv.
--- nursing_facility_focus flags clinicians whose visible nursing facility visits
--- (99304 to 99310) outnumber their office visits; int_clinician_year excludes them.
+-- not_office_based flags clinicians with no visible office visits, or whose visible
+-- nursing facility (99304 to 99310) plus home/residence visits (99324 to 99350)
+-- outnumber their office visits; int_clinician_year excludes them.
 with fam as (
   select * from {{ ref('int_npi_family_year') }}
 ),
@@ -25,6 +26,7 @@ pv as (
     max(case when family = 'SDOH_NAVIGATION' then benes_min end)   as sdoh_nav_benes_min,
     sum(case when family = 'OFFICE_EM' then services end)          as office_em_services,
     sum(case when family = 'NURSING_FACILITY' then services end)   as nursing_facility_services,
+    sum(case when family = 'HOME_RESIDENCE' then services end)     as home_residence_services,
     max(case when family = 'APCM' then benes_min end)              as apcm_benes_min,
     sum(case when family in ('CCM','PCM','TCM','BHI','COCM','RPM','ACP') then allowed_amt end) as care_mgmt_allowed
   from fam
@@ -67,7 +69,9 @@ select
   coalesce(pv.awv_benes_min, 0) > 0                               as has_awv,
   coalesce(pv.acp_benes_min, 0) > 0                               as has_acp,
   coalesce(pv.ccm_benes_min, 0) + coalesce(pv.pcm_benes_min, 0) > 0 as has_established_care_mgmt,
-  coalesce(pv.nursing_facility_services, 0) > coalesce(pv.office_em_services, 0) as nursing_facility_focus
+  coalesce(pv.office_em_services, 0) = 0                                          as no_visible_office_visits,
+  coalesce(pv.nursing_facility_services, 0) + coalesce(pv.home_residence_services, 0)
+    > coalesce(pv.office_em_services, 0)                                          as not_office_based
 from prov
 left join pv on pv.service_year = prov.service_year and pv.npi = prov.npi
 left join {{ ref('stg_zip_county') }} z on z.zip5 = prov.zip5

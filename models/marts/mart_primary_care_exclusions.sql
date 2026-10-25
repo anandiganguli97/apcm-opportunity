@@ -1,11 +1,13 @@
--- How many primary care candidates the nursing-facility rule removes each year.
+-- How many primary care candidates the office-based rule removes each year, and why.
 select
   service_year,
-  count(*)                                                      as candidates,
-  count(*) filter (where nursing_facility_focus)                as nursing_facility_focused,
-  count(*) filter (where nursing_facility_focus and role = 'physician') as nursing_facility_focused_physicians,
-  count(*) filter (where not nursing_facility_focus)            as primary_care_clinicians,
-  sum(tot_benes) filter (where nursing_facility_focus)          as nursing_facility_focused_benes
+  count(*)                                                                    as candidates,
+  count(*) filter (where not_office_based)                                    as excluded,
+  count(*) filter (where not_office_based and no_visible_office_visits)       as excluded_no_visible_office_visits,
+  count(*) filter (where not_office_based and not no_visible_office_visits)   as excluded_mainly_facility_or_home_visits,
+  count(*) filter (where not_office_based and role = 'physician')             as excluded_physicians,
+  count(*) filter (where not not_office_based)                                as primary_care_clinicians,
+  sum(tot_benes) filter (where not_office_based)                              as excluded_benes
 from {{ ref('int_clinician_year_candidates') }}
 group by 1
 order by 1
