@@ -152,60 +152,77 @@ def quoted(cols: list[str]) -> str:
 def ingest_mup(years: list[int], keep_raw: bool) -> None:
     db = con()
     codes_sql = ", ".join(f"'{c}'" for c in ALL_CODES)
-    # Keep manifest entries for years that are already staged and skipped below;
+    # The service and geography files are filtered to the code list, so they are
+    # restaged whenever pipeline/hcpcs_codes.json changes; the provider file is not.
+    codes_sig = hashlib.sha256(",".join(ALL_CODES).encode()).hexdigest()[:16]
+    # Keep manifest entries for files that are already staged and skipped below;
     # rewriting the manifest from scratch would drop their source hashes.
     path = MANI / "mup.json"
     manifest = json.loads(path.read_text()) if path.exists() else []
     prov, svc, geo = mup_urls("by Provider"), mup_urls("by Provider and Service"), mup_urls("by Geography and Service")
     for y in years:
-        if all((PROC / f"mup_{k}_{y}.parquet").exists() for k in ("prov", "svc", "geo")):
+        stamp = PROC / f"mup_codes_{y}.txt"
+        have_prov = (PROC / f"mup_prov_{y}.parquet").exists()
+        codes_ok = (stamp.exists() and stamp.read_text().strip() == codes_sig
+                    and all((PROC / f"mup_{k}_{y}.parquet").exists() for k in ("svc", "geo")))
+        if have_prov and codes_ok:
             print(f"MUP {y} already staged", flush=True)
             continue
-        manifest = [e for e in manifest if e.get("service_year") != y]
-        # by Provider: clinician profile (all columns except names and street address)
-        f = RAW / f"mup_prov_{y}.csv"
-        meta = download(prov[y], f)
-        cols = [r[0] for r in db.execute(f"DESCRIBE SELECT * FROM {csv_src(f)}").fetchall()]
-        drop = {"Rndrng_Prvdr_Last_Org_Name", "Rndrng_Prvdr_First_Name", "Rndrng_Prvdr_MI",
-                "Rndrng_Prvdr_St1", "Rndrng_Prvdr_St2"}
-        keep = [c for c in cols if c not in drop]
-        out = PROC / f"mup_prov_{y}.parquet"
-        db.execute(f"COPY (SELECT {y} AS service_year, {quoted(keep)} FROM {csv_src(f)}) TO '{out}' (FORMAT parquet)")
-        meta.update(file="by_provider", service_year=y, rows_out=db.execute(f"SELECT count(*) FROM '{out}'").fetchone()[0],
-                    columns_out=len(keep) + 1)
-        manifest.append(meta)
-        if not keep_raw:
-            f.unlink()
-
-        # by Provider and Service: only the codes in pipeline/hcpcs_codes.json
-        f = RAW / f"mup_svc_{y}.csv"
-        meta = download(svc[y], f)
-        keep = ["Rndrng_NPI", "Rndrng_Prvdr_Ent_Cd", "Rndrng_Prvdr_State_Abrvtn", "Rndrng_Prvdr_Zip5",
-                "Rndrng_Prvdr_RUCA", "Rndrng_Prvdr_Type", "HCPCS_Cd", "Place_Of_Srvc", "Tot_Benes",
-                "Tot_Srvcs", "Tot_Bene_Day_Srvcs", "Avg_Mdcr_Alowd_Amt", "Avg_Mdcr_Pymt_Amt"]
-        out = PROC / f"mup_svc_{y}.parquet"
-        db.execute(f"COPY (SELECT {y} AS service_year, {quoted(keep)} FROM {csv_src(f)} "
-                   f"WHERE HCPCS_Cd IN ({codes_sql})) TO '{out}' (FORMAT parquet)")
-        total = db.execute(f"SELECT count(*) FROM {csv_src(f)}").fetchone()[0]
-        meta.update(file="by_provider_and_service", service_year=y, rows_in=total,
-                    rows_out=db.execute(f"SELECT count(*) FROM '{out}'").fetchone()[0], codes=len(ALL_CODES))
-        manifest.append(meta)
-        if not keep_raw:
-            f.unlink()
-
-        # by Geography and Service: national and state totals for the same codes
-        f = RAW / f"mup_geo_{y}.csv"
-        meta = download(geo[y], f)
-        out = PROC / f"mup_geo_{y}.parquet"
-        db.execute(f"COPY (SELECT {y} AS service_year, * FROM {csv_src(f)} WHERE HCPCS_Cd IN ({codes_sql})) "
-                   f"TO '{out}' (FORMAT parquet)")
-        meta.update(file="by_geography_and_service", service_year=y,
-                    rows_out=db.execute(f"SELECT count(*) FROM '{out}'").fetchone()[0])
-        manifest.append(meta)
-        if not keep_raw:
-            f.unlink()
+        redo = {"by_provider_and_service", "by_geography_and_service"} | (set() if have_prov else {"by_provider"})
+        manifest = [e for e in manifest if not (e.get("service_year") == y and e.get("file") in redo)]
+        if not have_prov:
+            # by Provider: clinician profile (all columns except names and street address)
+            f = RAW / f"mup_prov_{y}.csv"
+            meta = download(prov[y], f)
+            cols = [r[0] for r in db.execute(f"DESCRIBE SELECT * FROM {csv_src(f)}").fetchall()]
+            drop = {"Rndrng_Prvdr_Last_Org_Name", "Rndrng_Prvdr_First_Name", "Rndrng_Prvdr_MI",
+                    "Rndrng_Prvdr_St1", "Rndrng_Prvdr_St2"}
+            keep = [c for c in cols if c not in drop]
+            out = PROC / f"mup_prov_{y}.parquet"
+            db.execute(f"COPY (SELECT {y} AS service_year, {quoted(keep)} FROM {csv_src(f)}) TO '{out}' (FORMAT parquet)")
+            meta.update(file="by_provider", service_year=y, rows_out=db.execute(f"SELECT count(*) FROM '{out}'").fetchone()[0],
+                        columns_out=len(keep) + 1)
+            manifest.append(meta)
+            if not keep_raw:
+                f.unlink()
+        else:
+            print(f"MUP {y}: code list changed, restaging service and geography files", flush=True)
+        stage_service(y, db, svc, geo, codes_sql, manifest, keep_raw)
+        stamp.write_text(codes_sig)
         write_manifest("mup", manifest)
         print(f"MUP {y} done", flush=True)
+
+
+def stage_service(y: int, db, svc: dict, geo: dict, codes_sql: str, manifest: list, keep_raw: bool) -> None:
+    """Stage the by-Provider-and-Service and by-Geography-and-Service files for one year,
+    keeping only the codes in pipeline/hcpcs_codes.json."""
+    # by Provider and Service: only the codes in pipeline/hcpcs_codes.json
+    f = RAW / f"mup_svc_{y}.csv"
+    meta = download(svc[y], f)
+    keep = ["Rndrng_NPI", "Rndrng_Prvdr_Ent_Cd", "Rndrng_Prvdr_State_Abrvtn", "Rndrng_Prvdr_Zip5",
+            "Rndrng_Prvdr_RUCA", "Rndrng_Prvdr_Type", "HCPCS_Cd", "Place_Of_Srvc", "Tot_Benes",
+            "Tot_Srvcs", "Tot_Bene_Day_Srvcs", "Avg_Mdcr_Alowd_Amt", "Avg_Mdcr_Pymt_Amt"]
+    out = PROC / f"mup_svc_{y}.parquet"
+    db.execute(f"COPY (SELECT {y} AS service_year, {quoted(keep)} FROM {csv_src(f)} "
+               f"WHERE HCPCS_Cd IN ({codes_sql})) TO '{out}' (FORMAT parquet)")
+    total = db.execute(f"SELECT count(*) FROM {csv_src(f)}").fetchone()[0]
+    meta.update(file="by_provider_and_service", service_year=y, rows_in=total,
+                rows_out=db.execute(f"SELECT count(*) FROM '{out}'").fetchone()[0], codes=len(ALL_CODES))
+    manifest.append(meta)
+    if not keep_raw:
+        f.unlink()
+
+    # by Geography and Service: national and state totals for the same codes
+    f = RAW / f"mup_geo_{y}.csv"
+    meta = download(geo[y], f)
+    out = PROC / f"mup_geo_{y}.parquet"
+    db.execute(f"COPY (SELECT {y} AS service_year, * FROM {csv_src(f)} WHERE HCPCS_Cd IN ({codes_sql})) "
+               f"TO '{out}' (FORMAT parquet)")
+    meta.update(file="by_geography_and_service", service_year=y,
+                rows_out=db.execute(f"SELECT count(*) FROM '{out}'").fetchone()[0])
+    manifest.append(meta)
+    if not keep_raw:
+        f.unlink()
 
 
 # ------------------------------------------------------- reference files

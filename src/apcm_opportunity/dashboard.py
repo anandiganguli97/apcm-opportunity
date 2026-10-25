@@ -26,7 +26,8 @@ SIGNALS = {
 }
 FAMILY_NAMES = {"ACP": "Advance care planning", "AWV": "Wellness visits", "BHI": "Behavioral health integration", "CCM": "Chronic care management",
                 "COCM": "Collaborative care", "COMPLEXITY_ADDON": "G2211 add-on", "PCM": "Principal care management", "RPM": "Remote monitoring",
-                "SDOH_NAVIGATION": "Social needs navigation", "TCM": "Transitional care management", "OFFICE_EM": "Office visits"}
+                "SDOH_NAVIGATION": "Social needs navigation", "TCM": "Transitional care management", "OFFICE_EM": "Office visits",
+                "NURSING_FACILITY": "Nursing facility visits"}
 REPO = "https://github.com/anandiganguli97/apcm-opportunity"
 ATLAS = "https://anandiganguli97.github.io/apcm-opportunity/"
 

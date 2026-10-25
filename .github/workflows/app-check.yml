@@ -3,7 +3,7 @@ name: App check
 # Runs the Streamlit app headless against the committed pipeline outputs.
 on:
   push:
-    branches: [real-data-rebuild, main]
+    branches-ignore: [gh-pages]
     paths: ["app.py", "src/**", "app_tests/**", "requirements.txt", "pipeline_output/**", "seeds/billing_rules.csv", ".github/workflows/app-check.yml"]
   pull_request:
 

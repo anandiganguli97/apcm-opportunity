@@ -52,3 +52,10 @@ G0570,APCM_BH_ADDON,2026-01-01,,false,APCM general BHI add-on,CY2026 PFS final r
 99213,OFFICE_EM,1992-01-01,,false,"Established patient office visit, low complexity",CPT office E/M; documentation rules revised 2021 (99201 deleted)
 99214,OFFICE_EM,1992-01-01,,false,"Established patient office visit, moderate complexity",CPT office E/M; documentation rules revised 2021 (99201 deleted)
 99215,OFFICE_EM,1992-01-01,,false,"Established patient office visit, high complexity",CPT office E/M; documentation rules revised 2021 (99201 deleted)
+99304,NURSING_FACILITY,2006-01-01,,false,"Initial nursing facility care, straightforward or low",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians
+99305,NURSING_FACILITY,2006-01-01,,false,"Initial nursing facility care, moderate",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians
+99306,NURSING_FACILITY,2006-01-01,,false,"Initial nursing facility care, high",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians
+99307,NURSING_FACILITY,2006-01-01,,false,"Subsequent nursing facility care, straightforward",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians
+99308,NURSING_FACILITY,2006-01-01,,false,"Subsequent nursing facility care, low",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians
+99309,NURSING_FACILITY,2006-01-01,,false,"Subsequent nursing facility care, moderate",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians
+99310,NURSING_FACILITY,2006-01-01,,false,"Subsequent nursing facility care, high",CPT nursing facility E/M; used only to flag nursing-facility-focused clinicians

@@ -63,7 +63,8 @@ def build() -> dict:
     fam_names = {"ACP": "Advance care planning", "AWV": "Annual wellness visit", "BHI": "Behavioral health integration",
                  "CCM": "Chronic care management", "COCM": "Collaborative care", "COMPLEXITY_ADDON": "Visit complexity add-on (G2211)",
                  "PCM": "Principal care management", "RPM": "Remote monitoring", "SDOH_NAVIGATION": "Social needs and navigation",
-                 "TCM": "Transitional care management", "OFFICE_EM": "Office visits", "APCM": "APCM"}
+                 "TCM": "Transitional care management", "OFFICE_EM": "Office visits", "APCM": "APCM",
+                 "NURSING_FACILITY": "Nursing facility visits"}
 
     mup_files = [m for m in manifests.get("mup", []) if m.get("service_year") == year]
     return {

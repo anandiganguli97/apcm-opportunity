@@ -28,6 +28,7 @@ def save(name: str, sql: str, gz: bool = False) -> None:
 
 
 save("national_trend", "select * from mart_national_trend order by service_year")
+save("primary_care_exclusions", "select * from mart_primary_care_exclusions order by service_year")
 save("suppression_by_code", "select * from mart_suppression order by family, hcpcs, service_year")
 save("suppression_by_family", """
     select service_year, family, sum(national_services) national_services, sum(visible_services) visible_services,
