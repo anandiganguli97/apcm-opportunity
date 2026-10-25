@@ -1,0 +1,29 @@
+name: Dashboard site check
+
+# Confirms the published dashboard answers at its public URL.
+on:
+  push:
+    branches: [real-data-rebuild, main]
+    paths: [".github/workflows/site-check.yml"]
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch the dashboard
+        run: |
+          url="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/"
+          for i in 1 2 3 4 5 6; do
+            code=$(curl -s -o page.html -w '%{http_code}' "$url")
+            echo "attempt $i: HTTP $code"
+            [ "$code" = "200" ] && break
+            sleep 20
+          done
+          echo "url: $url"
+          grep -o '<title>[^<]*</title>' page.html || true
+          grep -o '"year":[0-9]*' page.html | head -1 || true
+          [ "$code" = "200" ]

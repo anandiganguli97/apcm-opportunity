@@ -3,17 +3,18 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "apcm-opportunity-lab"
-version = "0.2.0"
-description = "Explainable public-data and beneficiary-month APCM analytics prototype"
+name = "apcm-readiness-atlas"
+version = "1.0.0"
+description = "Which U.S. primary care practices are ready for Medicare's Advanced Primary Care Management, from real CMS public data"
 requires-python = ">=3.11"
 dependencies = [
-  "dbt-duckdb>=1.8,<2",
-  "duckdb>=1.0,<2",
+  "streamlit>=1.50,<2",
   "pandas>=2.2,<4",
-  "streamlit>=1.39,<2",
+  "altair>=5,<6",
 ]
+
+[project.optional-dependencies]
+pipeline = ["dbt-duckdb>=1.8,<2", "duckdb>=1.1,<2", "openpyxl>=3.1,<4", "statsmodels>=0.14,<1", "pyarrow>=15,<23", "pypdf>=4,<7"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-

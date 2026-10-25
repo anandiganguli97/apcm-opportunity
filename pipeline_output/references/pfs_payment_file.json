@@ -1,0 +1,24 @@
+{
+ "releases": [
+  {
+   "release": "a",
+   "file": "pfrev26a-updated-12-29-2025.zip/PFREV26A /PFREV26AR_nonQP.zip/PFALL26AR.txt",
+   "rows": 1035395
+  },
+  {
+   "release": "b",
+   "file": "pfrev26b-updated-03-10-2026.zip/PFREV26B/PFREV26B_nonQP.zip/PFREV26B.txt",
+   "rows": 4037
+  },
+  {
+   "release": "c",
+   "file": "pfrev26c-posted-06-30-2026.zip/pfrev26c/PFREV26C_nonQP.zip/PFREV26C.txt",
+   "rows": 1639
+  },
+  {
+   "release": "d",
+   "file": "pfrev26d-posted-08-25-2026.zip/PFREV26D/PF26PD_nonQP.zip/PFREV26D.txt",
+   "rows": 658
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+scenario,share_2plus_non_qmb,share_2plus_qmb,capture_rate,consent_rate,note
+low,0.50,0.65,0.10,0.50,Scenario assumption; APCM 2+ condition criterion also requires significant risk and is a clinical judgment no public file measures
+base,0.65,0.80,0.25,0.75,Scenario assumption; see docs/assumptions_log.md
+high,0.80,0.90,0.50,0.90,Scenario assumption; capture is the share of eligible patient-months practices actually bill

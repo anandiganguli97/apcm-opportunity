@@ -1,38 +1,55 @@
 # Data dictionary
 
-## Public CMS provider baseline
+Fields in the files the app, the report and Tableau users read. All live in `pipeline_output/` and are aggregate or public-provider level; none contain names, addresses or patient-level data. Methods are in [`methods.md`](methods.md).
 
-The downloadable source is an annual CMS provider-service aggregate. `scripts/build_public_readiness.py` applies `seeds/code_families.csv` effective dates and outputs one row per rendering NPI for providers with at least one mapped historical readiness code row.
+## Practice extract (`results/practice_extract_tableau.csv.gz`, one row per practice, 2024)
 
-| Output field | Meaning | Important caveat |
+| Field | Meaning | Caveat |
 |---|---|---|
-| `provider_npi` | 10-digit rendering provider NPI | Provider identity, not a validated practice group. |
-| `state`, `zip5`, `ruca_code`, `provider_type` | Coarse provider descriptors from CMS | Conflicts across source rows are blanked; address is not a service area. |
-| `reporting_year` | CMS claims reporting year | This baseline predates APCM. |
-| `observed_code_count` | Distinct mapped HCPCS codes with rows | Suppression can hide rows. |
-| `observed_care_management_families` | Count of CCM, complex CCM, PCM, TCM, BHI, CoCM families with visible nonzero service units | Breadth proxy only; no operational capacity is observed. |
-| `readiness_breadth_index` | `100 × observed family count ÷ 6` | Not a probability, normalized rate, or billability score. |
-| `service_volume_units` | Sum of CMS `Tot_Srvcs` across selected care-management rows | Counts service units, not unique people or beneficiary-months; code units may differ. |
-| `{family}_service_units` | Code-family service-unit sum for each mapped family | Suppressed/absent rows are not treated as true zero use. |
-| `has_{family}_signal` | Whether at least one nonzero service row was observed for a family | False means not observed in this file; it does not prove non-use. |
-| `metadata_conflict_fields` | Provider descriptors that differed across source rows | Empty means no conflict detected in this extract, not an independent identity validation. |
+| `practice_id` | Org PAC ID from CMS Doctors and Clinicians, or `npi:<NPI>` for a solo clinician | Current snapshot applied to 2024 |
+| `practice_name` | Organization name from the same file | Blank for solo clinicians |
+| `state`, `county_fips`, `rurality` | From the practice's largest clinician; rurality from RUCA | Clinician address, not a service area |
+| `county_geographic_pc_hpsa` | County has a designated geographic primary care HPSA | Partial-county designations mark the whole county |
+| `svi_overall` | CDC/ATSDR SVI 2022 county percentile | Ecological |
+| `pcp_clinicians`, `pcp_physicians` | Primary care clinicians in the practice, and physicians among them | Primary care definition in `seeds/primary_care_specialties.csv` |
+| `patient_panel_proxy` | Medicare patients summed across the practice's clinicians | Counts patients who see several clinicians more than once |
+| `dual_patients`, `dual_share` | Dual-eligible patients and share | Only clinicians with a reported dual count |
+| `est_qmb_patients` | Duals times the county QMB share of duals | Estimate; no public file flags QMBs per clinician |
+| `avg_hcc_risk_score` | Patient-weighted HCC risk score | |
+| `readiness_tier` | 0 none, 1 visit-based only, 2 CCM or PCM, 3 multi-service | Billing shows a workflow exists, not APCM compliance |
+| `has_ccm` ... `has_g2211` | Visible 2024 billing of each service family | False can mean fewer than 11 patients |
+| `ccm_patient_months` | First-unit monthly CCM/PCM services | |
+| `care_mgmt_allowed_visible` | Visible care management allowed dollars | Suppressed rows excluded |
+| `apcm_allowed_full_capture_base`, `apcm_allowed_base_scenario` | Annual APCM allowed amount at 2026 rates, before and after base capture and consent | Scenario, not a forecast |
 
-The lineage JSON stores raw-source and code-catalog SHA-256 hashes, output hash, source manifest path, row counts, and metric definition.
+## Readiness score (`forecast/draft_2025_apcm_predictions.csv.gz`)
 
-## Fictional beneficiary-month sandbox
+| Field | Meaning |
+|---|---|
+| `p_model_a`, `p_model_b` | Predicted probability from the G2211-launch model and the new-care-management check model |
+| `readiness_score` | Percentile (0 to 100) of `p_model_a` across practices |
+| `readiness_decile` | 1 (least likely to adopt first) to 10 |
+| `observed_g2211_2024` | Whether the practice billed G2211 in 2024 (the training event) |
 
-| Input field | Meaning | Caveat |
+Probabilities are scaled to G2211 uptake, so only the ranking carries over to APCM. Draft until frozen.
+
+## NPI lookup (`results/npi_practice_lookup.csv.gz`)
+
+`npi`, `practice_id`, `provider_type`, `role` (physician or NP/PA), `state` for 2024 primary care clinicians. NPIs are public identifiers.
+
+## Aggregate results (`results/*.csv`)
+
+| File | Grain | Key fields |
 |---|---|---|
-| `beneficiary_id` | Stable fictional demo ID | Not a CMS ID and not a real person. |
-| `service_month` | Month the modeled tier applies to | Should be a calendar-month date. |
-| `practice_id` | Fictional attributed-practice key | Attribution is a demo assumption. |
-| `qualifying_chronic_count` | Precomputed condition count | Does not currently derive from claim diagnosis lines/CCW algorithms. |
-| `qmb_flag` | Fictional monthly QMB indicator | Not an official enrollment determination. |
-| `consent_proxy` | Fictional consent stand-in | Does not establish documented consent. |
-| `observed_care_mgmt_allowed_amount` | Fictional same-month possible overlap amount | Not adjudicated or rule-validated displacement. |
-| `attribution_method` | Demo method label | Not official MSSP attribution. |
+| `national_trend.csv` | Service year | Clinician counts; share billing each service family; CCM patient-months per 100 patients |
+| `equity.csv` | Dimension and group | Share of clinicians billing CCM/PCM; share of dual, other and QMB patients whose clinician bills it |
+| `readiness_tiers.csv`, `readiness_by_dual_quintile.csv` | Tier (and dual-share fifth) | Practices, clinicians, patients, estimated QMB patients, base-scenario dollars |
+| `state_summary.csv` | State | Clinician and practice shares, dual share, QMB estimates, base-scenario dollars |
+| `ccm_vs_apcm_summary.csv` | National | Median CCM months and revenue per patient; G0557 comparisons |
+| `apcm_opportunity_national.csv` | Scenario | Inputs, patient-months by level, allowed amounts, coinsurance |
+| `fee_schedule_2026.csv` | Code and conversion factor | RVUs and national amounts |
+| `suppression_by_code.csv`, `suppression_by_family.csv` | Code or family and year | National vs visible services; hidden share |
 
-## Units and money
+## Reference outputs (`references/`)
 
-The dbt opportunity mart is denominated in beneficiary-months and modeled allowed dollars. The default rate seed is explicitly `illustrative_placeholder`; do not use it as a CMS payment output. Coinsurance is a modeled exposure, not beneficiary liability.
-
+Federal Register APCM excerpts with page tags, the CMS payment amount check (summary and by locality), CCW condition text, CMS file documentation excerpts and a manifest of every document fetched.

@@ -1,30 +1,57 @@
-# What the 2024 public data shows
+# Results
 
-The dashboard starts with CMS's public Medicare Physician & Other Practitioners by Provider and Service file for 2024. The analysis groups selected prior-care-management billing codes by provider NPI.
+Service year 2024 unless noted. Payment at CY2026 national non-facility rates. Every figure comes from a file in `pipeline_output/`; the README lists the headline findings with links.
 
-| Measure | Result | How to read it |
-|---|---:|---|
-| Provider NPIs with a visible signal | 45,603 | NPIs with a nonzero service row in at least one of six care-management families. |
-| NPIs with signals in at least two families | 8,041 | A simple measure of breadth in visible prior billing experience. |
-| NPIs with signals in at least three families | 1,362 | A smaller group with visible experience across several families. |
-| Reported service units across selected codes | 14,064,475 | CMS-reported units summed across included codes and places of service; not unique people or APCM months. |
+## Readiness before APCM
 
-The six families are chronic care management (CCM), complex CCM, principal care management (PCM), transitional care management (TCM), behavioral health integration (BHI), and collaborative care (CoCM). Family totals can overlap because one NPI can appear in more than one family.
+| Measure | 2019 | 2024 |
+|---|---:|---:|
+| Primary care clinicians | 203,376 | 215,245 |
+| Billing chronic or principal care management | 4.6% | 5.6% |
+| Billing transitional care management | 13.2% | 11.6% |
+| Billing remote monitoring | 0.1% | 1.9% |
+| Billing annual wellness visits | 44.5% | 50.4% |
+| Billing G2211 (launched 2024) | | 29.7% |
 
-## Why it matters
+Source: `results/national_trend.csv`.
 
-This baseline suggests that prior care-management billing experience is present across many providers, while visible experience across multiple service types is less common. That can help frame workforce and implementation questions: where might training or operational support be useful, and what additional data would be needed to answer that responsibly?
+## Practices by readiness tier
 
-The analysis does **not** show which providers are ready for APCM or which patients would qualify. The CMS file is historical, provider-level, and suppression-limited. Absence of a row is ambiguous. NPI is not a practice identifier, and service units are not patient counts.
+| Tier | Practices | Clinicians | Estimated QMB patients |
+|---|---:|---:|---:|
+| No visible care management | 21,809 | 29,205 | 793,785 |
+| Visit-based services only | 23,980 | 101,484 | 2,459,800 |
+| CCM or PCM only | 2,285 | 8,557 | 293,561 |
+| Multi-service care management | 3,377 | 75,999 | 2,009,600 |
 
-The dashboard supports exploration by state, provider type, and CMS RUCA code. RUCA is a rural-urban classification attached to the provider record; it is not a validated practice service area or patient access measure. This version does not claim a rural-urban disparity.
+Source: `results/readiness_tiers.csv`. Large multi-site organizations dominate the multi-service tier because any site's billing counts for the whole organization.
 
-## Reproduce the rollup
+## Equity
 
-```bash
-python scripts/download_public_provider_use.py --year 2024
-python scripts/build_public_readiness.py --year 2024
-```
+- **By dual-eligible share of the panel**, CCM or PCM billing is U-shaped: 9.2% of clinicians in the lowest fifth, 4.4% in the middle, 7.7% in the highest.
+- **Where QMB patients are:** in the fifth of practices with the most dual-eligible patients, 25% of estimated QMB patients are with a practice showing no visible care management, against 9% in the fifth with the fewest.
+- **Shortage areas:** 11.0% of dual-eligible patients in geographic primary care HPSA counties have a clinician billing CCM or PCM, against 12.9% elsewhere.
 
-The resulting one-row-per-NPI file is `data/public_processed/cms_provider_readiness_2024.csv`. The repository includes a snapshot of that derived file so the hosted dashboard can display results immediately; the raw CMS extract is excluded.
+Sources: `results/equity.csv`, `results/readiness_by_dual_quintile.csv`.
 
+## Payment
+
+G0556 $16.37, G0557 $53.78 and G0558 $117.24 a month; base CCM (99490) $66.13. The median 2024 CCM biller billed 4.5 months per patient, $383 a year at 2026 rates. G0557 every month is $645; it pays more than observed CCM billing for 84% of CCM billers. Sources: `results/fee_schedule_2026.csv`, `results/ccm_vs_apcm_summary.csv`.
+
+## National opportunity (traditional Medicare)
+
+| Scenario | Allowed per year | Patient coinsurance |
+|---|---:|---:|
+| Low | $0.70B | $0.10B |
+| Base | $3.06B | $0.43B |
+| High | $8.27B | $1.18B |
+
+Inputs in `seeds/apcm_scenarios.csv` and `docs/assumptions_log.md`. Source: `results/apcm_opportunity_national.csv`.
+
+## Draft readiness score
+
+Logistic model trained on G2211 uptake in 2024 from 2023 practice profiles: 47,564 practices, cross-validated AUROC 0.80. The least-ready tenth of practices holds 3.6 times the QMB patients its share of all patients would suggest. A check model on new CCM/PCM adoption has AUROC 0.74 and ranks practices similarly (Spearman 0.73). Source: `forecast/model_card_draft.json`, `forecast/qmb_by_readiness_decile.csv`.
+
+## What the data cannot show
+
+Patient-level APCM eligibility, consent, or same-month billing conflicts; Medicare Advantage; FQHC and RHC care billed under their own payment systems; and anything under CMS's 11-beneficiary suppression threshold. See `docs/data_validity_report.md`.

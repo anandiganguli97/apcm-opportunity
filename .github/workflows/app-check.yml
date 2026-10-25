@@ -1,0 +1,19 @@
+name: App check
+
+# Runs the Streamlit app headless against the committed pipeline outputs.
+on:
+  push:
+    branches: [real-data-rebuild, main]
+    paths: ["app.py", "src/**", "app_tests/**", "requirements.txt", "pipeline_output/**", "seeds/billing_rules.csv", ".github/workflows/app-check.yml"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -r requirements.txt pytest
+      - run: python -m pytest -q app_tests

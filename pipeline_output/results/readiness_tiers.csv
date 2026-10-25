@@ -1,0 +1,5 @@
+readiness_tier,practices,clinicians,patient_panel_proxy,dual_patients,est_qmb_patients,apcm_allowed_base_scenario
+0 No visible care management,21809,29205,4.60622e+06,1.14956e+06,793785,5.22369e+08
+1 Visit-based services only,23980,101484,2.11978e+07,3.62489e+06,2.4598e+06,2.25258e+09
+2 CCM or PCM,2285,8557,1.66701e+06,444590,293561,1.89845e+08
+3 Multi-service care management,3377,75999,1.92082e+07,3.10216e+06,2.0096e+06,2.01333e+09

@@ -1,0 +1,4 @@
+scenario,ffs_benes,qmb_share,share_2plus_qmb,share_2plus_non_qmb,capture_rate,consent_rate,r556,r557,r558,g0556_months,g0557_months,g0558_months,allowed_full_capture,allowed_scenario,patient_coinsurance_scenario
+base,2.77322e+07,0.147148,0.8,0.65,0.25,0.75,16.37,53.78,117.24,1.0913e+08,1.84481e+08,3.9175e+07,1.63007e+10,3.05639e+09,4.33033e+08
+high,2.77322e+07,0.147148,0.9,0.8,0.5,0.9,16.37,53.78,117.24,6.16604e+07,2.27054e+08,4.40719e+07,1.83873e+10,8.2743e+09,1.18262e+09
+low,2.77322e+07,0.147148,0.65,0.5,0.1,0.5,16.37,53.78,117.24,1.59048e+08,1.41909e+08,3.18297e+07,1.39672e+10,6.98359e+08,9.95489e+07

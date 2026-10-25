@@ -1,32 +1,68 @@
 version: 2
+
 models:
-  - name: stg_beneficiary_months
+  - name: stg_mup_provider
+    description: One row per clinician per service year from CMS Physician & Other Practitioners by Provider.
+    tests:
+      - unique_combination_of_columns: {columns: [service_year, npi]}
     columns:
-      - name: beneficiary_id
+      - name: npi
         tests: [not_null]
-      - name: service_month
+      - name: service_year
         tests: [not_null]
-      - name: practice_id
+
+  - name: stg_pfs_rates
+    description: National 2026 physician fee schedule amounts for the tracked codes.
+    columns:
+      - name: national_nonfac_amount
         tests: [not_null]
-      - name: qmb_flag
+
+  - name: int_clinician_year
+    description: Primary care clinicians by year with patient mix and visible care management billing.
+    tests:
+      - unique_combination_of_columns: {columns: [service_year, npi]}
+    columns:
+      - name: rurality
         tests:
           - accepted_values:
-              values: [true, false]
-  - name: stg_practice_profiles
-    columns:
-      - name: practice_id
-        tests: [not_null, unique]
-  - name: int_beneficiary_month_tier
-    columns:
-      - name: apcm_code
+              values: ['Metropolitan', 'Micropolitan', 'Small town', 'Rural', 'Unknown']
+      - name: role
         tests:
           - accepted_values:
-              values: ['G0556', 'G0557', 'G0558']
-  - name: mart_practice_opportunity
+              values: ['physician', 'app']
+
+  - name: int_npi_practice
     columns:
+      - name: npi
+        tests: [unique, not_null]
+
+  - name: mart_clinician
+    columns:
+      - name: npi
+        tests: [unique, not_null]
       - name: practice_id
         tests: [not_null]
+
+  - name: mart_practice
+    columns:
+      - name: practice_id
+        tests: [unique, not_null]
+      - name: readiness_tier
+        tests:
+          - accepted_values:
+              values: ['0 No visible care management', '1 Visit-based services only',
+                       '2 CCM or PCM', '3 Multi-service care management']
+
+  - name: mart_suppression
+    tests:
+      - unique_combination_of_columns: {columns: [service_year, hcpcs]}
+
+  - name: mart_apcm_opportunity_national
+    columns:
       - name: scenario
         tests:
+          - unique
           - accepted_values:
               values: ['low', 'base', 'high']
+      - name: allowed_full_capture
+        tests: [not_null]

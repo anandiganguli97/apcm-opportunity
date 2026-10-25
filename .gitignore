@@ -2,9 +2,9 @@ __pycache__/
 .venv/
 target/
 dbt_packages/
-data/public_raw/
-data/public_processed/
 *.duckdb
 *.parquet
 *.part
 
+logs/
+.user.yml
