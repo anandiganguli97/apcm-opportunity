@@ -1,6 +1,6 @@
 # APCM Readiness Atlas
 
-**All findings in this repository come from real CMS, HRSA, CDC and Census public data. Nothing is simulated.**
+**All findings in this repository come from real CMS, HRSA, CDC and Census public data. 
 
 Medicare's Advanced Primary Care Management codes (G0556, G0557, G0558) started paying primary care practices a monthly per-patient fee in January 2025. The top tier, G0558, is for Qualified Medicare Beneficiaries (QMBs): low-income patients enrolled in both Medicare and Medicaid. This project sizes the APCM opportunity for U.S. primary care and asks whether the practices that see the most QMB patients are ready to bill it.
 
