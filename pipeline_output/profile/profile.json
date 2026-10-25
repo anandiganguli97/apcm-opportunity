@@ -767,7 +767,7 @@
       "service_year": 2021,
       "HCPCS_Cd": "99212",
       "n_rows": 124722,
-      "srvcs": 8331445.4,
+      "srvcs": 8331445.399999999,
       "benes": 5989611
     },
     {
@@ -837,7 +837,7 @@
       "service_year": 2019,
       "HCPCS_Cd": "99214",
       "n_rows": 460412,
-      "srvcs": 105661997.5,
+      "srvcs": 105661997.50000001,
       "benes": 58624088
     },
     {
@@ -2925,12 +2925,12 @@
   ],
   "geo_levels": [
     {
-      "lvl": "National",
-      "n": 669
-    },
-    {
       "lvl": "State",
       "n": 26852
+    },
+    {
+      "lvl": "National",
+      "n": 669
     }
   ],
   "geo_national_by_code": [

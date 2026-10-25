@@ -1,7 +1,7 @@
 [
   {
     "url": "https://data.cms.gov/provider-data/sites/default/files/resources/52c3f098d7e56028a298fd297cb0b38d_1790972133/DAC_NationalDownloadableFile.csv",
-    "retrieved_utc": "2026-10-25T02:52:20Z",
+    "retrieved_utc": "2026-10-25T05:57:36Z",
     "bytes": 899709162,
     "sha256": "96a271ae51b79631f5ec5fe096b461c34fffbb3bd4cc1aca0a31023161a1890b",
     "file": "doctors_and_clinicians",
@@ -10,7 +10,7 @@
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2026-10/c41a8ac2-8229-4f3b-a4cb-423d9cd5328a/Medicare%20Monthly%20Enrollment%20Data_July%202026.csv",
-    "retrieved_utc": "2026-10-25T02:52:23Z",
+    "retrieved_utc": "2026-10-25T05:57:39Z",
     "bytes": 215907430,
     "sha256": "ff2dd7d2b255b275d02b6a0a645aca78f0de28abe6ec7b38a43a2d3e99995db2",
     "file": "monthly_enrollment",
@@ -18,7 +18,7 @@
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2026-04/cc600d1e-d475-4b0e-80dc-1f64c01ca68c/2014-2024%20Original%20Medicare%20Geographic%20Variation%20Public%20Use%20File.csv",
-    "retrieved_utc": "2026-10-25T02:52:25Z",
+    "retrieved_utc": "2026-10-25T05:57:41Z",
     "bytes": 57865948,
     "sha256": "10c8304012da34da3ecfe4caf4548927095f693383814d0e79ce6711b6806fad",
     "file": "geographic_variation",
@@ -26,7 +26,7 @@
   },
   {
     "url": "https://data.hrsa.gov/DataDownload/DD_Files/BCD_HPSA_FCT_DET_PC.csv",
-    "retrieved_utc": "2026-10-25T02:52:26Z",
+    "retrieved_utc": "2026-10-25T05:57:42Z",
     "bytes": 49117940,
     "sha256": "a6106ca4b0a947bf4d2939f161cebfd3f1e3ee3c8083778d8266941faadc1002",
     "file": "hrsa_hpsa_primary_care",
@@ -34,7 +34,7 @@
   },
   {
     "url": "https://svi.cdc.gov/Documents/Data/2022/csv/states_counties/SVI_2022_US_county.csv",
-    "retrieved_utc": "2026-10-25T02:52:27Z",
+    "retrieved_utc": "2026-10-25T05:57:43Z",
     "bytes": 2301480,
     "sha256": "bc47d244153e359d5c09f621a4bf344a1e593159c16fbd3c28a15461b70a6c0f",
     "file": "svi_2022_county",
@@ -42,7 +42,7 @@
   },
   {
     "url": "https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt",
-    "retrieved_utc": "2026-10-25T02:52:27Z",
+    "retrieved_utc": "2026-10-25T05:57:43Z",
     "bytes": 6821287,
     "sha256": "3ed41278d637dc249e0323306f68be8a6c234e3090f4de88ef328dee71aeaaaf",
     "file": "census_zcta_county_2020",
