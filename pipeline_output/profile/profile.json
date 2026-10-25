@@ -2925,12 +2925,12 @@
   ],
   "geo_levels": [
     {
-      "lvl": "State",
-      "n": 26852
-    },
-    {
       "lvl": "National",
       "n": 669
+    },
+    {
+      "lvl": "State",
+      "n": 26852
     }
   ],
   "geo_national_by_code": [
