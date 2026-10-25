@@ -802,7 +802,7 @@
       "service_year": 2020,
       "HCPCS_Cd": "99213",
       "n_rows": 460913,
-      "srvcs": 74817626.8,
+      "srvcs": 74817626.80000001,
       "benes": 45966445
     },
     {
@@ -823,7 +823,7 @@
       "service_year": 2023,
       "HCPCS_Cd": "99213",
       "n_rows": 472140,
-      "srvcs": 70165438.89999999,
+      "srvcs": 70165438.9,
       "benes": 45940733
     },
     {
@@ -844,7 +844,7 @@
       "service_year": 2020,
       "HCPCS_Cd": "99214",
       "n_rows": 449781,
-      "srvcs": 87626386.60000001,
+      "srvcs": 87626386.6,
       "benes": 50739373
     },
     {
@@ -858,14 +858,14 @@
       "service_year": 2022,
       "HCPCS_Cd": "99214",
       "n_rows": 486323,
-      "srvcs": 97229103.70000002,
+      "srvcs": 97229103.69999999,
       "benes": 56297566
     },
     {
       "service_year": 2023,
       "HCPCS_Cd": "99214",
       "n_rows": 501919,
-      "srvcs": 99338804.10000001,
+      "srvcs": 99338804.1,
       "benes": 57835693
     },
     {
@@ -886,7 +886,7 @@
       "service_year": 2020,
       "HCPCS_Cd": "99215",
       "n_rows": 112782,
-      "srvcs": 7848466.8,
+      "srvcs": 7848466.800000001,
       "benes": 5290227
     },
     {
@@ -1210,6 +1210,622 @@
       "n_rows": 17077,
       "srvcs": 2124063.0,
       "benes": 926260
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99324",
+      "n_rows": 848,
+      "srvcs": 48308.0,
+      "benes": 48286
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99324",
+      "n_rows": 884,
+      "srvcs": 50704.0,
+      "benes": 50668
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99324",
+      "n_rows": 778,
+      "srvcs": 48653.0,
+      "benes": 48624
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99324",
+      "n_rows": 755,
+      "srvcs": 47045.0,
+      "benes": 47034
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99325",
+      "n_rows": 979,
+      "srvcs": 45387.0,
+      "benes": 45367
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99325",
+      "n_rows": 870,
+      "srvcs": 41800.0,
+      "benes": 41778
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99325",
+      "n_rows": 968,
+      "srvcs": 45489.0,
+      "benes": 45467
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99325",
+      "n_rows": 950,
+      "srvcs": 48693.0,
+      "benes": 48674
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99326",
+      "n_rows": 1305,
+      "srvcs": 43086.0,
+      "benes": 43064
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99326",
+      "n_rows": 1115,
+      "srvcs": 36639.0,
+      "benes": 36611
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99326",
+      "n_rows": 1252,
+      "srvcs": 41791.0,
+      "benes": 41753
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99326",
+      "n_rows": 1267,
+      "srvcs": 43149.0,
+      "benes": 43123
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99327",
+      "n_rows": 1630,
+      "srvcs": 52684.0,
+      "benes": 52664
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99327",
+      "n_rows": 1461,
+      "srvcs": 44607.0,
+      "benes": 44564
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99327",
+      "n_rows": 1638,
+      "srvcs": 52959.0,
+      "benes": 52930
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99327",
+      "n_rows": 1749,
+      "srvcs": 57647.0,
+      "benes": 57621
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99328",
+      "n_rows": 1001,
+      "srvcs": 32831.0,
+      "benes": 32811
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99328",
+      "n_rows": 886,
+      "srvcs": 26690.0,
+      "benes": 26671
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99328",
+      "n_rows": 965,
+      "srvcs": 32262.0,
+      "benes": 32250
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99328",
+      "n_rows": 1067,
+      "srvcs": 36333.0,
+      "benes": 36325
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99334",
+      "n_rows": 3562,
+      "srvcs": 478841.0,
+      "benes": 182124
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99334",
+      "n_rows": 3571,
+      "srvcs": 451379.0,
+      "benes": 182169
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99334",
+      "n_rows": 3335,
+      "srvcs": 440345.0,
+      "benes": 171411
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99334",
+      "n_rows": 3168,
+      "srvcs": 415576.0,
+      "benes": 158296
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99335",
+      "n_rows": 7592,
+      "srvcs": 1188643.0,
+      "benes": 400027
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99335",
+      "n_rows": 7413,
+      "srvcs": 1178750.0,
+      "benes": 392086
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99335",
+      "n_rows": 7519,
+      "srvcs": 1178358.0,
+      "benes": 392392
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99335",
+      "n_rows": 7688,
+      "srvcs": 1205841.0,
+      "benes": 404043
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99336",
+      "n_rows": 7925,
+      "srvcs": 1610854.0,
+      "benes": 473033
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99336",
+      "n_rows": 7849,
+      "srvcs": 1630916.0,
+      "benes": 461184
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99336",
+      "n_rows": 8185,
+      "srvcs": 1761690.0,
+      "benes": 492503
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99336",
+      "n_rows": 8723,
+      "srvcs": 1962033.0,
+      "benes": 544780
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99337",
+      "n_rows": 3138,
+      "srvcs": 512746.0,
+      "benes": 169580
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99337",
+      "n_rows": 3122,
+      "srvcs": 479646.9,
+      "benes": 159546
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99337",
+      "n_rows": 3407,
+      "srvcs": 484797.0,
+      "benes": 166214
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99337",
+      "n_rows": 3632,
+      "srvcs": 526065.0,
+      "benes": 179042
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99341",
+      "n_rows": 249,
+      "srvcs": 12616.0,
+      "benes": 12607
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99341",
+      "n_rows": 307,
+      "srvcs": 12856.0,
+      "benes": 12843
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99341",
+      "n_rows": 238,
+      "srvcs": 9850.0,
+      "benes": 9841
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99341",
+      "n_rows": 216,
+      "srvcs": 8864.0,
+      "benes": 8859
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99341",
+      "n_rows": 932,
+      "srvcs": 54436.0,
+      "benes": 54413
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99341",
+      "n_rows": 798,
+      "srvcs": 50583.0,
+      "benes": 50565
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99342",
+      "n_rows": 739,
+      "srvcs": 35851.1,
+      "benes": 35831
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99342",
+      "n_rows": 823,
+      "srvcs": 39357.0,
+      "benes": 39346
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99342",
+      "n_rows": 890,
+      "srvcs": 43452.0,
+      "benes": 43434
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99342",
+      "n_rows": 988,
+      "srvcs": 47419.0,
+      "benes": 47394
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99342",
+      "n_rows": 2466,
+      "srvcs": 134019.0,
+      "benes": 133953
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99342",
+      "n_rows": 2438,
+      "srvcs": 131961.0,
+      "benes": 131897
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99343",
+      "n_rows": 1042,
+      "srvcs": 46989.0,
+      "benes": 46976
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99343",
+      "n_rows": 1140,
+      "srvcs": 51662.0,
+      "benes": 51589
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99343",
+      "n_rows": 1206,
+      "srvcs": 55218.0,
+      "benes": 55199
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99343",
+      "n_rows": 1384,
+      "srvcs": 58720.0,
+      "benes": 58708
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99344",
+      "n_rows": 1589,
+      "srvcs": 62565.0,
+      "benes": 62516
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99344",
+      "n_rows": 1724,
+      "srvcs": 64820.0,
+      "benes": 64778
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99344",
+      "n_rows": 1784,
+      "srvcs": 66452.0,
+      "benes": 66391
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99344",
+      "n_rows": 1882,
+      "srvcs": 74343.0,
+      "benes": 74304
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99344",
+      "n_rows": 4895,
+      "srvcs": 193182.0,
+      "benes": 193069
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99344",
+      "n_rows": 5043,
+      "srvcs": 200192.0,
+      "benes": 200112
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99345",
+      "n_rows": 1465,
+      "srvcs": 61822.0,
+      "benes": 61784
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99345",
+      "n_rows": 1369,
+      "srvcs": 51670.0,
+      "benes": 51599
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99345",
+      "n_rows": 1436,
+      "srvcs": 55774.0,
+      "benes": 55744
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99345",
+      "n_rows": 1470,
+      "srvcs": 57804.0,
+      "benes": 57769
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99345",
+      "n_rows": 3167,
+      "srvcs": 123773.0,
+      "benes": 123716
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99345",
+      "n_rows": 3513,
+      "srvcs": 142639.0,
+      "benes": 142550
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99347",
+      "n_rows": 1225,
+      "srvcs": 161375.0,
+      "benes": 67937
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99347",
+      "n_rows": 1382,
+      "srvcs": 147972.0,
+      "benes": 69986
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99347",
+      "n_rows": 1293,
+      "srvcs": 149070.0,
+      "benes": 68056
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99347",
+      "n_rows": 1257,
+      "srvcs": 131983.0,
+      "benes": 62575
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99347",
+      "n_rows": 4515,
+      "srvcs": 521569.0,
+      "benes": 226001
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99347",
+      "n_rows": 3861,
+      "srvcs": 462283.0,
+      "benes": 197388
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99348",
+      "n_rows": 3702,
+      "srvcs": 454849.0,
+      "benes": 193508
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99348",
+      "n_rows": 4209,
+      "srvcs": 469244.0,
+      "benes": 205558
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99348",
+      "n_rows": 4228,
+      "srvcs": 487639.0,
+      "benes": 206020
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99348",
+      "n_rows": 4200,
+      "srvcs": 487423.0,
+      "benes": 203226
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99348",
+      "n_rows": 11563,
+      "srvcs": 1687131.5,
+      "benes": 635561
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99348",
+      "n_rows": 11476,
+      "srvcs": 1740229.0,
+      "benes": 631154
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99349",
+      "n_rows": 5605,
+      "srvcs": 1079172.0,
+      "benes": 359661
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99349",
+      "n_rows": 6056,
+      "srvcs": 1029604.0,
+      "benes": 356505
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99349",
+      "n_rows": 6486,
+      "srvcs": 1078669.0,
+      "benes": 378148
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99349",
+      "n_rows": 6774,
+      "srvcs": 1070155.0,
+      "benes": 389467
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99349",
+      "n_rows": 14304,
+      "srvcs": 3339308.2,
+      "benes": 984059
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99349",
+      "n_rows": 14840,
+      "srvcs": 3553733.0,
+      "benes": 1007355
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99350",
+      "n_rows": 3334,
+      "srvcs": 449567.0,
+      "benes": 177423
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99350",
+      "n_rows": 3415,
+      "srvcs": 418619.0,
+      "benes": 164606
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99350",
+      "n_rows": 3641,
+      "srvcs": 456576.0,
+      "benes": 173988
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99350",
+      "n_rows": 3833,
+      "srvcs": 490943.0,
+      "benes": 184168
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99350",
+      "n_rows": 7308,
+      "srvcs": 1130847.0,
+      "benes": 397580
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99350",
+      "n_rows": 7448,
+      "srvcs": 1238110.0,
+      "benes": 413777
     },
     {
       "service_year": 2022,
@@ -2300,21 +2916,21 @@
   "svc_place_of_service": [
     {
       "Place_Of_Srvc": "O",
-      "n": 10565238
+      "n": 10858227
     },
     {
       "Place_Of_Srvc": "F",
-      "n": 1957975
+      "n": 1958331
     }
   ],
   "geo_levels": [
     {
       "lvl": "National",
-      "n": 512
+      "n": 669
     },
     {
       "lvl": "State",
-      "n": 22074
+      "n": 26852
     }
   ],
   "geo_national_by_code": [
@@ -3949,6 +4565,1262 @@
       "Tot_Rndrng_Prvdrs": "15262",
       "Tot_Benes": "236541",
       "Tot_Srvcs": "675445"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99324",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "4",
+      "Tot_Benes": "16",
+      "Tot_Srvcs": "16"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99324",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "2436",
+      "Tot_Benes": "51982",
+      "Tot_Srvcs": "52856"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99324",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "14",
+      "Tot_Benes": "49",
+      "Tot_Srvcs": "49"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99324",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "2574",
+      "Tot_Benes": "54491",
+      "Tot_Srvcs": "55577"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99324",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "11",
+      "Tot_Benes": "53",
+      "Tot_Srvcs": "53"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99324",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "2288",
+      "Tot_Benes": "51944",
+      "Tot_Srvcs": "52746"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99324",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "11",
+      "Tot_Benes": "42",
+      "Tot_Srvcs": "42"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99324",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "2283",
+      "Tot_Benes": "50213",
+      "Tot_Srvcs": "50986"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99325",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4650",
+      "Tot_Benes": "53076",
+      "Tot_Srvcs": "55461"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99325",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "28",
+      "Tot_Benes": "53",
+      "Tot_Srvcs": "53"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99325",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4415",
+      "Tot_Benes": "49563",
+      "Tot_Srvcs": "51631"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99325",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "25",
+      "Tot_Benes": "48",
+      "Tot_Srvcs": "48"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99325",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4574",
+      "Tot_Benes": "52793",
+      "Tot_Srvcs": "55282"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99325",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "26",
+      "Tot_Benes": "73",
+      "Tot_Srvcs": "74"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99325",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4704",
+      "Tot_Benes": "56123",
+      "Tot_Srvcs": "58794"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99326",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6444",
+      "Tot_Benes": "54791",
+      "Tot_Srvcs": "58215"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99326",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "19",
+      "Tot_Benes": "28",
+      "Tot_Srvcs": "28"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99326",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6263",
+      "Tot_Benes": "48988",
+      "Tot_Srvcs": "51579"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99326",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "22",
+      "Tot_Benes": "94",
+      "Tot_Srvcs": "94"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99326",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6596",
+      "Tot_Benes": "54123",
+      "Tot_Srvcs": "57571"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99326",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "30",
+      "Tot_Benes": "84",
+      "Tot_Srvcs": "84"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99326",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6900",
+      "Tot_Benes": "55830",
+      "Tot_Srvcs": "59280"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99327",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6514",
+      "Tot_Benes": "64332",
+      "Tot_Srvcs": "68019"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99327",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "30",
+      "Tot_Benes": "70",
+      "Tot_Srvcs": "70"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99327",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6372",
+      "Tot_Benes": "56910",
+      "Tot_Srvcs": "59821"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99327",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "57",
+      "Tot_Benes": "167",
+      "Tot_Srvcs": "168"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99327",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6775",
+      "Tot_Benes": "65044",
+      "Tot_Srvcs": "68758"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99327",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "61",
+      "Tot_Benes": "190",
+      "Tot_Srvcs": "191"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99327",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "7112",
+      "Tot_Benes": "69655",
+      "Tot_Srvcs": "73731"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99328",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4035",
+      "Tot_Benes": "40421",
+      "Tot_Srvcs": "42005"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99328",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "24",
+      "Tot_Benes": "31",
+      "Tot_Srvcs": "31"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99328",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "3829",
+      "Tot_Benes": "34143",
+      "Tot_Srvcs": "35315"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99328",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "43",
+      "Tot_Benes": "84",
+      "Tot_Srvcs": "84"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99328",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4085",
+      "Tot_Benes": "39720",
+      "Tot_Srvcs": "41357"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99328",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "41",
+      "Tot_Benes": "91",
+      "Tot_Srvcs": "91"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99328",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4321",
+      "Tot_Benes": "44052",
+      "Tot_Srvcs": "45861"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99334",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "9",
+      "Tot_Benes": "26",
+      "Tot_Srvcs": "36"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99334",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "10411",
+      "Tot_Benes": "170772",
+      "Tot_Srvcs": "512614"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99334",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "105",
+      "Tot_Benes": "356",
+      "Tot_Srvcs": "891"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99334",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "10331",
+      "Tot_Benes": "166768",
+      "Tot_Srvcs": "482940"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99334",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "136",
+      "Tot_Benes": "412",
+      "Tot_Srvcs": "953"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99334",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "9897",
+      "Tot_Benes": "157331",
+      "Tot_Srvcs": "471118"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99334",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "138",
+      "Tot_Benes": "408",
+      "Tot_Srvcs": "653"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99334",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "9711",
+      "Tot_Benes": "148556",
+      "Tot_Srvcs": "446719"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99335",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "19",
+      "Tot_Benes": "30",
+      "Tot_Srvcs": "48"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99335",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "16692",
+      "Tot_Benes": "307194",
+      "Tot_Srvcs": "1244763"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99335",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "260",
+      "Tot_Benes": "768",
+      "Tot_Srvcs": "1174"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99335",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "16675",
+      "Tot_Benes": "303216",
+      "Tot_Srvcs": "1233555"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99335",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "316",
+      "Tot_Benes": "1149",
+      "Tot_Srvcs": "1785"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99335",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "16575",
+      "Tot_Benes": "296797",
+      "Tot_Srvcs": "1232948"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99335",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "351",
+      "Tot_Benes": "1253",
+      "Tot_Srvcs": "3647"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99335",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "16879",
+      "Tot_Benes": "303867",
+      "Tot_Srvcs": "1259087"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99336",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "16",
+      "Tot_Benes": "28",
+      "Tot_Srvcs": "43"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99336",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "16150",
+      "Tot_Benes": "342665",
+      "Tot_Srvcs": "1662156"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99336",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "284",
+      "Tot_Benes": "884",
+      "Tot_Srvcs": "1305"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99336",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "16235",
+      "Tot_Benes": "339571",
+      "Tot_Srvcs": "1681281"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99336",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "400",
+      "Tot_Benes": "1438",
+      "Tot_Srvcs": "2655"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99336",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "16590",
+      "Tot_Benes": "346285",
+      "Tot_Srvcs": "1813284"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99336",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "394",
+      "Tot_Benes": "1255",
+      "Tot_Srvcs": "2175"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99336",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "17378",
+      "Tot_Benes": "370332",
+      "Tot_Srvcs": "2016175"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99337",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "9311",
+      "Tot_Benes": "141558",
+      "Tot_Srvcs": "539625"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99337",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "107",
+      "Tot_Benes": "302",
+      "Tot_Srvcs": "428"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99337",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "9298",
+      "Tot_Benes": "140925",
+      "Tot_Srvcs": "506829.9"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99337",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "186",
+      "Tot_Benes": "684",
+      "Tot_Srvcs": "2149"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99337",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "9704",
+      "Tot_Benes": "147534",
+      "Tot_Srvcs": "513132"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99337",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "185",
+      "Tot_Benes": "554",
+      "Tot_Srvcs": "903"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99337",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "10425",
+      "Tot_Benes": "159984",
+      "Tot_Srvcs": "558831"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99341",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "1234",
+      "Tot_Benes": "14950",
+      "Tot_Srvcs": "15019"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99341",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "1585",
+      "Tot_Benes": "16076",
+      "Tot_Srvcs": "16163"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99341",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "12",
+      "Tot_Benes": "21",
+      "Tot_Srvcs": "21"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99341",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "1599",
+      "Tot_Benes": "13348",
+      "Tot_Srvcs": "13395"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99341",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "1552",
+      "Tot_Benes": "12056",
+      "Tot_Srvcs": "12113"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99341",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "21",
+      "Tot_Benes": "52",
+      "Tot_Srvcs": "52"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99341",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "3195",
+      "Tot_Benes": "59914",
+      "Tot_Srvcs": "60713"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99341",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "18",
+      "Tot_Benes": "43",
+      "Tot_Srvcs": "43"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99341",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "2841",
+      "Tot_Benes": "55342",
+      "Tot_Srvcs": "56022"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "3203",
+      "Tot_Benes": "41784",
+      "Tot_Srvcs": "42348.1"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "10",
+      "Tot_Benes": "12",
+      "Tot_Srvcs": "12"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "3678",
+      "Tot_Benes": "46283",
+      "Tot_Srvcs": "46885"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "12",
+      "Tot_Benes": "50",
+      "Tot_Srvcs": "50"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "3862",
+      "Tot_Benes": "50856",
+      "Tot_Srvcs": "51760"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "10",
+      "Tot_Benes": "11",
+      "Tot_Srvcs": "11"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4182",
+      "Tot_Benes": "54969",
+      "Tot_Srvcs": "56286"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "57",
+      "Tot_Benes": "159",
+      "Tot_Srvcs": "159"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "9348",
+      "Tot_Benes": "146113",
+      "Tot_Srvcs": "153743"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "49",
+      "Tot_Benes": "203",
+      "Tot_Srvcs": "215"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99342",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "8947",
+      "Tot_Benes": "143005",
+      "Tot_Srvcs": "150313"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99343",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4923",
+      "Tot_Benes": "55467",
+      "Tot_Srvcs": "57292"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99343",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "11",
+      "Tot_Benes": "19",
+      "Tot_Srvcs": "19"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99343",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "5529",
+      "Tot_Benes": "61465",
+      "Tot_Srvcs": "63615"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99343",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "10",
+      "Tot_Benes": "14",
+      "Tot_Srvcs": "14"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99343",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "5765",
+      "Tot_Benes": "65941",
+      "Tot_Srvcs": "67988"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99343",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "11",
+      "Tot_Benes": "29",
+      "Tot_Srvcs": "29"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99343",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "5978",
+      "Tot_Benes": "69570",
+      "Tot_Srvcs": "71734"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6041",
+      "Tot_Benes": "73025",
+      "Tot_Srvcs": "76205"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6643",
+      "Tot_Benes": "77656",
+      "Tot_Srvcs": "80416"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "17",
+      "Tot_Benes": "21",
+      "Tot_Srvcs": "22"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "7073",
+      "Tot_Benes": "79839",
+      "Tot_Srvcs": "83174"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "16",
+      "Tot_Benes": "18",
+      "Tot_Srvcs": "18"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "7482",
+      "Tot_Benes": "87980",
+      "Tot_Srvcs": "92041"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "60",
+      "Tot_Benes": "146",
+      "Tot_Srvcs": "148"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "15248",
+      "Tot_Benes": "209634",
+      "Tot_Srvcs": "228504"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "59",
+      "Tot_Benes": "133",
+      "Tot_Srvcs": "133"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99344",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "15492",
+      "Tot_Benes": "216413",
+      "Tot_Srvcs": "236154"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99345",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "4895",
+      "Tot_Benes": "69647",
+      "Tot_Srvcs": "72614"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99345",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "5240",
+      "Tot_Benes": "62323",
+      "Tot_Srvcs": "64069"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99345",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "15",
+      "Tot_Benes": "22",
+      "Tot_Srvcs": "22"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99345",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "5587",
+      "Tot_Benes": "66694",
+      "Tot_Srvcs": "68605"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99345",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "5609",
+      "Tot_Benes": "68502",
+      "Tot_Srvcs": "70647"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99345",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "33",
+      "Tot_Benes": "54",
+      "Tot_Srvcs": "54"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99345",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "10329",
+      "Tot_Benes": "140020",
+      "Tot_Srvcs": "147365"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99345",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "35",
+      "Tot_Benes": "58",
+      "Tot_Srvcs": "58"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99345",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "10614",
+      "Tot_Benes": "156843",
+      "Tot_Srvcs": "166081"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "6874",
+      "Tot_Benes": "76870",
+      "Tot_Srvcs": "183835"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "37",
+      "Tot_Benes": "65",
+      "Tot_Srvcs": "74"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "8060",
+      "Tot_Benes": "81834",
+      "Tot_Srvcs": "172894"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "48",
+      "Tot_Benes": "100",
+      "Tot_Srvcs": "122"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "7452",
+      "Tot_Benes": "78292",
+      "Tot_Srvcs": "172718"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "23",
+      "Tot_Benes": "34",
+      "Tot_Srvcs": "36"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "7358",
+      "Tot_Benes": "72293",
+      "Tot_Srvcs": "154004"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "105",
+      "Tot_Benes": "345",
+      "Tot_Srvcs": "650"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "15862",
+      "Tot_Benes": "222493",
+      "Tot_Srvcs": "571036"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "94",
+      "Tot_Benes": "251",
+      "Tot_Srvcs": "415"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99347",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "14764",
+      "Tot_Benes": "198400",
+      "Tot_Srvcs": "508672"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "15566",
+      "Tot_Benes": "190009",
+      "Tot_Srvcs": "507626"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "93",
+      "Tot_Benes": "160",
+      "Tot_Srvcs": "238"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "16781",
+      "Tot_Benes": "202545",
+      "Tot_Srvcs": "522231"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "86",
+      "Tot_Benes": "148",
+      "Tot_Srvcs": "193"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "16069",
+      "Tot_Benes": "203433",
+      "Tot_Srvcs": "541674"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "83",
+      "Tot_Benes": "159",
+      "Tot_Srvcs": "204"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "15887",
+      "Tot_Benes": "200553",
+      "Tot_Srvcs": "540910"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "219",
+      "Tot_Benes": "798",
+      "Tot_Srvcs": "3015"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "26969",
+      "Tot_Benes": "498339",
+      "Tot_Srvcs": "1770225"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "220",
+      "Tot_Benes": "866",
+      "Tot_Srvcs": "1589"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99348",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "27057",
+      "Tot_Benes": "491429",
+      "Tot_Srvcs": "1829484"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "18359",
+      "Tot_Benes": "281644",
+      "Tot_Srvcs": "1139954"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "92",
+      "Tot_Benes": "178",
+      "Tot_Srvcs": "321"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "19197",
+      "Tot_Benes": "290962",
+      "Tot_Srvcs": "1089490"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "101",
+      "Tot_Benes": "179",
+      "Tot_Srvcs": "321"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "19106",
+      "Tot_Benes": "298069",
+      "Tot_Srvcs": "1140671"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "88",
+      "Tot_Benes": "193",
+      "Tot_Srvcs": "341"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "19129",
+      "Tot_Benes": "302951",
+      "Tot_Srvcs": "1132119"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "266",
+      "Tot_Benes": "854",
+      "Tot_Srvcs": "1725"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "29465",
+      "Tot_Benes": "667277",
+      "Tot_Srvcs": "3424988.2"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "269",
+      "Tot_Benes": "1173",
+      "Tot_Srvcs": "2096"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99349",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "30202",
+      "Tot_Benes": "678712",
+      "Tot_Srvcs": "3649390"
+    },
+    {
+      "service_year": 2019,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "11086",
+      "Tot_Benes": "160364",
+      "Tot_Srvcs": "483831"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "39",
+      "Tot_Benes": "57",
+      "Tot_Srvcs": "65"
+    },
+    {
+      "service_year": 2020,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "11646",
+      "Tot_Benes": "156220",
+      "Tot_Srvcs": "454094"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "46",
+      "Tot_Benes": "73",
+      "Tot_Srvcs": "88"
+    },
+    {
+      "service_year": 2021,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "12155",
+      "Tot_Benes": "164157",
+      "Tot_Srvcs": "494718"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "49",
+      "Tot_Benes": "83",
+      "Tot_Srvcs": "113"
+    },
+    {
+      "service_year": 2022,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "12317",
+      "Tot_Benes": "172339",
+      "Tot_Srvcs": "529800"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "109",
+      "Tot_Benes": "313",
+      "Tot_Srvcs": "461"
+    },
+    {
+      "service_year": 2023,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "19486",
+      "Tot_Benes": "345819",
+      "Tot_Srvcs": "1186204"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "F",
+      "Tot_Rndrng_Prvdrs": "151",
+      "Tot_Benes": "481",
+      "Tot_Srvcs": "707"
+    },
+    {
+      "service_year": 2024,
+      "HCPCS_Cd": "99350",
+      "Place_Of_Srvc": "O",
+      "Tot_Rndrng_Prvdrs": "19667",
+      "Tot_Benes": "357102",
+      "Tot_Srvcs": "1298577"
     },
     {
       "service_year": 2022,
@@ -7201,15 +9073,15 @@
       "n": 23
     },
     {
-      "designation_type": "High Needs Geographic HPSA",
-      "hpsa_status": "Designated",
-      "component_type": "County Subdivision",
-      "n": 9
-    },
-    {
       "designation_type": "Other Facility",
       "hpsa_status": "Designated",
       "component_type": "Unknown",
+      "n": 9
+    },
+    {
+      "designation_type": "High Needs Geographic HPSA",
+      "hpsa_status": "Designated",
+      "component_type": "County Subdivision",
       "n": 9
     },
     {
@@ -7726,6 +9598,246 @@
       "mp_rvu": "0.21",
       "nonfac_total_rvu": "4.89",
       "fac_total_rvu": "4.20",
+      "conversion_factor": "33.5675",
+      "cf_type": "qpp",
+      "source_member": "PPRRVU2026_Oct_QPP.csv"
+    },
+    {
+      "hcpcs": "99341",
+      "modifier": "",
+      "description": "Home/res vst new sf mdm 15",
+      "status_code": "A",
+      "work_rvu": "1.00",
+      "nonfac_pe_rvu": "0.43",
+      "fac_pe_rvu": "0.43",
+      "mp_rvu": "0.04",
+      "nonfac_total_rvu": "1.47",
+      "fac_total_rvu": "1.47",
+      "conversion_factor": "33.4009",
+      "cf_type": "nonqpp",
+      "source_member": "PPRRVU2026_Oct_nonQPP.csv"
+    },
+    {
+      "hcpcs": "99341",
+      "modifier": "",
+      "description": "Home/res vst new sf mdm 15",
+      "status_code": "A",
+      "work_rvu": "1.00",
+      "nonfac_pe_rvu": "0.43",
+      "fac_pe_rvu": "0.43",
+      "mp_rvu": "0.04",
+      "nonfac_total_rvu": "1.47",
+      "fac_total_rvu": "1.47",
+      "conversion_factor": "33.5675",
+      "cf_type": "qpp",
+      "source_member": "PPRRVU2026_Oct_QPP.csv"
+    },
+    {
+      "hcpcs": "99342",
+      "modifier": "",
+      "description": "Home/res vst new low mdm 30",
+      "status_code": "A",
+      "work_rvu": "1.65",
+      "nonfac_pe_rvu": "0.64",
+      "fac_pe_rvu": "0.64",
+      "mp_rvu": "0.07",
+      "nonfac_total_rvu": "2.36",
+      "fac_total_rvu": "2.36",
+      "conversion_factor": "33.4009",
+      "cf_type": "nonqpp",
+      "source_member": "PPRRVU2026_Oct_nonQPP.csv"
+    },
+    {
+      "hcpcs": "99342",
+      "modifier": "",
+      "description": "Home/res vst new low mdm 30",
+      "status_code": "A",
+      "work_rvu": "1.65",
+      "nonfac_pe_rvu": "0.64",
+      "fac_pe_rvu": "0.64",
+      "mp_rvu": "0.07",
+      "nonfac_total_rvu": "2.36",
+      "fac_total_rvu": "2.36",
+      "conversion_factor": "33.5675",
+      "cf_type": "qpp",
+      "source_member": "PPRRVU2026_Oct_QPP.csv"
+    },
+    {
+      "hcpcs": "99344",
+      "modifier": "",
+      "description": "Home/res vst new mod mdm 60",
+      "status_code": "A",
+      "work_rvu": "2.87",
+      "nonfac_pe_rvu": "1.36",
+      "fac_pe_rvu": "1.36",
+      "mp_rvu": "0.16",
+      "nonfac_total_rvu": "4.39",
+      "fac_total_rvu": "4.39",
+      "conversion_factor": "33.4009",
+      "cf_type": "nonqpp",
+      "source_member": "PPRRVU2026_Oct_nonQPP.csv"
+    },
+    {
+      "hcpcs": "99344",
+      "modifier": "",
+      "description": "Home/res vst new mod mdm 60",
+      "status_code": "A",
+      "work_rvu": "2.87",
+      "nonfac_pe_rvu": "1.36",
+      "fac_pe_rvu": "1.36",
+      "mp_rvu": "0.16",
+      "nonfac_total_rvu": "4.39",
+      "fac_total_rvu": "4.39",
+      "conversion_factor": "33.5675",
+      "cf_type": "qpp",
+      "source_member": "PPRRVU2026_Oct_QPP.csv"
+    },
+    {
+      "hcpcs": "99345",
+      "modifier": "",
+      "description": "Home/res vst new high mdm 75",
+      "status_code": "A",
+      "work_rvu": "3.88",
+      "nonfac_pe_rvu": "2.16",
+      "fac_pe_rvu": "2.16",
+      "mp_rvu": "0.25",
+      "nonfac_total_rvu": "6.29",
+      "fac_total_rvu": "6.29",
+      "conversion_factor": "33.4009",
+      "cf_type": "nonqpp",
+      "source_member": "PPRRVU2026_Oct_nonQPP.csv"
+    },
+    {
+      "hcpcs": "99345",
+      "modifier": "",
+      "description": "Home/res vst new high mdm 75",
+      "status_code": "A",
+      "work_rvu": "3.88",
+      "nonfac_pe_rvu": "2.16",
+      "fac_pe_rvu": "2.16",
+      "mp_rvu": "0.25",
+      "nonfac_total_rvu": "6.29",
+      "fac_total_rvu": "6.29",
+      "conversion_factor": "33.5675",
+      "cf_type": "qpp",
+      "source_member": "PPRRVU2026_Oct_QPP.csv"
+    },
+    {
+      "hcpcs": "99347",
+      "modifier": "",
+      "description": "Home/res vst est sf mdm 20",
+      "status_code": "A",
+      "work_rvu": "0.90",
+      "nonfac_pe_rvu": "0.44",
+      "fac_pe_rvu": "0.44",
+      "mp_rvu": "0.04",
+      "nonfac_total_rvu": "1.38",
+      "fac_total_rvu": "1.38",
+      "conversion_factor": "33.4009",
+      "cf_type": "nonqpp",
+      "source_member": "PPRRVU2026_Oct_nonQPP.csv"
+    },
+    {
+      "hcpcs": "99347",
+      "modifier": "",
+      "description": "Home/res vst est sf mdm 20",
+      "status_code": "A",
+      "work_rvu": "0.90",
+      "nonfac_pe_rvu": "0.44",
+      "fac_pe_rvu": "0.44",
+      "mp_rvu": "0.04",
+      "nonfac_total_rvu": "1.38",
+      "fac_total_rvu": "1.38",
+      "conversion_factor": "33.5675",
+      "cf_type": "qpp",
+      "source_member": "PPRRVU2026_Oct_QPP.csv"
+    },
+    {
+      "hcpcs": "99348",
+      "modifier": "",
+      "description": "Home/res vst est low mdm 30",
+      "status_code": "A",
+      "work_rvu": "1.50",
+      "nonfac_pe_rvu": "0.79",
+      "fac_pe_rvu": "0.79",
+      "mp_rvu": "0.07",
+      "nonfac_total_rvu": "2.36",
+      "fac_total_rvu": "2.36",
+      "conversion_factor": "33.4009",
+      "cf_type": "nonqpp",
+      "source_member": "PPRRVU2026_Oct_nonQPP.csv"
+    },
+    {
+      "hcpcs": "99348",
+      "modifier": "",
+      "description": "Home/res vst est low mdm 30",
+      "status_code": "A",
+      "work_rvu": "1.50",
+      "nonfac_pe_rvu": "0.79",
+      "fac_pe_rvu": "0.79",
+      "mp_rvu": "0.07",
+      "nonfac_total_rvu": "2.36",
+      "fac_total_rvu": "2.36",
+      "conversion_factor": "33.5675",
+      "cf_type": "qpp",
+      "source_member": "PPRRVU2026_Oct_QPP.csv"
+    },
+    {
+      "hcpcs": "99349",
+      "modifier": "",
+      "description": "Home/res vst est mod mdm 40",
+      "status_code": "A",
+      "work_rvu": "2.44",
+      "nonfac_pe_rvu": "1.36",
+      "fac_pe_rvu": "1.36",
+      "mp_rvu": "0.16",
+      "nonfac_total_rvu": "3.96",
+      "fac_total_rvu": "3.96",
+      "conversion_factor": "33.4009",
+      "cf_type": "nonqpp",
+      "source_member": "PPRRVU2026_Oct_nonQPP.csv"
+    },
+    {
+      "hcpcs": "99349",
+      "modifier": "",
+      "description": "Home/res vst est mod mdm 40",
+      "status_code": "A",
+      "work_rvu": "2.44",
+      "nonfac_pe_rvu": "1.36",
+      "fac_pe_rvu": "1.36",
+      "mp_rvu": "0.16",
+      "nonfac_total_rvu": "3.96",
+      "fac_total_rvu": "3.96",
+      "conversion_factor": "33.5675",
+      "cf_type": "qpp",
+      "source_member": "PPRRVU2026_Oct_QPP.csv"
+    },
+    {
+      "hcpcs": "99350",
+      "modifier": "",
+      "description": "Home/res vst est high mdm 60",
+      "status_code": "A",
+      "work_rvu": "3.60",
+      "nonfac_pe_rvu": "1.94",
+      "fac_pe_rvu": "1.94",
+      "mp_rvu": "0.24",
+      "nonfac_total_rvu": "5.78",
+      "fac_total_rvu": "5.78",
+      "conversion_factor": "33.4009",
+      "cf_type": "nonqpp",
+      "source_member": "PPRRVU2026_Oct_nonQPP.csv"
+    },
+    {
+      "hcpcs": "99350",
+      "modifier": "",
+      "description": "Home/res vst est high mdm 60",
+      "status_code": "A",
+      "work_rvu": "3.60",
+      "nonfac_pe_rvu": "1.94",
+      "fac_pe_rvu": "1.94",
+      "mp_rvu": "0.24",
+      "nonfac_total_rvu": "5.78",
+      "fac_total_rvu": "5.78",
       "conversion_factor": "33.5675",
       "cf_type": "qpp",
       "source_member": "PPRRVU2026_Oct_QPP.csv"

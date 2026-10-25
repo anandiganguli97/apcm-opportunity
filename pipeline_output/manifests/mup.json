@@ -61,122 +61,122 @@
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2025-11/7befba27-752e-47a8-a76c-6c6d4f74f2e3/MUP_PHY_R25_P04_V20_D19_Prov_Svc.csv",
-    "retrieved_utc": "2026-10-25T04:44:17Z",
+    "retrieved_utc": "2026-10-25T04:52:35Z",
     "bytes": 3176102801,
     "sha256": "8543d0fa56341c1bfb18766d45dac55662423669a98e3ff49eb73235a1595487",
     "file": "by_provider_and_service",
     "service_year": 2019,
     "rows_in": 10140228,
-    "rows_out": 2025483,
-    "codes": 60
+    "rows_out": 2072413,
+    "codes": 78
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2021-08/MUP_PHY_R21_P04_V10_D19_Geo.csv",
-    "retrieved_utc": "2026-10-25T04:44:25Z",
+    "retrieved_utc": "2026-10-25T04:52:40Z",
     "bytes": 42310183,
     "sha256": "13ee2fc4ab3ecfc585309b057ab17aedc1a095434e8f2dfa789a476da4dd9790",
     "file": "by_geography_and_service",
     "service_year": 2019,
-    "rows_out": 3253
+    "rows_out": 4184
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2025-11/d22b18cd-7726-4bf5-8e9c-3e4587c589a1/MUP_PHY_R25_P05_V20_D20_Prov_Svc.csv",
-    "retrieved_utc": "2026-10-25T04:44:37Z",
+    "retrieved_utc": "2026-10-25T04:52:51Z",
     "bytes": 2994090236,
     "sha256": "306f2c37809ce7355cb591d09ecb108cb8cc37dea09f30f181adec39530a2a03",
     "file": "by_provider_and_service",
     "service_year": 2020,
     "rows_in": 9449361,
-    "rows_out": 1932481,
-    "codes": 60
+    "rows_out": 1980077,
+    "codes": 78
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2022-07/0d730fe9-deb8-453b-a2fd-ce778286d9f6/MUP_PHY_R22_P05_V10_D20_Geo.csv",
-    "retrieved_utc": "2026-10-25T04:44:44Z",
+    "retrieved_utc": "2026-10-25T04:52:56Z",
     "bytes": 42191673,
     "sha256": "3aa08588d517cceb8c8fdc0cf8e2b851855480681c195bc200f586fd775dfcba",
     "file": "by_geography_and_service",
     "service_year": 2020,
-    "rows_out": 3574
+    "rows_out": 4566
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2025-11/bffaf97a-c2ab-4fd7-8718-be90742e3485/MUP_PHY_R25_P05_V20_D21_Prov_Svc.csv",
-    "retrieved_utc": "2026-10-25T04:44:57Z",
+    "retrieved_utc": "2026-10-25T04:53:08Z",
     "bytes": 3100222715,
     "sha256": "4e3d65744b60441e6236430c863260928157924d8ba3c6a056e462a4dfdc9b50",
     "file": "by_provider_and_service",
     "service_year": 2021,
     "rows_in": 9886177,
-    "rows_out": 2071714,
-    "codes": 60
+    "rows_out": 2120963,
+    "codes": 78
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2023-05/0a47308e-812e-42cb-8ecf-0c1f457ab849/MUP_PHY_R23_P05_V10_D21_Geo.csv",
-    "retrieved_utc": "2026-10-25T04:45:05Z",
+    "retrieved_utc": "2026-10-25T04:53:13Z",
     "bytes": 43747451,
     "sha256": "a231a2df9a5466018d11336d32bc56d861053396cc290762bf84d3009565e0d5",
     "file": "by_geography_and_service",
     "service_year": 2021,
-    "rows_out": 3667
+    "rows_out": 4691
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2025-11/53fb2bae-4913-48dc-a6d4-d8c025906567/MUP_PHY_R25_P05_V20_D22_Prov_Svc.csv",
-    "retrieved_utc": "2026-10-25T04:45:17Z",
+    "retrieved_utc": "2026-10-25T04:53:25Z",
     "bytes": 3066783950,
     "sha256": "915eef8d6f099af5c5f0a91aa4931d184502d07c1e3dfbd275498cc7e485c5bc",
     "file": "by_provider_and_service",
     "service_year": 2022,
     "rows_in": 9755427,
-    "rows_out": 2080214,
-    "codes": 60
+    "rows_out": 2131217,
+    "codes": 78
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2024-05/3167b4d9-10c0-48f0-a680-1165f4eec064/MUP_PHY_R24_P05_V10_D22_Geo.csv",
-    "retrieved_utc": "2026-10-25T04:45:25Z",
+    "retrieved_utc": "2026-10-25T04:53:30Z",
     "bytes": 42276604,
     "sha256": "6df39f6ec94223fb4f3eeb9bc6618cbf7c36792f1e484b58017ab78d9c48f162",
     "file": "by_geography_and_service",
     "service_year": 2022,
-    "rows_out": 3819
+    "rows_out": 4848
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2025-04/e3f823f8-db5b-4cc7-ba04-e7ae92b99757/MUP_PHY_R25_P05_V20_D23_Prov_Svc.csv",
-    "retrieved_utc": "2026-10-25T04:45:39Z",
+    "retrieved_utc": "2026-10-25T04:53:41Z",
     "bytes": 3062332720,
     "sha256": "c6766dda7c66c74682af892d9ed5f8a347248dc0f6be2bda8aee7eecc02a902b",
     "file": "by_provider_and_service",
     "service_year": 2023,
     "rows_in": 9660647,
-    "rows_out": 2108738,
-    "codes": 60
+    "rows_out": 2157888,
+    "codes": 78
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2025-04/3b718a11-a28d-4c38-a13b-2c6eeb649980/MUP_PHY_R25_P05_V20_D23_Geo.csv",
-    "retrieved_utc": "2026-10-25T04:45:47Z",
+    "retrieved_utc": "2026-10-25T04:53:46Z",
     "bytes": 42062039,
     "sha256": "0b569cf2b66f84ebd6efacb3018b1f6f70cbda4c8ee27565ce7d983726b0f06d",
     "file": "by_geography_and_service",
     "service_year": 2023,
-    "rows_out": 3943
+    "rows_out": 4420
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2026-05/b5ebab5a-f490-418a-9bce-4b9f31419356/PHY_R26_P05_V10_D24_Prov_Svc.csv",
-    "retrieved_utc": "2026-10-25T04:45:59Z",
+    "retrieved_utc": "2026-10-25T04:53:58Z",
     "bytes": 3250282192,
     "sha256": "509dc7ce4cd02d8dd160d50d33ce5d942cd120ea306ff1eb2b6ece4f59cb2c23",
     "file": "by_provider_and_service",
     "service_year": 2024,
     "rows_in": 9781673,
-    "rows_out": 2304583,
-    "codes": 60
+    "rows_out": 2354000,
+    "codes": 78
   },
   {
     "url": "https://data.cms.gov/sites/default/files/2026-05/e534c74b-79b8-4892-8a95-5a17e2dfec9f/MUP_PHY_R26_P05_V10_D24_Geo.csv",
-    "retrieved_utc": "2026-10-25T04:46:08Z",
+    "retrieved_utc": "2026-10-25T04:54:03Z",
     "bytes": 42078094,
     "sha256": "c26956788333d03c0080017121c19e8e4d9990e9fa8ff385d7e1a2849c45074a",
     "file": "by_geography_and_service",
     "service_year": 2024,
-    "rows_out": 4330
+    "rows_out": 4812
   }
 ]

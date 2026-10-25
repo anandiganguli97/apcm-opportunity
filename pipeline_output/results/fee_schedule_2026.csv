@@ -49,6 +49,22 @@ G2214,COCM,Init/sub psych care m 1st 30,nonqpp,1.82,33.4009,60.79,33.73
 G2214,COCM,Init/sub psych care m 1st 30,qpp,1.82,33.5675,61.09,33.9
 G2211,COMPLEXITY_ADDON,Complex e/m visit add on,nonqpp,0.52,33.4009,17.37,14.36
 G2211,COMPLEXITY_ADDON,Complex e/m visit add on,qpp,0.52,33.5675,17.46,14.43
+99341,HOME_RESIDENCE,Home/res vst new sf mdm 15,nonqpp,1.47,33.4009,49.1,49.1
+99341,HOME_RESIDENCE,Home/res vst new sf mdm 15,qpp,1.47,33.5675,49.34,49.34
+99342,HOME_RESIDENCE,Home/res vst new low mdm 30,nonqpp,2.36,33.4009,78.83,78.83
+99342,HOME_RESIDENCE,Home/res vst new low mdm 30,qpp,2.36,33.5675,79.22,79.22
+99344,HOME_RESIDENCE,Home/res vst new mod mdm 60,nonqpp,4.39,33.4009,146.63,146.63
+99344,HOME_RESIDENCE,Home/res vst new mod mdm 60,qpp,4.39,33.5675,147.36,147.36
+99345,HOME_RESIDENCE,Home/res vst new high mdm 75,nonqpp,6.29,33.4009,210.09,210.09
+99345,HOME_RESIDENCE,Home/res vst new high mdm 75,qpp,6.29,33.5675,211.14,211.14
+99347,HOME_RESIDENCE,Home/res vst est sf mdm 20,nonqpp,1.38,33.4009,46.09,46.09
+99347,HOME_RESIDENCE,Home/res vst est sf mdm 20,qpp,1.38,33.5675,46.32,46.32
+99348,HOME_RESIDENCE,Home/res vst est low mdm 30,nonqpp,2.36,33.4009,78.83,78.83
+99348,HOME_RESIDENCE,Home/res vst est low mdm 30,qpp,2.36,33.5675,79.22,79.22
+99349,HOME_RESIDENCE,Home/res vst est mod mdm 40,nonqpp,3.96,33.4009,132.27,132.27
+99349,HOME_RESIDENCE,Home/res vst est mod mdm 40,qpp,3.96,33.5675,132.93,132.93
+99350,HOME_RESIDENCE,Home/res vst est high mdm 60,nonqpp,5.78,33.4009,193.06,193.06
+99350,HOME_RESIDENCE,Home/res vst est high mdm 60,qpp,5.78,33.5675,194.02,194.02
 99304,NURSING_FACILITY,1st nf care sf/low mdm 25,nonqpp,2.43,33.4009,81.16,71.14
 99304,NURSING_FACILITY,1st nf care sf/low mdm 25,qpp,2.43,33.5675,81.57,71.5
 99305,NURSING_FACILITY,1st nf care moderate mdm 35,nonqpp,4.22,33.4009,140.95,119.91
