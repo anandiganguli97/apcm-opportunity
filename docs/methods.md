@@ -86,7 +86,7 @@ National non-facility amounts are RVUs times the conversion factor from the CY20
 - Level mix: shares of QMB and other patients with two or more qualifying conditions are scenario inputs (`seeds/apcm_scenarios.csv`). No public file measures the APCM clinical criterion.
 - Allowed amount = patient-months by level times 2026 rates times capture times consent. Coinsurance is 20% for non-QMB patients and zero for QMBs.
 
-## Readiness score and draft 2025 forecast
+## Readiness score and 2025 forecast
 
 `pipeline/forecast.py`, outputs in `pipeline_output/forecast/`.
 
@@ -96,7 +96,7 @@ National non-facility amounts are RVUs times the conversion factor from the CY20
 - **Model:** unpenalised logistic regression on standardised features: log panel size, log clinician count, physician share, dual share, average HCC risk score, metropolitan share, CCM, PCM, TCM, BHI or CoCM, RPM, ACP, wellness-visit share of clinicians, with median imputation and missing flags. Flags with fewer than 50 practices in the minority class are dropped.
 - **Validation:** 5-fold cross-validated AUROC and Brier score (`model_card_draft.json`).
 - **Score:** 2024 profiles scored with model A. `readiness_score` is the practice's percentile (0 to 100) of the predicted probability. The probabilities describe G2211 uptake, so only the ranking carries over to APCM.
-- **Freeze:** the predictions are a draft until frozen with `scripts/freeze_forecast.py`, which writes a SHA-256 manifest and refuses to overwrite. Freezing is a one-way step and needs the project owner's sign-off. When the 2025 file is published, evaluation will report AUROC, average precision, Brier score, calibration by decile and uptake by decile within dual-share fifths, against the naive rule "billed CCM or PCM in 2024".
+- **Freeze:** frozen on 2026-10-25T04:35:06Z with `scripts/freeze_forecast.py` (SHA-256 manifests, never overwrites) in `pipeline_output/forecast/frozen_2025_v1/`, with the target, method, scoring protocol and source hashes in `FREEZE.md`. When CMS publishes the 2025 file, evaluation will report AUROC, average precision, uptake by decile and uptake by decile within dual-share fifths, against the naive rule "billed CCM or PCM in 2024".
 
 ## What this does not claim
 

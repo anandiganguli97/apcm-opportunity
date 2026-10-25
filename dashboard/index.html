@@ -22,7 +22,7 @@
   --muted: #7d7a74;
   --rule: #e2e0d9;
   --axis: #c3c2b7;
-  --accent: #c4372c;        /* CMS-1500 dropout red, used for code fields and draft marks only */
+  --accent: #c4372c;        /* CMS-1500 dropout red, used for code fields and the freeze mark only */
   --accent-wash: #f8e6e3;
   --series-1: #2a78d6;
   --series-2: #eb6834;
@@ -243,7 +243,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 16px; font-size: var(--
 
   <section id="forecast">
     <div class="sec-head">
-      <div class="eyebrow">Readiness score · draft 2025 forecast <span class="pill">Draft, not frozen</span></div>
+      <div class="eyebrow">Readiness score · 2025 forecast <span class="pill">Frozen 25 Oct 2026</span></div>
       <h2>Who is likely to bill APCM first</h2>
       <p class="takeaway" id="forecast-takeaway"></p>
     </div>
@@ -322,7 +322,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 16px; font-size: var(--
       </ul>
       <ul>
         <li><b>Opportunity</b> uses CY2026 national rates (RVUs times the conversion factor, no geographic adjustment) and the traditional Medicare count from the Geographic Variation file. The share of patients with two or more chronic conditions, capture and consent are scenario assumptions, shown in the table above.</li>
-        <li><b>The forecast</b> ranks practices by a logistic model trained on how practices took up G2211, a primary care code launched in January 2024. It is a ranking, not an APCM uptake rate, and stays a draft until it is frozen before 2025 data are published.</li>
+        <li><b>The forecast</b> ranks practices by a logistic model trained on how practices took up G2211, a primary care code launched in January 2024. It is a ranking, not an APCM uptake rate. It was frozen with SHA-256 hashes on 25 October 2026, before CMS published 2025 data, and will be scored against them.</li>
         <li><b>Not covered</b>: Medicare Advantage, FQHC and RHC billing under their own payment systems, and anything that needs patient-level claims. A recent survey of primary care clinicians found 14.9% self-reported APCM use (Grumbach et al., JGIM, October 2026); this atlas is the national claims-based complement.</li>
         <li>Code, models and tests: <a href="https://github.com/anandiganguli97/apcm-opportunity" target="_blank" rel="noopener">github.com/anandiganguli97/apcm-opportunity</a>.</li>
       </ul>
@@ -717,7 +717,7 @@ function fill() {
    ["Check model: new CCM or PCM", "AUROC " + F.b.cv_auroc.toFixed(2) + ", rank agreement " + F.spearman.toFixed(2)],
    ["Dual share, odds per SD", F.odds.a.dual_share.toFixed(2) + " for G2211 uptake, " + F.odds.b.dual_share.toFixed(2) + " for new care management"]]
     .forEach(([k, v]) => { const f = h("div", { class: "fact" }, facts); h("div", { class: "k" }, f, k); h("div", { class: "v" }, f, v); });
-  h("p", { class: "small muted" }, facts, "The two models disagree on dual share: high-dual practices were slower to add G2211 but more likely to start care management. The score is frozen with a timestamp before the 2025 data are released, then scored against them.");
+  h("p", { class: "small muted" }, facts, "The two models disagree on dual share: high-dual practices were slower to add G2211 but more likely to start care management. The forecast was frozen on 25 October 2026, before the 2025 data were released, and will be scored against them.");
   table(document.getElementById("decile-table"), [{ key: "readiness_decile", label: "Decile" }, { key: "practices", label: "Practices", fmt: int },
     { key: "mean_dual_share", label: "Mean dual share", fmt: (v) => pct(v) }, { key: "qmb_share_of_all_qmb", label: "Share of QMB patients", fmt: (v) => pct(v) },
     { key: "panel_share_of_all", label: "Share of all patients", fmt: (v) => pct(v) }, { key: "ratio", label: "Ratio", fmt: (v) => v.toFixed(2) }], DEC);

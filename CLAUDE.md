@@ -8,7 +8,7 @@ Sizes Medicare's Advanced Primary Care Management (APCM, HCPCS G0556 to G0558, e
 
 - **Real data only.** No fictional or simulated data in any finding. Every number in the README, report and app traces to a public source file and a script.
 - **Aggregates only in Git.** Raw downloads and staged Parquet are never committed (`data/processed/` is git-ignored). Only aggregate outputs go in `pipeline_output/`.
-- **The forecast freeze is a one-way step.** `scripts/freeze_forecast.py` runs only with the project owner's sign-off, and before CMS publishes the 2025 service-year file.
+- **The frozen forecast is immutable.** Never modify `pipeline_output/forecast/frozen_2025_v1/`. Any new freeze is a new version directory and needs the project owner's sign-off.
 - **Changes go through pull requests.** Work on a feature branch and open a pull request to `main`; do not push to `main` directly.
 - **Cite rules and check fees.** APCM rules come from `seeds/billing_rules.csv` (Federal Register page cites); fee arithmetic must keep matching the CMS National Payment Amount File.
 
@@ -33,7 +33,7 @@ With network access to the sources, the same steps run locally: `pip install -r 
 - `seeds/primary_care_specialties.csv`: primary care definition (physicians in FM, IM, GP, geriatrics; NPs and PAs only with visible wellness-visit billing).
 - `seeds/apcm_scenarios.csv`: the only modeled inputs (share of patients meeting the 2+ chronic condition criterion, capture, consent), labeled as scenario assumptions.
 - `pipeline/export.py`: `pipeline_output/results/*.csv`, `headline.json`, the practice extract and the NPI to practice lookup.
-- `pipeline/forecast.py`: draft readiness score and 2025 forecast (not frozen). `pipeline/build_dashboard.py`: report page from `dashboard/template.html`.
+- `pipeline/forecast.py`: readiness score and 2025 forecast, regenerated each run; the forecast of record is frozen in `pipeline_output/forecast/frozen_2025_v1/` (never modify it). `pipeline/build_dashboard.py`: report page from `dashboard/template.html`.
 - `app.py` + `src/apcm_opportunity/dashboard.py`: Streamlit app (findings, practice finder, planner, payment calculator) reading committed `pipeline_output/`. Tests in `app_tests/` run headless on Python 3.11 and 3.14 (`.github/workflows/app-check.yml`; Streamlit Community Cloud runs 3.14). App deps in `requirements.txt`, pipeline deps in `requirements-pipeline.txt`.
 - `docs/`: methods, assumptions, data sources, validity report, policy evidence, chronic conditions, literature, architecture, data dictionary, decision log, roadmap, client brief template.
 
@@ -44,13 +44,13 @@ CMS Medicare Physician & Other Practitioners (by Provider, by Provider and Servi
 ## Status
 
 Done:
-- Pipeline green end to end (all dbt models and tests passing). Results in `pipeline_output/results/`, draft forecast in `pipeline_output/forecast/`.
+- Pipeline green end to end (all dbt models and tests passing). Results in `pipeline_output/results/`.
 - Validation in `docs/data_validity_report.md`: reconciliations, suppression by code family, fee arithmetic matching CMS in all 109 localities, APCM rules transcribed with Federal Register cites.
 - Report live at https://anandiganguli97.github.io/apcm-opportunity/; app live at https://anandiganguli97-apcm-opportunity-app-l8sdm0.streamlit.app/.
-- Readiness score and draft 2025 forecast (`pipeline/forecast.py`, G2211-launch analog). Not frozen.
+- 2025 forecast frozen 2026-10-25T04:35:06Z (`pipeline_output/forecast/frozen_2025_v1/`, tag `forecast-2025-v1`).
 
 Next:
-1. Freeze the forecast before CMS publishes the 2025 service-year file (owner sign-off required).
+1. When CMS publishes the 2025 service-year file, score the frozen forecast per `FREEZE.md` and publish the results next to it.
 2. Remove post-acute and nursing-facility clinician groups using nursing facility visit codes (99304 to 99310).
 3. Practice one-pager export from the app.
 4. Optional: synthetic claims logic-test module; locality-adjusted payment in the national model.

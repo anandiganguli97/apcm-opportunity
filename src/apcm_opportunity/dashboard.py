@@ -82,7 +82,8 @@ def _load(root_path: str) -> dict:
         "national_trend", "equity", "readiness_tiers", "readiness_by_dual_quintile", "state_summary",
         "apcm_opportunity_national", "ccm_vs_apcm_summary", "suppression_by_family", "fee_schedule_2026"]}
     practices = pd.read_csv(res / "practice_extract_tableau.csv.gz", dtype={"practice_id": str, "county_fips": str})
-    scores = pd.read_csv(fc / "draft_2025_apcm_predictions.csv.gz", dtype={"practice_id": str},
+    frozen = fc / "frozen_2025_v1" / "apcm_2025_predictions.csv.gz"  # forecast of record
+    scores = pd.read_csv(frozen if frozen.exists() else fc / "draft_2025_apcm_predictions.csv.gz", dtype={"practice_id": str},
                          usecols=["practice_id", "readiness_score", "readiness_decile"])
     d["practices"] = practices.merge(scores, on="practice_id", how="left")
     lookup = res / "npi_practice_lookup.csv.gz"
@@ -194,8 +195,8 @@ def _profile(p: pd.Series) -> None:
     c[0].metric("Primary care clinicians", f"{int(p.pcp_clinicians):,}")
     c[1].metric("Medicare patients (sum across clinicians)", f"{int(p.patient_panel_proxy):,}")
     c[2].metric("Dual-eligible share", _pct(p.dual_share), f"~{p.est_qmb_patients:,.0f} QMB patients" if pd.notna(p.est_qmb_patients) else None, delta_color="off")
-    c[3].metric("Readiness score (draft)", "n/a" if pd.isna(p.readiness_score) else f"{p.readiness_score:.0f} / 100",
-                help="Percentile of predicted likelihood of early APCM billing, from a model trained on how practices took up G2211 in 2024. Not frozen yet.")
+    c[3].metric("Readiness score", "n/a" if pd.isna(p.readiness_score) else f"{p.readiness_score:.0f} / 100",
+                help="Percentile of predicted likelihood of early APCM billing, from a model trained on how practices took up G2211 in 2024. Frozen on 25 Oct 2026, before CMS published 2025 data.")
     chips = "".join(f'<span class="chip{"" if str(p[k]) == "True" else " off"}">{v}</span>' for k, v in SIGNALS.items())
     st.markdown(f"**Visible 2024 billing** ({TIER_NAMES.get(p.readiness_tier, p.readiness_tier)})<br>{chips}", unsafe_allow_html=True)
     st.markdown(f'<div class="cite">A struck-through service means no visible row, which can mean fewer than 11 patients rather than none. '
@@ -205,7 +206,7 @@ def _profile(p: pd.Series) -> None:
 
 def _finder(d: dict) -> None:
     _band("Find a practice", "Search 51,000+ primary care practices: group practices from CMS's Doctors and Clinicians file, plus solo clinicians. "
-          "See what each already bills, its patient mix and its draft readiness score.", "PRACTICE FINDER · 2024")
+          "See what each already bills, its patient mix and its readiness score.", "PRACTICE FINDER · 2024")
     pr = d["practices"]
     f = st.columns([1.3, 1, 1, 1.2])
     query = f[0].text_input("Practice name or clinician NPI", placeholder="e.g. 1234567890 or 'family medicine'")

@@ -48,9 +48,9 @@ G0556 $16.37, G0557 $53.78 and G0558 $117.24 a month; base CCM (99490) $66.13. T
 
 Inputs in `seeds/apcm_scenarios.csv` and `docs/assumptions_log.md`. Source: `results/apcm_opportunity_national.csv`.
 
-## Draft readiness score
+## Readiness score (frozen forecast)
 
-Logistic model trained on G2211 uptake in 2024 from 2023 practice profiles: 47,564 practices, cross-validated AUROC 0.80. The least-ready tenth of practices holds 3.6 times the QMB patients its share of all patients would suggest. A check model on new CCM/PCM adoption has AUROC 0.74 and ranks practices similarly (Spearman 0.73). Source: `forecast/model_card_draft.json`, `forecast/qmb_by_readiness_decile.csv`.
+Logistic model trained on G2211 uptake in 2024 from 2023 practice profiles: 47,564 practices, cross-validated AUROC 0.80. The least-ready tenth of practices holds 3.6 times the QMB patients its share of all patients would suggest. A check model on new CCM/PCM adoption has AUROC 0.74 and ranks practices similarly (Spearman 0.73). Frozen on 2026-10-25 (`forecast/frozen_2025_v1/FREEZE.md`). Source: `forecast/frozen_2025_v1/model_card.json`, `forecast/qmb_by_readiness_decile.csv`.
 
 ## What the data cannot show
 

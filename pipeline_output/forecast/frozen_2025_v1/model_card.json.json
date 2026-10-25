@@ -1,0 +1,6 @@
+{
+  "frozen_at_utc": "2026-10-25T04:35:06Z",
+  "prediction_file": "model_card.json",
+  "sha256": "55b882cd99f0f2419e565574652b1be1d8c49570140a6d1578e15834618ff54a",
+  "note": "Analyst must record target definition, data cutoff, model and source provenance alongside this manifest."
+}

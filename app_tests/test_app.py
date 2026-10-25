@@ -70,3 +70,14 @@ def test_npi_search_finds_the_clinicians_practice():
     assert not at.exception, at.exception
     shown = at.dataframe[0].value
     assert list(shown["Practice ID"]) == [row.practice_id]
+
+
+def test_frozen_forecast_is_unchanged():
+    """The 2025 forecast of record must match the hashes written when it was frozen."""
+    import hashlib
+    import json
+    frozen = Path(APP).parent / "pipeline_output/forecast/frozen_2025_v1"
+    for name in ["apcm_2025_predictions.csv.gz", "model_card.json"]:
+        manifest = json.loads((frozen / f"{name}.json").read_text())
+        assert manifest["frozen_at_utc"] == "2026-10-25T04:35:06Z"
+        assert hashlib.sha256((frozen / name).read_bytes()).hexdigest() == manifest["sha256"], name

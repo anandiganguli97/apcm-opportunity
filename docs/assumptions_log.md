@@ -41,8 +41,8 @@ The base case gives $3.06B a year in allowed charges; the low and high cases giv
 
 | ID | Assumption | Value used | Note |
 |---|---|---|---|
-| A20 | Target | Practice has 1+ visible APCM row in the 2025 file | Pre-registered in `model_card_draft.json` |
+| A20 | Target | Practice has 1+ visible APCM row in the 2025 file | Pre-registered; frozen in `pipeline_output/forecast/frozen_2025_v1/FREEZE.md` |
 | A21 | Training analog | G2211 uptake in 2024 from 2023 profiles (model A); new CCM/PCM in 2024 (model B, check) | No APCM outcome exists before the 2025 file |
 | A22 | Model | Unpenalised logistic regression, standardised features | Interpretable; a shallow tree is a reasonable sensitivity check |
 | A23 | Score | Percentile of model A probability | Probabilities are G2211-scaled, so only the ranking is used |
-| A24 | Freeze | Not frozen | One-way step; needs owner sign-off before the 2025 file is released |
+| A24 | Freeze | Frozen 2026-10-25T04:35:06Z, tag `forecast-2025-v1` | One-way; the freeze script refuses to overwrite |
