@@ -19,8 +19,8 @@ jobs:
           fetch-depth: 0
       - name: Create missing tags
         run: |
-          git config user.name "pipeline-bot"
-          git config user.email "pipeline-bot@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           for dir in pipeline_output/forecast/frozen_*; do
             [ -f "$dir/FREEZE.md" ] || continue
             name="${dir##*/frozen_}"                 # e.g. 2025_v1
